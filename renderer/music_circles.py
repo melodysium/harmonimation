@@ -67,7 +67,8 @@ class Circle12Notes(VGroup):
     self.select_circle_opacity = select_circle_opacity
 
     # add background circle
-    self.add(Circle(color=circle_color, radius=radius, stroke_opacity=0.3, stroke_width=8))
+    self.mob_circle_background = Circle(color=circle_color, radius=radius, stroke_opacity=0.3, stroke_width=8).flip().rotate(-90 * (PI / 180))
+    self.add(self.mob_circle_background)
     # set up notes and selectors
     self._selected_steps = []
     self.mob_notes = {}
