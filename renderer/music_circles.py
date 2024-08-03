@@ -22,6 +22,13 @@ class LabelledCircle(VGroup):
     self.add(Text(text=text))
 
 
+class testLabelledCircle(Scene):
+  def construct(self):
+    circle = LabelledCircle()
+    self.play(Create(circle), run_time=2)
+    self.wait(1)
+
+
 def vector_on_unit_circle(t: float):
   return np.array([math.cos(2*PI*t), math.sin(2*PI*t), 0])
 
