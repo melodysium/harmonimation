@@ -1,5 +1,5 @@
 # harmonimation
-A program for visualizing musical harmonies
+A program for visualizing musical harmonic analysis
 
 ## Features
 
