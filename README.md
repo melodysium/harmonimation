@@ -1,4 +1,5 @@
 # harmonimation
+
 A program for visualizing musical harmonic analysis
 
 ## Features
@@ -15,11 +16,11 @@ Currently, very few:
 
 ### Note Circles
 
-![note circles render](resources/note_circles.mp4)
+![note circles render](resources/note_circles.gif)
 
 ### Rhythm Circle
 
-![rhythm circle render](resources/rhythm_circle.mp4)
+![rhythm circle render](resources/rhythm_circle.gif)
 
 ## Upcoming
 
