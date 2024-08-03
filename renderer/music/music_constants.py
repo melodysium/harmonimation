@@ -20,17 +20,23 @@ class Note(Enum):
     obj = object.__new__(cls)
     obj._value_ = value
     return obj
-  def __init__(self, scale_step: int, accidental: int, degree: int, display: str, display_portable: str):
+  def __init__(self, scale_step: int, accidental: int, degree: int, display_rich: str, display_portable: str):
     self.scale_step = scale_step
     self.accidental = accidental
     self.degree = degree
-    self.display = display
+    self.display_rich = display_rich
     self.display_portable = display_portable
   def __repr__(self) -> str:
-    return self.display
+    return self.display_portable
+  def display(self, rich: bool=True, omit_natural: bool=True) -> str:
+    if not rich:
+      return self.display_portable
+    if omit_natural:
+      return str(self.display_rich).rstrip('♮')
+    return self.display_rich
   # naturals and flats
-  # name  adj    display
-  #   step    char
+  # name  adj    display_rich
+  #   step    char     display_portable
   Cb = 11, -1, 0, 'C♭', 'Cb'
   C  = 0,  0,  0, 'C♮',  'C'
   Cs = 1,  1,  0, 'C♯', 'Cs'
