@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Get script file directory, including symlinks
 SOURCE=${BASH_SOURCE[0]}
