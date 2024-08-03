@@ -1,10 +1,58 @@
 #!/bin/sh
 
+# Get script file directory, including symlinks
+SOURCE=${BASH_SOURCE[0]}
+while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
+  SOURCE=$(readlink "$SOURCE")
+  [[ $SOURCE != /* ]] && SOURCE=$DIR/$SOURCE # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+SCRIPT_DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
+# Set up a place for logging
+LOG_DIR="$SCRIPT_DIR/.logs"
+LOG_FILE="manim_wrapper.log"
+LOG_PATH="$LOG_DIR/$LOG_FILE"
+mkdir -p "$LOG_DIR"
 
-LOG_FILE="/home/pikablue/.logs_custom/manim_wrapper.log"
+get_path_folder_part () {
+  if [ -d "$1" ]; then
+    echo "$1"
+  elif [ -f "$1" ]; then
+    path_folder_part="${1%/*}"
+    echo "$path_folder_part"
+  else
+    # not actually a path so just print it out again
+    echo "$1"
+  fi
+}
 
+get_path_file_part () {
+  if [ -f "$1" ]; then
+    path_file_part="${1##*/}"
+    echo "$path_file_part"
+  else
+    # not actually a file so just print it out again
+    echo "$1"
+  fi
+}
+
+# given one string:
+#   if it is a valid path:
+#     remove all directories from the path (leaving either '<file>'' or '.')
+#   print the possibly modified string
+trim_possible_path () {
+  if [ -d "$1" ]; then
+    echo "."
+  elif [ -f "$1" ]; then
+    echo "$(get_path_file_part $1)"
+  else
+    echo "$1"
+  fi
+}
+
+# Helper to log all arguments in the script
 log_arguments () {
-  echo "in log_arguments" >> "$LOG_FILE"
+  echo "in log_arguments" >> "$LOG_PATH"
   arg_idx=0
   for arg_value in "$@"; do
     echo "argument $arg_idx: $arg_value"
@@ -12,6 +60,7 @@ log_arguments () {
   done
 }
 
+# Run the manim container for one-time use
 run_manim_container_throwaway () {
   docker run --rm -v "$(pwd):/manim" manimcommunity/manim \
     manim -qm "$@" 2>&1 #| awk '{$1=$1};1'
@@ -22,31 +71,51 @@ run_manim_container_throwaway () {
   fi
 }
 
+# TODO: Run the manim container for continual use
+
+
+
+# START MAIN PROGRAM
+
 # log starting info
-echo "invoked manim wrapper script at time $(date "+%D %T")" >> "$LOG_FILE"
-echo "arguments:" >> "$LOG_FILE"
-log_arguments "$@" >> "$LOG_FILE"
-# parse arguments
-animation_path="$1"
-animation_name="$2"
-animation_folder="${animation_path%/*.py}"
-animation_file="${animation_path##*/}"
-# if passing in a render command, handle it
-if [ -d "$animation_folder" ] && [ -f "$animation_path" ]; then
-  echo "rendering animation" >> "$LOG_FILE"
-  # cd to animation_folder
-  cd "$animation_folder" > /dev/null
-  echo "running in folder $(pwd)" >> "$LOG_FILE"
-  # run docker container here
-  echo "running throwaway container" >> "$LOG_FILE"
-  manim_output=$(run_manim_container_throwaway "$animation_file" "$animation_name" | tee -a "$LOG_FILE")
-  # guess at output filename
-  realpath $(find . -name "$animation_name.mp4")
-  # print actual manim output
-  echo "$manim_output"
-else
-  # probably doing something else with the script
-  echo "passing args directly" >> "$LOG_FILE"
-  run_manim_container_throwaway "$@" | tee -a "$LOG_FILE"
-fi
-echo "done!" >> "$LOG_FILE"
+echo "invoked manim wrapper script at time $(date "+%D %T")" >> "$LOG_PATH"
+echo "original arguments:" >> "$LOG_PATH"
+log_arguments "$@" >> "$LOG_PATH"
+
+# transform arguments; follow any paths that show up
+# why? when we set up a Volume with docker, we need to link some folder from
+# this file system to the docker container. that folder must contain all of the
+# files needed by the manim command.
+# my current solution is just to cd straight to any file we find, and then
+# launch a docker container with current directory as the volume link.
+# this will likely break if there are ever 2 paths in the arguments to manim.
+# if that ever happens, I have a better solution:
+#   1.  pick some directory on this file system to use as a "volume staging area"
+#   2.  for each path in manim arguments:
+#       a. copy the file / directory to the "volume staging area"
+#       b. change the argument name to just './<file/dir name>'
+#   3.  link a Volume with this staging area
+#   4.  run manim
+#   5.  copy results of the command out of this "staging area" into wherever the
+#       user wants them
+# there's a couple hand-wavey parts of this, but if the problem ever arises,
+# that's my plan.
+echo "parsing arguments to work with Docker" >> "$LOG_PATH"
+new_arguments=()
+for argument in "$@"; do
+  new_argument="$(trim_possible_path $argument)"
+  # if it was a path that got trimmed, cd to the folder
+  # hopefully this only happens once ^-^;
+  if [ "$argument" != "$new_argument" ]; then
+    path_folder_part=$(get_path_folder_part $argument)
+    cd "$path_folder_part"
+  fi
+  new_arguments+=( "$new_argument" )
+done
+echo "newly parsed arguments:" >> "$LOG_PATH"
+log_arguments "${new_arguments[@]}" >> "$LOG_PATH"
+
+# run docker container here
+echo "running throwaway container from $(pwd)" >> "$LOG_PATH"
+run_manim_container_throwaway "${new_arguments[@]}" | tee -a "$LOG_PATH"
+echo "done!" >> "$LOG_PATH"
