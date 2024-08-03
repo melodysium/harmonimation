@@ -49,7 +49,8 @@ class Circle12Notes(VGroup):
   mob_circle_background: Circle
   mob_notes: VDict # VDict[int, TextNote]
   mob_select_circles: VDict # VDict[int, Circle]
-  mob_select_connectors: list[Line]
+  mob_select_connectors: VGroup
+  hack_select_connectors: list[Line]
 
   # properties
   circle_color: str
@@ -83,7 +84,9 @@ class Circle12Notes(VGroup):
     self.add(self.mob_notes)
     self.mob_select_circles = VDict()
     self.add(self.mob_select_circles)
-    self.mob_select_connectors = []
+    self.hack_select_connectors = [] # TODO: figure out a better hack. maybe subclass VGroup?
+    self.mob_select_connectors = VGroup()
+    self.add(self.mob_select_connectors)
     for note_idx, note in enumerate(notes_in_sequence(note_intervals)):
       # calculate position
       offset = vector_on_unit_circle_clockwise_from_top(note_idx / 12)
@@ -115,7 +118,8 @@ class Circle12Notes(VGroup):
       prev_select_circle = self.mob_select_circles[self._selected_steps[1]]
       # mob_connector = Line(new_select_circle.get_center(), prev_select_circle.get_center())
       mob_connector = get_line_between_two_circle_edges(prev_select_circle, new_select_circle)
-      self.mob_select_connectors.insert(0, mob_connector)
+      self.hack_select_connectors.insert(0, mob_connector)
+      self.mob_select_connectors.add(mob_connector)
       self.add(mob_connector)
 
     # if we're over our limit, un-select an old step and make it invisible
@@ -125,8 +129,8 @@ class Circle12Notes(VGroup):
       old_selection_circle = self.mob_select_circles[old_step]
       old_selection_circle.set_stroke(opacity=0)
       # remove the oldest connector
-      old_select_connector = self.mob_select_connectors.pop()
-      self.remove(old_select_connector)
+      old_select_connector = self.hack_select_connectors.pop()
+      self.mob_select_connectors.remove(old_select_connector)
 
     # update opacities for all remaining select circles and connectors
     for select_idx, select_step in enumerate(self._selected_steps):
@@ -134,7 +138,7 @@ class Circle12Notes(VGroup):
       note_circle.set_stroke(opacity=self.select_circle_opacity(select_idx, self.max_selected_steps))
       # dont update a connector that doesn't exist
       if select_idx != len(self._selected_steps) - 1:
-        mob_select_connector = self.mob_select_connectors[select_idx]
+        mob_select_connector = self.hack_select_connectors[select_idx]
         mob_select_connector.set_stroke(opacity=self.select_circle_opacity(select_idx, self.max_selected_steps))
     return self
 
