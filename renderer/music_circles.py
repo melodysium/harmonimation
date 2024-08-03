@@ -31,16 +31,78 @@ def vector_on_unit_circle_clockwise_from_top(t: float):
 
 class Circle12Notes(VGroup):
 
-  def __init__(self, circle_color=GRAY, radius: float=1, note_intervals: int=1, **kwargs):
-    VGroup.__init__(self, **kwargs)
-    self.circle_color = circle_color
-    self.add(Circle(color=circle_color, radius=radius, stroke_opacity=0.3, stroke_width=8))
+  # mobjects
+  mob_circle_background: Circle
+  mob_notes: Dict[int, TextNote]
+  mob_select_circles: Dict[int, Circle]
+  # mob_select_connectors: List[] # TODO: do connectors later
 
+  # properties
+  circle_color: str
+  radius: float
+  max_selected_steps: int
+  select_circle_opacity: Callable[[int, int], float]
+
+  def select_circle_opacity_default(select_idx: int, max_selected_steps: int) -> float:
+    pct = select_idx / max_selected_steps
+    return 1 - pct
+
+  # implementation details
+  _selected_steps: List[int]
+
+  def __init__(self, circle_color=GRAY, radius: float=1,
+      note_intervals: int=1, max_selected_steps: int=3,
+      select_circle_opacity=select_circle_opacity_default, **kwargs):
+    VGroup.__init__(self, **kwargs)
+    # save properties
+    self.circle_color = circle_color
+    self.radius = radius
+    self.max_selected_steps = max_selected_steps
+    self.select_circle_opacity = select_circle_opacity
+    # setup selector implementation
+    self._selected_steps = []
+
+    # add background circle
+    self.add(Circle(color=circle_color, radius=radius, stroke_opacity=0.3, stroke_width=8))
+    # set up notes and selectors
+    self.mob_notes = {}
+    self.mob_select_circles = {}
     for note_idx, note in enumerate(notes_in_sequence(note_intervals)):
-      note_text = TextNote(note, font_size=24*radius)
+      # calculate position
       offset = vector_on_unit_circle_clockwise_from_top(note_idx / 12)
-      note_text.shift(offset * radius)
+      # create TextNote and circle in correct position
+      note_text = TextNote(note, font_size=18*radius).shift(offset * radius)
+      note_circle = Circle(color=WHITE, radius=0.15*radius, stroke_opacity=0).move_to(note_text)
+      # save mobjects, add note text
+      self.mob_notes[note.scale_step] = note_text
+      self.mob_select_circles[note.scale_step] = note_circle
       self.add(note_text)
+      # print(note_circle.get_center())
+      # print(self.get_center())
+      self.add(note_circle)
+      
+    
+  def select_step(self, step: int):
+    
+    # if already selected, ignore
+    if step in self._selected_steps:
+      print(f"ignoring redundant select_step({step}); already selected")
+      return
+    # mark this note as selected
+    self._selected_steps.insert(0, step)
+    # if we're over our limit, un-select an old step and make it invisible
+    if len(self._selected_steps) > self.max_selected_steps:
+      old_selection_circle = self.mob_select_circles[self._selected_steps.pop()]
+      old_selection_circle.set_stroke(opacity=0)
+    # update opacities for all remaining selections
+    for select_idx, select_step in enumerate(self._selected_steps):
+      note_circle = self.mob_select_circles[select_step]
+      note_circle.set_stroke(opacity=self.select_circle_opacity(select_idx, self.max_selected_steps))
+    return self
+
+
+# class AddNoteCircle(Animation):
+#   def __init__(self, circle_12_notes: Circle12Notes, )
 
 
 class test(Scene):
