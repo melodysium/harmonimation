@@ -1,0 +1,52 @@
+#!/bin/sh
+
+
+LOG_FILE="/home/pikablue/.logs_custom/manim_wrapper.log"
+
+log_arguments () {
+  echo "in log_arguments" >> "$LOG_FILE"
+  arg_idx=0
+  for arg_value in "$@"; do
+    echo "argument $arg_idx: $arg_value"
+    arg_idx=$((arg_idx+1))
+  done
+}
+
+run_manim_container_throwaway () {
+  docker run --rm -v "$(pwd):/manim" manimcommunity/manim \
+    manim -qm "$@" 2>&1 #| awk '{$1=$1};1'
+  docker_success=$?
+  if [ $docker_success -ne 0 ]; then
+    echo "ERROR, docker container failed to render manim file."
+    exit $docker_success
+  fi
+}
+
+# log starting info
+echo "invoked manim wrapper script at time $(date "+%D %T")" >> "$LOG_FILE"
+echo "arguments:" >> "$LOG_FILE"
+log_arguments "$@" >> "$LOG_FILE"
+# parse arguments
+animation_path="$1"
+animation_name="$2"
+animation_folder="${animation_path%/*.py}"
+animation_file="${animation_path##*/}"
+# if passing in a render command, handle it
+if [ -d "$animation_folder" ] && [ -f "$animation_path" ]; then
+  echo "rendering animation" >> "$LOG_FILE"
+  # cd to animation_folder
+  cd "$animation_folder" > /dev/null
+  echo "running in folder $(pwd)" >> "$LOG_FILE"
+  # run docker container here
+  echo "running throwaway container" >> "$LOG_FILE"
+  manim_output=$(run_manim_container_throwaway "$animation_file" "$animation_name" | tee -a "$LOG_FILE")
+  # guess at output filename
+  realpath $(find . -name "$animation_name.mp4")
+  # print actual manim output
+  echo "$manim_output"
+else
+  # probably doing something else with the script
+  echo "passing args directly" >> "$LOG_FILE"
+  run_manim_container_throwaway "$@" | tee -a "$LOG_FILE"
+fi
+echo "done!" >> "$LOG_FILE"
