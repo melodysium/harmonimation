@@ -48,7 +48,7 @@ class Circle12Notes(VGroup):
   # mobjects
   mob_circle_background: Circle
   mob_notes: VDict # VDict[int, TextNote]
-  mob_select_circles: dict[int, Circle]
+  mob_select_circles: VDict # VDict[int, Circle]
   mob_select_connectors: list[Line]
 
   # properties
@@ -81,7 +81,8 @@ class Circle12Notes(VGroup):
     self._selected_steps = []
     self.mob_notes = VDict()
     self.add(self.mob_notes)
-    self.mob_select_circles = {}
+    self.mob_select_circles = VDict()
+    self.add(self.mob_select_circles)
     self.mob_select_connectors = []
     for note_idx, note in enumerate(notes_in_sequence(note_intervals)):
       # calculate position
@@ -95,7 +96,7 @@ class Circle12Notes(VGroup):
       # self.add(note_text)
       # print(note_circle.get_center())
       # print(self.get_center())
-      self.add(note_circle)
+      # self.add(note_circle)
       
     
   def select_step(self, step: int):
