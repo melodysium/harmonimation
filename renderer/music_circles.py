@@ -11,6 +11,7 @@ import numpy as np
 # my files
 from music.music_constants import notes_in_sequence
 from music_text import TextNote
+from utils import vector_on_unit_circle_clockwise_from_top
 
 
 class LabelledCircle(VGroup):
@@ -28,13 +29,6 @@ class testLabelledCircle(Scene):
     self.play(Create(circle), run_time=2)
     self.wait(1)
 
-
-# TODO: use Circle.point_at_angle?
-def vector_on_unit_circle(t: float):
-  return np.array([math.cos(2*PI*t), math.sin(2*PI*t), 0])
-
-def vector_on_unit_circle_clockwise_from_top(t: float):
-  return vector_on_unit_circle(1/4 - t)
 
 def get_line_between_two_circle_edges(c1: Circle, c2: Circle):
   direction = Line(c1.get_center(), c2.get_center()).get_unit_vector()
