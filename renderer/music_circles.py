@@ -28,6 +28,12 @@ def vector_on_unit_circle(t: float):
 def vector_on_unit_circle_clockwise_from_top(t: float):
   return vector_on_unit_circle(1/4 - t)
 
+def get_line_between_two_circle_edges(c1: Circle, c2: Circle):
+  direction = Line(c1.get_center(), c2.get_center()).get_unit_vector()
+  c1_point = c1.get_center() + direction * c1.radius
+  c2_point = c2.get_center() - direction * c2.radius
+  return Line(c1_point, c2_point)
+
 
 class Circle12Notes(VGroup):
 
@@ -35,7 +41,7 @@ class Circle12Notes(VGroup):
   mob_circle_background: Circle
   mob_notes: Dict[int, TextNote]
   mob_select_circles: Dict[int, Circle]
-  # mob_select_connectors: List[] # TODO: do connectors later
+  mob_select_connectors: List[Line]
 
   # properties
   circle_color: str
@@ -59,14 +65,14 @@ class Circle12Notes(VGroup):
     self.radius = radius
     self.max_selected_steps = max_selected_steps
     self.select_circle_opacity = select_circle_opacity
-    # setup selector implementation
-    self._selected_steps = []
 
     # add background circle
     self.add(Circle(color=circle_color, radius=radius, stroke_opacity=0.3, stroke_width=8))
     # set up notes and selectors
+    self._selected_steps = []
     self.mob_notes = {}
     self.mob_select_circles = {}
+    self.mob_select_connectors = []
     for note_idx, note in enumerate(notes_in_sequence(note_intervals)):
       # calculate position
       offset = vector_on_unit_circle_clockwise_from_top(note_idx / 12)
@@ -88,16 +94,37 @@ class Circle12Notes(VGroup):
     if step in self._selected_steps:
       print(f"ignoring redundant select_step({step}); already selected")
       return
+
     # mark this note as selected
     self._selected_steps.insert(0, step)
+
+    # if there is a previous selected note, add a connector
+    if len(self._selected_steps) >= 2:
+      new_select_circle = self.mob_select_circles[self._selected_steps[0]]
+      prev_select_circle = self.mob_select_circles[self._selected_steps[1]]
+      # mob_connector = Line(new_select_circle.get_center(), prev_select_circle.get_center())
+      mob_connector = get_line_between_two_circle_edges(prev_select_circle, new_select_circle)
+      self.mob_select_connectors.insert(0, mob_connector)
+      self.add(mob_connector)
+
     # if we're over our limit, un-select an old step and make it invisible
     if len(self._selected_steps) > self.max_selected_steps:
-      old_selection_circle = self.mob_select_circles[self._selected_steps.pop()]
+      # remove the circle
+      old_step: int = self._selected_steps.pop()
+      old_selection_circle = self.mob_select_circles[old_step]
       old_selection_circle.set_stroke(opacity=0)
-    # update opacities for all remaining selections
+      # remove the oldest connector
+      old_select_connector = self.mob_select_connectors.pop()
+      self.remove(old_select_connector)
+
+    # update opacities for all remaining select circles and connectors
     for select_idx, select_step in enumerate(self._selected_steps):
       note_circle = self.mob_select_circles[select_step]
       note_circle.set_stroke(opacity=self.select_circle_opacity(select_idx, self.max_selected_steps))
+      # dont update a connector that doesn't exist
+      if select_idx != len(self._selected_steps) - 1:
+        mob_select_connector = self.mob_select_connectors[select_idx]
+        mob_select_connector.set_stroke(opacity=self.select_circle_opacity(select_idx, self.max_selected_steps))
     return self
 
 
