@@ -52,7 +52,6 @@ trim_possible_path () {
 
 # Helper to log all arguments in the script
 log_arguments () {
-  echo "in log_arguments" >> "$LOG_PATH"
   arg_idx=0
   for arg_value in "$@"; do
     echo "argument $arg_idx: $arg_value"
@@ -60,10 +59,37 @@ log_arguments () {
   done
 }
 
+# Helper to log messages. Essentially $(xargs)
+#   $1 (optional): program name to prepend to each log msg. default: "manim_wrapper"
+DEFAULT_PROGNAME="manim_wrapper"
+# same as above, but also prints to stdout
+tee_log_msgs () {
+  # determine program name to use
+  if [ $# -ge 1 ]; then
+    progname="$1"
+  else
+    progname="$DEFAULT_PROGNAME"
+  fi
+  # print lines of input
+  while IFS="" read -r line || [ -n "$line" ]; do
+    if [ -z "$progname" ]; then
+      printf "%s\n" "$line" >> "$LOG_PATH"
+    else
+      printf "%24s: %s\n" "$progname" "$line" >> "$LOG_PATH"
+    fi
+    echo "$line" # print again w/o progname
+  done
+}
+# same as above, but doesn't print to stdout
+log_msgs () {
+  </dev/stdin tee_log_msgs "$@" >/dev/null
+}
+
 # Run the manim container for one-time use
 run_manim_container_throwaway () {
-  docker run --rm -v "$(pwd):/manim" manimcommunity/manim \
-    manim -qm "$@" 2>&1 #| awk '{$1=$1};1'
+  docker_cmd="docker run --rm -v \"$(pwd):/manim\" manimcommunity/manim manim \"$@\" 2>&1"
+  printf "about to run:\n$docker_cmd" | log_msgs
+  docker run --rm -v "$(pwd):/manim" manimcommunity/manim manim "$@" 2>&1
   docker_success=$?
   if [ $docker_success -ne 0 ]; then
     echo "ERROR, docker container failed to render manim file."
@@ -78,9 +104,9 @@ run_manim_container_throwaway () {
 # START MAIN PROGRAM
 
 # log starting info
-echo "invoked manim wrapper script at time $(date "+%D %T")" >> "$LOG_PATH"
-echo "original arguments:" >> "$LOG_PATH"
-log_arguments "$@" >> "$LOG_PATH"
+echo "invoked manim wrapper script at time $(date "+%D %T")" | log_msgs
+echo "original arguments:" | log_msgs
+log_arguments "$@" | log_msgs
 
 # transform arguments; follow any paths that show up
 # why? when we set up a Volume with docker, we need to link some folder from
@@ -100,7 +126,7 @@ log_arguments "$@" >> "$LOG_PATH"
 #       user wants them
 # there's a couple hand-wavey parts of this, but if the problem ever arises,
 # that's my plan.
-echo "parsing arguments to work with Docker" >> "$LOG_PATH"
+echo "parsing arguments to work with Docker" | log_msgs
 new_arguments=()
 for argument in "$@"; do
   new_argument="$(trim_possible_path $argument)"
@@ -112,10 +138,11 @@ for argument in "$@"; do
   fi
   new_arguments+=( "$new_argument" )
 done
-echo "newly parsed arguments:" >> "$LOG_PATH"
-log_arguments "${new_arguments[@]}" >> "$LOG_PATH"
+echo "newly parsed arguments:" | log_msgs
+log_arguments "${new_arguments[@]}" | log_msgs
 
 # run docker container here
-echo "running throwaway container from $(pwd)" >> "$LOG_PATH"
-run_manim_container_throwaway "${new_arguments[@]}" | tee -a "$LOG_PATH"
-echo "done!" >> "$LOG_PATH"
+echo "running throwaway container from $(pwd)" | log_msgs
+run_manim_container_throwaway "${new_arguments[@]}" | tee_log_msgs "docker manim container"
+echo "done!" | log_msgs
+printf "\n\n\n" | log_msgs ""
