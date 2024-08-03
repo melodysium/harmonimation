@@ -111,4 +111,9 @@ class test(Scene):
     circle_chromatic = Circle12Notes(radius=1.5).shift(2 * LEFT)
     circle_fifths = Circle12Notes(radius=1.5, note_intervals=7).shift(2 * RIGHT)
     self.play(Create(circle_chromatic), Create(circle_fifths), run_time=2)
-    self.wait()
+    self.wait(1)
+    for step in range(12):
+      circle_chromatic.select_step(step)
+      circle_fifths.select_step(step)
+      self.wait(0.3)
+    self.wait(1)
