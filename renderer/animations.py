@@ -67,7 +67,7 @@ class RippleOut(Transform):
         stroke_width: float = 2,
         run_time: float = 1,
         max_radius: float = 1,
-        rate_func=rate_functions.ease_out_cubic,
+        rate_func=rate_functions.linear,
         **kwargs
     ) -> None:
         self.focus_point = focus_point
