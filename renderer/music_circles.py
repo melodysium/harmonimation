@@ -37,7 +37,7 @@ class Circle12Notes(VGroup):
 class test(Scene):
   def construct(self):
     self.wait(0.2)
-    self.play(Create(Circle12Notes(radius=1.5).shift(2 * LEFT), run_time=2))
-    self.wait(0.6)
-    self.play(Create(Circle12Notes(radius=1.5, note_intervals=7).shift(2 * RIGHT), run_time=2))
+    circle_chromatic = Circle12Notes(radius=1.5).shift(2 * LEFT)
+    circle_fifths = Circle12Notes(radius=1.5, note_intervals=7).shift(2 * RIGHT)
+    self.play(Create(circle_chromatic), Create(circle_fifths), run_time=2)
     self.wait()
