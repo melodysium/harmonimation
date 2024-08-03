@@ -20,35 +20,40 @@ class Note(Enum):
     obj = object.__new__(cls)
     obj._value_ = value
     return obj
-  def __init__(self, scale_step: int, accidental: int, degree: int, display: str):
+  def __init__(self, scale_step: int, accidental: int, degree: int, display: str, display_portable: str):
     self.scale_step = scale_step
-    self.display = display
     self.accidental = accidental
+    self.degree = degree
+    self.display = display
+    self.display_portable = display_portable
   def __repr__(self) -> str:
     return self.display
   # naturals and flats
-  Cb = 11, -1, 0, 'Cb'
-  C  = 0,  0,  0, 'C'
-  Cs = 1,  1,  0, 'C#'
-  Db = 1,  -1, 1, 'Db'
-  D  = 2,  0,  1, 'D'
-  Ds = 3,  1,  1, 'D#'
-  Eb = 3,  -1, 2, 'Eb'
-  E  = 4,  0,  2, 'E'
-  Es = 5,  1,  2, 'E#'
-  Fb = 4,  -1, 3, 'Fb'
-  F  = 5,  0,  3, 'F'
-  Fs = 6,  1,  3, 'F#'
-  Gb = 6,  -1, 4, 'Gb'
-  G  = 7,  0,  4, 'G'
-  Gs = 8,  1,  4, 'G#'
-  Ab = 8,  -1, 5, 'Ab'
-  A  = 9,  0,  5, 'A'
-  As = 10, 1,  5, 'A#'
-  Bb = 10, -1, 6, 'Bb'
-  B  = 11, 0,  6, 'B'
-  Bs = 0,  1,  6, 'B#'
-# create map of notes by step
+  # name  adj    display
+  #   step    char
+  Cb = 11, -1, 0, 'C♭', 'Cb'
+  C  = 0,  0,  0, 'C♮',  'C'
+  Cs = 1,  1,  0, 'C♯', 'Cs'
+  Db = 1,  -1, 1, 'D♭', 'Db'
+  D  = 2,  0,  1, 'D♮',  'D'
+  Ds = 3,  1,  1, 'D♯', 'Ds'
+  Eb = 3,  -1, 2, 'E♭', 'Eb'
+  E  = 4,  0,  2, 'E♮',  'E'
+  Es = 5,  1,  2, 'E♯', 'Es'
+  Fb = 4,  -1, 3, 'F♭', 'Fb'
+  F  = 5,  0,  3, 'F♮',  'F'
+  Fs = 6,  1,  3, 'F♯', 'Fs'
+  Gb = 6,  -1, 4, 'G♭', 'Gb'
+  G  = 7,  0,  4, 'G♮',  'G'
+  Gs = 8,  1,  4, 'G♯', 'Gs'
+  Ab = 8,  -1, 5, 'A♭', 'Ab'
+  A  = 9,  0,  5, 'A♮',  'A'
+  As = 10, 1,  5, 'A♯', 'As'
+  Bb = 10, -1, 6, 'B♭', 'Bb'
+  B  = 11, 0,  6, 'B♮',  'B'
+  Bs = 0,  1,  6, 'B♯', 'Bs'
+  # TODO: double sharps / flats?
+  # create map of notes by step
 _notes_by_step = {
   step: {note.accidental: note for note in Note if note.scale_step == step}
   for step in range(12)
