@@ -8,7 +8,10 @@ Currently, very few:
 
 -   [Shell wrapper script](https://github.com/PikaBlue107/harmonimation/blob/main/manim_wrapper/manim)
     to simplify using the [manim docker image](https://docs.manim.community/en/stable/installation/docker.html)
-    -   I'm considering sharing this with the [Manim Community project](https://github.com/ManimCommunity/manim)
+    -   [custom Docker image](https://hub.docker.com/repository/docker/pikablue107/manim-music/general)
+        extending the primary manim image with more LaTeX packages (for rendering music)
+    -   I'm considering sharing this with the
+        [Manim Community project](https://github.com/ManimCommunity/manim)
 -   Note circles to show note and chord sequences
 -   Rhythm circle to visualize beat patterns
 
