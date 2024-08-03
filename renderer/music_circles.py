@@ -29,6 +29,7 @@ class testLabelledCircle(Scene):
     self.wait(1)
 
 
+# TODO: use Circle.point_at_angle?
 def vector_on_unit_circle(t: float):
   return np.array([math.cos(2*PI*t), math.sin(2*PI*t), 0])
 
