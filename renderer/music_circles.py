@@ -45,7 +45,7 @@ class Circle12Notes(VGroup):
 
   def select_circle_opacity_default(select_idx: int, max_selected_steps: int) -> float:
     pct = select_idx / max_selected_steps
-    return 1 - pct
+    return (1 - pct)**1.5
 
   # implementation details
   _selected_steps: List[int]
