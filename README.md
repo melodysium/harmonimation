@@ -1,6 +1,8 @@
 # harmonimation
 
-A program for visualizing musical harmonic analysis
+A program for visualizing musical harmonic analysis.
+
+Discord: <https://discord.gg/bseuGuKaZg>
 
 ## Features
 
