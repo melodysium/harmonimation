@@ -11,6 +11,11 @@ Currently, very few:
 -   Literally some [toy examples](https://github.com/PikaBlue107/harmonimation/blob/main/renderer/main.py)
     of Manim animations from their [Getting Started page](https://docs.manim.community/en/stable/tutorials/quickstart.html).
 
+## Upcoming:
+
+-   Documentation on the shell wrapper script
+-   Early prototypes of some of the widgets from the below design
+
 ## Early design
 
 ![early design](design/harmonimation-design-early_sketch.png)
