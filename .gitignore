@@ -130,3 +130,6 @@ dmypy.json
 
 # MANUAL: folder I use for local testing
 local_playground
+
+# manim output folder
+media
