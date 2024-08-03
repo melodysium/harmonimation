@@ -142,6 +142,18 @@ class Circle12Notes(VGroup):
         mob_select_connector.set_stroke(opacity=self.select_circle_opacity(select_idx, self.max_selected_steps))
     return self
 
+  # TODO: fix bug where self isn't created, but all its submobjects are
+  def create(self) -> Animation:
+    return AnimationGroup(
+      Create(self.mob_circle_background, rate_func=rate_functions.ease_in_sine),
+      AnimationGroup(
+        Create(self.mob_notes),
+        Create(self.mob_select_circles),
+        Create(self.mob_select_connectors),
+      ),
+      lag_ratio=0.18
+    )
+
 
 # class AddNoteCircle(Animation):
 #   def __init__(self, circle_12_notes: Circle12Notes, )
@@ -152,7 +164,7 @@ class test(Scene):
     self.wait(0.2)
     circle_chromatic = Circle12Notes(radius=1.5).shift(2 * LEFT)
     circle_fifths = Circle12Notes(radius=1.5, note_intervals=7).shift(2 * RIGHT)
-    self.play(Create(circle_chromatic), Create(circle_fifths), run_time=2)
+    self.play(circle_chromatic.create(), circle_fifths.create(), run_time=2)
     self.wait(1)
     step_count = 12 * 8 + 1
     step_base = 12
