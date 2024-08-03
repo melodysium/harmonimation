@@ -24,7 +24,7 @@ class CircleRhythmTrackNote(Dot):
         return RippleOut(
                     focus_point=self,
                     color=self.color,
-                    stroke_width=5, max_radius=0.6)
+                    stroke_width=5, max_radius=0.6*(self.radius/DEFAULT_DOT_RADIUS))
 
 
 class CircleRhythmTrack(VGroup):
@@ -38,19 +38,21 @@ class CircleRhythmTrack(VGroup):
     # properties
     prop_divisions: int
     prop_color: str
+    prop_scale_factor: float
 
-    def __init__(self, divisions: int=8, color=WHITE, radius: int=1, **kwargs):
+    def __init__(self, divisions: int=8, color=WHITE, radius: int=1, scale_factor: float=1, **kwargs):
         VGroup.__init__(self, **kwargs)
         self.prop_divisions = divisions
         self.prop_color = color
+        self.prop_scale_factor = scale_factor
         # TODO: replace int notes with fraction notes?
-        self.mob_circle_background = Circle(color=color, radius=radius, stroke_opacity=0.3, stroke_width=8).rotate(90 * PI / 180).flip()
+        self.mob_circle_background = Circle(color=color, radius=radius, stroke_opacity=0.3, stroke_width=8*scale_factor).rotate(90 * PI / 180).flip()
         self.mob_notes = VDict(show_keys=False)
         self.add(self.mob_circle_background, self.mob_notes)
 
     def add_note(self, note_num: int):
         location = self.mob_circle_background.point_from_proportion((note_num-1) / self.prop_divisions)
-        note = CircleRhythmTrackNote(point=location, color=self.mob_circle_background.color)
+        note = CircleRhythmTrackNote(point=location, color=self.mob_circle_background.color, radius=DEFAULT_DOT_RADIUS*self.prop_scale_factor)
         return Create(note, _on_finish=callback_add_to_vdict(self.mob_notes, note_num, note))
 
     # TODO: test and debug with group shenanigans
@@ -84,24 +86,25 @@ class CircleRhythmTrack(VGroup):
 
 
 class CircleRhythmPacekeeper(VGroup):
-    BASE_WIDTH = 0.1
-    LENGTH = 1.2
+    DEFAULT_BASE_WIDTH = 0.1
+    DEFAULT_LENGTH = 1.2
 
     # mobjects
     mob_pointer: Polygon
     mob_axle: Circle
 
-    def __init__(self, color: str=WHITE, **kwargs):
+    def __init__(self, color: str=WHITE, length: float=DEFAULT_LENGTH, width: float=DEFAULT_BASE_WIDTH, **kwargs):
         super().__init__(**kwargs)
+        half_width = width / 2
         # pointer
         self.mob_pointer = Polygon(
-            [-self.BASE_WIDTH/2, 0, 0],
-            [self.BASE_WIDTH/2, 0, 0],
-            [0, self.LENGTH, 0],
+            [-half_width, 0, 0],
+            [half_width, 0, 0],
+            [0, length, 0],
         color=color, fill_opacity=1, stroke_width=0)
         self.add(self.mob_pointer)
         # axle
-        self.mob_axle = AnnularSector(inner_radius=0, outer_radius=self.BASE_WIDTH/2, angle=PI, start_angle=PI, color=color, fill_opacity=1,)
+        self.mob_axle = AnnularSector(inner_radius=0, outer_radius=half_width, angle=PI, start_angle=PI, color=color, fill_opacity=1,)
         self.add(self.mob_axle)
     
     # TODO: address bug about self not benig active
@@ -114,11 +117,16 @@ class CircleRhythmPacekeeper(VGroup):
 
 class CircleRhythmSubdivisions(VGroup):
 
-    def __init__(self, divisions: list[int]=[2,2,2], radius: float=1, fade_factor: float=0.666, shrink_factor: float=0.9, color=GRAY, **kwargs):
+    def __init__(self, divisions: list[int]=[2,2,2], radius: float=1, fade_factor: float=0.666, shrink_factor: float=0.9, scale_factor: float=1, color=GRAY_A, **kwargs):
         super().__init__()
 
         def create_line(radius: float, pct: float, opacity: float=1.0):
-            return Line(start=ORIGIN, end=vector_on_unit_circle_clockwise_from_top(pct) * radius, color=color, stroke_opacity=opacity, **kwargs)
+            x = Line(start=ORIGIN, end=vector_on_unit_circle_clockwise_from_top(pct) * radius,
+                        color=color, stroke_opacity=opacity,
+                        stroke_width=DEFAULT_STROKE_WIDTH*scale_factor/2,
+                        **kwargs)
+            print(x.stroke_width)
+            return x
 
         # biggest line is always at the top
         self.add(create_line(radius=radius, pct=0))
@@ -157,15 +165,15 @@ class CircleRhythm(VGroup):
     # implementation details
 
 
-    def __init__(self, **kwargs):
+    def __init__(self, radius: float=1, **kwargs):
         super().__init__(**kwargs)
 
         # subdivisions
-        self.mob_subdivisions = CircleRhythmSubdivisions()
+        self.mob_subdivisions = CircleRhythmSubdivisions(radius=radius, scale_factor=radius)
         self.add(self.mob_subdivisions)
 
         # pacekeeper
-        self.mob_pacekeeper = CircleRhythmPacekeeper()
+        self.mob_pacekeeper = CircleRhythmPacekeeper(length=radius*1.2, width=radius*0.1)
         self.add(self.mob_pacekeeper)
 
         # tracks
@@ -186,13 +194,13 @@ class test(Scene):
     def construct(self):
         self.wait(0.5 )
 
-        rhythm_circle = CircleRhythm()
+        rhythm_circle = CircleRhythm(radius=2)
         self.play(DrawBorderThenFill(rhythm_circle), run_time=1)
         self.wait(0.2)
 
-        bass_track = CircleRhythmTrack(color=RED, radius=0.4)
-        snare_track = CircleRhythmTrack(color=YELLOW, radius=0.7)
-        hihat_track = CircleRhythmTrack(color=PURPLE, radius=1.0)
+        bass_track = CircleRhythmTrack(color=RED, radius=0.4*2, scale_factor=2)
+        snare_track = CircleRhythmTrack(color=YELLOW, radius=0.7*2, scale_factor=2)
+        hihat_track = CircleRhythmTrack(color=PURPLE, radius=1.0*2, scale_factor=2)
         self.play(
             rhythm_circle.add_track('bass', bass_track),
             rhythm_circle.add_track('snare', snare_track),
