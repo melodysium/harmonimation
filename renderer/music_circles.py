@@ -2,7 +2,7 @@
 
 # standard libs
 import math
-from typing import Dict, List, Set, Union, Callable
+from typing import Callable
 
 # 3rd party libs
 from manim import *
@@ -47,9 +47,9 @@ class Circle12Notes(VGroup):
 
   # mobjects
   mob_circle_background: Circle
-  mob_notes: Dict[int, TextNote]
-  mob_select_circles: Dict[int, Circle]
-  mob_select_connectors: List[Line]
+  mob_notes: dict[int, TextNote]
+  mob_select_circles: dict[int, Circle]
+  mob_select_connectors: list[Line]
 
   # properties
   circle_color: str
@@ -62,7 +62,7 @@ class Circle12Notes(VGroup):
     return (1 - pct)**1.5
 
   # implementation details
-  _selected_steps: List[int]
+  _selected_steps: list[int]
 
   def __init__(self, circle_color=GRAY, radius: float=1,
       note_intervals: int=1, max_selected_steps: int=3,
