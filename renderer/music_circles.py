@@ -1,8 +1,17 @@
+
+
+# standard libs
+import math
+from typing import Dict, List, Set, Union, Callable
+
+# 3rd party libs
 from manim import *
+import numpy as np
+
+# my files
 from music.music_constants import notes_in_sequence
 from music_text import TextNote
-import math
-import numpy as np
+
 
 class LabelledCircle(VGroup):
 
