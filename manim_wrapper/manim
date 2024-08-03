@@ -87,6 +87,8 @@ log_msgs () {
 
 # Run the manim container for one-time use
 run_manim_container_throwaway () {
+  # docs on the manim docker container:
+  # https://docs.manim.community/en/stable/installation/docker.html
   docker_cmd="docker run --rm -v \"$(pwd):/manim\" manimcommunity/manim manim \"$@\" 2>&1"
   printf "about to run:\n$docker_cmd" | log_msgs
   docker run --rm -v "$(pwd):/manim" manimcommunity/manim manim "$@" 2>&1
