@@ -7,10 +7,11 @@ from typing import Callable
 # 3rd party libs
 from manim import *
 import numpy as np
+from music21 import *
 
 # my files
 from music.music_constants import notes_in_sequence
-from music_text import TextNote
+from obj_music_text import TextNote
 from utils import vector_on_unit_circle_clockwise_from_top
 
 
@@ -35,6 +36,7 @@ def get_line_between_two_circle_edges(c1: Circle, c2: Circle):
   c1_point = c1.get_center() + direction * c1.radius
   c2_point = c2.get_center() - direction * c2.radius
   return Line(c1_point, c2_point)
+
 
 
 class Circle12Notes(VGroup):
@@ -97,9 +99,11 @@ class Circle12Notes(VGroup):
       
     
   def select_step(self, step: int):
+
+    print(f"  invoke select_step({step}); {self._selected_steps=}, {self.max_selected_steps}, {self.hack_select_connectors}: ", end='')
     
     # if already selected, ignore
-    if step in self._selected_steps:
+    if self._selected_steps and step is self._selected_steps[0]:
       print(f"ignoring redundant select_step({step}); already selected")
       return
 
@@ -108,13 +112,16 @@ class Circle12Notes(VGroup):
 
     # if there is a previous selected note, add a connector
     if len(self._selected_steps) >= 2:
+      # get circle centers
       new_select_circle = self.mob_select_circles[self._selected_steps[0]]
       prev_select_circle = self.mob_select_circles[self._selected_steps[1]]
-      # mob_connector = Line(new_select_circle.get_center(), prev_select_circle.get_center())
+      # create connector line
       mob_connector = get_line_between_two_circle_edges(prev_select_circle, new_select_circle)
+      # mob_connector = get_line_between_two_circle_edges(*(self.mob_select_circles[self._selected_steps[idx]] for idx in range(2)))
+      # add connector to shape
       self.hack_select_connectors.insert(0, mob_connector)
       self.mob_select_connectors.add(mob_connector)
-      self.add(mob_connector)
+      # self.add(mob_connector) # TODO: had this, commented it out to fix a bug. can probably remove?
 
     # if we're over our limit, un-select an old step and make it invisible
     if len(self._selected_steps) > self.max_selected_steps:
@@ -128,12 +135,14 @@ class Circle12Notes(VGroup):
 
     # update opacities for all remaining select circles and connectors
     for select_idx, select_step in enumerate(self._selected_steps):
+      new_opacity = self.select_circle_opacity(select_idx, self.max_selected_steps)
       note_circle = self.mob_select_circles[select_step]
-      note_circle.set_stroke(opacity=self.select_circle_opacity(select_idx, self.max_selected_steps))
+      note_circle.set_stroke(opacity=new_opacity)
       # dont update a connector that doesn't exist
       if select_idx != len(self._selected_steps) - 1:
         mob_select_connector = self.hack_select_connectors[select_idx]
-        mob_select_connector.set_stroke(opacity=self.select_circle_opacity(select_idx, self.max_selected_steps))
+        mob_select_connector.set_stroke(opacity=new_opacity)
+    print()
     return self
 
   # TODO: fix bug where self isn't created, but all its submobjects are
@@ -147,6 +156,44 @@ class Circle12Notes(VGroup):
       ),
       lag_ratio=0.18
     )
+  
+  def play_notes(stream: stream.Stream) -> Animation:
+    pass # TODO: implement
+
+
+class PlayCircle12Notes(Animation):
+
+  # beats per second
+  bps: float
+  total_beats: float
+  notes: stream.Stream[note.Note]
+  last_processed_step: float
+  circle12: Circle12Notes
+  played: set
+
+  def __init__(self, bpm: float, notes: stream.Stream, circle12: Circle12Notes, **kwargs):
+    self.bps = bpm / 60
+    self.total_beats = notes.highestTime
+    super().__init__(circle12, run_time=self.total_beats / self.bps, **kwargs)
+    self.notes = notes
+    self.last_processed_step = -1
+    self.circle12 = circle12
+    self.played = set()
+
+  
+  def interpolate_mobject(self, alpha: float):
+    current_step = alpha * self.total_beats
+    new_note: note.Note
+    for new_note in self.notes.getElementsByOffset(self.last_processed_step, current_step, includeElementsThatEndAtStart=False):
+      if new_note not in self.played:
+        print(f"iteration of PlayCircle12Notes, current_step={current_step}")
+        print(f"processing new_note {new_note.offset:5} {new_note.name}")
+        self.circle12.select_step(new_note.pitch.pitchClass)
+        self.played.add(new_note)
+    self.last_processed_step = current_step
+
+
+
 
 
 # class AddNoteCircle(Animation):
@@ -168,3 +215,31 @@ class test(Scene):
       circle_fifths.select_step(step % 12)
       self.wait(step_delay_start * (step_base / (step_base + step)))
     self.wait(1)
+
+class testPlay(Scene):
+  def construct(self):
+    self.wait(0.2)
+    circle_chromatic = Circle12Notes(radius=1.5).shift(2 * LEFT)
+    circle_fifths = Circle12Notes(radius=1.5, note_intervals=7).shift(2 * RIGHT)
+    self.play(circle_chromatic.create(), circle_fifths.create(), run_time=2)
+    self.wait(1)
+
+    duration.Duration()
+
+    melody = stream.Stream([
+      note.Note("C", quarterLength=2),
+      note.Note("F", quarterLength=2),
+      note.Note("B-", quarterLength=2),
+      note.Note("E-", quarterLength=2),
+      note.Note("C", quarterLength=2),
+      note.Note("F", quarterLength=2),
+      note.Note("G", quarterLength=2.75),
+      note.Note("C", quarterLength=1.25),
+    ])
+
+    play_circle_chromatic = PlayCircle12Notes(bpm=128, notes=melody, circle12=circle_chromatic)
+    play_circle_fifths = PlayCircle12Notes(bpm=128, notes=melody, circle12=circle_fifths)
+    self.play(AnimationGroup(
+      # play_circle_chromatic,
+      play_circle_fifths,
+      ))

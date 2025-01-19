@@ -188,6 +188,19 @@ class CircleRhythm(VGroup):
             Rotate(self.mob_pacekeeper, -TAU, about_point=np.array([0, 0, 0]), rate_func=linear, run_time=1),
             *[mob_track.play_measure().set_run_time(1) for mob_track in self.mob_tracks.get_all_submobjects()]
         )
+    
+    # TODO: fix bug where self isn't created, but all its submobjects are
+    def create(self) -> Animation:
+        return AnimationGroup(
+            DrawBorderThenFill(self),
+            # AnimationGroup(
+            #     Create(self.mob_notes),
+            #     Create(self.mob_select_circles),
+            #     Create(self.mob_select_connectors),
+            # ),
+            lag_ratio=0.2,
+            run_time=1,
+        )
 
 
 class test(Scene):
@@ -195,8 +208,7 @@ class test(Scene):
         self.wait(0.5 )
 
         rhythm_circle = CircleRhythm(radius=2)
-        self.play(DrawBorderThenFill(rhythm_circle), run_time=1)
-        self.wait(0.2)
+        self.play(rhythm_circle.create())
 
         bass_track = CircleRhythmTrack(color=RED, radius=0.4*2, scale_factor=2)
         snare_track = CircleRhythmTrack(color=YELLOW, radius=0.7*2, scale_factor=2)
