@@ -4,6 +4,8 @@ import numpy as np
 
 from manim import Mobject, Group, Scene, VDict, PI
 
+from music21 import converter, stream
+
 
 def callback_add_to_group(group: Group, object: Mobject):
     def callback(scene: Scene) -> None:
@@ -23,3 +25,7 @@ def vector_on_unit_circle(t: float):
 
 def vector_on_unit_circle_clockwise_from_top(t: float):
   return vector_on_unit_circle(1/4 - t)
+
+
+def import_musicxml(filename: str) -> stream.Score:
+   return converter.parse(filename)
