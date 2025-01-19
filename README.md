@@ -4,6 +4,10 @@ A program for visualizing musical harmonic analysis.
 
 Discord: <https://discord.gg/bseuGuKaZg>
 
+Inspiration ([<img src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="YouTube icon" width="60"/>](https://www.youtube.com/watch?v=1lkJTSdGLG8)):
+
+[![John Coltrane - Giant Steps - Circle of Fifths Diagram](https://img.youtube.com/vi/1lkJTSdGLG8/0.jpg)](https://www.youtube.com/watch?v=1lkJTSdGLG8)
+
 ## Features
 
 Currently, very few:
