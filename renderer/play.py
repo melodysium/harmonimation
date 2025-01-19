@@ -270,3 +270,50 @@ class Playground(Scene):
         # self.wait()
         # # self.play()
         # self.wait(0.2)
+
+class UnderLabeledDot(Dot):
+  def __init__(self, text="Circle", text_font_size=30, **kwargs):
+    Dot.__init__(self, **kwargs)
+    self.add(Text(text=text, font_size=text_font_size).next_to(self, DOWN, buff=SMALL_BUFF))
+
+class ScreenMap(Scene):
+    def construct(self):
+        # make axes, with units matching screen size
+        ax = Axes(
+            x_length=14,
+            y_length=8,
+            axis_config={
+                'tip_shape': StealthTip,
+            }).add_coordinates()
+        # the default plane corresponds to the coordinates of the scene.
+        plane = NumberPlane()
+
+        # a dot with respect to the scene
+        dots = [
+            UnderLabeledDot(point=(2, 2, 0), color=RED, text="(2, 2)"),
+            UnderLabeledDot(point=(-1, 3, 0), color=RED, text="(-1, 3)"),
+            UnderLabeledDot(point=(-1, 1, 0), color=RED, text="(-1, 1)"),
+            UnderLabeledDot(point=(-5, -2, 0), color=RED, text="(-5, -2)"),
+            UnderLabeledDot(point=(6, -3, 0), color=RED, text="(6, -3)"),
+        ]
+        
+        self.add(plane, *dots, ax)
+
+
+class OpacityGradient(Scene):
+    def construct(self):
+        print(RED.to_rgba_with_alpha(1))
+        print(RED.to_rgba_with_alpha(0.2))
+        graydient = color_gradient([
+                BLUE,
+                BLUE.to_rgba_with_alpha(0.2)],
+            length_of_output=20)
+        # TODO: how do I actually get the opacity to actually render?
+        line = Line(
+            start=LEFT*3,
+            end=RIGHT*3,
+            stroke_width=10,
+            color=ManimColor.from_rgba((0, 1, 255,255))
+            )#.set_color_by_gradient(graydient)
+        print(line.stroke_width)
+        self.play(Create(Circle(color=RED_E, stroke_width=10)), Create(line))
