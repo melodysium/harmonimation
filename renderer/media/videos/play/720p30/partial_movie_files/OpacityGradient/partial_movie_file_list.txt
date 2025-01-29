@@ -1,2 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/Users/mgriesen/Development/personal/harmonimation/renderer/media/videos/play/720p30/partial_movie_files/OpacityGradient/2016333726_3109275217_223132457.mp4'

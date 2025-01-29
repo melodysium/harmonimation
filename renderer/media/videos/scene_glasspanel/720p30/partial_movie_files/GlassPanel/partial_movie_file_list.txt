@@ -1,4 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/Users/mgriesen/Development/personal/harmonimation/renderer/media/videos/scene_glasspanel/720p30/partial_movie_files/GlassPanel/2016333726_3377294898_631829896.mp4'
-file 'file:/Users/mgriesen/Development/personal/harmonimation/renderer/media/videos/scene_glasspanel/720p30/partial_movie_files/GlassPanel/2016333726_3146637670_956406578.mp4'
-file 'file:/Users/mgriesen/Development/personal/harmonimation/renderer/media/videos/scene_glasspanel/720p30/partial_movie_files/GlassPanel/543634251_3890345977_4051161709.mp4'
