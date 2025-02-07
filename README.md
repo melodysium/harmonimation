@@ -27,7 +27,7 @@ Currently, very few:
 
 ![note circles render](<resources/note_circles - bo en.gif>)
 
-check out the original song - [My Time by bo en](https://youtu.be/OkMLYNWP-yo?si=KDtZZztb3JmBZH_x&t=32) (interval cycle at 32s)
+[version with audio](https://youtu.be/G2AJBk6h4Jg)
 
 ### Rhythm Circle
 
