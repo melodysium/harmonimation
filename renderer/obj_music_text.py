@@ -1,7 +1,7 @@
-from manim import Tex, Text, Scene, LEFT, RIGHT, Create, TexTemplate
+from manim import Tex, Text, Scene, LEFT, RIGHT, Create, TexTemplate, DEFAULT_FONT_SIZE
 
 from music.music_constants import Note
-from constants import SKIP_LATEX
+from constants import USE_LATEX
 
 myTemplate = TexTemplate()
 myTemplate.add_to_preamble(r"""\usepackage{musicography} 
@@ -12,16 +12,19 @@ myTemplate.add_to_preamble(r"""\usepackage{musicography}
 \newunicodechar{♯}{\musSharp} 
 \newunicodechar{𝄪}{\musDoubleSharp}""")
 
-print(f"{SKIP_LATEX=}")
-if SKIP_LATEX:
-  class TextNote(Text):
-    def __init__(self, note: Note, omit_natural: bool=True, **kwargs):
-      Text.__init__(self, note.display(rich=False, omit_natural=omit_natural), **kwargs)
+print(f"{USE_LATEX=}")
+if USE_LATEX:
+  class TextNote(Tex):
+    def __init__(self, note: Note, font_size: float=DEFAULT_FONT_SIZE, omit_natural: bool=True, **kwargs):
+      # apparently when rendering in Tex the font size is much smaller compared to a Text object,
+      # so we'll artificially bump it up here
+      font_size = font_size * 1.5
+      Tex.__init__(self, note.display(use_unicode_symbols=True, omit_natural=omit_natural), tex_template=myTemplate, font_size=font_size, **kwargs)
       self.note = note
 else:
-  class TextNote(Tex):
+  class TextNote(Text):
     def __init__(self, note: Note, omit_natural: bool=True, **kwargs):
-      Tex.__init__(self, note.display(rich=True, omit_natural=omit_natural), tex_template=myTemplate, **kwargs)
+      Text.__init__(self, note.display(use_unicode_symbols=False, omit_natural=omit_natural), **kwargs)
       self.note = note
 
 
