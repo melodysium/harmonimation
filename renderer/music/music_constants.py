@@ -28,8 +28,8 @@ class Note(Enum):
     self.display_portable = display_portable
   def __repr__(self) -> str:
     return self.display_portable
-  def display(self, rich: bool=True, omit_natural: bool=True) -> str:
-    if not rich:
+  def display(self, use_unicode_symbols: bool=True, omit_natural: bool=True) -> str:
+    if not use_unicode_symbols:
       return self.display_portable
     if omit_natural:
       return str(self.display_rich).rstrip('♮')

@@ -57,6 +57,8 @@ def get_line_between_two_circle_edges(c1: Circle, c2: Circle):
   return Line(c1_point, c2_point)
 
 
+BASE_NOTE_LABEL_FONT_SIZE = 16
+BASE_NOTE_CIRCLE_RADIUS = 0.2
 class Circle12NotesBase(VGroup):
 
   # mobjects
@@ -93,10 +95,10 @@ class Circle12NotesBase(VGroup):
       # calculate position
       offset = vector_on_unit_circle_clockwise_from_top(note_idx / 12)
       # create TextNote and circle in correct position
-      note_text = TextNote(note, font_size=24*radius).shift(offset * radius)
-      note_circle = Circle(color=WHITE, radius=0.2*radius, stroke_opacity=0).move_to(note_text)
+      note_label = TextNote(note, font_size=BASE_NOTE_LABEL_FONT_SIZE*radius).shift(offset * radius)
+      note_circle = Circle(color=WHITE, radius=BASE_NOTE_CIRCLE_RADIUS*radius, stroke_opacity=0).move_to(note_label)
       # save mobjects, add note text
-      self.mob_notes[note.scale_step] = note_text
+      self.mob_notes[note.scale_step] = note_label
       self.mob_select_circles[note.scale_step] = note_circle
 
   # TODO: fix bug where self isn't created, but all its submobjects are
