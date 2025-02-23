@@ -133,3 +133,7 @@ local_playground
 
 # manim output folder
 media
+
+# Musescore extra files
+.*.mscz~
+*.autosave
