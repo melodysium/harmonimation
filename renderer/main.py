@@ -15,7 +15,7 @@ def parse_args():
   parser = argparse.ArgumentParser(
                     prog='Harmonimation',
                     description='A program for visualizing musical harmonic analysis',
-                    epilog='Created by Melody Griesen')
+                    epilog='Created by melodysium')
   parser.add_argument('filename', type=argparse.FileType(), help="musicxml file to render")
   return parser.parse_args()
 
