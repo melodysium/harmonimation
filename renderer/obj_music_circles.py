@@ -3,6 +3,7 @@
 # standard libs
 import math
 from typing import Callable
+import logging
 
 # 3rd party libs
 from manim import *
@@ -14,11 +15,14 @@ from music.music_constants import notes_in_sequence
 from obj_music_text import TextNote
 from utils import vector_on_unit_circle_clockwise_from_top
 
+# log setup
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
+
+# TODO: move elsewhere?
 import sys
-print("Python version")
-print (sys.version)
-print("Version info.")
-print (sys.version_info)
+logger.debug(f"Python version: {sys.version}")
+logger.debug(f"Version info: {sys.version_info}")
 
 
 class LabelledCircle(VGroup):
@@ -142,8 +146,8 @@ class PlayCircle12NotesV2(Animation):
     new_note: note.Note
     for new_note in self.notes.getElementsByOffset(self.last_processed_step, current_step, includeElementsThatEndAtStart=False):
       if new_note not in self.played:
-        print(f"iteration of PlayCircle12Notes, current_step={current_step}")
-        print(f"processing new_note {new_note.offset:5} {new_note.name}")
+        logger.debug(f"iteration of PlayCircle12Notes, current_step={current_step}")
+        logger.debug(f"processing new_note {new_note.offset:5} {new_note.name}")
         self.circle12.select_step(new_note.pitch.pitchClass)
         self.played.add(new_note)
     self.last_processed_step = current_step
@@ -198,11 +202,11 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
     )
     
   def select_step(self, step: int):
-    print(f"  invoke select_step({step}); {self._selected_steps=}, {self.max_selected_steps}, {self.hack_select_connectors}: ", end='')
+    logger.debug(f"  invoke select_step({step}); {self._selected_steps=}, {self.max_selected_steps}, {self.hack_select_connectors}: ", end='')
     
     # if already selected, ignore
     if self._selected_steps and step is self._selected_steps[0]:
-      print(f"ignoring redundant select_step({step}); already selected")
+      logger.debug(f"ignoring redundant select_step({step}); already selected")
       return
 
     # mark this note as selected
@@ -240,7 +244,6 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
       if select_idx != len(self._selected_steps) - 1:
         mob_select_connector = self.hack_select_connectors[select_idx]
         mob_select_connector.set_stroke(opacity=new_opacity)
-    print()
     return self
 
 
@@ -269,8 +272,8 @@ class PlayCircle12Notes(Animation):
     new_note: note.Note
     for new_note in self.notes.getElementsByOffset(self.last_processed_step, current_step, includeElementsThatEndAtStart=False):
       if new_note not in self.played:
-        print(f"iteration of PlayCircle12Notes, current_step={current_step}")
-        print(f"processing new_note {new_note.offset:5} {new_note.name}")
+        logger.debug(f"iteration of PlayCircle12Notes, current_step={current_step}")
+        logger.debug(f"processing new_note {new_note.offset:5} {new_note.name}")
         self.circle12.select_step(new_note.pitch.pitchClass)
         self.played.add(new_note)
     self.last_processed_step = current_step
