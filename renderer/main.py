@@ -1,6 +1,7 @@
 
 # standard lib
 import argparse
+from dataclasses import dataclass
 
 # 3rd party
 from music21 import *
@@ -8,6 +9,18 @@ from manim import *
 
 # project files
 from scene_glasspanel import GlassPanel
+
+# tmp data transfer classes
+@dataclass
+class MusicData:
+  chord_roots: stream.Stream[note.Note] # TODO: change to chord_blocks that groups all notes per harmonic section together
+  all_notes: stream.Stream[note.Note]
+  all_notes_by_part: object = None # TODO: what would this look like?
+  bpm: object = None # TODO: what would this look like?
+  current_key: object = None # TODO: what would this look like?
+  lyrics: object = None # TODO: what would this look like?
+  comments: object = None # TODO: what would this look like?
+
 
 # --------------------HELPERS--------------------
 
@@ -103,24 +116,12 @@ def main():
   print("Calculating chord roots")
   chord_roots = extract_chord_roots(m21_score)
 
-  return
+  music_data = MusicData(
+    chord_roots=chord_roots,
+    all_notes=all_notes,
+  )
 
-
-  # get left hand separate from right hand
-  melody_partstaff = m21_score[4]
-  melody_flat = stream.Stream(melody_partstaff.flatten().getElementsByClass(note.GeneralNote))
-  chords_partstaff = m21_score[5]
-  chords_flat = stream.Stream(chords_partstaff.flatten().getElementsByClass(note.GeneralNote))
-  for i in range(20):
-    e = chords_flat[i]
-    if isinstance(e, m21_chord_rootnote.Chord):
-      print(display_chord(e))
-  
-  print(melody_partstaff.highestTime) # 160
-  print(melody_partstaff.highestTime) # 160
-
-  melody_flat.show('text')
-  # chords_flat.show('text')
+  testPlayFromMusicXML(music_data).render()
 
   # panel = GlassPanel()
   # panel.render()
@@ -132,34 +133,19 @@ from obj_music_circles import Circle12NotesSequenceConnectors, PlayCircle12Notes
 # TODO: make textboxes with programmed text throughout the piece
 
 class testPlayFromMusicXML(Scene):
+
+  music_data: MusicData
+
+  def __init__(self, music_data: MusicData):
+    super().__init__()
+    self.music_data = music_data
+
   def construct(self):
-
-    import os
-    print(os.getcwd())
-
-    with open("../test_scores/My Time - 6m loop section.musicxml") as f:
-      m21_score = parse_score_data(f.read())
-    
-    
-  
     # hack for now - ignore timing, hard-code BPM
     bpm = 180
 
-    print(m21_score)
-    parts = m21_score.getElementsByClass(stream.Part)
-    for x in parts:
-      print("\t" + str(x))
-
-    # get all individual notes
-    print("All individual notes")
-    all_notes = extract_individual_notes(m21_score)
-    print(f"{len(all_notes)} notes")
-
-    # get chord roots
-    print("Calculating chord roots")
-    chord_roots = extract_chord_roots(m21_score)
-    print(f"{len(chord_roots)} chord roots")
-
+    chord_roots = self.music_data.chord_roots
+    # all_notes = self.music_data.all_notes
 
     self.wait(0.2)
     title_text = Text("Interval Cycle (-1, +5)", font_size=36).shift(3.1 * UP)
