@@ -9,6 +9,7 @@ from manim import *
 
 # project files
 from scene_glasspanel import GlassPanel
+from layout_config import build_widgets
 
 # tmp data transfer classes
 @dataclass
@@ -29,7 +30,8 @@ def parse_args():
                     prog='Harmonimation',
                     description='A program for visualizing musical harmonic analysis',
                     epilog='Created by melodysium')
-  parser.add_argument('filename', type=argparse.FileType(), help="musicxml file to render")
+  parser.add_argument('musicxml_file', type=argparse.FileType(), help="musicxml file to render music from")
+  parser.add_argument('harmonimation_file', type=argparse.FileType(), help="harmonimation.json file to configure layout")
   return parser.parse_args()
 
 def display_note(m21_note: note.Note) -> str:
@@ -98,30 +100,31 @@ def parse_score_data(data) -> stream.Score:
 def main():
 
   args = parse_args()
-  m21_score = parse_score_data(args.filename.read())
-  
-  # hack for now - ignore timing, hard-code BPM
-  bpm = 180
+
+  # make harmonimation widgets
+  import pyjson5
+  widgets = build_widgets(pyjson5.load(args.harmonimation_file))
+
+  # parse musicxml score
+  m21_score = parse_score_data(args.musicxml_file.read())
 
   print(m21_score)
   parts = m21_score.getElementsByClass(stream.Part)
   for x in parts:
     print("\t" + str(x))
-
   # get all individual notes
   print("All individual notes")
   all_notes = extract_individual_notes(m21_score)
-
   # get chord roots
   print("Calculating chord roots")
   chord_roots = extract_chord_roots(m21_score)
-
   music_data = MusicData(
     chord_roots=chord_roots,
     all_notes=all_notes,
   )
 
-  testPlayFromMusicXML(music_data).render()
+  # make harmonimation scene, and render!
+  testPlayFromMusicXML(music_data, widgets).render()
 
   # panel = GlassPanel()
   # panel.render()
@@ -135,41 +138,44 @@ from obj_music_circles import Circle12NotesSequenceConnectors, PlayCircle12Notes
 class testPlayFromMusicXML(Scene):
 
   music_data: MusicData
+  widgets: list[Mobject]
 
-  def __init__(self, music_data: MusicData):
+
+  def __init__(self, music_data: MusicData, widgets: list[Mobject]):
     super().__init__()
     self.music_data = music_data
+    self.widgets = widgets
+
 
   def construct(self):
+    
+    # load necessary data
     # hack for now - ignore timing, hard-code BPM
     bpm = 180
-
     chord_roots = self.music_data.chord_roots
     # all_notes = self.music_data.all_notes
 
     self.wait(0.2)
-    title_text = Text("Interval Cycle (-1, +5)", font_size=36).shift(3.1 * UP)
-    subtitle_text = Text("from bo en - My Time", font_size=24).shift(2.5 * UP)
-    circle_chromatic = Circle12NotesSequenceConnectors(radius=1.5, max_selected_steps=7).shift(2 * LEFT + 0.5 * DOWN)
-    text_chromatic = Text("Chromatic circle", font_size=24).move_to(circle_chromatic).shift(2 * DOWN)
-    circle_fifths = Circle12NotesSequenceConnectors(radius=1.5, max_selected_steps=7, note_intervals=7).shift(2 * RIGHT + 0.5 * DOWN)
-    text_fifths = Text("Circle of Fifths", font_size=24).move_to(circle_fifths).shift(2 * DOWN)
-    self.play(
-      Create(title_text),
-      Create(subtitle_text),
-      circle_chromatic.create(),
-      Create(text_chromatic),
-      circle_fifths.create(),
-      Create(text_fifths),
-      run_time=2)
+
+    # run create animations
+    def map_create_animation(widget: Mobject) -> Animation:
+      if isinstance(widget, Circle12NotesSequenceConnectors):
+        return widget.create()
+      else:
+        return Create(widget)
+    create_animations: list[Animation] = list(map(map_create_animation, self.widgets))
+    self.play(create_animations, run_time=2)
+
     self.wait(1)
 
-    play_circle_chromatic = PlayCircle12Notes(bpm=bpm, notes=chord_roots, circle12=circle_chromatic)
-    play_circle_fifths = PlayCircle12Notes(bpm=bpm, notes=chord_roots, circle12=circle_fifths)
-    self.play(AnimationGroup(
-      play_circle_chromatic,
-      play_circle_fifths,
-      ))
+    # run play animations
+    def map_play_animation(widget: Mobject) -> Animation:
+      if isinstance(widget, Circle12NotesSequenceConnectors):
+        return PlayCircle12Notes(bpm=bpm, notes=chord_roots, circle12=widget)
+      else:
+        return None
+    play_animations = list(filter(lambda x: x is not None, map(map_play_animation, self.widgets)))
+    self.play(AnimationGroup(play_animations))
 
 
 if __name__ == '__main__':
