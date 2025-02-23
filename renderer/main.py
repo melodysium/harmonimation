@@ -164,9 +164,9 @@ class testPlayFromMusicXML(Scene):
     self.wait(0.2)
     title_text = Text("Interval Cycle (-1, +5)", font_size=36).shift(3.1 * UP)
     subtitle_text = Text("from bo en - My Time", font_size=24).shift(2.5 * UP)
-    circle_chromatic = Circle12NotesSequenceConnectors(radius=1.5, max_selected_steps=6).shift(2 * LEFT + 0.5 * DOWN)
+    circle_chromatic = Circle12NotesSequenceConnectors(radius=1.5, max_selected_steps=7).shift(2 * LEFT + 0.5 * DOWN)
     text_chromatic = Text("Chromatic circle", font_size=24).move_to(circle_chromatic).shift(2 * DOWN)
-    circle_fifths = Circle12NotesSequenceConnectors(radius=1.5, max_selected_steps=6, note_intervals=7).shift(2 * RIGHT + 0.5 * DOWN)
+    circle_fifths = Circle12NotesSequenceConnectors(radius=1.5, max_selected_steps=7, note_intervals=7).shift(2 * RIGHT + 0.5 * DOWN)
     text_fifths = Text("Circle of Fifths", font_size=24).move_to(circle_fifths).shift(2 * DOWN)
     self.play(
       Create(title_text),

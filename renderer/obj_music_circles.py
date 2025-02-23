@@ -210,6 +210,7 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
 
     # if there is a previous selected note, add a connector
     if len(self._selected_steps) >= 2:
+      # TODO: maybe check if this connector already exists?
       # get circle centers
       new_select_circle = self.mob_select_circles[self._selected_steps[0]]
       prev_select_circle = self.mob_select_circles[self._selected_steps[1]]
@@ -231,7 +232,8 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
       self.mob_select_connectors.remove(old_select_connector)
 
     # update opacities for all remaining select circles and connectors
-    for select_idx, select_step in enumerate(self._selected_steps):
+    # reversed() starts at the oldest (dimmest) circle, so that if it's also selected in a newer step, that one is used instead
+    for select_idx, select_step in reversed(list(enumerate(self._selected_steps))):
       new_opacity = self.calculate_circle_opacity(select_idx, self.max_selected_steps)
       self.highlight_step(step=select_step, opacity=new_opacity)
       # dont update a connector that doesn't exist
