@@ -117,15 +117,19 @@ class CircleRhythmPacekeeper(VGroup):
 
 class CircleRhythmSubdivisions(VGroup):
 
-    def __init__(self, divisions: list[int]=[2,2,2], radius: float=1, fade_factor: float=0.666, shrink_factor: float=0.9, scale_factor: float=1, color=GRAY_A, **kwargs):
+    def __init__(self, divisions: list[int]=[4,4], radius: float=1, fade_factor: float=0.7, shrink_factor: float=0.9, color=GRAY_A, **kwargs):
         super().__init__()
 
-        def create_line(radius: float, pct: float, opacity: float=1.0):
-            x = Line(start=ORIGIN, end=vector_on_unit_circle_clockwise_from_top(pct) * radius,
-                        color=color, stroke_opacity=opacity,
-                        stroke_width=DEFAULT_STROKE_WIDTH*scale_factor/2,
-                        **kwargs)
-            print(x.stroke_width)
+        def create_line(radius: float, pct: float, opacity: float=1.0, width: float=DEFAULT_STROKE_WIDTH, start_radius: float=0):
+            direction = vector_on_unit_circle_clockwise_from_top(pct)
+            x = Line(
+                start=direction * start_radius,
+                end=direction * radius,
+                color=color,
+                stroke_opacity=opacity,
+                stroke_width=width,
+                **kwargs)
+            # print(x.stroke_width)
             return x
 
         # biggest line is always at the top
@@ -135,18 +139,47 @@ class CircleRhythmSubdivisions(VGroup):
         total_subdivisions = 1
         for idx, subdivision in enumerate(divisions):
             total_subdivisions *= subdivision
-            print(f"entering first loop. {idx=}, {subdivision=}, {total_subdivisions=}")
+            div_shrink = shrink_factor ** (idx+1)
+            div_weight = fade_factor ** (idx+1)
+            print(f"entering first loop. {idx=}, {subdivision=}, {total_subdivisions=}, {div_shrink=}, {div_weight=}")
+
+            # draw numbers and circle
+            start_radius = 0.1 * radius * (idx + 1.5)
+            text_radius = 0.1 * radius * ((idx + 1.5) - 0.5)
+            self.add(Circle(
+                radius=start_radius,
+                color=color,
+                stroke_opacity=div_weight,
+                stroke_width=(div_weight*DEFAULT_STROKE_WIDTH)))
+            self.add(Text(
+                text=str(subdivision),
+                font_size=8*radius,
+                fill_opacity=div_weight)
+                .shift(
+                    vector_on_unit_circle_clockwise_from_top(0.5) * text_radius,
+                    LEFT * radius * 0.03))
+            # TODO: will have to be reworked when i handle complex rhythms
+            # num_repeats = int(total_subdivisions / subdivision)
+            # arc_length = 1 / num_repeats
+            # for repeat_num in range(num_repeats):
+                # self.add(Text(text=str(subdivision)).shift(vector_on_unit_circle_clockwise_from_top(arc_length * repeat_num + (arc_length/2)) * 0.6 * (idx+1 - 0.5)))
+
+            # draw divisions
             for step in range(total_subdivisions):
                 print(f"step {step}, step % subdivision = {step % subdivision}")
                 if step % subdivision != 0:
-                    print(f"creating line with shrink_factor={fade_factor ** (idx+1)}, final radius={radius * (fade_factor ** (idx+1))}, pct={step / total_subdivisions}")
-                    self.add(create_line(radius=(radius * (shrink_factor ** (idx+1))), opacity=(fade_factor ** (idx+1)), pct=(step / total_subdivisions)))
+                    print(f"creating line with pct={step / total_subdivisions}")
+                    self.add(create_line(
+                        start_radius=start_radius,
+                        radius=(radius * div_shrink),
+                        opacity=div_weight, width=(div_weight*DEFAULT_STROKE_WIDTH),
+                        pct=(step / total_subdivisions)))
 
 
 class SubdivisionsScene(Scene):
     def construct(self):
         self.wait(0.2)
-        self.play(Create(CircleRhythmSubdivisions()))
+        self.play(Create(CircleRhythmSubdivisions(radius=3, divisions=[4,3])))
         self.wait(1)
 
 
@@ -165,15 +198,15 @@ class CircleRhythm(VGroup):
     # implementation details
 
 
-    def __init__(self, radius: float=1, **kwargs):
+    def __init__(self, radius: float=1, divisions: list[int]=[4,4], **kwargs):
         super().__init__(**kwargs)
 
         # subdivisions
-        self.mob_subdivisions = CircleRhythmSubdivisions(radius=radius, scale_factor=radius)
+        self.mob_subdivisions = CircleRhythmSubdivisions(radius=radius, divisions=divisions)
         self.add(self.mob_subdivisions)
 
         # pacekeeper
-        self.mob_pacekeeper = CircleRhythmPacekeeper(length=radius*1.2, width=radius*0.1)
+        self.mob_pacekeeper = CircleRhythmPacekeeper(length=radius, width=radius*0.1)
         self.add(self.mob_pacekeeper)
 
         # tracks
@@ -207,7 +240,7 @@ class test(Scene):
     def construct(self):
         self.wait(0.5 )
 
-        rhythm_circle = CircleRhythm(radius=2)
+        rhythm_circle = CircleRhythm(radius=2, divisions=[4,2])
         self.play(rhythm_circle.create())
 
         bass_track = CircleRhythmTrack(color=RED, radius=0.4*2, scale_factor=2)
