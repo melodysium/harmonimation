@@ -19,11 +19,6 @@ from utils import vector_on_unit_circle_clockwise_from_top
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
-# TODO: move elsewhere?
-import sys
-logger.debug(f"Python version: {sys.version}")
-logger.debug(f"Version info: {sys.version_info}")
-
 
 class LabelledCircle(VGroup):
 

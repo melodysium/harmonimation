@@ -2,6 +2,7 @@
 # standard lib
 import argparse
 from dataclasses import dataclass
+import logging
 
 # 3rd party
 import pyjson5
@@ -10,6 +11,14 @@ import pyjson5
 from scene_glasspanel import GlassPanel
 from layout_config import build_widgets
 from musicxml import parse_score_data
+
+# log setup
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
+
+import sys
+logger.debug(f"Python version: {sys.version}")
+logger.debug(f"Version info: {sys.version_info}")
 
 # --------------------MAIN CONRTOL FLOW--------------------
 
