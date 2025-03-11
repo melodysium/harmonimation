@@ -7,8 +7,8 @@ import logging
 
 # 3rd party libs
 from manim import *
+from music21 import stream, note
 import numpy as np
-from music21 import *
 
 # my files
 from music.music_constants import notes_in_sequence
@@ -57,6 +57,7 @@ def get_line_between_two_circle_edges(c1: Circle, c2: Circle):
   return Line(c1_point, c2_point)
 
 
+# TODO: add non-root "highlights" around other notes being played
 BASE_NOTE_LABEL_FONT_SIZE = 16
 BASE_NOTE_CIRCLE_RADIUS = 0.2
 class Circle12NotesBase(VGroup):
@@ -313,7 +314,7 @@ class testPlay(Scene):
     self.play(circle_chromatic.create(), circle_fifths.create(), run_time=2)
     self.wait(1)
 
-    duration.Duration()
+    # duration.Duration()
 
     melody = stream.Stream([
       note.Note("C", quarterLength=2),
