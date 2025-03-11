@@ -27,6 +27,7 @@ else:
       Text.__init__(self, note.display(use_unicode_symbols=False, omit_natural=omit_natural), **kwargs)
       self.note = note
 
+# TODO: make textboxes with programmed text throughout the piece
 
 class test(Scene):
   def construct(self):
