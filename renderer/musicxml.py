@@ -52,21 +52,12 @@ def extract_chord_roots(m21_score: stream.Score) -> stream.Stream[note.Note]:
 
 
 def extract_chord_symbols(m21_score: stream.Score) -> list[tuple[float, dict[stream.Part, harmony.ChordSymbol]]]:
-  flattened_score = m21_score.flatten()
-  all_chord_symbols: stream.Stream[harmony.ChordSymbol] = flattened_score.getElementsByClass(harmony.ChordSymbol)#.stream()
-  print(len(all_chord_symbols))
-
-  # assemble the list by looking at all chord symbols at each unique offset
-  grouped_chord_symbols: list[tuple[float, dict[stream.Part, harmony.ChordSymbol]]] = []
-  for chord_symbol_group in group_by_offset(all_chord_symbols):
-    offset = chord_symbol_group.offset
-    # print(len(chord_symbol_group))
-    # for cs in chord_symbol_group:
-    #     print(f"{cs.id=}, owner={find_owner(cs, m21_score.parts, error_if_not_found=True)}, direct_owner={find_direct_owner(cs, m21_score).id}")
-    #     print(f"{" -> ".join([display_id(x) for x in find_direct_owner_tree(cs, m21_score)])}")
-    part_dict = {find_owner(cs, m21_score.parts, error_if_not_found=True): cs for cs in chord_symbol_group}
-    grouped_chord_symbols.append((offset, part_dict))
-  return grouped_chord_symbols
+  # get each chord symbol, with an accurate offset, paired with its part
+  chord_symbols_by_part = sorted([(part, chord_symbol) for part in m21_score.parts for chord_symbol in part.flatten().getElementsByClass(harmony.ChordSymbol)], key=lambda t: t[1].offset)
+  # get a list of all unique offsets where there is a chord symbol
+  unique_offsets = sorted(set([t[1].offset for t in chord_symbols_by_part]))
+  # for each unique offset, grab all the chord symbols at that offset, and make a dict from part to chord symbol
+  return [(offset, {t[0]: t[1] for t in chord_symbols_by_part if t[1].offset == offset}) for offset in unique_offsets]
 
 
 def analyze_harmonic_cluster(notes: stream.Stream[note.Note]) -> chord.Chord:
