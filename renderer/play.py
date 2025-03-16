@@ -2,10 +2,24 @@ from manim import *
 
 class CreateCircle(Scene):
   def construct(self):
-    circle = Circle()
+    circle = Circle(stroke_width=0)
     circle.set_fill(PINK, opacity=0.5)
     self.play(Create(circle))
-  
+    self.play(circle.animate.set_fill(RED))
+
+class CreateSquare(Scene):
+  def construct(self):
+    square = Square(
+        side_length=2,
+        fill_color=GRAY,
+        fill_opacity=1,
+        stroke_opacity=0
+        )
+    self.play(Create(square))
+    self.play(square.animate.rotate(180))
+    self.play(square.animate.set_fill(RED))
+    self.play(FadeOut(square))
+
 class SquareToCircle(Scene):
   def construct(self):
         circle = Circle()  # create a circle
@@ -317,3 +331,29 @@ class OpacityGradient(Scene):
             )#.set_color_by_gradient(graydient)
         print(line.stroke_width)
         self.play(Create(Circle(color=RED_E, stroke_width=10)), Create(line))
+
+class Gradient(Scene):
+    def construct(self):
+       gradient_circle = Circle(fill_opacity=1).set_color([ORANGE, BLUE])
+    #    gradient_circle.get_sheen_factor()
+    #    gradient_circle.set_sheen()
+    #    gradient_circle.set_sheen_direction()
+       self.add(gradient_circle)
+    #    GlowDot()
+class gradLines(Scene):
+    def construct(self):
+        for i in range(10):
+            self.add(
+                Line(
+                    start=ORIGIN,
+                    end=[3*np.cos(2*PI*i/10),3*np.sin(2*PI*i/10),0],
+                    stroke_color=[PURE_GREEN,WHITE],
+                    stroke_width=15
+                ).shift(3.5*LEFT),
+                Line(
+                    start=ORIGIN,
+                    end=[3*np.cos(2*PI*i/10),3*np.sin(2*PI*i/10),0],
+                    stroke_color=[PURE_GREEN,WHITE],
+                    stroke_width=15
+                ).set_sheen_direction([3*np.cos(2*PI*i/10),3*np.sin(2*PI*i/10),0]).shift(3.5*RIGHT)
+            )
