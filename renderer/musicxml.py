@@ -8,6 +8,9 @@ from music21 import stream, note, chord, harmony, converter
 from utils import get_root_note, print_notes_stream, display_timing, extract_notes, display_chord, display_notRest, copy_timing, timing_from, Music21Timing, find_direct_owner, find_owner, group_by_offset, display_id, find_direct_owner_tree
 
 
+DEFAULT_CHORD_SYMBOL = harmony.ChordSymbol(kindStr="ma")
+
+
 # data transfer class
 @dataclass
 class MusicData:
@@ -57,11 +60,29 @@ def extract_chord_symbols(m21_score: stream.Score) -> list[tuple[float, dict[str
   # get a list of all unique offsets where there is a chord symbol
   unique_offsets = sorted(set([t[1].offset for t in chord_symbols_by_part]))
   # for each unique offset, grab all the chord symbols at that offset, and make a dict from part to chord symbol
-  return [(offset, {t[0]: t[1] for t in chord_symbols_by_part if t[1].offset == offset}) for offset in unique_offsets]
+  chord_symbols_per_part_per_offset = [(float(offset), {t[0]: t[1] for t in chord_symbols_by_part if t[1].offset == offset}) for offset in unique_offsets]
+  # if no chord symbol in first measure, insert a default one
+  if chord_symbols_per_part_per_offset[0][0] > 0:
+    chord_symbols_per_part_per_offset.insert(0, (0.0, {m21_score.parts.first(): DEFAULT_CHORD_SYMBOL}))
+  return chord_symbols_per_part_per_offset
 
 
 def analyze_harmonic_cluster(notes: stream.Stream[note.Note]) -> chord.Chord:
   return copy_timing(chord.Chord(notes), timing_from(notes))
+
+
+def process_chord_annotation(m21_score: stream.Score, range: tuple[float, float], chord_symbols: dict[stream.Part, harmony.ChordSymbol]) -> list[chord.Chord]:
+  # Easy case: Chord is hard-coded
+  if len([cs for cs in chord_symbols.values() if not isinstance(cs, harmony.NoChord)]):
+    # Validation: If manual chord is set, it should be alone
+    if len(chord_symbols) > 1:
+      raise ValueError("Invalid annotation - cannot have manual chord set in the same beat as any other chord annotations.")
+    return chord_symbols.values()[0]
+  # Complicated case: Parse the NoChord
+  # TODO: make regex
+  # TODO: filter parts
+  # TODO: split out beat/measure repeats
+  # TODO: use extract_notes and analyze_harmonic_cluster to determine chords
 
 
 def extract_harmonic_clusters(m21_score: stream.Score) -> stream.Stream[chord.Chord]:
@@ -85,9 +106,13 @@ def extract_harmonic_clusters(m21_score: stream.Score) -> stream.Stream[chord.Ch
               `p` means "this part (and all others notated on this beat with `p`).
   """
   chord_symbols = extract_chord_symbols(m21_score)
-  for cs in chord_symbols:
-    print(cs)
-  # TODO: implement harmonic grouping logic described above
+  chords: list[chord.Chord] = []
+  for idx, css_at_offset in enumerate(chord_symbols):
+    print(css_at_offset)
+    range_start = css_at_offset[0]
+    range_end = chord_symbols[idx+1][0] if idx+1 < len(chord_symbols) else float(m21_score.highestTime)
+    chords.extend(process_chord_annotation(m21_score, (range_start, range_end), css_at_offset[1]))
+  # TODO: return chords!
 
   # default behavior - group by all parts by measure
   # first_4_measure = m21_score.getElementsByOffset(0, 12, includeEndBoundary=False).stream()
