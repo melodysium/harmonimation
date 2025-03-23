@@ -1,6 +1,7 @@
 from manim import *
 from typing import Union
 
+
 class FocusOut(Transform):
     """Expand a spotlight from a position
 
@@ -77,12 +78,22 @@ class RippleOut(Transform):
         self.max_radius = max_radius
         remover = True
         starting_circle = Circle(radius=0).move_to(focus_point)
-        starting_circle.set_stroke(color=self.color, width=self.stroke_width, opacity=self.opacity)
+        starting_circle.set_stroke(
+            color=self.color, width=self.stroke_width, opacity=self.opacity
+        )
 
-        super().__init__(starting_circle, run_time=run_time, remover=remover, rate_func=rate_func, **kwargs)
+        super().__init__(
+            starting_circle,
+            run_time=run_time,
+            remover=remover,
+            rate_func=rate_func,
+            **kwargs
+        )
 
     def create_target(self) -> Dot:
-        final_circle = Circle(radius=self.max_radius,)
+        final_circle = Circle(
+            radius=self.max_radius,
+        )
         final_circle.set_stroke(color=self.color, width=0, opacity=0)
         final_circle.add_updater(lambda d: d.move_to(self.focus_point))
         return final_circle
@@ -99,4 +110,3 @@ class FocusOutScene(Scene):
         self.play(FocusOut(dot, max_radius=1, opacity=0.5), run_time=1)
         self.wait(0.5)
         self.play(RippleOut(dot, max_radius=1, run_time=1))
-
