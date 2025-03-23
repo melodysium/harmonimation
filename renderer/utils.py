@@ -92,17 +92,23 @@ def get_root_note(m21_chord: chord.Chord) -> note.Note:
   return copy_timing(note.Note(m21_chord.root()), timing_from(m21_chord))
 
 
-def extract_notes(m21_notRestStream: stream.Stream[note.NotRest]) -> stream.Stream[note.Note]:
-  # TODO: test offset preservation
+def extract_notes(m21_notRests: Iterable[note.NotRest]) -> list[note.Note]:
   notes: list[note.Note] = []
-  for elem in m21_notRestStream:
+  for elem in m21_notRests:
     if isinstance(elem, note.Note):
       m21_note: note.Note = elem
       notes.append(m21_note)
     elif isinstance(elem, chord.Chord):
       m21_chord: chord.Chord = elem
       notes.extend(m21_chord.notes)
-  return copy_timing(stream.Stream(notes), timing_from(m21_notRestStream))
+  return notes
+
+
+def extract_pitches(m21_notRests: Iterable[note.NotRest]) -> list[note.Pitch]:
+  pitches: set[note.Pitch] = set()
+  for elem in m21_notRests:
+    pitches.update(elem.pitches)
+  return pitches
 
 
 def copy_timing(m21_to: M21Obj, timing: Music21Timing) -> M21Obj:

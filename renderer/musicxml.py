@@ -1,19 +1,22 @@
 # std library
 from dataclasses import dataclass
 from fractions import Fraction
+from typing import Callable
 
 # 3rd party library
 from music21 import converter
+from music21.base import Music21Object
 from music21.chord import Chord
 from music21.common.types import OffsetQL
 from music21.harmony import ChordSymbol, NoChord
 from music21.note import Note, NotRest
 from music21.stream import Stream, Score, Part, Measure
+from music21.stream.iterator import StreamIterator
 from music21.stream.filters import IsFilter, IsNotFilter, ClassNotFilter
 import regex as re # stdlib re doesn't support multiple named capture groups with the same name, i use it below
 
 # project files
-from utils import get_root_note, extract_notes, copy_timing, timing_from, Music21Timing, get_unique_offsets, assert_not_none, group_or_default, frange
+from utils import extract_pitches, get_root_note, extract_notes, copy_timing, timing_from, Music21Timing, get_unique_offsets, assert_not_none, group_or_default, frange
 from utils import group_by_offset, print_notes_stream, display_timing, display_chord, display_notRest, display_id
 
 
@@ -72,39 +75,36 @@ def extract_chord_symbols(m21_score: Score)\
                  dict[Part, ChordSymbol]]],
       list[tuple[OffsetQL,
                  # parts at this offset with an `x`
-                 set[Part]]]
+                 set[Part]]],
+      # list of specific offsets to exclude per part
+      dict[Part, list[OffsetQL]],
   ]:
-  # get each chord symbol, paired with its part
-  chord_symbols_by_part = sorted(
-      [
-        (part, chord_symbol)
-        for part in m21_score.parts
-        for chord_symbol in part.recurse().getElementsByClass(ChordSymbol)
-      ],
-      key=lambda t: t[1].getOffsetInHierarchy(t[0]))
+  # (global offset, chordSymbol, part) for all chordSymbols in the score
+  chord_symbol_info = sorted(
+      ((chord_symbol.getOffsetInHierarchy(part), chord_symbol, part)
+      for part in m21_score.parts
+      for chord_symbol in part.recurse().getElementsByClass(ChordSymbol)),
+      key=lambda t: t[0]
+  )
+
+  from itertools import groupby
 
   # identify all non-`x` chord symbols
-  harmonic_span_chord_symbols_by_part = list(filter(
+  harmonic_span_chord_symbol_info = list(filter(
       lambda t: t[1].chordKindStr.lower() != "x",
-      chord_symbols_by_part))
-  # get a list of all unique offsets
-  unique_offsets = get_unique_offsets(
-      [t[1] for t in harmonic_span_chord_symbols_by_part],
-      offsetSite=m21_score)
-  # for each unique offset, grab all the chord symbols at that offset,
-  # and make a dict from part to chord symbol
-  chord_symbols_per_part_per_offset = [
-      (
-        offset,
-        {
-          t[0]: t[1]
-          for t in harmonic_span_chord_symbols_by_part
-          if t[1].getOffsetInHierarchy(m21_score) == offset
-        }
-      )
-      for offset in unique_offsets]
+      chord_symbol_info))
+  # group chord symbols by offset
+  grouped_chord_symbols = groupby(harmonic_span_chord_symbol_info, key=lambda csi: csi[0])
+  # make a tuple of all ChordSymbols-by-Part at each offset
+  chord_symbols_per_part_per_offset: list[tuple[OffsetQL, dict[Part, ChordSymbol]]] = []
+  for offset, chord_symbol_info_iter in grouped_chord_symbols:
+    # add (offset, {part: chordSymbol})
+    chord_symbols_per_part_per_offset.append((offset, {
+      csi[2]: csi[1] for csi in chord_symbol_info_iter
+    }))
   # if no chord symbol in first measure, insert a default one
-  if chord_symbols_per_part_per_offset[0][0] > 0:
+  if (len(chord_symbols_per_part_per_offset) == 0 or
+      chord_symbols_per_part_per_offset[0][0] > 0):
     chord_symbols_per_part_per_offset.insert(
         0,
         (0.0, {m21_score.parts.first(): DEFAULT_CHORD_SYMBOL}))
@@ -112,7 +112,8 @@ def extract_chord_symbols(m21_score: Score)\
   # identify all the `x` chord symbols
   x_chord_symbols_by_part = list(filter(
       lambda t: t[1].chordKindStr.lower() == "x",
-      chord_symbols_by_part))
+      chord_symbol_info))
+  
   # get a list of all unique offsets
   x_unique_offsets = get_unique_offsets(
       [t[1] for t in x_chord_symbols_by_part],
@@ -128,8 +129,14 @@ def extract_chord_symbols(m21_score: Score)\
         }
       )
       for offset in x_unique_offsets]
+  
+  # group the `x` symbols by part
+  from collections import defaultdict
+  x_offsets_per_part = defaultdict(lambda: [])
+  for _, part, chord_symbol in chord_symbol_info:
+      x_offsets_per_part[part].append(chord_symbol.getOffsetInHierarchy(m21_score))
 
-  return (chord_symbols_per_part_per_offset, parts_with_x_per_offset)
+  return chord_symbols_per_part_per_offset, parts_with_x_per_offset, x_offsets_per_part
 
 
 def analyze_harmonic_cluster(notes: Stream[Note]) -> Chord:
@@ -183,15 +190,17 @@ def process_chord_annotation(
     m21_score: Score,
     range: tuple[OffsetQL, OffsetQL],
     chord_symbols: dict[Part, ChordSymbol],
-    x_symbols: list[tuple[OffsetQL, set[Part]]]
-  ) -> list[Chord]:
+    x_symbols: list[tuple[OffsetQL, set[Part]]],
+    x_symbols_2: dict[Part, list[OffsetQL]],
+  ) -> list[tuple[OffsetQL, Chord]]:
+
 
   # Easy case: Chord is hard-coded
   if len([cs for cs in chord_symbols.values() if not isinstance(cs, NoChord)]):
     # Validation: If manual chord is set, it should be alone
     if len(chord_symbols) > 1:
       raise ValueError("Invalid annotation - cannot have manual chord set in the same beat as any other chord annotations.")
-    return next(chord_symbols.values())
+    return [(range[0], next(chord_symbols.values()))]
   
   # Complicated case: Parse the NoChords
   # --------parsing--------
@@ -204,8 +213,8 @@ def process_chord_annotation(
   # Group into harmonic_rhythms and harmonic_scopes per part
   harmonic_rhythm_css = {part: group_or_default(parsed_cs, "harmonic_rhythm", UNSPECIFIED) for part, parsed_cs in parsed_chord_symbols.items()}
   harmonic_parts_css = {part: group_or_default(parsed_cs, "harmonic_parts", UNSPECIFIED) for part, parsed_cs in parsed_chord_symbols.items()}
-  print(f"{harmonic_rhythm_css=}")
-  print(f"{harmonic_parts_css=}")
+  # print(f"{harmonic_rhythm_css=}")
+  # print(f"{harmonic_parts_css=}")
 
   # --------validation--------
   # At most one unique harmonic_rhythm should be specified across all parts
@@ -215,36 +224,41 @@ def process_chord_annotation(
 
   # --------filter parts--------
   # If at least one chord_symbol uses a `p`, then restrict to only parts with a chord symbol on them
-  harmonic_parts: Stream[Part]
+  harmonic_parts: set[Part]
+  # harmonic_parts: StreamIterator[Part]
   if any(hp == 'p' for hp in harmonic_parts_css.values()):
     # only specified parts
-    harmonic_parts = m21_score.parts.addFilter(IsFilter(list(harmonic_parts_css.keys()))).stream()
+    harmonic_parts = set(harmonic_parts_css.keys())
+    # harmonic_parts = m21_score.parts.addFilter(IsFilter(list(harmonic_parts_css.keys())))
   else:
     # `a`, all parts
-    harmonic_parts = m21_score.parts.stream()
-  # TODO: this following line is the one that breaks the getContextByClass() calls
-  # TODO: maybe print contextSites() before and after to see what changed?
-  harmonic_parts.recurse().getElementsByClass(Measure).first().getContextByClass(Part)
-  scoped_measures: Stream[Measure] = harmonic_parts.recurse().getElementsByClass(Measure).stream()
-  print(len(scoped_measures))
-  scoped_measures.recurse().getElementsByClass(Measure).first()
-
-  print(scoped_measures.first().getContextByClass(Part))
-  print("")
-  for m in scoped_measures:
-    m.activeSite = m21_score
-    
-    print(f"measure\n{display_timing(m)}: {m} {m.groups} {m.getContextByClass(Part)}")
-    for e in m.getElementsByClass(NotRest).addFilter(ClassNotFilter(ChordSymbol)).stream():
-      n: NotRest = e
-      print(f"\t{display_notRest(n)} {n.groups} {n.getContextByClass(Part)} \n\t\t{'\n\t\t'.join([str(x) for x in n.contextSites()])}")
-    print()
-  print(m21_score.containerInHierarchy(scoped_measures[0]) in m21_score.parts[0])
+    harmonic_parts = set(m21_score.parts)
+    # harmonic_parts = m21_score.parts
 
   # --------remove x'd notes--------
   # remove specific NotRest entities on offsets+parts annotated with x
-  # first get list of all offsets+parts wtih 
 
+  # filter generator to strip out elements if they're x'd out
+  def filter_block_by_x_in_part(part: Part) -> Callable[[Music21Object], bool]:
+    if part not in x_symbols_2:
+      return lambda _: True
+    blocked_offsets = x_symbols_2[part]
+    def filter_block_by_x(el: Music21Object) -> bool:
+      el_offset = el.getOffsetInHierarchy(part)
+      return el_offset not in blocked_offsets
+    return filter_block_by_x
+
+  # Filter all the notes in each part by x's annotated in score
+  harmonic_elements = {
+    part: part.recurse()
+        .getElementsByClass(NotRest)
+        .getElementsNotOfClass(NoChord)
+        .getElementsByOffsetInHierarchy(
+          range[0],
+          range[1],
+          includeEndBoundary=False)
+        .addFilter(filter_block_by_x_in_part(part))
+      for part in harmonic_parts}
 
   # --------group notes into clusters--------
   # split out beat/measure repeats
@@ -254,7 +268,10 @@ def process_chord_annotation(
     cluster_starts = [range[0]]
   elif 'm' in harmonic_rhythm_css.values():
     # one chord block per measure
-    cluster_starts = get_unique_offsets(scoped_measures)
+    cluster_starts = get_unique_offsets(
+      m21_score.recurse()
+        .getElementsByClass(Measure)
+        .getElementsByOffset(range[0], range[1]))
   else:
     # one chord block per offset range
     offset_step = Fraction(next(iter(harmonic_rhythm_css.values())))
@@ -263,11 +280,18 @@ def process_chord_annotation(
       cluster_start,
       cluster_starts[idx+1] if idx+1 < len(cluster_starts) else range[1],
     ) for idx, cluster_start in enumerate(cluster_starts)]
+  # combine `ranges` and `harmonic_elements` into list[list[NotRest]]
+  harmonic_clusters: list[tuple[OffsetQL, list[NotRest]]] = []
+  for r_start, r_end in ranges:
+    harmonic_clusters.append((r_start, [el
+      for partNotRests in harmonic_elements.values()
+      for el in set(partNotRests.getElementsByOffsetInHierarchy(r_start, r_end, includeEndBoundary=False))]))
 
-  # TODO: use extract_notes and analyze_harmonic_cluster to determine chords
+  # resolve into chords
+  return [(offset, Chord(extract_pitches(cluster))) for offset, cluster in harmonic_clusters]
 
 
-def extract_harmonic_clusters(m21_score: Score) -> Stream[Chord]:
+def extract_harmonic_clusters(m21_score: Score) -> list[tuple[OffsetQL, Chord]]:
   """
   Identify harmonic clusters with the help of ChordSymbol / NoChord annotations.
   Rules:
@@ -287,59 +311,19 @@ def extract_harmonic_clusters(m21_score: Score) -> Stream[Chord]:
               `a` means "all parts" (default)
               `p` means "this part (and all others notated on this beat with `p`).
   """
-  chord_symbols, x_symbols = extract_chord_symbols(m21_score)
-  for cs in chord_symbols:
-    print(cs)
-  print(x_symbols)
+  chord_symbols, x_symbols, x_symbols_2 = extract_chord_symbols(m21_score)
+  # for cs in chord_symbols:
+  #   print(cs)
+  # print(x_symbols)
   # import sys; sys.exit(0)
-  chords: list[Chord] = []
+  chords: list[tuple[OffsetQL, Chord]] = []
   for idx, css_at_offset in enumerate(chord_symbols):
-    print(css_at_offset)
+    # print(css_at_offset)
     range_start = css_at_offset[0]
     range_end = chord_symbols[idx+1][0] if idx+1 < len(chord_symbols) else m21_score.highestTime
     x_symbols_during_range = filter(lambda t: t[0] >= range_start and t[0] < range_end, x_symbols)
-    chords.extend(process_chord_annotation(m21_score, (range_start, range_end), css_at_offset[1], x_symbols_during_range))
-  # TODO: return chords!
-
-  # default behavior - group by all parts by measure
-  # first_4_measure = m21_score.getElementsByOffset(0, 12, includeEndBoundary=False).stream()
-  # for elem in first_4_measure.recurse():
-  #   print(f"{display_timing(elem)}: {elem}")
-
-  m21_chords: list[Chord] = []
-
-  m21_all_measures: Stream[Measure] = m21_score.recurse().getElementsByClass(Measure).stream()
-  # print(len(m21_all_measures))
-  measure_start_offsets = sorted(set([m.offset for m in m21_all_measures]))
-  # print(measure_start_offsets)
-  # measure: Measure
-  # for measure in m21_all_measures:
-  #   print(f"{display_timing(measure)}: {measure.number}")
-  for measure_offset in measure_start_offsets:
-    # TODO: rework to use getOffsetBySite()
-    # get all measures at this offset
-    part_measures: Stream[Measure] = m21_all_measures.getElementsByOffset(measure_offset, measure_offset).stream()
-    measure_timing = Music21Timing(measure_offset, part_measures.first().duration)
-    copy_timing(part_measures, measure_timing)
-    # print(f"{display_timing(part_measures)} (measure {measure_offset:>5}): {len(part_measures)} Measures")
-
-    # get all notes and chords during these measures
-    not_rest_elems: Stream[NotRest] = copy_timing(part_measures.recurse().getElementsByClass(NotRest).stream(), measure_timing)
-    # print(f"{display_timing(not_rest_elems)}: {len(not_rest_elems)} NotRests")
-    # for elem in not_rest_elems:
-    #   print(display_notRest(elem))
-
-    # get all individual notes
-    notes = copy_timing(extract_notes(not_rest_elems), measure_timing)
-    # print(f"{display_timing(notes)}: {len(notes)} Notes")
-    # print_notes_stream(notes, all_elements=True)
-
-    # combine all notes into one chord
-    m21_chord = analyze_harmonic_cluster(notes)
-    # print(display_chord(m21_chord))
-    m21_chords.append(m21_chord)
-    # print()
-  return Stream(m21_chords)
+    chords.extend(process_chord_annotation(m21_score, (range_start, range_end), css_at_offset[1], None, x_symbols_2))
+  return chords
 
 
 def parse_score_data(data) -> MusicData:
@@ -352,7 +336,9 @@ def parse_score_data(data) -> MusicData:
   # parts = m21_score.getElementsByClass(Part)
   # for x in parts:
   #   # print("\t" + str(x))
-  clusters = extract_harmonic_clusters(m21_score)
+  chords = extract_harmonic_clusters(m21_score)
+  for offset, chord in chords:
+    print(f"{offset:5}: {chord.pitchedCommonName:>25} ({' '.join(f"{p.nameWithOctave:3}" for p in sorted(chord.pitches)) if len(chord.pitches) > 0 else "no notes"})")
   # TODO: finish implementing harmonic_clusters behavior
   import sys; sys.exit(0)
 
