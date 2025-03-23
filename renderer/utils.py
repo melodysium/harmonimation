@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 from manim import Mobject, Group, Scene, VDict, PI
 from music21 import chord, note, base, stream
-from music21.common.types import OffsetQL, M21ObjType
+from music21.common.types import OffsetQL, StreamType
 from music21.duration import Duration
 from regex import Match
 
@@ -115,9 +115,7 @@ def timing_from(m21_from: base.Music21Object) -> Music21Timing:
     duration=m21_from.duration,
   )
 
-
-def containerInHierarchyByClass(elem: base.Music21Object, root: stream.Stream, classFilter: M21ObjType) -> M21ObjType|None:
-  root.containerHierarchy()
+def containerInHierarchyByClass(elem: base.Music21Object, root: stream.Stream, classFilter: StreamType) -> StreamType | None:
   for container in containersInHierarchy(root, elem):
     if isinstance(container, classFilter):
       return container
