@@ -28,7 +28,6 @@ from utils import (
     frange,
 )
 from utils import (
-    group_by_offset,
     print_notes_stream,
     display_timing,
     display_chord,
@@ -326,7 +325,8 @@ def process_chord_annotation(
         cluster_starts = get_unique_offsets(
             m21_score.recurse()
             .getElementsByClass(Measure)
-            .getElementsByOffset(range[0], range[1])
+            .getElementsByOffset(range[0], range[1]),
+            offsetSite=m21_score,
         )
     else:
         # one chord block per offset range
