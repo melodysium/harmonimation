@@ -1,15 +1,20 @@
-from typing import Any, TypeVar, Iterable, Optional
+from typing import Any, TypeVar, Iterable, Iterator, Optional
+from fractions import Fraction
 import math
 import numpy as np
 from dataclasses import dataclass
 
 from manim import Mobject, Group, Scene, VDict, PI
 from music21 import chord, note, base, stream
-from music21.common.types import OffsetQL
+from music21.common.types import OffsetQL, M21ObjType
 from music21.duration import Duration
+from regex import Match
 
 
 # --------------------PYTHON HELPERS--------------------
+
+
+T = TypeVar('T')
 
 
 def identity_in(o, it: Iterable) -> bool:
@@ -17,6 +22,24 @@ def identity_in(o, it: Iterable) -> bool:
   # if result:
   #   print(f"identity_in match! {display_id(o)}, {display_id(it)}")
   return result
+
+
+def assert_not_none(val: T, err_msg: str = "") -> T:
+  assert val is not None, err_msg
+  return val
+
+
+def group_or_default(m: Match, key, default: str) -> str:
+  try:
+    return m.group(key)
+  except IndexError:
+    return default
+
+
+def frange(start: float|Fraction, stop: float|Fraction, step: Fraction) -> Iterator[Fraction]:
+  while start < stop:
+    yield start
+    start += step
 
 
 
@@ -50,6 +73,8 @@ def vector_on_unit_circle_clockwise_from_top(t: float):
 # --------------------MUSIC HELPERS--------------------
 
 M21Obj = TypeVar('M21Obj', bound=base.Music21Object)
+
+DUMMY_STREAM = stream.Stream()
 
 @dataclass
 class Music21Timing:
@@ -91,41 +116,61 @@ def timing_from(m21_from: base.Music21Object) -> Music21Timing:
   )
 
 
+def containerInHierarchyByClass(elem: base.Music21Object, root: stream.Stream, classFilter: M21ObjType) -> M21ObjType|None:
+  root.containerHierarchy()
+  for container in containersInHierarchy(root, elem):
+    if isinstance(container, classFilter):
+      return container
+  return None
+
+
+def containersInHierarchy(root: stream.Stream, elem: base.Music21Object) -> Iterator[stream.Stream] | None:
+  container = root.containerInHierarchy(elem)
+  yield container
+  if container is not None and container is not root:
+    yield from containersInHierarchy(root, container)
+  
+
+
 def find_direct_owner(elem: base.Music21Object, container: stream.Stream) -> stream.Stream:
-    """Finds the Stream which is directly holding the Music21Object specified."""
-    # for some reason this method breaks the elem's activeSite, despite `recurse()` having `restoreActiveSites=True`
-    activeSite = elem.activeSite
-    # print(f"find_direct_owner: elem={display_id(elem)}, container={display_id(container)}. container elements=\n{"\n".join([f"\t{display_id(x)}" for x in container])}")
-    # need to check `identity_in(e, x)` because `if e in x` returns true for both parts in a joined PartStaff
-    direct_owners = [s for s in container.recurse(includeSelf=True) if isinstance(s, stream.Stream) and identity_in(elem, s)]
-    elem.activeSite = activeSite
-    assert len(direct_owners) == 1
-    return direct_owners[0]
+  """Finds the Stream which is directly holding the Music21Object specified."""
+  # NOTE: This is already implemented by music21.stream.Stream.containerInHierarchy()
+  return container.containerInHierarchy(elem) 
+  # for some reason this method breaks the elem's activeSite, despite `recurse()` having `restoreActiveSites=True`
+  activeSite = elem.activeSite
+  # print(f"find_direct_owner: elem={display_id(elem)}, container={display_id(container)}. container elements=\n{"\n".join([f"\t{display_id(x)}" for x in container])}")
+  # need to check `identity_in(e, x)` because `if e in x` returns true for both parts in a joined PartStaff
+  direct_owners = [s for s in container.recurse(includeSelf=True) if isinstance(s, stream.Stream) and identity_in(elem, s)]
+  elem.activeSite = activeSite
+  assert len(direct_owners) == 1
+  return direct_owners[0]
 
 
 def find_owner(elem: base.Music21Object, containers: list[stream.Stream], error_if_not_found=False) -> Optional[stream.Stream]:
-    """Determines which of the specified containers (if any) hold the specified element."""
-    # for some reason this method breaks the elem's activeSite, despite `recurse()` having `restoreActiveSites=True`
-    activeSite = elem.activeSite
-    # need to check `identity_in(e, x)` because `if e in x` returns true for both parts in a joined PartStaff
-    container_owners = []
-    for c in containers:
-      if identity_in(elem, c.recurse()):
-        # print(f"find_owner found one possible match: elem={display_id(elem)}, container={display_id(c)}")
-        container_owners.append(c)
-    # container_owners = [c for c in containers if identity_in(elem, c.recurse())]
-    elem.activeSite = activeSite
+  """Determines which of the specified containers (if any) hold the specified element."""
+  # for some reason this method breaks the elem's activeSite, despite `recurse()` having `restoreActiveSites=True`
+  activeSite = elem.activeSite
+  # need to check `identity_in(e, x)` because `if e in x` returns true for both parts in a joined PartStaff
+  container_owners = []
+  for c in containers:
+    if identity_in(elem, c.recurse()):
+      # print(f"find_owner found one possible match: elem={display_id(elem)}, container={display_id(c)}")
+      container_owners.append(c)
+  # container_owners = [c for c in containers if identity_in(elem, c.recurse())]
+  elem.activeSite = activeSite
 
-    if error_if_not_found:
-      assert len(container_owners) == 1
-      # print(f"find_owner determined exact match: elem={display_id(elem)}, container={display_id(container_owners[0])}")
-      return container_owners[0]
-    else:
-      assert len(container_owners) <= 1
-      return container_owners[0] if len(container_owners) == 1 else None
+  if error_if_not_found:
+    assert len(container_owners) == 1
+    # print(f"find_owner determined exact match: elem={display_id(elem)}, container={display_id(container_owners[0])}")
+    return container_owners[0]
+  else:
+    assert len(container_owners) <= 1
+    return container_owners[0] if len(container_owners) == 1 else None
 
 
 def find_direct_owner_tree(elem: base.Music21Object, container: stream.Stream) -> list[stream.Stream]:
+  # NOTE: This is already implemented by music21.stream.Stream.containerHierarchy()
+  return list(elem.derivation.chain())
   # print(f"find_direct_owner_tree: elem={display_id(elem)}, container={display_id(container)}")
   # base case
   if elem is container:
@@ -138,8 +183,20 @@ def find_direct_owner_tree(elem: base.Music21Object, container: stream.Stream) -
   return direct_owner_tree
 
 
+def get_unique_offsets(
+    s: Iterable[base.Music21Object],
+    offsetSite: stream.Stream|None = DUMMY_STREAM
+  ) -> list[OffsetQL]:
+  def compute_offset(e: base.Music21Object) -> OffsetQL:
+    if offsetSite is DUMMY_STREAM:
+      return e.offset
+    return e.getOffsetInHierarchy(offsetSite)
+  return sorted(set([compute_offset(e) for e in s]))
+
+
 def group_by_offset(s: stream.Stream[base.Music21Object]) -> list[stream.Stream[base.Music21Object]]:
-  unique_offsets = sorted(set([e.offset for e in s]))
+  # NOTE: this is implemented by music21.stream.iterator.OffsetIterator
+  unique_offsets = get_unique_offsets(s)
   return [copy_timing(s.getElementsByOffset(offset, offset).stream(), Music21Timing(offset, Duration(0))) for offset in unique_offsets]
 
 
