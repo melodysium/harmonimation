@@ -17,6 +17,7 @@ import regex as re  # stdlib re doesn't support multiple named capture groups wi
 
 # project files
 from utils import (
+    extract_notes_with_offset,
     extract_pitches,
     get_root_note,
     copy_timing,
@@ -43,10 +44,12 @@ DEFAULT_CHORD_SYMBOL = ChordSymbol(kindStr="ma")
 # data transfer class
 @dataclass
 class MusicData:
-    # TODO: change to chord_blocks that groups all notes per harmonic section together
+    # TODO: remove
     chord_roots: Stream[Note]
-    chords: list[tuple[OffsetQL, Chord]]
     all_notes: Stream[Note]  # TODO: switch to tuple[OffsetQL, Note]
+    # new ones
+    chords: list[tuple[OffsetQL, Chord]]
+    all_notes_new: list[tuple[OffsetQL, Note]]
     all_notes_by_part: dict[Part, list[tuple[OffsetQL, NotRest]]] = None  # TODO: fill
     bpm: object = None  # TODO: what would this look like?
     current_key: object = None  # TODO: what would this look like?
@@ -54,8 +57,14 @@ class MusicData:
     comments: object = None  # TODO: what would this look like?
 
     def __init__(self, m21_score: Score):
+        # TODO: to be removed
         self.all_notes = extract_individual_notes(m21_score)
         self.chord_roots = extract_chord_roots(m21_score)
+        # new ones
+        self.all_notes_new = extract_notes_with_offset(m21_score)
+        self.all_notes_by_part = {
+            part: extract_notes_with_offset(part) for part in m21_score.parts
+        }
         self.chords = extract_harmonic_clusters(m21_score)
 
 
@@ -403,10 +412,17 @@ def parse_score_data(data) -> MusicData:
             + type(m21_score)
         )
 
-    chords = extract_harmonic_clusters(m21_score)
-    for offset, chord in chords:
+    music_data = MusicData(m21_score)
+
+    for offset, chord in music_data.chords:
         print(
             f"{offset:5}: {chord.pitchedCommonName:>25} ({' '.join(f"{p.nameWithOctave:3}" for p in sorted(chord.pitches)) if len(chord.pitches) > 0 else "no notes"})"
         )
+    for offset, note in music_data.all_notes_new:
+        print(f"{offset:5}: {note.nameWithOctave} {note.duration.quarterLength}")
+    for part, notes in music_data.all_notes_by_part.items():
+        print(f"{part}")
+        for offset, note in notes:
+            print(f"\t{offset:5}: {note.nameWithOctave} {note.duration.quarterLength}")
 
-    return MusicData(m21_score)
+    return music_data
