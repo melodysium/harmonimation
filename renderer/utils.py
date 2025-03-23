@@ -94,8 +94,12 @@ class Music21Timing:
         return m21_obj
 
 
-def get_root_note(m21_chord: Chord) -> Note:
-    return copy_timing(Note(m21_chord.root()), timing_from(m21_chord))
+def get_root(m21_chord: Chord) -> Pitch | None:
+    if m21_chord is None:
+        return None
+    if len(m21_chord.pitches) == 0:
+        return None
+    return m21_chord.root()
 
 
 def extract_notes_with_offset(

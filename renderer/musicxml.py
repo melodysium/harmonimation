@@ -19,7 +19,7 @@ import regex as re  # stdlib re doesn't support multiple named capture groups wi
 from utils import (
     extract_notes_with_offset,
     extract_pitches,
-    get_root_note,
+    get_root,
     copy_timing,
     timing_from,
     get_unique_offsets,
@@ -35,20 +35,16 @@ from utils import (
     display_id,
 )
 
-
+# TODO: replace 'a' with a different letter since 'a' is a valid chord :(
 DEFAULT_CHORD_SYMBOL = ChordSymbol(kindStr="ma")
-# TODO: replace
 
 
 # data transfer class
 @dataclass
 class MusicData:
-    # TODO: remove
-    chord_roots: Stream[Note]
-    all_notes: Stream[Note]  # TODO: switch to tuple[OffsetQL, Note]
     # new ones
     chords: list[tuple[OffsetQL, Chord]]
-    all_notes_new: list[tuple[OffsetQL, Note]]
+    all_notes: list[tuple[OffsetQL, Note]]
     all_notes_by_part: dict[Part, list[tuple[OffsetQL, NotRest]]] = None  # TODO: fill
     bpm: object = None  # TODO: what would this look like?
     current_key: object = None  # TODO: what would this look like?
@@ -56,42 +52,12 @@ class MusicData:
     comments: object = None  # TODO: what would this look like?
 
     def __init__(self, m21_score: Score):
-        # TODO: to be removed
-        self.all_notes = extract_individual_notes(m21_score)
-        self.chord_roots = extract_chord_roots(m21_score)
         # new ones
-        self.all_notes_new = extract_notes_with_offset(m21_score)
+        self.all_notes = extract_notes_with_offset(m21_score)
         self.all_notes_by_part = {
             part: extract_notes_with_offset(part) for part in m21_score.parts
         }
         self.chords = extract_harmonic_clusters(m21_score)
-
-
-def extract_individual_notes(m21_score: Score) -> Stream[Note]:
-    single_notes = m21_score.recurse().getElementsByClass(Note).stream()
-    m21_note: Note
-    # print_notes_stream(single_notes)
-    chord_notes = Stream()
-    for m21_chord in Stream(m21_score.flatten().getElementsByClass(Chord)):
-        m21_notes = m21_chord.notes
-        for m21_note in m21_notes:
-            chord_notes.insert(m21_chord.offset, m21_note)
-    # print_notes_stream(chord_notes)
-    # zip streams together
-    all_notes = Stream()
-    all_notes.insert(0, single_notes)
-    all_notes.insert(0, chord_notes)
-    all_notes = all_notes.flatten()
-    # print_notes_stream(all_notes)
-    return all_notes
-
-
-def extract_chord_roots(m21_score: Score) -> Stream[Note]:
-    chords = m21_score.chordify().flatten().getElementsByClass(Chord).stream()
-    # print_chords_stream(chords)
-    chord_roots = Stream(list(map(get_root_note, chords)))
-    # print_notes_stream(chord_roots)
-    return chord_roots
 
 
 def extract_chord_symbols(m21_score: Score) -> tuple[
@@ -418,7 +384,7 @@ def parse_score_data(data) -> MusicData:
         print(
             f"{offset:5}: {chord.pitchedCommonName:>25} ({' '.join(f"{p.nameWithOctave:3}" for p in sorted(chord.pitches)) if len(chord.pitches) > 0 else "no notes"})"
         )
-    for offset, note in music_data.all_notes_new:
+    for offset, note in music_data.all_notes:
         print(f"{offset:5}: {note.nameWithOctave} {note.duration.quarterLength}")
     for part, notes in music_data.all_notes_by_part.items():
         print(f"{part}")
