@@ -277,6 +277,25 @@ class UnderLabeledDot(Dot):
         )
 
 
+class ChangeText(Scene):
+    def construct(self):
+        text = Text("Text").move_to(LEFT * 2)
+        tex = Tex("Tex").move_to(RIGHT * 2)
+        newText = Text("New Text").move_to(LEFT * 2)
+        newTex = Tex("New Tex").move_to(RIGHT * 2)
+        nothingText = Text("").move_to(LEFT * 2)
+        nothingTex = Tex("").move_to(RIGHT * 2)
+
+        self.play(Create(text), Create(tex))
+        self.wait(1)
+
+        self.play(Transform(text, newText), Transform(tex, newTex), run_time=0.000001)
+        self.wait(1)
+
+        self.play(Transform(text, nothingText), Transform(tex, nothingTex))
+        self.wait(1)
+
+
 class ScreenMap(Scene):
     def construct(self):
         # make axes, with units matching screen size
