@@ -20,7 +20,14 @@ import sys
 logger.debug(f"Python version: {sys.version}")
 logger.debug(f"Version info: {sys.version_info}")
 
+
 # --------------------MAIN CONRTOL FLOW--------------------
+
+# TODO: separate out different packages?
+# - hrmn_parse
+# - hrmn_render
+# - hrmn_common
+# or at least some folders in the main space here
 
 
 def parse_args():
