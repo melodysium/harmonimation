@@ -48,7 +48,7 @@ class MusicData:
     chords: list[tuple[OffsetQL, Chord]]
     all_notes: list[tuple[OffsetQL, Note]]
     all_notes_by_part: dict[Part, list[tuple[OffsetQL, NotRest]]] = None  # TODO: fill
-    bpm: object = None  # TODO: what would this look like?
+    bpm: float = 180  # object = None  # TODO: what would this look like?
     current_key: object = None  # TODO: what would this look like?
     lyrics: object = None  # TODO: what would this look like?
     comments: object = None  # TODO: what would this look like?
