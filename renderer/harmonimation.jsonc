@@ -32,6 +32,12 @@
       "shift_y": 2.5,
       "font_size": 24,
       "text": "from bo en - My Time"
+    },
+    {
+      "type": "chord_text",
+      "shift_x": 2,
+      "shift_y": -3,
+      "font_size": 16
     }
   ]
   

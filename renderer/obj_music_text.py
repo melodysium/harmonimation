@@ -60,6 +60,19 @@ else:
     class MusicText(Text): ...
 
 
+class ChordText(MusicText):
+
+    def play(self, music_data: MusicData) -> Animation:
+        return PlayMusicText(
+            music_data.bpm,
+            [
+                (offset, display_chord_short(chord))
+                for offset, chord in music_data.chords
+            ],
+            music_text=self,
+        )
+
+
 class NoteText(MusicText):
     def __init__(self, note: Note, omit_natural: bool = True, **kwargs):
         MusicText.__init__(

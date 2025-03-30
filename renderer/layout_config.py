@@ -4,6 +4,7 @@ from manim.typing import Vector3D
 
 # project files
 from obj_music_circles import Circle12NotesSequenceConnectors
+from obj_music_text import ChordText
 
 
 def _compute_shift(widget_def: dict) -> Vector3D:
@@ -16,6 +17,14 @@ def _build_text(widget_def: dict) -> Text:
     assert "text" in widget_def
     return Text(
         text=widget_def["text"],
+        font_size=widget_def.get("font_size", DEFAULT_FONT_SIZE),
+    ).shift(_compute_shift(widget_def))
+
+
+def _build_chordtext(widget_def: dict) -> ChordText:
+    return ChordText(
+        "dummy",
+        color=BLUE,
         font_size=widget_def.get("font_size", DEFAULT_FONT_SIZE),
     ).shift(_compute_shift(widget_def))
 
@@ -87,6 +96,8 @@ def build_widgets(config: dict) -> list[Mobject]:
                 widgets.append(_build_text(widget_def))
             case "circle_chromatic" | "circle_fifths":
                 widgets.extend(_build_circle12notes(widget_def))
+            case "chord_text":
+                widgets.append(_build_chordtext(widget_def))
             case _:
                 raise ValueError("unrecognized widget type")
     return widgets
