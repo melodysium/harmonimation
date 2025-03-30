@@ -124,43 +124,6 @@ class Circle12NotesBase(VGroup):
         pass  # TODO: implement
 
 
-class PlayCircle12NotesV2(Animation):
-
-    # beats per second
-    bps: float
-    total_beats: float
-    notes: stream.Stream[note.Note]
-    last_processed_step: float
-    circle12: Circle12NotesBase
-    played: set
-
-    def __init__(
-        self, bpm: float, notes: stream.Stream, circle12: Circle12NotesBase, **kwargs
-    ):
-        self.bps = bpm / 60
-        self.total_beats = notes.highestTime
-        super().__init__(circle12, run_time=self.total_beats / self.bps, **kwargs)
-        self.notes = notes
-        self.last_processed_step = -1
-        self.circle12 = circle12
-        self.played = set()
-
-    def interpolate_mobject(self, alpha: float):
-        current_step = alpha * self.total_beats
-        new_note: note.Note
-        for new_note in self.notes.getElementsByOffset(
-            self.last_processed_step, current_step, includeElementsThatEndAtStart=False
-        ):
-            if new_note not in self.played:
-                logger.debug(
-                    f"iteration of PlayCircle12Notes, current_step={current_step}"
-                )
-                logger.debug(f"processing new_note {new_note.offset:5} {new_note.name}")
-                self.circle12.select_step(new_note.pitch.pitchClass)
-                self.played.add(new_note)
-        self.last_processed_step = current_step
-
-
 class Circle12NotesSequenceConnectors(Circle12NotesBase):
 
     # mobjects
