@@ -70,6 +70,69 @@ class NoteText(MusicText):
         self.note = note
 
 
+class PlayMusicText(Succession):
+
+    VERY_SMALL = 2**-32
+
+    def __init__(
+        self,
+        bpm: float,
+        text: list[tuple[OffsetQL, str]],
+        music_text: MusicText = None,  # NOTE: to preserve this mobject's position, it must have some points, even if they're transparent
+        transition_time: float = 0.1,  # in seconds
+        **kwargs,
+    ):
+        bps = bpm / 60
+        # TODO: figure out how to set frame-0 text if in offset 0 from `text` param
+        # TODO: figure out how to specify position / color / etc if not passing a template object in
+        # TODO: left alignment?
+        # base_mobject = music_text if music_text is not None else MusicalText("dummy", stroke_)
+
+        anims: list[Animation] = []
+        previous_offset = 0
+        from manim import DecimalNumber
+
+        def get_new_obj(val: str) -> MusicText:
+            ob = MusicText(val).move_to(music_text)
+            ob.stroke_color = music_text.stroke_color
+            ob.color = music_text.color
+            ob.font_size = music_text.font_size
+            return ob
+
+        for offset, val in text:
+            # special case - allow first offset of 0 even though previous_offset = 0
+            if offset == 0:
+                anims.append(
+                    Transform(
+                        music_text,
+                        get_new_obj(val),
+                        run_time=PlayMusicText.VERY_SMALL,
+                    )
+                )
+                previous_offset = PlayMusicText.VERY_SMALL
+                continue
+
+            assert offset > previous_offset
+
+            # create animation for this latest text value
+            anim = Transform(music_text, get_new_obj(val))
+
+            # figure out how long since last update
+            elapsed_time = (offset - previous_offset) / bps
+            # if we don't have time to do a full wait-then-transition
+            if elapsed_time <= transition_time:
+                # just transform with the time we have
+                anim.run_time = elapsed_time
+                anims.append(anim)
+            else:
+                # sleep until start of time when we need to transform
+                anims.append(Wait(elapsed_time - transition_time))
+                anim.run_time = transition_time
+                anims.append(anim)
+            # done processing this offset
+            previous_offset = offset
+
+        super().__init__(anims, **kwargs)
 
 
 # TODO: make textboxes with programmed text throughout the piece
@@ -82,4 +145,24 @@ class test(Scene):
         note_Cb = NoteText(Note.Cb).shift(2 * LEFT)
         note_Cs = NoteText(Note.Cs).shift(2 * RIGHT)
         self.play(Create(note_Cb), Create(note_C), Create(note_Cs), run_time=2)
+        self.wait(1)
+
+
+class testPlayMusicalText(Scene):
+    def construct(self):
+        self.wait(0.2)
+
+        music_text = MusicText(".asdfasfasf", color=ManimColor([1, 1, 1, 0])).move_to(
+            UP * 1 + RIGHT * 1
+        )
+        print(music_text.get_center())
+        # music_text2 = MusicalText("").move_to(UP * -1 + RIGHT * -1)
+        # print(music_text2.get_center())
+        # print(music_text2.points)
+        # self.play(Create(music_text))
+        self.add(music_text)
+        self.wait(1)
+
+        updates = [(i, f"Beat {i}") for i in range(50)]
+        self.play(PlayMusicText(180, updates, music_text, transition_time=5))
         self.wait(1)
