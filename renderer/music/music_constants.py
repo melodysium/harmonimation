@@ -49,30 +49,34 @@ class Note(Enum):
             return str(self.display_rich).rstrip("♮")
         return self.display_rich
 
+    @classmethod
+    def list(cls):
+        return list(map(lambda c: c, cls))
+
     # naturals and flats
     # name  adj    display_rich
     #   step    char     display_portable
     Cb = 11, -1, 0, "C♭", "Cb"
     C = 0, 0, 0, "C♮", "C"
-    Cs = 1, 1, 0, "C♯", "Cs"
+    Cs = 1, 1, 0, "C♯", "C#"
     Db = 1, -1, 1, "D♭", "Db"
     D = 2, 0, 1, "D♮", "D"
-    Ds = 3, 1, 1, "D♯", "Ds"
+    Ds = 3, 1, 1, "D♯", "D#"
     Eb = 3, -1, 2, "E♭", "Eb"
     E = 4, 0, 2, "E♮", "E"
-    Es = 5, 1, 2, "E♯", "Es"
+    Es = 5, 1, 2, "E♯", "E#"
     Fb = 4, -1, 3, "F♭", "Fb"
     F = 5, 0, 3, "F♮", "F"
-    Fs = 6, 1, 3, "F♯", "Fs"
+    Fs = 6, 1, 3, "F♯", "F#"
     Gb = 6, -1, 4, "G♭", "Gb"
     G = 7, 0, 4, "G♮", "G"
-    Gs = 8, 1, 4, "G♯", "Gs"
+    Gs = 8, 1, 4, "G♯", "G#"
     Ab = 8, -1, 5, "A♭", "Ab"
     A = 9, 0, 5, "A♮", "A"
-    As = 10, 1, 5, "A♯", "As"
+    As = 10, 1, 5, "A♯", "A#"
     Bb = 10, -1, 6, "B♭", "Bb"
     B = 11, 0, 6, "B♮", "B"
-    Bs = 0, 1, 6, "B♯", "Bs"
+    Bs = 0, 1, 6, "B♯", "B#"
     # TODO: double sharps / flats?
     # create map of notes by step
 

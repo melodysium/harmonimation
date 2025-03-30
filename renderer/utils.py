@@ -13,6 +13,8 @@ from music21.common.types import OffsetQL, StreamType
 from music21.duration import Duration
 from regex import Match
 
+from music import music_constants
+
 
 # --------------------PYTHON HELPERS--------------------
 
@@ -100,6 +102,26 @@ def get_root(m21_chord: Chord) -> Pitch | None:
     if len(m21_chord.pitches) == 0:
         return None
     return m21_chord.root()
+
+
+def display_chord_short(m21_chord: Chord) -> str:
+    replacements = {
+        "-major seventh chord": "M7",
+        "-minor seventh chord": "m7",
+        "-dominant seventh chord": "7",
+    }
+
+    from constants import USE_LATEX
+
+    if USE_LATEX:
+        for note in music_constants.Note:
+            if note.accidental != 0:
+                replacements[note.display_portable] = note.display_rich
+
+    chord_repr = m21_chord.pitchedCommonName
+    for repl_old, repl_new in replacements.items():
+        chord_repr = chord_repr.replace(repl_old, repl_new)
+    return chord_repr
 
 
 def extract_notes_with_offset(
