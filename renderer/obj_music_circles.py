@@ -13,7 +13,7 @@ from more_itertools import peekable
 
 # my files
 from music.music_constants import notes_in_sequence
-from obj_music_text import TextNote
+from obj_music_text import NoteText
 from utils import vector_on_unit_circle_clockwise_from_top
 
 # log setup
@@ -58,7 +58,7 @@ class Circle12NotesBase(VGroup):
 
     # mobjects
     mob_circle_background: Circle
-    mob_notes: VDict  # VDict[int, TextNote]
+    mob_notes: VDict  # VDict[int, NoteText]
     mob_select_circles: VDict  # VDict[int, Circle]
 
     # properties
@@ -91,8 +91,8 @@ class Circle12NotesBase(VGroup):
         for note_idx, note in enumerate(notes_in_sequence(note_intervals)):
             # calculate position
             offset = vector_on_unit_circle_clockwise_from_top(note_idx / 12)
-            # create TextNote and circle in correct position
-            note_label = TextNote(
+            # create NoteText and circle in correct position
+            note_label = NoteText(
                 note, font_size=BASE_NOTE_LABEL_FONT_SIZE * radius
             ).shift(offset * radius)
             note_circle = Circle(

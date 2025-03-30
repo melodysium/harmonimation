@@ -8,7 +8,7 @@ from manim import *
 from musicxml import MusicData
 from obj_music_circles import Circle12NotesSequenceConnectors, PlayCircle12Notes
 from obj_rhythm_circle import CircleRhythm
-from obj_music_text import TextNote
+from obj_music_text import NoteText
 from utils import get_root
 
 
