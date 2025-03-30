@@ -6,6 +6,7 @@ from itertools import groupby
 from typing import Callable
 
 # 3rd party library
+from music import music_constants
 from music21 import converter
 from music21.base import Music21Object
 from music21.chord import Chord
@@ -17,6 +18,7 @@ import regex as re  # stdlib re doesn't support multiple named capture groups wi
 
 # project files
 from utils import (
+    display_chord_short,
     extract_notes_with_offset,
     extract_pitches,
     get_root,
@@ -382,13 +384,13 @@ def parse_score_data(data) -> MusicData:
 
     for offset, chord in music_data.chords:
         print(
-            f"{offset:5}: {chord.pitchedCommonName:>25} ({' '.join(f"{p.nameWithOctave:3}" for p in sorted(chord.pitches)) if len(chord.pitches) > 0 else "no notes"})"
+            f"{offset:5}: {chord.pitchedCommonName:>25} {display_chord_short(chord):4} ({' '.join(f"{p.nameWithOctave:3}" for p in sorted(chord.pitches)) if len(chord.pitches) > 0 else "no notes"})"
         )
-    for offset, note in music_data.all_notes:
-        print(f"{offset:5}: {note.nameWithOctave} {note.duration.quarterLength}")
-    for part, notes in music_data.all_notes_by_part.items():
-        print(f"{part}")
-        for offset, note in notes:
-            print(f"\t{offset:5}: {note.nameWithOctave} {note.duration.quarterLength}")
+    # for offset, note in music_data.all_notes:
+    #     print(f"{offset:5}: {note.nameWithOctave} {note.duration.quarterLength}")
+    # for part, notes in music_data.all_notes_by_part.items():
+    #     print(f"{part}")
+    #     for offset, note in notes:
+    #         print(f"\t{offset:5}: {note.nameWithOctave} {note.duration.quarterLength}")
 
     return music_data
