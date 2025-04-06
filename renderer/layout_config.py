@@ -24,7 +24,7 @@ def _build_text(widget_def: dict) -> Text:
 def _build_chordtext(widget_def: dict) -> ChordText:
     return ChordText(
         "dummy",
-        color=BLUE,
+        color=ManimColor(None, alpha=0),
         font_size=widget_def.get("font_size", DEFAULT_FONT_SIZE),
     ).shift(_compute_shift(widget_def))
 

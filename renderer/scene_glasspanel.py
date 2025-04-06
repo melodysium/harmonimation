@@ -54,7 +54,7 @@ class GlassPanel(Scene):
             if isinstance(widget, Circle12NotesSequenceConnectors):
                 return PlayCircle12Notes(bpm=bpm, notes=chord_roots, circle12=widget)
             elif isinstance(widget, ChordText):
-                return widget.play(self.music_data)
+                return widget.play(self.music_data, color=WHITE)
             else:
                 return None
 

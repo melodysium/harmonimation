@@ -63,11 +63,16 @@ else:
 
 class ChordText(MusicText):
 
-    def play(self, music_data: MusicData) -> Animation:
+    def play(
+        self,
+        music_data: MusicData,
+        color: ManimColor = None,  # Leaving as `None` will keep same color as initial
+        font_size: int = None,  # Leaving as `None` will keep same font_size as initial
+    ) -> Animation:
         return PlayMusicText(
             music_data.bpm,
             [
-                (offset, display_chord_short(chord))
+                MusicTextState(offset, display_chord_short(chord), color, font_size)
                 for offset, chord in music_data.chords
             ],
             music_text=self,
@@ -99,8 +104,8 @@ class PlayMusicText(Succession):
     def __init__(
         self,
         bpm: float,
-        text: list[tuple[OffsetQL, str]],  # TODO: use MusicTextState
-        music_text: MusicText = None,  # NOTE: to preserve this mobject's position, it must have some points, even if they're transparent
+        text: list[tuple[OffsetQL, MusicTextState]],
+        music_text: MusicText,  # NOTE: must be a dummy object with the desired position and SOME POINTS, even if they're transparent
         transition_time: float = 0.1,  # in seconds
         **kwargs,
     ):
@@ -108,39 +113,39 @@ class PlayMusicText(Succession):
         # TODO: figure out how to set frame-0 text if in offset 0 from `text` param
         # TODO: figure out how to specify position / color / etc if not passing a template object in
         # TODO: left alignment?
-        # base_mobject = music_text if music_text is not None else MusicalText("dummy", stroke_)
 
         anims: list[Animation] = []
         previous_offset = 0
-        from manim import DecimalNumber
+        previous_color = music_text.color
+        previous_font_size = music_text.font_size
 
-        def get_new_obj(val: str) -> MusicText:
-            ob = MusicText(val).move_to(music_text)
-            ob.stroke_color = music_text.stroke_color
-            ob.color = music_text.color
-            ob.font_size = music_text.font_size
+        def get_new_obj(val: MusicTextState) -> MusicText:
+            nonlocal previous_color, previous_font_size
+            ob = MusicText(val.text).move_to(music_text)
+            ob.color = previous_color = val.color or previous_color
+            ob.font_size = previous_font_size = val.font_size or previous_font_size
             return ob
 
-        for offset, val in text:
+        for text_state in text:
             # special case - allow first offset of 0 even though previous_offset = 0
-            if offset == 0:
+            if text_state.offset == 0:
                 anims.append(
                     Transform(
                         music_text,
-                        get_new_obj(val),
+                        get_new_obj(text_state),
                         run_time=PlayMusicText.VERY_SMALL,
                     )
                 )
                 previous_offset = PlayMusicText.VERY_SMALL
                 continue
 
-            assert offset > previous_offset
+            assert text_state.offset > previous_offset
 
             # create animation for this latest text value
-            anim = Transform(music_text, get_new_obj(val))
+            anim = Transform(music_text, get_new_obj(text_state))
 
             # figure out how long since last update
-            elapsed_time = (offset - previous_offset) / bps
+            elapsed_time = (text_state.offset - previous_offset) / bps
             # if we don't have time to do a full wait-then-transition
             if elapsed_time <= transition_time:
                 # just transform with the time we have
@@ -152,12 +157,9 @@ class PlayMusicText(Succession):
                 anim.run_time = transition_time
                 anims.append(anim)
             # done processing this offset
-            previous_offset = offset
+            previous_offset = text_state.offset
 
         super().__init__(anims, **kwargs)
-
-
-# TODO: make textboxes with programmed text throughout the piece
 
 
 class test(Scene):
