@@ -146,7 +146,7 @@ class PlayMusicText(Succession):
     def __init__(
         self,
         bpm: float,
-        text: list[tuple[OffsetQL, MusicTextState]],
+        text: list[MusicTextState],
         music_text: MusicText,  # NOTE: must be a dummy object with the desired position and SOME POINTS, even if they're transparent
         transition_time: float = 0.1,  # in seconds
         **kwargs,
