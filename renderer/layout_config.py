@@ -8,8 +8,8 @@ from obj_music_text import ChordText, LyricText
 
 
 def _compute_shift(widget_def: dict) -> Vector3D:
-    shift_x = widget_def.get("shift_x", 0) * RIGHT
-    shift_y = widget_def.get("shift_y", 0) * UP
+    shift_x = float(widget_def.get("shift_x", 0)) * RIGHT
+    shift_y = float(widget_def.get("shift_y", 0)) * UP
     return shift_x + shift_y
 
 
