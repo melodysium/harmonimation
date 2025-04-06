@@ -373,18 +373,18 @@ class gradLines(Scene):
             )
 
 
-class textTextProperties(Scene):
+class testTextProperties(Scene):
     def construct(self):
         color_text = Text(
             "Text color",
-            color=ManimColor(None, alpha=0),
+            color=RED,
             font_size=80,
             stroke_width=0,
             stroke_color=BLUE,
             # weight=BOLD,
         ).shift(UP + LEFT)
         color_tex = Tex(
-            "Tex color",
+            r"Tex \textbf{col}or",
             # color=RED,
             font_size=80 * 1.5,
             stroke_width=3,
@@ -400,3 +400,62 @@ class textTextProperties(Scene):
             )
         )
         self.wait(2)
+
+
+class testTexBoldSyllableChange(Scene):
+    def construct(self):
+        lyrics = ["O", "ya", "su", "mi"]
+        syllable_stressed_lyrics = [
+            [(r"\dotuline{" + l + r"}" if l is bolded_l else l) for l in lyrics]
+            for bolded_l in lyrics
+        ]
+
+        for ssl in syllable_stressed_lyrics:
+            print(f"  {ssl}")
+        mTexs = [
+            Tex("-".join(syl_lyric)).shift(UP * (3 - (2 * idx)) + LEFT * 2)
+            for idx, syl_lyric in enumerate(syllable_stressed_lyrics)
+        ]
+        print(mTexs)
+        self.play(Create(m) for m in mTexs)
+        self.wait(1)
+
+        anim_mTexs = [
+            Tex("-".join(syl_lyric)).shift(RIGHT * 2)
+            for syl_lyric in syllable_stressed_lyrics
+        ]
+        self.play(Create(anim_mTexs[0]))
+        print(f"{0}, {anim_mTexs[0].tex_string}")
+        for idx, anim_mTex in enumerate(anim_mTexs):
+            if idx == 0:
+                continue
+            print(f"{idx}, {anim_mTex.tex_string}")
+            self.play(FadeTransform(anim_mTexs[idx - 1], anim_mTex))
+        self.wait(2)
+
+        # # maybe it looks better if each syllable is its own Tex object?
+        # ssl_with_dashes = [
+        #     [f"{l}-" if idx + 1 < len(ssl) else l for idx, l in enumerate(ssl)]
+        #     for ssl in syllable_stressed_lyrics
+        # ]
+        # anim_mTexs: list[VGroup] = []
+        # for ssl in ssl_with_dashes:
+        #     g = VGroup()
+        #     start = Tex(ssl[0])
+        #     g.add(start)
+        #     prev = start
+        #     for syl in ssl:
+        #         new_tex = Tex(syl).next_to(prev, RIGHT)
+        #         prev = new_tex
+        #         g.add(new_tex)
+        #     g.move_to(RIGHT * 2)
+        #     anim_mTexs.append(g)
+        # self.play(Create(anim_mTexs[0]))
+        # # print(f"{0}, {anim_mTexs[0]}")
+        # for idx, anim_mTex in enumerate(anim_mTexs):
+        #     if idx == 0:
+        #         continue
+        #     # print(f"{idx}, {anim_mTex.tex_string}")
+        #     self.play(ReplacementTransform(anim_mTexs[idx - 1], anim_mTex))
+        # self.wait(2)
+        # # nonononononononononononononono they have different vertical alignments :(
