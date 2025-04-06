@@ -26,12 +26,13 @@ from utils import display_chord_short
 
 myTemplate = TexTemplate()
 myTemplate.add_to_preamble(
-    r"""\usepackage{musicography} 
+    r"""\usepackage{musicography}
 \usepackage{newunicodechar}
-\newunicodechar{𝄫}{\musDoubleFlat} 
-\newunicodechar{♭}{\musFlat} 
-\newunicodechar{♮}{\musNatural} 
-\newunicodechar{♯}{\musSharp} 
+\usepackage{xcolor}
+\newunicodechar{𝄫}{\musDoubleFlat}
+\newunicodechar{♭}{\musFlat}
+\newunicodechar{♮}{\musNatural}
+\newunicodechar{♯}{\musSharp}
 \newunicodechar{𝄪}{\musDoubleSharp}"""
 )
 
