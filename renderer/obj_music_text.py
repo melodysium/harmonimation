@@ -40,6 +40,9 @@ print(f"{USE_LATEX=}")
 if USE_LATEX:
 
     class MusicText(Tex):
+
+        _original_font_size: float
+
         def __init__(
             self,
             *args,
@@ -48,6 +51,7 @@ if USE_LATEX:
         ):
             # apparently when rendering in Tex the font size is much smaller compared to a Text object,
             # so we'll artificially bump it up here
+            self._original_font_size = font_size
             font_size = font_size * 1.5
             Tex.__init__(
                 self,
@@ -160,7 +164,7 @@ class PlayMusicText(Succession):
         anims: list[Animation] = []
         previous_offset = 0
         previous_color = music_text.color
-        previous_font_size = music_text.font_size
+        previous_font_size = music_text._original_font_size
 
         def get_new_obj(val: MusicTextState) -> MusicText:
             nonlocal previous_color, previous_font_size
