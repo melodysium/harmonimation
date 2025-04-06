@@ -38,6 +38,12 @@
       "shift_x": 2,
       "shift_y": -3,
       "font_size": 20
+    },
+    {
+      "type": "lyric_text",
+      "shift_x": -2,
+      "shift_y": -3,
+      "font_size": 20
     }
   ]
   

@@ -79,6 +79,48 @@ class ChordText(MusicText):
         )
 
 
+class LyricText(MusicText):
+
+    def play(
+        self,
+        music_data: MusicData,
+        color: ManimColor = None,  # Leaving as `None` will keep same color as initial
+        font_size: int = None,  # Leaving as `None` will keep same font_size as initial
+    ) -> Animation:
+        # TODO: would be cool if new lyrics swept in from the right side while bumping out old lyrics to the left, instead
+        text_steps: list[tuple[OffsetQL, str]] = []
+        # loop through all lyrics in the song
+        for _, syllables in music_data.lyrics:
+            # make a unique animation step for each syllable in each lyric
+            for cur_syl_offset, cur_syl_text in syllables:
+                # make a LaTeX text with the current syllable emphasized
+                # TODO: i might want to use a partially obscured underline, like this one:
+                # https://tex.stackexchange.com/questions/528798/underlining-text-in-latex-no-vertical-gap
+                # or possibly a dot way below the text?
+                syllable_emphasized_text = "-".join(
+                    (
+                        r"\underline{" + syl_text + r"}"
+                        if syl_text is cur_syl_text and len(syllables) > 1
+                        else syl_text
+                    )
+                    for _, syl_text in syllables
+                )
+                # add all of this into a MusicTextState
+                text_steps.append(
+                    MusicTextState(
+                        cur_syl_offset,
+                        syllable_emphasized_text,
+                        color,
+                        font_size,
+                    )
+                )
+        return PlayMusicText(
+            music_data.bpm,
+            text_steps,
+            music_text=self,
+        )
+
+
 class NoteText(MusicText):
     def __init__(self, note: Note, omit_natural: bool = True, **kwargs):
         MusicText.__init__(

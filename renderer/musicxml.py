@@ -1,4 +1,5 @@
 # std library
+import re
 from collections import defaultdict
 from dataclasses import dataclass
 from fractions import Fraction
@@ -12,7 +13,8 @@ from music21.base import Music21Object
 from music21.chord import Chord
 from music21.common.types import OffsetQL
 from music21.harmony import ChordSymbol, NoChord
-from music21.note import Note, NotRest
+from music21.note import Lyric, Note, NotRest
+from music21.search.lyrics import LyricSearcher
 from music21.stream import Stream, Score, Part, Measure
 import regex as re  # stdlib re doesn't support multiple named capture groups with the same name, i use it below
 
@@ -47,19 +49,19 @@ class MusicData:
     # new ones
     chords: list[tuple[OffsetQL, Chord]]
     all_notes: list[tuple[OffsetQL, Note]]
-    all_notes_by_part: dict[Part, list[tuple[OffsetQL, NotRest]]] = None  # TODO: fill
+    all_notes_by_part: dict[Part, list[tuple[OffsetQL, NotRest]]]
+    lyrics: list[tuple[OffsetQL, list[tuple[OffsetQL, str]]]]
     bpm: float = 180  # object = None  # TODO: what would this look like?
     current_key: object = None  # TODO: what would this look like?
-    lyrics: object = None  # TODO: what would this look like?
     comments: object = None  # TODO: what would this look like?
 
     def __init__(self, m21_score: Score):
-        # new ones
         self.all_notes = extract_notes_with_offset(m21_score)
         self.all_notes_by_part = {
             part: extract_notes_with_offset(part) for part in m21_score.parts
         }
         self.chords = extract_harmonic_clusters(m21_score)
+        self.lyrics = extract_lyrics(m21_score)
 
 
 def extract_chord_symbols(m21_score: Score) -> tuple[
@@ -369,6 +371,23 @@ def extract_harmonic_clusters(m21_score: Score) -> list[tuple[OffsetQL, Chord]]:
             )
         )
     return chords
+
+
+def extract_lyrics(
+    m21_score: Score,
+) -> list[
+    tuple[OffsetQL, list[tuple[OffsetQL, str]]]
+]:  # [(offset, [(syllable_offset, syllable_text)])]
+    searcher = LyricSearcher(m21_score)
+    m21_lyrics = searcher.search(re.compile(r"[^\s]+"))
+    lyrics_by_syllable = [
+        (
+            lyric.els[0].getOffsetInHierarchy(m21_score),
+            [(il.el.getOffsetInHierarchy(m21_score), il.text) for il in lyric.indices],
+        )
+        for lyric in m21_lyrics
+    ]
+    return lyrics_by_syllable
 
 
 def parse_score_data(data) -> MusicData:
