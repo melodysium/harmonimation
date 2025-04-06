@@ -371,3 +371,32 @@ class gradLines(Scene):
                 )
                 .shift(3.5 * RIGHT),
             )
+
+
+class textTextProperties(Scene):
+    def construct(self):
+        color_text = Text(
+            "Text color",
+            color=ManimColor(None, alpha=0),
+            font_size=80,
+            stroke_width=0,
+            stroke_color=BLUE,
+            # weight=BOLD,
+        ).shift(UP + LEFT)
+        color_tex = Tex(
+            "Tex color",
+            # color=RED,
+            font_size=80 * 1.5,
+            stroke_width=3,
+            # stroke_color=BLUE, # somehow takes priority over color
+            color=RED,
+            # weight=BOLD, # doesn't work on Tex
+        ).shift(DOWN + LEFT)
+        self.play(
+            Create(e)
+            for e in (
+                color_text,
+                color_tex,
+            )
+        )
+        self.wait(2)
