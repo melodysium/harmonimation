@@ -168,9 +168,13 @@ class PlayMusicText(Succession):
 
         def get_new_obj(val: MusicTextState) -> MusicText:
             nonlocal previous_color, previous_font_size
-            ob = MusicText(val.text).move_to(music_text)
-            ob.color = previous_color = val.color or previous_color
-            ob.font_size = previous_font_size = val.font_size or previous_font_size
+            color = previous_color = val.color or previous_color
+            font_size = previous_font_size = val.font_size or previous_font_size
+            ob = MusicText(
+                val.text,
+                color=color,
+                font_size=font_size,
+            ).move_to(music_text)
             return ob
 
         for text_state in text:
