@@ -404,33 +404,60 @@ class testTextProperties(Scene):
 
 class testTexBoldSyllableChange(Scene):
     def construct(self):
+        myTemplate = TexTemplate()
+        myTemplate.add_to_preamble(
+            r"""
+        \usepackage{xcolor}
+        """
+        )
         lyrics = ["O", "ya", "su", "mi"]
         syllable_stressed_lyrics = [
-            [(r"\dotuline{" + l + r"}" if l is bolded_l else l) for l in lyrics]
+            [
+                (
+                    r"{\color{white}" + l + r"}"
+                    if l is bolded_l
+                    else r"{\color{gray}" + l + r"}"
+                )
+                for l in lyrics
+            ]
             for bolded_l in lyrics
         ]
 
         for ssl in syllable_stressed_lyrics:
             print(f"  {ssl}")
         mTexs = [
-            Tex("-".join(syl_lyric)).shift(UP * (3 - (2 * idx)) + LEFT * 2)
+            Tex(
+                "-".join(syl_lyric),
+                tex_template=myTemplate,
+                color=WHITE,
+                # font_size=30,
+            ).shift(UP * (3 - (2 * idx)) + LEFT * 2)
             for idx, syl_lyric in enumerate(syllable_stressed_lyrics)
         ]
         print(mTexs)
         self.play(Create(m) for m in mTexs)
         self.wait(1)
 
+        uncolored_mTex = Tex(
+            "-".join(syl_lyric for syl_lyric in lyrics),
+            tex_template=myTemplate,
+            color=WHITE,
+            # font_size=30,
+        ).shift(RIGHT * 2)
         anim_mTexs = [
-            Tex("-".join(syl_lyric)).shift(RIGHT * 2)
+            Tex(
+                "-".join(syl_lyric),
+                tex_template=myTemplate,
+                color=WHITE,
+                # font_size=30,
+            ).shift(RIGHT * 2)
             for syl_lyric in syllable_stressed_lyrics
         ]
-        self.play(Create(anim_mTexs[0]))
-        print(f"{0}, {anim_mTexs[0].tex_string}")
+        self.play(Create(uncolored_mTex))
+        print(f"{0}, {uncolored_mTex.tex_string}")
         for idx, anim_mTex in enumerate(anim_mTexs):
-            if idx == 0:
-                continue
             print(f"{idx}, {anim_mTex.tex_string}")
-            self.play(FadeTransform(anim_mTexs[idx - 1], anim_mTex))
+            self.play(Transform(uncolored_mTex, anim_mTex))
         self.wait(2)
 
         # # maybe it looks better if each syllable is its own Tex object?
@@ -459,3 +486,20 @@ class testTexBoldSyllableChange(Scene):
         #     self.play(ReplacementTransform(anim_mTexs[idx - 1], anim_mTex))
         # self.wait(2)
         # # nonononononononononononononono they have different vertical alignments :(
+
+
+class testTexColor(Scene):
+    def construct(self):
+        myTemplate = TexTemplate()
+        myTemplate.add_to_preamble(
+            r"""
+        \usepackage{xcolor}
+        """
+        )
+        t = Tex(
+            r"Default text. {\color{gray}Gray text.} Default text. {\color{lightgray}Black text.}",
+            color=WHITE,
+            tex_template=myTemplate,
+        )
+        self.play(Create(t))
+        self.wait(2)
