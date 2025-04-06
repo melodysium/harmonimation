@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from typing import TypeVar
 from manim import (
     Tex,
@@ -83,6 +84,14 @@ class NoteText(MusicText):
         self.note = note
 
 
+@dataclass
+class MusicTextState:
+    offset: OffsetQL
+    text: str
+    color: ManimColor | None = None  # None means "keep previous"
+    font_size: float | None = None  # None means "keep previous"
+
+
 class PlayMusicText(Succession):
 
     VERY_SMALL = 2**-32
@@ -90,7 +99,7 @@ class PlayMusicText(Succession):
     def __init__(
         self,
         bpm: float,
-        text: list[tuple[OffsetQL, str]],
+        text: list[tuple[OffsetQL, str]],  # TODO: use MusicTextState
         music_text: MusicText = None,  # NOTE: to preserve this mobject's position, it must have some points, even if they're transparent
         transition_time: float = 0.1,  # in seconds
         **kwargs,
