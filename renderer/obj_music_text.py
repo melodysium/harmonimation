@@ -86,39 +86,111 @@ class ChordText(MusicText):
 
 class LyricText(MusicText):
 
+    highlight_syllables: bool
+    syllable_join_str: str
+    syllable_active_color: str
+    syllable_inactive_color: str
+
+    DEFAULT_SYLLABLE_JOIN_STR = "-"
+    DEFAULT_SYLLABLE_JOIN_COLOR = "gray"
+    DEFAULT_SYLLABLE_INACTIVE_COLOR = "gray"
+    DEFAULT_SYLLABLE_ACTIVE_COLOR = "white"
+
+    def __init__(
+        self,
+        *args,
+        highlight_syllables: bool = False,
+        syllable_join_str: str = None,
+        **kwargs,
+    ):
+        super().__init__(*args, **kwargs)
+        self.highlight_syllables = highlight_syllables
+        self.syllable_join_str = (
+            r"{\color{"
+            + self.DEFAULT_SYLLABLE_JOIN_COLOR
+            + r"}"
+            + (
+                syllable_join_str
+                if syllable_join_str is not None
+                else self.DEFAULT_SYLLABLE_JOIN_STR
+            )
+            + r"}"
+        )
+        # TODO: allow customizing color
+        self.syllable_active_color = self.DEFAULT_SYLLABLE_ACTIVE_COLOR
+        self.syllable_inactive_color = self.DEFAULT_SYLLABLE_INACTIVE_COLOR
+
     def play(
         self,
         music_data: MusicData,
         color: ManimColor = None,  # Leaving as `None` will keep same color as initial
-        font_size: int = None,  # Leaving as `None` will keep same font_size as initial
+        font_size: int = None,  # Leaving as `None` will keep same font_size
     ) -> Animation:
-        # TODO: would be cool if new lyrics swept in from the right side while bumping out old lyrics to the left, instead
-        text_steps: list[tuple[OffsetQL, str]] = []
-        # loop through all lyrics in the song
-        for _, syllables in music_data.lyrics:
-            # make a unique animation step for each syllable in each lyric
-            for cur_syl_offset, cur_syl_text in syllables:
-                # make a LaTeX text with the current syllable emphasized
-                # TODO: i might want to use a partially obscured underline, like this one:
-                # https://tex.stackexchange.com/questions/528798/underlining-text-in-latex-no-vertical-gap
-                # or possibly a dot way below the text?
-                syllable_emphasized_text = "-".join(
-                    (
-                        r"\underline{" + syl_text + r"}"
-                        if syl_text is cur_syl_text and len(syllables) > 1
-                        else syl_text
-                    )
-                    for _, syl_text in syllables
+        # TODO: might be cool if new lyrics swept in from the right side while bumping out old lyrics to the left, instead
+
+        # Helper functions
+        def get_syllable_texstr(syl_text: str, emph: bool) -> str:
+            if emph:
+                return r"{\color{" + self.syllable_active_color + r"}" + syl_text + r"}"
+            else:
+                return (
+                    r"{\color{" + self.syllable_inactive_color + r"}" + syl_text + r"}"
                 )
-                # add all of this into a MusicTextState
+
+        def get_lyric_syllabized_texstr(
+            lyric_syllables: list[tuple[OffsetQL, str]],
+            cur_syl_text: str,
+        ) -> str:
+            texstr = self.syllable_join_str.join(
+                (get_syllable_texstr(syl_text, emph=syl_text is cur_syl_text))
+                for _, syl_text in lyric_syllables
+            )
+            return texstr
+
+        # Compile a list of intermediate MusicText states
+        text_steps: list[MusicTextState] = []
+
+        # simpler case: just each unique word, no syllable stresses
+        if not self.highlight_syllables:
+            for lyric_offset, lyric_syllables in music_data.lyrics:
                 text_steps.append(
                     MusicTextState(
-                        cur_syl_offset,
-                        syllable_emphasized_text,
-                        color,
-                        font_size,
+                        offset=lyric_offset,
+                        text=self.syllable_join_str.join(
+                            syllable for _, syllable in lyric_syllables
+                        ),
+                        color=color,
+                        font_size=font_size,
                     )
                 )
+        # complex case: should highlight each syllable as it is spoken
+        else:
+            # loop through all lyrics in the song
+            for lyric_offset, lyric_syllables in music_data.lyrics:
+                # if there's only one syllable, do an easy step
+                if len(lyric_syllables) == 1:
+                    text_steps.append(
+                        MusicTextState(
+                            offset=lyric_offset,
+                            text=lyric_syllables[0][1],
+                            color=color,
+                            font_size=font_size,
+                        )
+                    )
+                    continue
+                # make a unique animation step for each syllable in each lyric
+                for cur_syl_offset, cur_syl_text in lyric_syllables:
+                    # make a LaTeX text with the current syllable emphasized, and save it
+                    text_steps.append(
+                        MusicTextState(
+                            offset=cur_syl_offset,
+                            text=get_lyric_syllabized_texstr(
+                                lyric_syllables, cur_syl_text
+                            ),
+                            color=color,
+                            font_size=font_size,
+                        )
+                    )
         return PlayMusicText(
             music_data.bpm,
             text_steps,

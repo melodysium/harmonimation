@@ -43,14 +43,9 @@
       "type": "lyric_text",
       "shift_x": -2,
       "shift_y": -3,
-      "font_size": 20
+      "font_size": 20,
+      "highlight_syllables": true,
+      "syllable_join_str": "-"
     }
   ]
-  
-  // "circle_rhythm": {
-
-  // },
-  // "text_harmony": {
-
-  // }
 }

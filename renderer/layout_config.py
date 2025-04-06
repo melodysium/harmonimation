@@ -34,6 +34,8 @@ def _build_lyrictext(widget_def: dict) -> LyricText:
         "dummy",
         color=ManimColor(None, alpha=0),
         font_size=widget_def.get("font_size", DEFAULT_FONT_SIZE),
+        highlight_syllables=widget_def.get("highlight_syllables", False),
+        syllable_join_str=widget_def.get("syllable_join_str", None),
     ).shift(_compute_shift(widget_def))
 
 
