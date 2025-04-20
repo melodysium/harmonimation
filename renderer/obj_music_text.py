@@ -231,6 +231,8 @@ class PlayMusicText(Succession):
         transition_time: float = 0.1,  # in seconds
         **kwargs,
     ):
+        if len(text) == 0:
+            return None
         # TODO: figure out how to set frame-0 text if in offset 0 from `text` param
         # TODO: figure out how to specify position / color / etc if not passing a template object in
         # TODO: left alignment?

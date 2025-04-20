@@ -64,13 +64,15 @@ class MusicData:
     bpm: float = 180  # object = None  # TODO: what would this look like?
     comments: object = None  # TODO: what would this look like?
 
-    def __init__(self, m21_score: Score):
-        self.all_notes = extract_notes_with_offset(m21_score)
-        self.all_notes_by_part = {
-            part: extract_notes_with_offset(part) for part in m21_score.parts
-        }
-        self.chords = extract_harmonic_clusters(m21_score)
-        self.lyrics = extract_lyrics(m21_score)
+    def from_score(m21_score: Score):
+        return MusicData(
+            chords=extract_harmonic_clusters(m21_score),
+            all_notes=extract_notes_with_offset(m21_score),
+            all_notes_by_part={
+                part: extract_notes_with_offset(part) for part in m21_score.parts
+            },
+            lyrics=extract_lyrics(m21_score),
+        )
 
     def chord_roots(self) -> list[MusicDataTiming[Pitch]]:
         return [
@@ -82,6 +84,99 @@ class MusicData:
             for chord_info in self.chords
             if len(chord_info.elem.pitches) > 0
         ]
+
+    def _modify_by_func(
+        self,
+        modify_func: Callable[[MusicDataTiming[MusicInfo]], None],
+    ) -> None:
+        for e in self.chords:
+            modify_func(e)
+        for e in self.all_notes:
+            modify_func(e)
+        for part, part_e in self.all_notes_by_part.items():
+            for e in part_e:
+                modify_func(e)
+        for lyric_e in self.lyrics:
+            modify_func(lyric_e)
+            for lyric_syl_e in lyric_e.elem:
+                modify_func(lyric_syl_e)
+
+    # def _replace_by_func(
+    #     self,
+    #     replace_func: Callable[
+    #         [MusicDataTiming[MusicInfo]], MusicDataTiming[MusicInfo]
+    #     ],
+    # ) -> "MusicData":
+    #     lyrics = [replace_func(e) for e in self.lyrics if replace_func(e) is not None]
+    #     for lyric in lyrics:
+    #         lyric.elem = [
+    #             replace_func(e) for e in lyric.elem if replace_func(e) is not None
+    #         ]
+    #     return MusicData(
+    #         chords=[
+    #             replace_func(e) for e in self.chords if replace_func(e) is not None
+    #         ],
+    #         all_notes=[
+    #             replace_func(e) for e in self.all_notes if replace_func(e) is not None
+    #         ],
+    #         all_notes_by_part={
+    #             part: [replace_func(e) for e in part_e if replace_func(e) is not None]
+    #             for part, part_e in self.all_notes_by_part.items()
+    #         },
+    #         lyrics=lyrics,
+    #     )
+
+    def _filter_by_func(
+        self, filter_func: Callable[[MusicDataTiming], bool]
+    ) -> "MusicData":
+        return MusicData(
+            chords=list(filter(filter_func, self.chords)),
+            all_notes=list(filter(filter_func, self.all_notes)),
+            all_notes_by_part={
+                part: list(filter(filter_func, part_e))
+                for part, part_e in self.all_notes_by_part.items()
+            },
+            lyrics=list(
+                filter(
+                    lambda lyric_info: any(
+                        filter_func(syl_info) for syl_info in lyric_info.elem
+                    ),
+                    self.lyrics,
+                )
+            ),
+        )
+
+    def filter_by_beat_range(self, beat_start: float, beat_end: float) -> "MusicData":
+
+        def is_in_beat_range(e: MusicDataTiming) -> bool:
+            return e.offset >= beat_start and e.offset <= beat_end
+
+        def subtract_beat_start(e: MusicDataTiming) -> None:
+            e.offset -= beat_start
+
+        filtered = self._filter_by_func(is_in_beat_range)
+        filtered._modify_by_func(subtract_beat_start)
+        return filtered
+
+    def filter_by_time_range(self, time_start: float, time_end: float) -> "MusicData":
+
+        def is_in_time_range(e: MusicDataTiming) -> bool:
+            return e.time >= time_start and e.time <= time_end
+
+        def subtract_time_start(e: MusicDataTiming) -> None:
+            e.time -= time_start
+
+        filtered = self._filter_by_func(is_in_time_range)
+        filtered._modify_by_func(subtract_time_start)
+        return filtered
+
+    def __str__(self) -> str:
+        return f"""MusicData
+chords: len={len(self.chords)}, elems={self.chords}
+all_notes: len={len(self.all_notes)}, elems={self.all_notes}
+all_notes_by_part: len={len(self.all_notes_by_part)}, elems={self.all_notes_by_part}
+lyrics: len={len(self.lyrics)}, elems={self.lyrics}
+"""
 
 
 def extract_notes_with_offset(
@@ -459,7 +554,7 @@ def parse_score_data(data) -> MusicData:
             + type(m21_score)
         )
 
-    music_data = MusicData(m21_score)
+    music_data = MusicData.from_score(m21_score)
 
     for chord_info in music_data.chords:
         chord = chord_info.elem

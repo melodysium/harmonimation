@@ -32,6 +32,21 @@ logger.debug(f"Version info: {sys.version_info}")
 
 
 def parse_args():
+
+    def range_str(txt: str) -> tuple[float, float]:
+        range_split = txt.split(",")
+        if len(range_split) != 2:
+            raise argparse.ArgumentTypeError(
+                "Expected a value of format float_1,float_2 (example: 1.5,3)"
+            )
+        try:
+            l, r = range_split
+            return (float(l), float(r))
+        except ValueError as e:
+            raise argparse.ArgumentTypeError(
+                f'Invalid value "{txt}". Expected a value of format float_1,float_2 (example: 1.5,3)'
+            ) from e
+
     parser = argparse.ArgumentParser(
         prog="Harmonimation",
         description="A program for visualizing musical harmonic analysis",
@@ -47,7 +62,26 @@ def parse_args():
         type=argparse.FileType(),
         help="harmonimation.json file to configure layout",
     )
-    return parser.parse_args()
+    parser.add_argument(
+        "-b",
+        "--beat-range",
+        type=range_str,
+        help="A beat range (inclusive) of the form x,y where x and y are floats (0-indexed). Will only render elements between beats [x, y] in the original piece.",
+    )
+    parser.add_argument(
+        "-t",
+        "--time-range",
+        type=range_str,
+        help="A time range (inclusive) of the form x,y where x and y are floats. Will only render elements between time [x, y] in the final animation.",
+    )
+    args = parser.parse_args()
+    if args.beat_range is not None and args.time_range is not None:
+        # TODO: figure out how to print this nicer
+        raise argparse.ArgumentError(
+            argument=None,
+            message="Cannot provide both --beat-range and --time-range arguments.",
+        )
+    return args
 
 
 def main():
@@ -57,8 +91,13 @@ def main():
     # parse music data
     music_data = parse_score_data(args.musicxml_file.read())
 
-    # parse into timing data. (data, beat) -> (data, beat, second)
+    # parse into timing data. (data, beat) -> (data, beat, second). filter if needed.
+    if args.beat_range:
+        music_data = music_data.filter_by_beat_range(*args.beat_range)
     resolve_timing(music_data)
+    if args.time_range:
+        music_data = music_data.filter_by_time_range(*args.time_range)
+    print(music_data)
 
     # make harmonimation widgets
     widgets = build_widgets(pyjson5.load(args.harmonimation_file))
