@@ -4,7 +4,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from fractions import Fraction
 from itertools import groupby
-from typing import Callable
+from typing import Any, Callable, Generic, TypeVar
 
 # 3rd party library
 from music import music_constants
@@ -21,7 +21,6 @@ import regex as re  # stdlib re doesn't support multiple named capture groups wi
 # project files
 from utils import (
     display_chord_short,
-    extract_notes_with_offset,
     extract_pitches,
     get_root,
     copy_timing,
@@ -43,16 +42,26 @@ from utils import (
 DEFAULT_CHORD_SYMBOL = ChordSymbol(kindStr="ma")
 
 
+MusicInfo = TypeVar("MusicInfo")
+
+
+@dataclass
+class MusicDataTiming(Generic[MusicInfo]):
+    elem: MusicInfo  # music information, e.g. Chord, Note, lyric str, etc.
+    offset: OffsetQL  # beat in the piece
+    second: float = None  # timestamp
+
+
 # data transfer class
 @dataclass
 class MusicData:
     # new ones
-    chords: list[tuple[OffsetQL, Chord]]
-    all_notes: list[tuple[OffsetQL, Note]]
-    all_notes_by_part: dict[Part, list[tuple[OffsetQL, NotRest]]]
-    lyrics: list[tuple[OffsetQL, list[tuple[OffsetQL, str]]]]
+    chords: list[MusicDataTiming[Chord]]
+    all_notes: list[MusicDataTiming[Note]]
+    all_notes_by_part: dict[Part, list[MusicDataTiming[NotRest]]]
+    lyrics: list[MusicDataTiming[list[MusicDataTiming[str]]]]
+    key_changes: object = None  # TODO: what would this look like?
     bpm: float = 180  # object = None  # TODO: what would this look like?
-    current_key: object = None  # TODO: what would this look like?
     comments: object = None  # TODO: what would this look like?
 
     def __init__(self, m21_score: Score):
@@ -62,6 +71,30 @@ class MusicData:
         }
         self.chords = extract_harmonic_clusters(m21_score)
         self.lyrics = extract_lyrics(m21_score)
+
+
+def extract_notes_with_offset(
+    m21_root: Stream,
+) -> list[MusicDataTiming[Note]]:
+    notes: list[MusicDataTiming[Note]] = []
+    for notRest in m21_root.recurse().getElementsByClass(NotRest):
+        if isinstance(notRest, Note):
+            notes.append(
+                MusicDataTiming(
+                    elem=notRest,
+                    offset=notRest.getOffsetInHierarchy(m21_root),
+                )
+            )
+        elif isinstance(notRest, Chord):
+            m21_chord: Chord = notRest
+            notes.extend(
+                MusicDataTiming(
+                    elem=note,
+                    offset=m21_chord.getOffsetInHierarchy(m21_root),
+                )
+                for note in m21_chord.notes
+            )
+    return sorted(notes, key=lambda t: t.offset)
 
 
 def extract_chord_symbols(m21_score: Score) -> tuple[
@@ -206,7 +239,7 @@ def process_chord_annotation(
     range: tuple[OffsetQL, OffsetQL],
     chord_symbols: dict[Part, ChordSymbol],
     x_symbols_2: dict[Part, list[OffsetQL]],
-) -> list[tuple[OffsetQL, Chord]]:
+) -> list[MusicDataTiming[Chord]]:
 
     # Easy case: Chord is hard-coded
     if len([cs for cs in chord_symbols.values() if not isinstance(cs, NoChord)]):
@@ -215,7 +248,14 @@ def process_chord_annotation(
             raise ValueError(
                 "Invalid annotation - cannot have manual chord set in the same beat as any other chord annotations."
             )
-        return [(range[0], next(chord_symbols.values()))]
+        return [
+            MusicDataTiming(
+                elem=next(
+                    chord_symbols.values(),
+                    offset=range[0],
+                )
+            )
+        ]
 
     # Complicated case: Parse the NoChords
     # --------parsing--------
@@ -330,12 +370,15 @@ def process_chord_annotation(
 
     # resolve into chords
     return [
-        (offset, Chord(extract_pitches(cluster)))
+        MusicDataTiming(
+            elem=Chord(extract_pitches(cluster)),
+            offset=offset,
+        )
         for offset, cluster in harmonic_clusters
     ]
 
 
-def extract_harmonic_clusters(m21_score: Score) -> list[tuple[OffsetQL, Chord]]:
+def extract_harmonic_clusters(m21_score: Score) -> list[MusicDataTiming[Chord]]:
     """
     Identify harmonic clusters with the help of ChordSymbol / NoChord annotations.
     Rules:
@@ -356,7 +399,7 @@ def extract_harmonic_clusters(m21_score: Score) -> list[tuple[OffsetQL, Chord]]:
                 `p` means "this part (and all others notated on this beat with `p`).
     """
     chord_symbols, x_symbols = extract_chord_symbols(m21_score)
-    chords: list[tuple[OffsetQL, Chord]] = []
+    chords: list[MusicDataTiming[Chord]] = []
     for idx, css_at_offset in enumerate(chord_symbols):
         range_start = css_at_offset[0]
         range_end = (
@@ -376,14 +419,20 @@ def extract_harmonic_clusters(m21_score: Score) -> list[tuple[OffsetQL, Chord]]:
 def extract_lyrics(
     m21_score: Score,
 ) -> list[
-    tuple[OffsetQL, list[tuple[OffsetQL, str]]]
+    MusicDataTiming[list[MusicDataTiming[str]]]
 ]:  # [(offset, [(syllable_offset, syllable_text)])]
     searcher = LyricSearcher(m21_score)
     m21_lyrics = searcher.search(re.compile(r"[^\s]+"))
     lyrics_by_syllable = [
-        (
-            lyric.els[0].getOffsetInHierarchy(m21_score),
-            [(il.el.getOffsetInHierarchy(m21_score), il.text) for il in lyric.indices],
+        MusicDataTiming(
+            elem=[
+                MusicDataTiming(
+                    elem=il.text,
+                    offset=il.el.getOffsetInHierarchy(m21_score),
+                )
+                for il in lyric.indices
+            ],
+            offset=lyric.els[0].getOffsetInHierarchy(m21_score),
         )
         for lyric in m21_lyrics
     ]
@@ -401,9 +450,10 @@ def parse_score_data(data) -> MusicData:
 
     music_data = MusicData(m21_score)
 
-    for offset, chord in music_data.chords:
+    for chord_info in music_data.chords:
+        chord = chord_info.elem
         print(
-            f"{offset:5}: {chord.pitchedCommonName:>25} {display_chord_short(chord):4} ({' '.join(f"{p.nameWithOctave:3}" for p in sorted(chord.pitches)) if len(chord.pitches) > 0 else "no notes"})"
+            f"{chord_info.offset:5}: {chord.pitchedCommonName:>25} {display_chord_short(chord):4} ({' '.join(f"{p.nameWithOctave:3}" for p in sorted(chord.pitches)) if len(chord.pitches) > 0 else "no notes"})"
         )
     # for offset, note in music_data.all_notes:
     #     print(f"{offset:5}: {note.nameWithOctave} {note.duration.quarterLength}")

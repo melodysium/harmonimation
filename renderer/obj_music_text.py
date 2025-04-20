@@ -21,7 +21,7 @@ from music21.common.types import OffsetQL
 
 from music.music_constants import Note
 from constants import USE_LATEX
-from musicxml import MusicData
+from musicxml import MusicData, MusicDataTiming
 from utils import display_chord_short
 
 myTemplate = TexTemplate()
@@ -77,8 +77,13 @@ class ChordText(MusicText):
         return PlayMusicText(
             music_data.bpm,
             [
-                MusicTextState(offset, display_chord_short(chord), color, font_size)
-                for offset, chord in music_data.chords
+                MusicTextState(
+                    chord_info.offset,
+                    display_chord_short(chord_info.elem),
+                    color,
+                    font_size,
+                )
+                for chord_info in music_data.chords
             ],
             music_text=self,
         )
@@ -138,12 +143,12 @@ class LyricText(MusicText):
                 )
 
         def get_lyric_syllabized_texstr(
-            lyric_syllables: list[tuple[OffsetQL, str]],
+            lyric_syllables: list[MusicDataTiming[str]],
             cur_syl_text: str,
         ) -> str:
             texstr = self.syllable_join_str.join(
-                (get_syllable_texstr(syl_text, emph=syl_text is cur_syl_text))
-                for _, syl_text in lyric_syllables
+                (get_syllable_texstr(syl_info.elem, emph=syl_info.elem is cur_syl_text))
+                for syl_info in lyric_syllables
             )
             return texstr
 
@@ -152,12 +157,12 @@ class LyricText(MusicText):
 
         # simpler case: just each unique word, no syllable stresses
         if not self.highlight_syllables:
-            for lyric_offset, lyric_syllables in music_data.lyrics:
+            for lyric_info in music_data.lyrics:
                 text_steps.append(
                     MusicTextState(
-                        offset=lyric_offset,
+                        offset=lyric_info.info,
                         text=self.syllable_join_str.join(
-                            syllable for _, syllable in lyric_syllables
+                            syllable_info.elem for syllable_info in lyric_info.elem
                         ),
                         color=color,
                         font_size=font_size,
@@ -166,26 +171,26 @@ class LyricText(MusicText):
         # complex case: should highlight each syllable as it is spoken
         else:
             # loop through all lyrics in the song
-            for lyric_offset, lyric_syllables in music_data.lyrics:
+            for lyric_info in music_data.lyrics:
                 # if there's only one syllable, do an easy step
-                if len(lyric_syllables) == 1:
+                if len(lyric_info.elem) == 1:
                     text_steps.append(
                         MusicTextState(
-                            offset=lyric_offset,
-                            text=lyric_syllables[0][1],
+                            offset=lyric_info.offset,
+                            text=lyric_info.elem[0].elem,
                             color=color,
                             font_size=font_size,
                         )
                     )
                     continue
                 # make a unique animation step for each syllable in each lyric
-                for cur_syl_offset, cur_syl_text in lyric_syllables:
+                for cur_syl_info in lyric_info.elem:
                     # make a LaTeX text with the current syllable emphasized, and save it
                     text_steps.append(
                         MusicTextState(
-                            offset=cur_syl_offset,
+                            offset=cur_syl_info.offset,
                             text=get_lyric_syllabized_texstr(
-                                lyric_syllables, cur_syl_text
+                                lyric_info.elem, cur_syl_info.elem
                             ),
                             color=color,
                             font_size=font_size,

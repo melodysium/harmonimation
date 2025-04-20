@@ -5,7 +5,7 @@
 from manim import *
 
 # project files
-from musicxml import MusicData
+from musicxml import MusicData, MusicDataTiming
 from obj_music_circles import Circle12NotesSequenceConnectors, PlayCircle12Notes
 from obj_rhythm_circle import CircleRhythm
 from obj_music_text import ChordText, LyricText, NoteText
@@ -28,9 +28,12 @@ class GlassPanel(Scene):
         # hack for now - ignore timing, hard-code BPM
         bpm = 180
         chord_roots = [
-            (offset, get_root(chord))
-            for offset, chord in self.music_data.chords
-            if len(chord.pitches) > 0
+            MusicDataTiming(
+                elem=get_root(chord_info.elem),
+                offset=chord_info.offset,
+            )
+            for chord_info in self.music_data.chords
+            if len(chord_info.elem.pitches) > 0
         ]
 
         self.wait(0.2)

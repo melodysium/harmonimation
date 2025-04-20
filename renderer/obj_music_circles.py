@@ -14,6 +14,7 @@ from more_itertools import peekable
 # my files
 from music.music_constants import notes_in_sequence
 from obj_music_text import NoteText
+from musicxml import MusicDataTiming
 from utils import vector_on_unit_circle_clockwise_from_top
 
 # log setup
@@ -231,6 +232,10 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
 
 class PlayCircle12Notes(Animation):
 
+    # TODO: rework into a play() method on Circle12Notes
+    # can still be a class within Circle12Notes,
+    # but that play() method should be a common interface
+
     # beats per second
     bps: float
     total_beats: float
@@ -241,12 +246,12 @@ class PlayCircle12Notes(Animation):
     def __init__(
         self,
         bpm: float,
-        notes: list[tuple[OffsetQL, Pitch]],
+        notes: list[MusicDataTiming[Pitch]],
         circle12: Circle12NotesSequenceConnectors,
         **kwargs,
     ):
         self.bps = bpm / 60
-        self.total_beats = notes[-1][0] + 1
+        self.total_beats = notes[-1].offset + 1
         super().__init__(circle12, run_time=self.total_beats / self.bps, **kwargs)
         self.circle12 = circle12
         self.notes_gen = peekable(notes)
@@ -254,15 +259,15 @@ class PlayCircle12Notes(Animation):
     def interpolate_mobject(self, alpha: float):
         current_step = alpha * self.total_beats
         try:
-            while self.notes_gen.peek()[0] <= current_step:
-                _, pitch = next(self.notes_gen)
+            while self.notes_gen.peek().offset <= current_step:
+                pitch_info: MusicDataTiming[Pitch] = next(self.notes_gen)
                 if (
                     self.last_pitch is not None
-                    and pitch.pitchClass == self.last_pitch.pitchClass
+                    and pitch_info.elem.pitchClass == self.last_pitch.pitchClass
                 ):
                     continue  # no need to highlight same pitch again
-                self.circle12.select_step(pitch.pitchClass)
-                self.last_pitch = pitch
+                self.circle12.select_step(pitch_info.elem.pitchClass)
+                self.last_pitch = pitch_info.elem
         except StopIteration:
             return
 

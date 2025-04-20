@@ -124,22 +124,6 @@ def display_chord_short(m21_chord: Chord) -> str:
     return chord_repr
 
 
-def extract_notes_with_offset(
-    m21_root: Stream,
-) -> list[tuple[OffsetQL, Note]]:
-    notes: list[tuple[OffsetQL, Note]] = []
-    for notRest in m21_root.recurse().getElementsByClass(NotRest):
-        if isinstance(notRest, Note):
-            notes.append((notRest.getOffsetInHierarchy(m21_root), notRest))
-        elif isinstance(notRest, Chord):
-            m21_chord: Chord = notRest
-            notes.extend(
-                (m21_chord.getOffsetInHierarchy(m21_root), note)
-                for note in m21_chord.notes
-            )
-    return sorted(notes, key=lambda t: t[0])
-
-
 def extract_pitches(m21_notRests: Iterable[NotRest]) -> list[Pitch]:
     pitches: set[Pitch] = set()
     for elem in m21_notRests:
