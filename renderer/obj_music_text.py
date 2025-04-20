@@ -16,6 +16,7 @@ from manim import (
     Wait,
     Transform,
     ManimColor,
+    WHITE,
 )
 from music21.common.types import OffsetQL
 
@@ -71,7 +72,7 @@ class ChordText(MusicText):
     def play(
         self,
         music_data: MusicData,
-        color: ManimColor = None,  # Leaving as `None` will keep same color as initial
+        color: ManimColor = WHITE,  # Leaving as `None` will keep same color as initial
         font_size: int = None,  # Leaving as `None` will keep same font_size as initial
     ) -> Animation:
         return PlayMusicText(
@@ -127,7 +128,7 @@ class LyricText(MusicText):
     def play(
         self,
         music_data: MusicData,
-        color: ManimColor = None,  # Leaving as `None` will keep same color as initial
+        color: ManimColor = WHITE,  # Leaving as `None` will keep same color as initial
         font_size: int = None,  # Leaving as `None` will keep same font_size
     ) -> Animation:
         # TODO: might be cool if new lyrics swept in from the right side while bumping out old lyrics to the left, instead

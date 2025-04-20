@@ -44,14 +44,13 @@ class GlassPanel(Scene):
 
         # run play animations
         def map_play_animation(widget: Mobject) -> Animation:
-            if isinstance(widget, Circle12NotesSequenceConnectors):
-                return PlayCircle12Notes(
-                    notes=self.music_data.chord_roots(), circle12=widget
-                )
-            elif isinstance(widget, ChordText):
-                return widget.play(self.music_data, color=WHITE)
-            elif isinstance(widget, LyricText):
-                return widget.play(self.music_data, color=WHITE)
+            if (
+                # TODO: make into single "interface"
+                isinstance(widget, Circle12NotesSequenceConnectors)
+                or isinstance(widget, ChordText)
+                or isinstance(widget, LyricText)
+            ):
+                return widget.play(self.music_data)
             else:
                 return None
 
