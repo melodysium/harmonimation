@@ -25,16 +25,6 @@ class GlassPanel(Scene):
     def construct(self):
 
         # load necessary data
-        # hack for now - ignore timing, hard-code BPM
-        bpm = 180
-        chord_roots = [
-            MusicDataTiming(
-                elem=get_root(chord_info.elem),
-                offset=chord_info.offset,
-            )
-            for chord_info in self.music_data.chords
-            if len(chord_info.elem.pitches) > 0
-        ]
 
         self.wait(0.2)
 
@@ -55,7 +45,9 @@ class GlassPanel(Scene):
         # run play animations
         def map_play_animation(widget: Mobject) -> Animation:
             if isinstance(widget, Circle12NotesSequenceConnectors):
-                return PlayCircle12Notes(bpm=bpm, notes=chord_roots, circle12=widget)
+                return PlayCircle12Notes(
+                    notes=self.music_data.chord_roots(), circle12=widget
+                )
             elif isinstance(widget, ChordText):
                 return widget.play(self.music_data, color=WHITE)
             elif isinstance(widget, LyricText):

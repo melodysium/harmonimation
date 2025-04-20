@@ -7,6 +7,7 @@ import logging
 import pyjson5
 
 # project files
+from timing import resolve_timing
 from scene_glasspanel import GlassPanel
 from layout_config import build_widgets
 from musicxml import parse_score_data
@@ -56,7 +57,8 @@ def main():
     # parse music data
     music_data = parse_score_data(args.musicxml_file.read())
 
-    # TODO: parse into timing data. (beat, data) -> (second, beat, data)
+    # parse into timing data. (data, beat) -> (data, beat, second)
+    resolve_timing(music_data)
 
     # make harmonimation widgets
     widgets = build_widgets(pyjson5.load(args.harmonimation_file))

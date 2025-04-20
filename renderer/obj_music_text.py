@@ -75,10 +75,9 @@ class ChordText(MusicText):
         font_size: int = None,  # Leaving as `None` will keep same font_size as initial
     ) -> Animation:
         return PlayMusicText(
-            music_data.bpm,
             [
                 MusicTextState(
-                    chord_info.offset,
+                    chord_info.time,
                     display_chord_short(chord_info.elem),
                     color,
                     font_size,
@@ -160,7 +159,7 @@ class LyricText(MusicText):
             for lyric_info in music_data.lyrics:
                 text_steps.append(
                     MusicTextState(
-                        offset=lyric_info.info,
+                        time=lyric_info.time,
                         text=self.syllable_join_str.join(
                             syllable_info.elem for syllable_info in lyric_info.elem
                         ),
@@ -176,7 +175,7 @@ class LyricText(MusicText):
                 if len(lyric_info.elem) == 1:
                     text_steps.append(
                         MusicTextState(
-                            offset=lyric_info.offset,
+                            time=lyric_info.time,
                             text=lyric_info.elem[0].elem,
                             color=color,
                             font_size=font_size,
@@ -188,7 +187,7 @@ class LyricText(MusicText):
                     # make a LaTeX text with the current syllable emphasized, and save it
                     text_steps.append(
                         MusicTextState(
-                            offset=cur_syl_info.offset,
+                            time=cur_syl_info.time,
                             text=get_lyric_syllabized_texstr(
                                 lyric_info.elem, cur_syl_info.elem
                             ),
@@ -197,7 +196,6 @@ class LyricText(MusicText):
                         )
                     )
         return PlayMusicText(
-            music_data.bpm,
             text_steps,
             music_text=self,
         )
@@ -215,7 +213,7 @@ class NoteText(MusicText):
 
 @dataclass
 class MusicTextState:
-    offset: OffsetQL
+    time: float
     text: str
     color: ManimColor | None = None  # None means "keep previous"
     font_size: float | None = None  # None means "keep previous"
@@ -227,19 +225,17 @@ class PlayMusicText(Succession):
 
     def __init__(
         self,
-        bpm: float,
         text: list[MusicTextState],
         music_text: MusicText,  # NOTE: must be a dummy object with the desired position and SOME POINTS, even if they're transparent
         transition_time: float = 0.1,  # in seconds
         **kwargs,
     ):
-        bps = bpm / 60
         # TODO: figure out how to set frame-0 text if in offset 0 from `text` param
         # TODO: figure out how to specify position / color / etc if not passing a template object in
         # TODO: left alignment?
 
         anims: list[Animation] = []
-        previous_offset = 0
+        previous_time = 0
         previous_color = music_text.color
         previous_font_size = music_text._original_font_size
 
@@ -256,7 +252,7 @@ class PlayMusicText(Succession):
 
         for text_state in text:
             # special case - allow first offset of 0 even though previous_offset = 0
-            if text_state.offset == 0:
+            if text_state.time == 0:
                 anims.append(
                     Transform(
                         music_text,
@@ -264,16 +260,16 @@ class PlayMusicText(Succession):
                         run_time=PlayMusicText.VERY_SMALL,
                     )
                 )
-                previous_offset = PlayMusicText.VERY_SMALL
+                previous_time = PlayMusicText.VERY_SMALL
                 continue
 
-            assert text_state.offset > previous_offset
+            assert text_state.time > previous_time
 
             # create animation for this latest text value
             anim = Transform(music_text, get_new_obj(text_state))
 
             # figure out how long since last update
-            elapsed_time = (text_state.offset - previous_offset) / bps
+            elapsed_time = text_state.time - previous_time
             # if we don't have time to do a full wait-then-transition
             if elapsed_time <= transition_time:
                 # just transform with the time we have
@@ -285,7 +281,7 @@ class PlayMusicText(Succession):
                 anim.run_time = transition_time
                 anims.append(anim)
             # done processing this offset
-            previous_offset = text_state.offset
+            previous_time = text_state.time
 
         super().__init__(anims, **kwargs)
 
@@ -315,6 +311,6 @@ class testPlayMusicalText(Scene):
         self.add(music_text)
         self.wait(1)
 
-        updates = [(i, f"Beat {i}") for i in range(50)]
-        self.play(PlayMusicText(180, updates, music_text, transition_time=5))
+        updates = [MusicTextState(i / 3, f"Second {i:.2}") for i in range(50)]
+        self.play(PlayMusicText(updates, music_text, transition_time=5))
         self.wait(1)

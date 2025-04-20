@@ -237,29 +237,27 @@ class PlayCircle12Notes(Animation):
     # but that play() method should be a common interface
 
     # beats per second
-    bps: float
-    total_beats: float
+    total_time: float
     circle12: Circle12NotesSequenceConnectors
     notes_gen: peekable  # Iterator[tuple[OffsetQL, Pitch]]
     last_pitch: Pitch = None
 
     def __init__(
         self,
-        bpm: float,
         notes: list[MusicDataTiming[Pitch]],
         circle12: Circle12NotesSequenceConnectors,
         **kwargs,
     ):
-        self.bps = bpm / 60
-        self.total_beats = notes[-1].offset + 1
-        super().__init__(circle12, run_time=self.total_beats / self.bps, **kwargs)
+
+        self.total_time = notes[-1].time + 1
+        super().__init__(circle12, run_time=self.total_time, **kwargs)
         self.circle12 = circle12
         self.notes_gen = peekable(notes)
 
     def interpolate_mobject(self, alpha: float):
-        current_step = alpha * self.total_beats
+        current_time = alpha * self.total_time
         try:
-            while self.notes_gen.peek().offset <= current_step:
+            while self.notes_gen.peek().time <= current_time:
                 pitch_info: MusicDataTiming[Pitch] = next(self.notes_gen)
                 if (
                     self.last_pitch is not None
@@ -307,25 +305,21 @@ class testPlay(Scene):
 
         # duration.Duration()
 
-        melody = stream.Stream(
-            [
-                note.Note("C", quarterLength=2),
-                note.Note("F", quarterLength=2),
-                note.Note("B-", quarterLength=2),
-                note.Note("E-", quarterLength=2),
-                note.Note("C", quarterLength=2),
-                note.Note("F", quarterLength=2),
-                note.Note("G", quarterLength=2.75),
-                note.Note("C", quarterLength=1.25),
-            ]
-        )
+        melody = [
+            MusicDataTiming(note.Note("C", quarterLength=2), 1, 1),
+            MusicDataTiming(note.Note("F", quarterLength=2), 2, 2),
+            MusicDataTiming(note.Note("B-", quarterLength=2), 3, 3),
+            MusicDataTiming(note.Note("E-", quarterLength=2), 4, 4),
+            MusicDataTiming(note.Note("C", quarterLength=2), 5, 5),
+            MusicDataTiming(note.Note("F", quarterLength=2), 6, 6),
+            MusicDataTiming(note.Note("G", quarterLength=2.75), 7, 7),
+            MusicDataTiming(note.Note("C", quarterLength=1.25), 8, 8),
+        ]
 
         play_circle_chromatic = PlayCircle12Notes(
-            bpm=128, notes=melody, circle12=circle_chromatic
+            notes=melody, circle12=circle_chromatic
         )
-        play_circle_fifths = PlayCircle12Notes(
-            bpm=128, notes=melody, circle12=circle_fifths
-        )
+        play_circle_fifths = PlayCircle12Notes(notes=melody, circle12=circle_fifths)
         self.play(
             AnimationGroup(
                 play_circle_chromatic,

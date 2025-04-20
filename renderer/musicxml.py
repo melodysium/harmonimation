@@ -13,7 +13,7 @@ from music21.base import Music21Object
 from music21.chord import Chord
 from music21.common.types import OffsetQL
 from music21.harmony import ChordSymbol, NoChord
-from music21.note import Lyric, Note, NotRest
+from music21.note import Lyric, Note, NotRest, Pitch
 from music21.search.lyrics import LyricSearcher
 from music21.stream import Stream, Score, Part, Measure
 import regex as re  # stdlib re doesn't support multiple named capture groups with the same name, i use it below
@@ -49,7 +49,7 @@ MusicInfo = TypeVar("MusicInfo")
 class MusicDataTiming(Generic[MusicInfo]):
     elem: MusicInfo  # music information, e.g. Chord, Note, lyric str, etc.
     offset: OffsetQL  # beat in the piece
-    second: float = None  # timestamp
+    time: float = None  # timestamp in seconds
 
 
 # data transfer class
@@ -71,6 +71,17 @@ class MusicData:
         }
         self.chords = extract_harmonic_clusters(m21_score)
         self.lyrics = extract_lyrics(m21_score)
+
+    def chord_roots(self) -> list[MusicDataTiming[Pitch]]:
+        return [
+            MusicDataTiming(
+                elem=get_root(chord_info.elem),
+                offset=chord_info.offset,
+                time=chord_info.time,
+            )
+            for chord_info in self.chords
+            if len(chord_info.elem.pitches) > 0
+        ]
 
 
 def extract_notes_with_offset(
