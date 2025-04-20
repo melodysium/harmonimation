@@ -24,9 +24,14 @@ class GlassPanel(Scene):
 
     def construct(self):
 
+        # TODO: make configurable
+        pre_create_duration = 0.2
+        create_duration = 2
+        post_create_duration = 1
+
         # load necessary data
 
-        self.wait(0.2)
+        self.wait(pre_create_duration)
 
         # run create animations
         def map_create_animation(widget: Mobject) -> Animation:
@@ -38,9 +43,9 @@ class GlassPanel(Scene):
         create_animations: list[Animation] = list(
             map(map_create_animation, self.widgets)
         )
-        self.play(create_animations, run_time=2)
+        self.play(create_animations, run_time=create_duration)
 
-        self.wait(1)
+        self.wait(post_create_duration)
 
         # run play animations
         def map_play_animation(widget: Mobject) -> Animation:

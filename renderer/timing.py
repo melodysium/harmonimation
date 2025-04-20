@@ -2,6 +2,7 @@ from music21.common.types import OffsetQL
 
 from musicxml import MusicData, MusicDataTiming
 
+# TODO: make configurable
 DEFAULT_EXTRA_START_TIME_SEC = 2  # seconds
 
 

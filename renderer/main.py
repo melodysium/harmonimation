@@ -96,6 +96,7 @@ def main():
         music_data = music_data.filter_by_beat_range(*args.beat_range)
     resolve_timing(music_data)
     if args.time_range:
+        # TODO: compensate for create time and start buffer time?
         music_data = music_data.filter_by_time_range(*args.time_range)
     print(music_data)
 
