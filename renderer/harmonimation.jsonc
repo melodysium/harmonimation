@@ -46,6 +46,12 @@
       "font_size": 20,
       "highlight_syllables": true,
       "syllable_join_str": "-"
+    },
+    {
+      "type": "key_text",
+      "shift_x": -0.65,
+      "shift_y": -3.4,
+      "font_size": 20
     }
   ]
 }

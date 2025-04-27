@@ -17,13 +17,14 @@ from manim import (
     Transform,
     ManimColor,
     WHITE,
+    VGroup,
 )
 from music21.common.types import OffsetQL
 
 from music.music_constants import Note
 from constants import USE_LATEX
 from musicxml import MusicData, MusicDataTiming
-from utils import display_chord_short
+from utils import display_chord_short, display_key
 
 myTemplate = TexTemplate()
 myTemplate.add_to_preamble(
@@ -64,7 +65,7 @@ if USE_LATEX:
 
 else:
 
-    class MusicText(Text): ...
+    class MusicText(Text): ...  # TODO: this is weird, should just remove
 
 
 class ChordText(MusicText):
@@ -86,6 +87,50 @@ class ChordText(MusicText):
                 for chord_info in music_data.chords
             ],
             music_text=self,
+        )
+
+
+class KeyText(VGroup):
+
+    group: VGroup
+    label: Text
+    display: MusicText
+
+    def __init__(
+        self,
+        label_color: ManimColor = WHITE,
+        label_text: str = "Key: ",
+        display_color: ManimColor = WHITE,
+        display_text: str = "dummy",
+        *args,
+        font_size: float = DEFAULT_FONT_SIZE,
+        **kwargs,
+    ):
+        super().__init__()
+        self.label = Text(
+            label_text, font_size=font_size, color=label_color, *args, **kwargs
+        )
+        self.add(self.label)
+        self.display = MusicText(
+            display_text, font_size=font_size, color=display_color, *args, **kwargs
+        ).next_to(self.label, RIGHT, aligned_edge=DOWN)
+        self.add(self.display)
+
+    def play(
+        self,
+        music_data: MusicData,
+        color: ManimColor = WHITE,  # Leaving as `None` will keep same color as initial
+    ) -> Animation:
+        return PlayMusicText(
+            [
+                MusicTextState(
+                    key_info.time,
+                    display_key(key_info.elem),
+                    color,
+                )
+                for key_info in music_data.keys
+            ],
+            music_text=self.display,
         )
 
 

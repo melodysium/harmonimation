@@ -8,7 +8,7 @@ from manim import *
 from musicxml import MusicData, MusicDataTiming
 from obj_music_circles import Circle12NotesSequenceConnectors, PlayCircle12Notes
 from obj_rhythm_circle import CircleRhythm
-from obj_music_text import ChordText, LyricText, NoteText
+from obj_music_text import ChordText, LyricText, NoteText, KeyText
 from utils import get_root
 
 
@@ -54,6 +54,7 @@ class GlassPanel(Scene):
                 isinstance(widget, Circle12NotesSequenceConnectors)
                 or isinstance(widget, ChordText)
                 or isinstance(widget, LyricText)
+                or isinstance(widget, KeyText)
             ):
                 return widget.play(self.music_data)
             else:
