@@ -503,3 +503,19 @@ class testTexColor(Scene):
         )
         self.play(Create(t))
         self.wait(2)
+
+
+class testAnimationGroupWithDifferentRunTimes(Scene):
+    def construct(self):
+        circle = Circle().shift(UP)
+        square = Square().shift(DOWN)
+        self.play(
+            AnimationGroup(Create(circle, run_time=1), Create(square, run_time=2))
+        )
+        self.wait(1)
+        self.play(
+            AnimationGroup(
+                circle.animate(run_time=2).shift(RIGHT),
+                square.animate(run_time=1).shift(RIGHT),
+            )
+        )
