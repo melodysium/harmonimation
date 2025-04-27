@@ -94,6 +94,12 @@ M21Obj = TypeVar("M21Obj", bound=Music21Object)
 
 DUMMY_STREAM = Stream()
 
+_rich_accidental_replacements: dict[str, str] = {}
+for note in music_constants.Note:
+    if note.accidental != 0:
+        _rich_accidental_replacements[note.display_portable] = note.display_rich
+        _rich_accidental_replacements[note.display_m21] = note.display_rich
+
 
 @dataclass
 class Music21Timing:
@@ -121,17 +127,26 @@ def display_chord_short(m21_chord: Chord) -> str:
         "-dominant seventh chord": "7",
     }
 
-    from constants import USE_LATEX
-
     if USE_LATEX:
-        for note in music_constants.Note:
-            if note.accidental != 0:
-                replacements[note.display_portable] = note.display_rich
+        replacements.update(_rich_accidental_replacements)
 
     chord_repr = m21_chord.pitchedCommonName
     for repl_old, repl_new in replacements.items():
         chord_repr = chord_repr.replace(repl_old, repl_new)
     return chord_repr
+
+
+def display_key(m21_key: Key) -> str:
+    replacements = {
+        "major": "Major",
+        "minor": "Minor",
+    }
+    if USE_LATEX:
+        replacements.update(_rich_accidental_replacements)
+    key_repr = m21_key.name
+    for repl_old, repl_new in replacements.items():
+        key_repr = key_repr.replace(repl_old, repl_new)
+    return key_repr
 
 
 def extract_pitches(m21_notRests: Iterable[NotRest]) -> list[Pitch]:

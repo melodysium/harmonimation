@@ -30,12 +30,14 @@ class Note(Enum):
         degree: int,
         display_rich: str,
         display_portable: str,
+        display_m21: str,
     ):
         self.scale_step = scale_step
         self.accidental = accidental
         self.degree = degree
         self.display_rich = display_rich
         self.display_portable = display_portable
+        self.display_m21 = display_m21
 
     def __repr__(self) -> str:
         return self.display_portable
@@ -54,29 +56,29 @@ class Note(Enum):
         return list(map(lambda c: c, cls))
 
     # naturals and flats
-    # name  adj    display_rich
+    # name  adj    display_rich display_m21
     #   step    char     display_portable
-    Cb = 11, -1, 0, "C♭", "Cb"
-    C = 0, 0, 0, "C♮", "C"
-    Cs = 1, 1, 0, "C♯", "C#"
-    Db = 1, -1, 1, "D♭", "Db"
-    D = 2, 0, 1, "D♮", "D"
-    Ds = 3, 1, 1, "D♯", "D#"
-    Eb = 3, -1, 2, "E♭", "Eb"
-    E = 4, 0, 2, "E♮", "E"
-    Es = 5, 1, 2, "E♯", "E#"
-    Fb = 4, -1, 3, "F♭", "Fb"
-    F = 5, 0, 3, "F♮", "F"
-    Fs = 6, 1, 3, "F♯", "F#"
-    Gb = 6, -1, 4, "G♭", "Gb"
-    G = 7, 0, 4, "G♮", "G"
-    Gs = 8, 1, 4, "G♯", "G#"
-    Ab = 8, -1, 5, "A♭", "Ab"
-    A = 9, 0, 5, "A♮", "A"
-    As = 10, 1, 5, "A♯", "A#"
-    Bb = 10, -1, 6, "B♭", "Bb"
-    B = 11, 0, 6, "B♮", "B"
-    Bs = 0, 1, 6, "B♯", "B#"
+    Cb = 11, -1, 0, "C♭", "Cb", "C-"
+    C = 0, 0, 0, "C♮", "C", "C"
+    Cs = 1, 1, 0, "C♯", "C#", "C#"
+    Db = 1, -1, 1, "D♭", "Db", "D-"
+    D = 2, 0, 1, "D♮", "D", "D"
+    Ds = 3, 1, 1, "D♯", "D#", "D#"
+    Eb = 3, -1, 2, "E♭", "Eb", "E-"
+    E = 4, 0, 2, "E♮", "E", "E"
+    Es = 5, 1, 2, "E♯", "E#", "E#"
+    Fb = 4, -1, 3, "F♭", "Fb", "F-"
+    F = 5, 0, 3, "F♮", "F", "F"
+    Fs = 6, 1, 3, "F♯", "F#", "F#"
+    Gb = 6, -1, 4, "G♭", "Gb", "G-"
+    G = 7, 0, 4, "G♮", "G", "G"
+    Gs = 8, 1, 4, "G♯", "G#", "G#"
+    Ab = 8, -1, 5, "A♭", "Ab", "A-"
+    A = 9, 0, 5, "A♮", "A", "A"
+    As = 10, 1, 5, "A♯", "A#", "A#"
+    Bb = 10, -1, 6, "B♭", "Bb", "B-"
+    B = 11, 0, 6, "B♮", "B", "B"
+    Bs = 0, 1, 6, "B♯", "B#", "B#"
     # TODO: double sharps / flats?
     # create map of notes by step
 
