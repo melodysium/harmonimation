@@ -96,6 +96,15 @@ def vector_on_unit_circle_clockwise_from_top(t: float):
     return vector_on_unit_circle(1 / 4 - t)
 
 
+def pick_preferred_rotation(start_angle, end_angle) -> float:
+    """Pick the shorter rotation from start to end angle (in unit rotations)"""
+    angle_diff = (end_angle - start_angle) % 1
+    if angle_diff <= 0.5:
+        return angle_diff
+    else:
+        return angle_diff - 1
+
+
 # --------------------MUSIC HELPERS--------------------
 
 M21Obj = TypeVar("M21Obj", bound=Music21Object)

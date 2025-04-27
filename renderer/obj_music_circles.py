@@ -18,6 +18,7 @@ from musicxml import MusicData, MusicDataTiming
 from utils import (
     vector_on_unit_circle_clockwise_from_top,
     generate_group,
+    pick_preferred_rotation,
 )
 
 # log setup
@@ -70,12 +71,15 @@ class Circle12NotesBase(VGroup):
     radius: float
     start_pitch_idx: int = 0  # TODO: make this configurable?
     steps_per_pitch: int
+    rotate_angle: float  # in unit rotations i.e. 1 = 360 deg; positive = clockwise
 
     def __init__(
         self,
         circle_color=GRAY,
         radius: float = 1,
         steps_per_pitch: int = 1,
+        rotate_angle: float = None,
+        rotate_pitch: int = None,
         **kwargs,
     ):
         VGroup.__init__(self, **kwargs)
@@ -83,6 +87,14 @@ class Circle12NotesBase(VGroup):
         self.circle_color = circle_color
         self.radius = radius
         self.steps_per_pitch = steps_per_pitch
+        assert (
+            rotate_angle is None or rotate_pitch is None
+        ), f"cannot set both rotate_angle and rotate_step for {Circle12NotesBase.__name__}"
+        self.rotate_angle = (
+            -self.compute_angle_for_pitch(rotate_pitch, 0)
+            if rotate_pitch
+            else rotate_angle if rotate_angle else 0
+        )
 
         # add background circle
         self.mob_circle_background = (
@@ -94,6 +106,7 @@ class Circle12NotesBase(VGroup):
             )  # starts with "math" orientation - circle starts at RIGHT and proceeds counter-clockwise
             .flip()  # flip vertically - now circle starts LEFT and goes clockwise
             .rotate(1 / 4 * -TAU)  # rotate 1/4 to start UP
+            .rotate(self.rotate_angle * -TAU)
         )
         self.add(self.mob_circle_background)
         # set up pitches
@@ -152,10 +165,96 @@ class Circle12NotesBase(VGroup):
         pitch_circle: Circle = self.mob_select_circles[pitch_idx]
         pitch_circle.set_stroke(opacity=opacity)
 
+    def rotate_to(self, angle: float) -> float:
+        """Rotate the music circle to the given angle (unit=rotations).
+
+        0 = start_pitch at top.
+        Returns the actual rotation as the difference between new and old angle."""
+
+        rotate_diff = angle - self.rotate_angle
+        self.rotate_angle = angle
+
+        # rotate some things in-place
+        self.mob_circle_background.rotate(angle=rotate_diff * -TAU)
+
+        # for others, calculate new positions and move to there
+        for pitch_idx, pitch_pos in self._list_positions():
+            self.mob_pitches[pitch_idx].move_to(pitch_pos)
+            self.mob_select_circles[pitch_idx].move_to(pitch_pos)
+        return rotate_diff
+
+    def compute_angle_for_pitch(
+        self, pitch_idx: int, rotate_angle: float = None
+    ) -> float:
+        """Compute the angle (0-1) for the given step, including any current rotation.
+
+        If you want to compute without any current rotation, set rotate_angle=0"""
+
+        # number of pitches past the start pitch.
+        # if start pitch is D, Eb is 1 pitch past
+        pitches_past_start = (pitch_idx - self.start_pitch_idx) % 12
+        # number of steps past the top of the circle.
+        # if start pitch is D, and steps_per_pitch is 7, Eb is 7 steps past
+        steps_past_top = (pitches_past_start * self.steps_per_pitch) % 12
+        # use provided rotate_angle if any, otherwise take from self
+        rotate_angle_to_use = (
+            rotate_angle if rotate_angle is not None else self.rotate_angle
+        )
+        # compute final angle
+        final_angle = steps_past_top / 12 + rotate_angle_to_use
+        print(
+            f"compute_angle_for_pitch({pitch_idx=}, {rotate_angle=}) ({self.steps_per_pitch=}). {pitches_past_start=}, {steps_past_top=}, {rotate_angle_to_use=}, {final_angle=}"
+        )
+        return final_angle
+
+    def rotate_to_pitch(self, pitch_idx: int) -> None:
+        """Rotate the msuic circle to have step_idx at top"""
+        angle_for_pitch = -self.compute_angle_for_pitch(pitch_idx, rotate_angle=0)
+        # print(f"rotate_to_pitch(), {pitch_idx=}, {angle_for_pitch=}")
+        self.rotate_to(angle_for_pitch)
+
+    def animate_rotate_to_pitch(self, pitch_idx: int, run_time: float = 1) -> Animation:
+        # compute the end state
+        angle_for_pitch = -self.compute_angle_for_pitch(pitch_idx, rotate_angle=0)
+        print(
+            f"Circle12Notes({self.steps_per_pitch=}).animate_rotate_to_pitch({pitch_idx=}): {angle_for_pitch=}"
+        )
+        return RotateCircle12Notes(self, angle_for_pitch, run_time=run_time)
+
     def play(stream: stream.Stream, bpm: int) -> Animation:
         bps = bpm / 60
 
         pass  # TODO: implement
+
+
+class RotateCircle12Notes(Animation):
+
+    circle12: Circle12NotesBase
+    angle_diff: float
+    start_angle: float
+
+    def __init__(
+        self,
+        circle12: Circle12NotesBase,
+        end_angle: float,  # unit rotations
+        run_time: float = 1,
+        **kwargs,
+    ):
+        super().__init__(mobject=circle12, run_time=run_time, **kwargs)
+        self.circle12 = circle12
+        self.start_angle = circle12.rotate_angle
+        self.angle_diff = pick_preferred_rotation(self.start_angle, end_angle)
+        print(
+            f"RotateCircle12Notes: Circle12Notes({circle12.steps_per_pitch=}), {self.start_angle=}, {end_angle=}, {self.angle_diff=}, {self.rate_func}"
+        )
+
+    def interpolate_mobject(self, alpha: float):
+        print(
+            f"RotateCircle12Notes.interpolate_mobject({alpha=}): {self.rate_func(alpha)=}"
+        )
+        self.circle12.rotate_to(
+            self.start_angle + self.angle_diff * self.rate_func(alpha)
+        )
 
 
 class Circle12NotesSequenceConnectors(Circle12NotesBase):
@@ -182,6 +281,8 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
         circle_color=GRAY,
         radius: float = 1,
         steps_per_pitch: int = 1,
+        rotate_angle: float = None,
+        rotate_pitch: int = None,
         max_selected_steps: int = 3,
         select_circle_opacity=calculate_circle_opacity_default,
         **kwargs,
@@ -191,6 +292,8 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
             circle_color,
             radius,
             steps_per_pitch,
+            rotate_angle,
+            rotate_pitch,
             **kwargs,
         )
         # initialize fields
@@ -270,6 +373,15 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
                 mob_select_connector.set_stroke(opacity=new_opacity)
         return self
 
+    def rotate_to(self, angle: float) -> None:
+        rotate_diff = super().rotate_to(angle)
+        center = self.mob_circle_background.get_center()
+        print(
+            f"Circle12NoteSequenceConnectors({self.steps_per_pitch=}).rotate_to({angle=}): {rotate_diff=}"
+        )
+        for mob_connector in self.mob_select_connectors:
+            mob_connector.rotate(angle=rotate_diff * -TAU, about_point=center)
+
     def play(self, music_data: MusicData) -> Animation:
         return PlayCircle12Notes(music_data, self)
 
@@ -321,21 +433,44 @@ class PlayCircle12Notes(Animation):
 class test(Scene):
     def construct(self):
         self.wait(0.2)
-        circle_chromatic = Circle12NotesSequenceConnectors(radius=1.5).shift(2 * LEFT)
+
+        circle_chromatic = Circle12NotesSequenceConnectors(
+            radius=1.5,
+            rotate_pitch=1,
+            max_selected_steps=5,
+        ).shift(2 * LEFT)
         circle_fifths = Circle12NotesSequenceConnectors(
             radius=1.5,
             steps_per_pitch=7,
+            rotate_pitch=1,
+            max_selected_steps=5,
         ).shift(2 * RIGHT)
         self.play(circle_chromatic.create(), circle_fifths.create(), run_time=2)
         self.wait(1)
-        step_count = 12 * 1 + 1
-        step_base = 12
-        step_delay_start = 0.1
-        for step in range(step_count):
-            circle_chromatic.select_step(step % 12)
-            circle_fifths.select_step(step % 12)
-            self.wait(step_delay_start * (step_base / (step_base + step)))
-        self.wait(1)
+
+        # step_count = 12 * 1 + 1
+        # step_base = 12
+        # step_delay_start = 0.1
+        # for step in range(step_count):
+        #     circle_chromatic.select_step(step % 12)
+        #     circle_fifths.select_step(step % 12)
+        #     self.wait(step_delay_start * (step_base / (step_base + step)))
+        # self.wait(1)
+
+        def rotate_to_pitch_idx(pitch_idx: int):
+            print(f"rotating both circles to step {pitch_idx} on top")
+            self.play(
+                AnimationGroup(
+                    circle_chromatic.animate_rotate_to_pitch(pitch_idx, run_time=0.5),
+                    circle_fifths.animate_rotate_to_pitch(pitch_idx, run_time=0.5),
+                )
+            )
+            circle_chromatic.select_step(pitch_idx)
+            circle_fifths.select_step(pitch_idx)
+
+        for i in range(2, 13):
+            rotate_to_pitch_idx(i % 12)
+            self.wait(0.5)
 
 
 class testPlay(Scene):
