@@ -2755,11 +2755,6 @@
         </note>
       </measure>
     <measure number="22" width="123.47">
-      <attributes>
-        <key>
-          <fifths>-5</fifths>
-          </key>
-        </attributes>
       <note default-x="12.5" default-y="-20">
         <rest/>
         <duration>2</duration>
@@ -6476,11 +6471,6 @@
         </note>
       </measure>
     <measure number="22" width="123.47">
-      <attributes>
-        <key>
-          <fifths>-5</fifths>
-          </key>
-        </attributes>
       <note default-x="12.5" default-y="-228.86">
         <pitch>
           <step>G</step>
