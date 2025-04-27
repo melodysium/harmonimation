@@ -98,10 +98,13 @@ def main():
     if args.time_range:
         # TODO: compensate for create time and start buffer time?
         music_data = music_data.filter_by_time_range(*args.time_range)
-    print(music_data)
+    # print(music_data)
 
     # make harmonimation widgets
-    widgets = build_widgets(pyjson5.load(args.harmonimation_file))
+    widgets = build_widgets(
+        config=pyjson5.load(args.harmonimation_file),
+        music_data=music_data,
+    )
 
     # make harmonimation scene, and render!
     GlassPanel(music_data, widgets).render()

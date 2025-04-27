@@ -3,8 +3,10 @@ from manim import *
 from manim.typing import Vector3D
 
 # project files
+from musicxml import MusicData
 from obj_music_circles import Circle12NotesSequenceConnectors
 from obj_music_text import ChordText, LyricText, KeyText
+from utils import get_key_tonic
 
 
 def _compute_shift(widget_def: dict) -> Vector3D:
@@ -47,7 +49,7 @@ def _build_keytext(widget_def: dict) -> KeyText:
     ).shift(_compute_shift(widget_def))
 
 
-def _build_circle12notes(widget_def: dict) -> list[Mobject]:
+def _build_circle12notes(widget_def: dict, music_data: MusicData) -> list[Mobject]:
     c12n_widgets: list[Mobject] = []  # this method can return 1 or 2 widgets
     radius = widget_def.get("radius", 1.0)
     max_selected_steps = widget_def.get("max_selected_steps", 3)
@@ -59,10 +61,13 @@ def _build_circle12notes(widget_def: dict) -> list[Mobject]:
         elif widget_type == "circle_fifths":
             return 7
 
+    starting_pitch = get_key_tonic(music_data.keys[0].elem).pitchClass
+
     circle_chromatic = Circle12NotesSequenceConnectors(
         radius=radius,
         max_selected_steps=max_selected_steps,
         steps_per_pitch=map_note_intervals(widget_def["type"]),
+        rotate_pitch=starting_pitch,
     ).shift(_compute_shift(widget_def))
     c12n_widgets.append(circle_chromatic)
 
@@ -96,7 +101,7 @@ def _build_circle12notes(widget_def: dict) -> list[Mobject]:
     return c12n_widgets
 
 
-def build_widgets(config: dict) -> list[Mobject]:
+def build_widgets(config: dict, music_data: MusicData) -> list[Mobject]:
     # TODO: figure out the correct way to report errors from this function
     widgets: list[Mobject] = []
 
@@ -113,7 +118,7 @@ def build_widgets(config: dict) -> list[Mobject]:
             case "text":
                 widgets.append(_build_text(widget_def))
             case "circle_chromatic" | "circle_fifths":
-                widgets.extend(_build_circle12notes(widget_def))
+                widgets.extend(_build_circle12notes(widget_def, music_data))
             case "chord_text":
                 widgets.append(_build_chordtext(widget_def))
             case "lyric_text":

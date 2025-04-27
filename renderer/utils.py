@@ -129,12 +129,18 @@ class Music21Timing:
         return m21_obj
 
 
-def get_root(m21_chord: Chord) -> Pitch | None:
+def get_chord_root(m21_chord: Chord) -> Pitch | None:
     if m21_chord is None:
         return None
     if len(m21_chord.pitches) == 0:
         return None
     return m21_chord.root()
+
+
+def get_key_tonic(m21_key: Key) -> Pitch:
+    tonic = m21_key.getTonic()
+    assert tonic is not None
+    return tonic
 
 
 def display_chord_short(m21_chord: Chord) -> str:

@@ -24,7 +24,7 @@ from utils import (
     display_chord_short,
     eq_unique,
     extract_pitches,
-    get_root,
+    get_chord_root,
     copy_timing,
     timing_from,
     get_unique_offsets,
@@ -80,7 +80,7 @@ class MusicData:
     def chord_roots(self) -> list[MusicDataTiming[Pitch]]:
         return [
             MusicDataTiming(
-                elem=get_root(chord_info.elem),
+                elem=get_chord_root(chord_info.elem),
                 offset=chord_info.offset,
                 time=chord_info.time,
             )

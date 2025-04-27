@@ -400,8 +400,8 @@ class PlayCircle12Notes(Animation):
 
     def __init__(
         self,
-        music_data: MusicData,
         circle12: Circle12NotesSequenceConnectors,
+        music_data: MusicData,
         **kwargs,
     ):
         pitches = music_data.chord_roots()
@@ -436,13 +436,13 @@ class test(Scene):
 
         circle_chromatic = Circle12NotesSequenceConnectors(
             radius=1.5,
-            rotate_pitch=1,
+            rotate_pitch=5,
             max_selected_steps=5,
         ).shift(2 * LEFT)
         circle_fifths = Circle12NotesSequenceConnectors(
             radius=1.5,
             steps_per_pitch=7,
-            rotate_pitch=1,
+            rotate_pitch=5,
             max_selected_steps=5,
         ).shift(2 * RIGHT)
         self.play(circle_chromatic.create(), circle_fifths.create(), run_time=2)
@@ -468,8 +468,8 @@ class test(Scene):
             circle_chromatic.select_step(pitch_idx)
             circle_fifths.select_step(pitch_idx)
 
-        for i in range(2, 13):
-            rotate_to_pitch_idx(i % 12)
+        for i in range(1, 13):
+            rotate_to_pitch_idx(-(2 * i + 5) % 12)
             self.wait(0.5)
 
 

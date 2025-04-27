@@ -9,7 +9,7 @@ from musicxml import MusicData, MusicDataTiming
 from obj_music_circles import Circle12NotesSequenceConnectors, PlayCircle12Notes
 from obj_rhythm_circle import CircleRhythm
 from obj_music_text import ChordText, LyricText, NoteText, KeyText
-from utils import get_root
+from utils import get_chord_root
 
 
 class GlassPanel(Scene):
