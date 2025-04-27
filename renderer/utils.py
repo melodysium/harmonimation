@@ -7,12 +7,14 @@ from dataclasses import dataclass
 from manim import Mobject, Group, Scene, VDict, PI
 from music21.base import Music21Object
 from music21.chord import Chord
+from music21.key import Key
 from music21.note import Note, NotRest, Pitch
 from music21.stream import Score, Stream
 from music21.common.types import OffsetQL, StreamType
 from music21.duration import Duration
 from regex import Match
 
+from constants import USE_LATEX
 from music import music_constants
 
 
@@ -47,6 +49,14 @@ def frange(
     while start < stop:
         yield start
         start += step
+
+
+def eq_unique(it: Iterable[T]) -> list[T]:
+    uniquelist = []
+    for obj in it:
+        if obj not in uniquelist:
+            uniquelist.append(obj)
+    return uniquelist
 
 
 # --------------------MANIM HELPERS--------------------
@@ -190,8 +200,9 @@ def display_notRest(m21_notRest: NotRest) -> str:
         raise ValueError("unknown NotRest subclass")
 
 
-def display_timing(m21_obj: Music21Object) -> str:
-    return f"@{m21_obj.offset:5} {m21_obj.quarterLength:5} beats"
+def display_timing(m21_obj: Music21Object, offsetSite: Music21Object) -> str:
+    offset = m21_obj.getOffsetInHierarchy(offsetSite) if offsetSite else m21_obj.offset
+    return f"@{offset:5} {m21_obj.quarterLength:5} beats"
 
 
 def display_id(m21_obj: Music21Object) -> str:

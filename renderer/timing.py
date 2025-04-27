@@ -21,8 +21,8 @@ def resolve_timing(music_data: MusicData) -> None:  # modify in place
         _set_timing_sec(timing)
         for lyric_syllable in timing.elem:
             _set_timing_sec(lyric_syllable)
-    # for timing in music_data.key_changes:  # TODO: add once implemented
-    #     _set_timing_sec(timing)
+    for timing in music_data.keys:
+        _set_timing_sec(timing)
 
 
 def _beat_to_sec(beat: OffsetQL) -> float:

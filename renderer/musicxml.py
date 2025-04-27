@@ -13,6 +13,7 @@ from music21.base import Music21Object
 from music21.chord import Chord
 from music21.common.types import OffsetQL
 from music21.harmony import ChordSymbol, NoChord
+from music21.key import KeySignature, Key
 from music21.note import Lyric, Note, NotRest, Pitch
 from music21.search.lyrics import LyricSearcher
 from music21.stream import Stream, Score, Part, Measure
@@ -21,6 +22,7 @@ import regex as re  # stdlib re doesn't support multiple named capture groups wi
 # project files
 from utils import (
     display_chord_short,
+    eq_unique,
     extract_pitches,
     get_root,
     copy_timing,
@@ -60,7 +62,7 @@ class MusicData:
     all_notes: list[MusicDataTiming[Note]]
     all_notes_by_part: dict[Part, list[MusicDataTiming[NotRest]]]
     lyrics: list[MusicDataTiming[list[MusicDataTiming[str]]]]
-    key_changes: object = None  # TODO: what would this look like?
+    keys: list[MusicDataTiming[Key]]
     bpm: float = 180  # object = None  # TODO: what would this look like?
     comments: object = None  # TODO: what would this look like?
 
@@ -72,6 +74,7 @@ class MusicData:
                 part: extract_notes_with_offset(part) for part in m21_score.parts
             },
             lyrics=extract_lyrics(m21_score),
+            keys=extract_keys(m21_score),
         )
 
     def chord_roots(self) -> list[MusicDataTiming[Pitch]]:
@@ -100,6 +103,8 @@ class MusicData:
             modify_func(lyric_e)
             for lyric_syl_e in lyric_e.elem:
                 modify_func(lyric_syl_e)
+        for e in self.keys:
+            modify_func(e)
 
     # def _replace_by_func(
     #     self,
@@ -144,6 +149,7 @@ class MusicData:
                     self.lyrics,
                 )
             ),
+            keys=list(filter(filter_func, self.keys)),
         )
 
     def filter_by_beat_range(self, beat_start: float, beat_end: float) -> "MusicData":
@@ -176,6 +182,7 @@ chords: len={len(self.chords)}, elems={self.chords}
 all_notes: len={len(self.all_notes)}, elems={self.all_notes}
 all_notes_by_part: len={len(self.all_notes_by_part)}, elems={self.all_notes_by_part}
 lyrics: len={len(self.lyrics)}, elems={self.lyrics}
+keys: len={len(self.keys)}, elems={self.keys}
 """
 
 
@@ -543,6 +550,46 @@ def extract_lyrics(
         for lyric in m21_lyrics
     ]
     return lyrics_by_syllable
+
+
+def extract_keys(
+    m21_score: Score,
+) -> list[MusicDataTiming[Key]]:
+    # current assumptions:
+    # - piece contain simple KeySignature objects AND complex Key objects
+    # - KeySignatures can be assumed to be in major and transformed to Keys
+    # - there is at most one unique Key object per offset
+
+    grouped_key_signatures = groupby(
+        sorted(
+            (
+                (ks.getOffsetInHierarchy(m21_score), ks)
+                for ks in m21_score.recurse().getElementsByClass(KeySignature)
+            ),
+            key=lambda ks_info: ks_info[0],
+        ),
+        key=lambda ks_info: ks_info[0],
+    )
+
+    keys: list[MusicDataTiming[Key]] = []
+
+    for offset, ks_iter in grouped_key_signatures:
+        ks_list = list(ks_iter)
+        # print(f"{offset:5}: {ks_list}")
+
+        # transform any KeySignatures to Keys
+        key_list = [
+            ks[1] if isinstance(ks[1], Key) else ks[1].asKey(mode="major")
+            for ks in ks_list
+        ]
+        # print(key_list)
+
+        # ensure all are same at this offset
+        assert len(eq_unique(key_list)) == 1
+        key = key_list[0]
+        keys.append(MusicDataTiming(elem=key, offset=offset))
+        # print(f"{offset:5}: {key}")
+    return keys
 
 
 def parse_score_data(data) -> MusicData:
