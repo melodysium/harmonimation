@@ -62,7 +62,7 @@ def _build_circle12notes(widget_def: dict) -> list[Mobject]:
     circle_chromatic = Circle12NotesSequenceConnectors(
         radius=radius,
         max_selected_steps=max_selected_steps,
-        note_intervals=map_note_intervals(widget_def["type"]),
+        steps_per_pitch=map_note_intervals(widget_def["type"]),
     ).shift(_compute_shift(widget_def))
     c12n_widgets.append(circle_chromatic)
 

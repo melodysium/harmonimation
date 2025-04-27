@@ -59,6 +59,14 @@ def eq_unique(it: Iterable[T]) -> list[T]:
     return uniquelist
 
 
+def stable_unique(it: Iterable[T]) -> list[T]:
+    return list(dict.fromkeys(it))
+
+
+def generate_group(start: int, step: int, size: int) -> list[int]:
+    return stable_unique((start + i * step) % size for i in range(size))
+
+
 # --------------------MANIM HELPERS--------------------
 
 

@@ -1,21 +1,24 @@
 #!/usr/bin/env python3.11
 
 # standard libs
-from typing import Callable
+from typing import Callable, Iterable
 import logging
 
 # 3rd party libs
 from manim import *
+from manim.typing import Vector3D
 from music21 import stream, note
-from music21.note import Note, Pitch
-from music21.common.types import OffsetQL
+from music21.note import Pitch
 from more_itertools import peekable
 
 # my files
-from music.music_constants import notes_in_sequence
+from music.music_constants import note_for_step
 from obj_music_text import NoteText
 from musicxml import MusicData, MusicDataTiming
-from utils import vector_on_unit_circle_clockwise_from_top
+from utils import (
+    vector_on_unit_circle_clockwise_from_top,
+    generate_group,
+)
 
 # log setup
 logger = logging.getLogger(__name__)
@@ -51,75 +54,105 @@ def get_line_between_two_circle_edges(c1: Circle, c2: Circle):
 
 
 # TODO: add non-root "highlights" around other notes being played
-BASE_NOTE_LABEL_FONT_SIZE = 16
-BASE_NOTE_CIRCLE_RADIUS = 0.2
+BASE_PITCH_LABEL_FONT_SIZE = 16
+BASE_PITCH_CIRCLE_RADIUS = 0.2
 
 
 class Circle12NotesBase(VGroup):
 
     # mobjects
     mob_circle_background: Circle
-    mob_notes: VDict  # VDict[int, NoteText]
+    mob_pitches: VDict  # VDict[int, NoteText]
     mob_select_circles: VDict  # VDict[int, Circle]
 
     # properties
     circle_color: str
     radius: float
+    start_pitch_idx: int = 0  # TODO: make this configurable?
+    steps_per_pitch: int
 
     def __init__(
-        self, circle_color=GRAY, radius: float = 1, note_intervals: int = 1, **kwargs
+        self,
+        circle_color=GRAY,
+        radius: float = 1,
+        steps_per_pitch: int = 1,
+        **kwargs,
     ):
         VGroup.__init__(self, **kwargs)
         # save properties
         self.circle_color = circle_color
         self.radius = radius
+        self.steps_per_pitch = steps_per_pitch
 
         # add background circle
         self.mob_circle_background = (
             Circle(
-                color=circle_color, radius=radius, stroke_opacity=0.3, stroke_width=8
-            )
-            .flip()
-            .rotate(-90 * (PI / 180))
+                color=circle_color,
+                radius=radius,
+                stroke_opacity=0.3,
+                stroke_width=8,
+            )  # starts with "math" orientation - circle starts at RIGHT and proceeds counter-clockwise
+            .flip()  # flip vertically - now circle starts LEFT and goes clockwise
+            .rotate(1 / 4 * -TAU)  # rotate 1/4 to start UP
         )
         self.add(self.mob_circle_background)
-        # set up notes
-        self.mob_notes = VDict()
-        self.add(self.mob_notes)
+        # set up pitches
+        self.mob_pitches = VDict()
+        self.add(self.mob_pitches)
         self.mob_select_circles = VDict()
         self.add(self.mob_select_circles)
-        # create 12 individual notes and small highlight circles
-        for note_idx, note in enumerate(notes_in_sequence(note_intervals)):
-            # calculate position
-            offset = vector_on_unit_circle_clockwise_from_top(note_idx / 12)
+        # create 12 individual pitches and small highlight circles
+        for pitch_idx, pitch_pos in self._list_positions():
+            pitch = note_for_step(pitch_idx)
             # create NoteText and circle in correct position
-            note_label = NoteText(
-                note, font_size=BASE_NOTE_LABEL_FONT_SIZE * radius
-            ).shift(offset * radius)
-            note_circle = Circle(
-                color=WHITE, radius=BASE_NOTE_CIRCLE_RADIUS * radius, stroke_opacity=0
-            ).move_to(note_label)
-            # save mobjects, add note text
-            self.mob_notes[note.scale_step] = note_label
-            self.mob_select_circles[note.scale_step] = note_circle
+            pitch_label = NoteText(
+                pitch, font_size=BASE_PITCH_LABEL_FONT_SIZE * radius
+            ).shift(pitch_pos)
+            pitch_circle = Circle(
+                color=WHITE, radius=BASE_PITCH_CIRCLE_RADIUS * radius, stroke_opacity=0
+            ).move_to(pitch_label)
+            # save mobjects, add pitch text
+            self.mob_pitches[pitch.scale_step] = pitch_label
+            self.mob_select_circles[pitch.scale_step] = pitch_circle
+
+    def _list_steps(self) -> Iterable[tuple[int, int]]:  # (pitch, step)
+        for step_idx, pitch_idx in enumerate(
+            generate_group(
+                start=self.start_pitch_idx,
+                step=self.steps_per_pitch,
+                size=12,
+            )
+        ):
+            yield (step_idx, pitch_idx)
+
+    def _list_positions(self) -> Iterable[tuple[int, Vector3D]]:
+        for step_idx, pitch_idx in self._list_steps():
+            # calculate position
+            offset = vector_on_unit_circle_clockwise_from_top(
+                (step_idx / 12) + self.rotate_angle
+            )
+            yield (
+                pitch_idx,
+                self.mob_circle_background.get_center() + (offset * self.radius,),
+            )
 
     # TODO: fix bug where self isn't created, but all its submobjects are
     def create(self) -> Animation:
         return AnimationGroup(
             Create(self.mob_circle_background, rate_func=rate_functions.ease_in_sine),
             AnimationGroup(
-                Create(self.mob_notes),
+                Create(self.mob_pitches),
                 Create(self.mob_select_circles),
             ),
             lag_ratio=0.18,
         )
 
-    def highlight_step(self, step: int, opacity: float):
-        """Sets the highlight circle around the note text for a given step to the specified opacity."""
-        note_circle = self.mob_select_circles[step]
-        note_circle.set_stroke(opacity=opacity)
+    def highlight_pitch(self, pitch_idx: int, opacity: float):
+        """Sets the highlight circle around the pitch text for a given step to the specified opacity."""
+        pitch_circle: Circle = self.mob_select_circles[pitch_idx]
+        pitch_circle.set_stroke(opacity=opacity)
 
-    def play_notes(stream: stream.Stream, bpm: int) -> Animation:
+    def play(stream: stream.Stream, bpm: int) -> Animation:
         bps = bpm / 60
 
         pass  # TODO: implement
@@ -128,7 +161,7 @@ class Circle12NotesBase(VGroup):
 class Circle12NotesSequenceConnectors(Circle12NotesBase):
 
     # mobjects
-    mob_select_connectors: VGroup
+    mob_select_connectors: VGroup  # VGroup[Line]
     hack_select_connectors: list[Line]
 
     # properties
@@ -142,20 +175,26 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
         return (1 - pct) ** 1.5
 
     # implementation details
-    _selected_steps: list[int]
+    _selected_pitches: list[int]
 
     def __init__(
         self,
         circle_color=GRAY,
         radius: float = 1,
-        note_intervals: int = 1,
+        steps_per_pitch: int = 1,
         max_selected_steps: int = 3,
         select_circle_opacity=calculate_circle_opacity_default,
         **kwargs,
     ):
-        Circle12NotesBase.__init__(self, circle_color, radius, note_intervals, **kwargs)
+        Circle12NotesBase.__init__(
+            self,
+            circle_color,
+            radius,
+            steps_per_pitch,
+            **kwargs,
+        )
         # initialize fields
-        self._selected_steps = []
+        self._selected_pitches = []
         self.hack_select_connectors = (
             []
         )  # TODO: figure out a better hack. maybe subclass VGroup?
@@ -170,7 +209,7 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
         return AnimationGroup(
             Create(self.mob_circle_background, rate_func=rate_functions.ease_in_sine),
             AnimationGroup(
-                Create(self.mob_notes),
+                Create(self.mob_pitches),
                 Create(self.mob_select_circles),
                 Create(self.mob_select_connectors),
             ),
@@ -179,24 +218,24 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
 
     def select_step(self, step: int):
         logger.debug(
-            f"  invoke select_step({step}); {self._selected_steps=}, {self.max_selected_steps}, {self.hack_select_connectors}: ",
+            f"  invoke select_step({step}); {self._selected_pitches=}, {self.max_selected_steps}, {self.hack_select_connectors}: ",
             end="",
         )
 
         # if already selected, ignore
-        if self._selected_steps and step is self._selected_steps[0]:
+        if self._selected_pitches and step is self._selected_pitches[0]:
             logger.debug(f"ignoring redundant select_step({step}); already selected")
             return
 
-        # mark this note as selected
-        self._selected_steps.insert(0, step)
+        # mark this pitch as selected
+        self._selected_pitches.insert(0, step)
 
-        # if there is a previous selected note, add a connector
-        if len(self._selected_steps) >= 2:
+        # if there is a previous selected pitch, add a connector
+        if len(self._selected_pitches) >= 2:
             # TODO: maybe check if this connector already exists?
             # get circle centers
-            new_select_circle = self.mob_select_circles[self._selected_steps[0]]
-            prev_select_circle = self.mob_select_circles[self._selected_steps[1]]
+            new_select_circle = self.mob_select_circles[self._selected_pitches[0]]
+            prev_select_circle = self.mob_select_circles[self._selected_pitches[1]]
             # create connector line
             mob_connector = get_line_between_two_circle_edges(
                 prev_select_circle, new_select_circle
@@ -208,23 +247,25 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
             # self.add(mob_connector) # TODO: had this, commented it out to fix a bug. can probably remove?
 
         # if we're over our limit, un-select an old step and make it invisible
-        if len(self._selected_steps) > self.max_selected_steps:
+        if len(self._selected_pitches) > self.max_selected_steps:
             # remove the circle
-            old_step: int = self._selected_steps.pop()
-            self.highlight_step(step=old_step, opacity=0)
+            old_step: int = self._selected_pitches.pop()
+            self.highlight_pitch(pitch_idx=old_step, opacity=0)
             # remove the oldest connector
             old_select_connector = self.hack_select_connectors.pop()
             self.mob_select_connectors.remove(old_select_connector)
 
         # update opacities for all remaining select circles and connectors
         # reversed() starts at the oldest (dimmest) circle, so that if it's also selected in a newer step, that one is used instead
-        for select_idx, select_step in reversed(list(enumerate(self._selected_steps))):
+        for select_idx, select_step in reversed(
+            list(enumerate(self._selected_pitches))
+        ):
             new_opacity = self.calculate_circle_opacity(
                 select_idx, self.max_selected_steps
             )
-            self.highlight_step(step=select_step, opacity=new_opacity)
+            self.highlight_pitch(pitch_idx=select_step, opacity=new_opacity)
             # dont update a connector that doesn't exist
-            if select_idx != len(self._selected_steps) - 1:
+            if select_idx != len(self._selected_pitches) - 1:
                 mob_select_connector = self.hack_select_connectors[select_idx]
                 mob_select_connector.set_stroke(opacity=new_opacity)
         return self
@@ -242,7 +283,7 @@ class PlayCircle12Notes(Animation):
     # beats per second
     total_time: float
     circle12: Circle12NotesSequenceConnectors
-    notes_gen: peekable  # Iterator[tuple[OffsetQL, Pitch]]
+    pitches_gen: peekable  # Iterator[tuple[OffsetQL, Pitch]]
     last_pitch: Pitch = None
 
     def __init__(
@@ -251,17 +292,17 @@ class PlayCircle12Notes(Animation):
         circle12: Circle12NotesSequenceConnectors,
         **kwargs,
     ):
-        notes = music_data.chord_roots()
-        self.total_time = notes[-1].time + 1
+        pitches = music_data.chord_roots()
+        self.total_time = pitches[-1].time + 1
         super().__init__(circle12, run_time=self.total_time, **kwargs)
         self.circle12 = circle12
-        self.notes_gen = peekable(notes)
+        self.pitches_gen = peekable(pitches)
 
     def interpolate_mobject(self, alpha: float):
         current_time = alpha * self.total_time
         try:
-            while self.notes_gen.peek().time <= current_time:
-                pitch_info: MusicDataTiming[Pitch] = next(self.notes_gen)
+            while self.pitches_gen.peek().time <= current_time:
+                pitch_info: MusicDataTiming[Pitch] = next(self.pitches_gen)
                 if (
                     self.last_pitch is not None
                     and pitch_info.elem.pitchClass == self.last_pitch.pitchClass
@@ -282,7 +323,8 @@ class test(Scene):
         self.wait(0.2)
         circle_chromatic = Circle12NotesSequenceConnectors(radius=1.5).shift(2 * LEFT)
         circle_fifths = Circle12NotesSequenceConnectors(
-            radius=1.5, note_intervals=7
+            radius=1.5,
+            steps_per_pitch=7,
         ).shift(2 * RIGHT)
         self.play(circle_chromatic.create(), circle_fifths.create(), run_time=2)
         self.wait(1)
@@ -301,7 +343,7 @@ class testPlay(Scene):
         self.wait(0.2)
         circle_chromatic = Circle12NotesSequenceConnectors(radius=1.5).shift(2 * LEFT)
         circle_fifths = Circle12NotesSequenceConnectors(
-            radius=1.5, note_intervals=7
+            radius=1.5, steps_per_pitch=7
         ).shift(2 * RIGHT)
         self.play(circle_chromatic.create(), circle_fifths.create(), run_time=2)
         self.wait(1)
