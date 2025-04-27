@@ -16,6 +16,7 @@ from music.music_constants import note_for_step
 from obj_music_text import NoteText
 from musicxml import MusicData, MusicDataTiming
 from utils import (
+    get_key_tonic,
     vector_on_unit_circle_clockwise_from_top,
     generate_group,
     pick_preferred_rotation,
@@ -57,6 +58,7 @@ def get_line_between_two_circle_edges(c1: Circle, c2: Circle):
 # TODO: add non-root "highlights" around other notes being played
 BASE_PITCH_LABEL_FONT_SIZE = 16
 BASE_PITCH_CIRCLE_RADIUS = 0.2
+DEFAULT_ROTATE_TRANSITION_TIME = 0.3
 
 
 class Circle12NotesBase(VGroup):
@@ -219,7 +221,11 @@ class Circle12NotesBase(VGroup):
         print(
             f"Circle12Notes({self.steps_per_pitch=}).animate_rotate_to_pitch({pitch_idx=}): {angle_for_pitch=}"
         )
-        return RotateCircle12Notes(self, angle_for_pitch, run_time=run_time)
+        return RotateCircle12Notes(
+            self,
+            angle_for_pitch,
+            run_time=run_time,
+        )
 
     def play(stream: stream.Stream, bpm: int) -> Animation:
         bps = bpm / 60
@@ -230,8 +236,9 @@ class Circle12NotesBase(VGroup):
 class RotateCircle12Notes(Animation):
 
     circle12: Circle12NotesBase
-    angle_diff: float
-    start_angle: float
+    start_angle: float = None  # lazy computed
+    end_angle: float
+    angle_diff: float = None  # lazy computed
 
     def __init__(
         self,
@@ -242,18 +249,24 @@ class RotateCircle12Notes(Animation):
     ):
         super().__init__(mobject=circle12, run_time=run_time, **kwargs)
         self.circle12 = circle12
-        self.start_angle = circle12.rotate_angle
-        self.angle_diff = pick_preferred_rotation(self.start_angle, end_angle)
-        print(
-            f"RotateCircle12Notes: Circle12Notes({circle12.steps_per_pitch=}), {self.start_angle=}, {end_angle=}, {self.angle_diff=}, {self.rate_func}"
-        )
+        self.end_angle = end_angle
+        # start_angle and angle_diff will be lazy computed
 
     def interpolate_mobject(self, alpha: float):
-        print(
-            f"RotateCircle12Notes.interpolate_mobject({alpha=}): {self.rate_func(alpha)=}"
-        )
+        # lazy compute the rotation to perform
+        if self.angle_diff is None:
+            self.start_angle = self.circle12.rotate_angle
+            self.angle_diff = pick_preferred_rotation(self.start_angle, self.end_angle)
+            print(
+                f"RotateCircle12Notes: Circle12Notes({self.circle12.steps_per_pitch=}), {self.start_angle=}, {self.end_angle=}, {self.angle_diff=}, {self.rate_func}"
+            )
+
+        old_rotate_angle = self.circle12.rotate_angle
         self.circle12.rotate_to(
             self.start_angle + self.angle_diff * self.rate_func(alpha)
+        )
+        print(
+            f"RotateCircle12Notes.interpolate_mobject({alpha=}): {old_rotate_angle=}, {self.circle12.rotate_angle}"
         )
 
 
@@ -383,10 +396,93 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
             mob_connector.rotate(angle=rotate_diff * -TAU, about_point=center)
 
     def play(self, music_data: MusicData) -> Animation:
-        return PlayCircle12Notes(music_data, self)
+        return PlayCircle12Notes(
+            circle12=self,
+            music_data=music_data,
+            transition_time=DEFAULT_ROTATE_TRANSITION_TIME,
+        )
 
 
-class PlayCircle12Notes(Animation):
+class PlayCircle12Notes(AnimationGroup):
+
+    def __init__(
+        self,
+        circle12: Circle12NotesBase,
+        music_data: MusicData,
+        transition_time: float,
+        **kwargs,
+    ):
+        anims: list[Animation] = []
+
+        # only add rotations if there are key changes
+        if len(music_data.keys) > 1:
+            anims.append(
+                PlayCircle12NotesRotateForKey(
+                    circle12=circle12,
+                    music_data=music_data,
+                    transition_time=transition_time,
+                    **kwargs,
+                )
+            )
+        # only add chord animations if there are any chords in the piece
+        if len(music_data.chord_roots()) > 0:
+            anims.append(
+                PlayCircle12NotesSelectChordRoots(
+                    circle12=circle12,
+                    music_data=music_data,
+                    **kwargs,
+                )
+            )
+        super().__init__(anims, **kwargs)
+
+
+class PlayCircle12NotesRotateForKey(Succession):
+
+    # TODO: parent class to combine with PlayMusicText. needs to consider transition_time and skip criteria
+
+    def __init__(
+        self,
+        circle12: Circle12NotesBase,
+        music_data: MusicData,
+        transition_time: float,
+        **kwargs,
+    ):
+        # build a sequence of animations to play - waits followed by rotations
+        anims: list[Animation] = []
+        previous_pitch_class: int = get_key_tonic(music_data.keys[0].elem).pitchClass
+        previous_time: int = 0
+
+        for key_info in music_data.keys[1:]:
+            # figure out which pitch to use
+            pitch = key_info.elem.getTonic()
+            assert pitch is not None
+            if pitch.pitchClass == previous_pitch_class:
+                continue  # no need to rotate to same pitch
+
+            # create animation for this key change
+            anim = circle12.animate_rotate_to_pitch(pitch.pitchClass)
+
+            # fiture out how long since last update
+            elapsed_time = key_info.time - previous_time
+
+            # if we don't have time to do a full wait-then-transition
+            if elapsed_time <= transition_time:
+                # just spin with the time we have
+                anim.run_time = elapsed_time
+                anims.append(anim)
+            else:
+                # sleep until start of time when we need to transform
+                anims.append(Wait(elapsed_time - transition_time))
+                anim.run_time = transition_time
+                anims.append(anim)
+            # done processing this key change
+            previous_time = key_info.time
+            previous_pitch_class = pitch.pitchClass
+
+        super().__init__(anims, **kwargs)
+
+
+class PlayCircle12NotesSelectChordRoots(Animation):
 
     # TODO: rework into a play() method on Circle12Notes
     # can still be a class within Circle12Notes,
