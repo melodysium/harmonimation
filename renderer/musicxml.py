@@ -448,7 +448,11 @@ def process_chord_annotation(
         cluster_starts = get_unique_offsets(
             m21_score.recurse()
             .getElementsByClass(Measure)
-            .getElementsByOffset(range[0], range[1]),
+            .getElementsByOffset(
+                range[0],
+                range[1],
+                includeEndBoundary=False,
+            ),
             offsetSite=m21_score,
         )
     else:
