@@ -6,7 +6,7 @@ from manim.typing import Vector3D
 from musicxml import MusicData
 from obj_music_circles import Circle12NotesSequenceConnectors
 from obj_music_text import ChordText, LyricText, KeyText
-from utils import get_key_tonic
+from utils import get_ionian_root
 
 
 def _compute_shift(widget_def: dict) -> Vector3D:
@@ -61,7 +61,7 @@ def _build_circle12notes(widget_def: dict, music_data: MusicData) -> list[Mobjec
         elif widget_type == "circle_fifths":
             return 7
 
-    starting_pitch = get_key_tonic(music_data.keys[0].elem).pitchClass
+    starting_pitch = get_ionian_root(music_data.keys[0].elem).pitchClass
 
     circle_chromatic = Circle12NotesSequenceConnectors(
         radius=radius,

@@ -143,6 +143,10 @@ def get_key_tonic(m21_key: Key) -> Pitch:
     return tonic
 
 
+def get_ionian_root(m21_key: Key) -> Pitch:
+    return get_key_tonic(m21_key.asKey(mode="ionian"))
+
+
 def display_chord_short(m21_chord: Chord) -> str:
     replacements = {
         "-major seventh chord": "M7",

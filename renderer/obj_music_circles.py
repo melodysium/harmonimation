@@ -16,7 +16,7 @@ from music.music_constants import note_for_step
 from obj_music_text import NoteText
 from musicxml import MusicData, MusicDataTiming
 from utils import (
-    get_key_tonic,
+    get_ionian_root,
     vector_on_unit_circle_clockwise_from_top,
     generate_group,
     pick_preferred_rotation,
@@ -449,12 +449,13 @@ class PlayCircle12NotesRotateForKey(Succession):
     ):
         # build a sequence of animations to play - waits followed by rotations
         anims: list[Animation] = []
-        previous_pitch_class: int = get_key_tonic(music_data.keys[0].elem).pitchClass
+        previous_pitch_class: int = get_ionian_root(music_data.keys[0].elem).pitchClass
         previous_time: int = 0
 
         for key_info in music_data.keys[1:]:
             # figure out which pitch to use
-            pitch = key_info.elem.getTonic()
+            # TODO: whether to use tonic or ionian root at top should be a config option
+            pitch = get_ionian_root(key_info.elem)
             assert pitch is not None
             if pitch.pitchClass == previous_pitch_class:
                 continue  # no need to rotate to same pitch
