@@ -98,7 +98,7 @@ class CircleRhythmTrack(VGroup):
                 animations.append(self.mob_notes[step].ripple())
             else:
                 animations.append(Wait())
-        print()
+        # print()
         return Succession(*animations)
 
     def add_notes(self, notes: list[int]) -> Animation:

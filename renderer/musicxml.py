@@ -485,6 +485,10 @@ def process_chord_annotation(
             )
         )
 
+    # print(
+    #     f"process_chord_annotation():\n\t{range=}\n\t{chord_symbols=}\n\t{parsed_chord_symbols=}\n\t{ranges=}\n\t{harmonic_clusters=}"
+    # )
+
     # resolve into chords
     return [
         MusicDataTiming(
@@ -524,6 +528,9 @@ def extract_harmonic_clusters(m21_score: Score) -> list[MusicDataTiming[Chord]]:
             if idx + 1 < len(chord_symbols)
             else m21_score.highestTime
         )
+        # print(
+        #     f"extract_harmonic_clusters(): processing harmonic range {range_start}-{range_end}"
+        # )
         # TODO: optimization: filter x_symbols to only those in range?
         chords.extend(
             process_chord_annotation(

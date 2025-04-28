@@ -204,9 +204,9 @@ class Circle12NotesBase(VGroup):
         )
         # compute final angle
         final_angle = steps_past_top / 12 + rotate_angle_to_use
-        print(
-            f"compute_angle_for_pitch({pitch_idx=}, {rotate_angle=}) ({self.steps_per_pitch=}). {pitches_past_start=}, {steps_past_top=}, {rotate_angle_to_use=}, {final_angle=}"
-        )
+        # print(
+        #     f"compute_angle_for_pitch({pitch_idx=}, {rotate_angle=}) ({self.steps_per_pitch=}). {pitches_past_start=}, {steps_past_top=}, {rotate_angle_to_use=}, {final_angle=}"
+        # )
         return final_angle
 
     def rotate_to_pitch(self, pitch_idx: int) -> None:
@@ -218,9 +218,9 @@ class Circle12NotesBase(VGroup):
     def animate_rotate_to_pitch(self, pitch_idx: int, run_time: float = 1) -> Animation:
         # compute the end state
         angle_for_pitch = -self.compute_angle_for_pitch(pitch_idx, rotate_angle=0)
-        print(
-            f"Circle12Notes({self.steps_per_pitch=}).animate_rotate_to_pitch({pitch_idx=}): {angle_for_pitch=}"
-        )
+        # print(
+        #     f"Circle12Notes({self.steps_per_pitch=}).animate_rotate_to_pitch({pitch_idx=}): {angle_for_pitch=}"
+        # )
         return RotateCircle12Notes(
             self,
             angle_for_pitch,
@@ -257,17 +257,17 @@ class RotateCircle12Notes(Animation):
         if self.angle_diff is None:
             self.start_angle = self.circle12.rotate_angle
             self.angle_diff = pick_preferred_rotation(self.start_angle, self.end_angle)
-            print(
-                f"RotateCircle12Notes: Circle12Notes({self.circle12.steps_per_pitch=}), {self.start_angle=}, {self.end_angle=}, {self.angle_diff=}, {self.rate_func}"
-            )
+            # print(
+            #     f"RotateCircle12Notes: Circle12Notes({self.circle12.steps_per_pitch=}), {self.start_angle=}, {self.end_angle=}, {self.angle_diff=}, {self.rate_func}"
+            # )
 
         old_rotate_angle = self.circle12.rotate_angle
         self.circle12.rotate_to(
             self.start_angle + self.angle_diff * self.rate_func(alpha)
         )
-        print(
-            f"RotateCircle12Notes.interpolate_mobject({alpha=}): {old_rotate_angle=}, {self.circle12.rotate_angle}"
-        )
+        # print(
+        #     f"RotateCircle12Notes.interpolate_mobject({alpha=}): {old_rotate_angle=}, {self.circle12.rotate_angle}"
+        # )
 
 
 class Circle12NotesSequenceConnectors(Circle12NotesBase):
@@ -389,9 +389,9 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
     def rotate_to(self, angle: float) -> None:
         rotate_diff = super().rotate_to(angle)
         center = self.mob_circle_background.get_center()
-        print(
-            f"Circle12NoteSequenceConnectors({self.steps_per_pitch=}).rotate_to({angle=}): {rotate_diff=}"
-        )
+        # print(
+        #     f"Circle12NoteSequenceConnectors({self.steps_per_pitch=}).rotate_to({angle=}): {rotate_diff=}"
+        # )
         for mob_connector in self.mob_select_connectors:
             mob_connector.rotate(angle=rotate_diff * -TAU, about_point=center)
 
@@ -555,7 +555,7 @@ class test(Scene):
         # self.wait(1)
 
         def rotate_to_pitch_idx(pitch_idx: int):
-            print(f"rotating both circles to step {pitch_idx} on top")
+            # print(f"rotating both circles to step {pitch_idx} on top")
             self.play(
                 AnimationGroup(
                     circle_chromatic.animate_rotate_to_pitch(pitch_idx, run_time=0.5),

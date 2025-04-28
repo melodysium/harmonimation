@@ -351,7 +351,7 @@ class testPlayMusicalText(Scene):
         music_text = MusicText(".asdfasfasf", color=ManimColor([1, 1, 1, 0])).move_to(
             UP * 1 + RIGHT * 1
         )
-        print(music_text.get_center())
+        # print(music_text.get_center())
         # music_text2 = MusicalText("").move_to(UP * -1 + RIGHT * -1)
         # print(music_text2.get_center())
         # print(music_text2.points)
