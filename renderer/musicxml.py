@@ -22,6 +22,7 @@ import regex as re  # stdlib re doesn't support multiple named capture groups wi
 # project files
 from utils import (
     display_chord_short,
+    display_chord_short_custom,
     eq_unique,
     extract_pitches,
     get_chord_root,
@@ -622,8 +623,9 @@ def parse_score_data(data) -> MusicData:
 
     for chord_info in music_data.chords:
         chord = chord_info.elem
+        custom_disp = display_chord_short_custom(chord)
         print(
-            f"{chord_info.offset:5}: {chord.pitchedCommonName:>25} {display_chord_short(chord):4} ({' '.join(f"{p.nameWithOctave:3}" for p in sorted(chord.pitches)) if len(chord.pitches) > 0 else "no notes"})"
+            f"{chord_info.offset:5}: {chord.pitchedCommonName:>32} {custom_disp if custom_disp is not None else "":32} ({' '.join(f"{p.nameWithOctave:3}" for p in sorted(chord.pitches)) if len(chord.pitches) > 0 else "no notes"})"
         )
     # for offset, note in music_data.all_notes:
     #     print(f"{offset:5}: {note.nameWithOctave} {note.duration.quarterLength}")

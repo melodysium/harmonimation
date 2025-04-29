@@ -250,6 +250,14 @@ def display_chord_short_custom(m21_chord: Chord) -> str | None:
 
 
 def display_chord_short(m21_chord: Chord) -> str:
+
+    # first: try to display a name using my custom logic
+    chord_repr = display_chord_short_custom(m21_chord)
+    if chord_repr is not None:
+        return chord_repr
+
+    # otherwise, adapt from Music21's names
+    chord_repr = m21_chord.pitchedCommonName
     replacements = {
         "-major seventh chord": "M7",
         "-minor seventh chord": "m7",
@@ -259,7 +267,6 @@ def display_chord_short(m21_chord: Chord) -> str:
     if USE_LATEX:
         replacements.update(_rich_accidental_replacements)
 
-    chord_repr = m21_chord.pitchedCommonName
     for repl_old, repl_new in replacements.items():
         chord_repr = chord_repr.replace(repl_old, repl_new)
     return chord_repr
