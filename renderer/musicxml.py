@@ -550,19 +550,22 @@ def extract_lyrics(
 ]:  # [(offset, [(syllable_offset, syllable_text)])]
     searcher = LyricSearcher(m21_score)
     m21_lyrics = searcher.search(re.compile(r"[^\s]+"))
-    lyrics_by_syllable = [
-        MusicDataTiming(
-            elem=[
-                MusicDataTiming(
-                    elem=il.text,
-                    offset=il.el.getOffsetInHierarchy(m21_score),
-                )
-                for il in lyric.indices
-            ],
-            offset=lyric.els[0].getOffsetInHierarchy(m21_score),
-        )
-        for lyric in m21_lyrics
-    ]
+    lyrics_by_syllable = sorted(
+        [
+            MusicDataTiming(
+                elem=[
+                    MusicDataTiming(
+                        elem=il.text,
+                        offset=il.el.getOffsetInHierarchy(m21_score),
+                    )
+                    for il in lyric.indices
+                ],
+                offset=lyric.els[0].getOffsetInHierarchy(m21_score),
+            )
+            for lyric in m21_lyrics
+        ],
+        key=lambda mdt: mdt.offset,
+    )
     return lyrics_by_syllable
 
 
