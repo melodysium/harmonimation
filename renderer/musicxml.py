@@ -355,18 +355,21 @@ def process_chord_annotation(
 ) -> list[MusicDataTiming[Chord]]:
 
     # Easy case: Chord is hard-coded
-    if len([cs for cs in chord_symbols.values() if not isinstance(cs, NoChord)]):
+    if len([cs for cs in chord_symbols.values() if not isinstance(cs, NoChord)]) > 1:
         # Validation: If manual chord is set, it should be alone
-        if len(chord_symbols) > 1:
+        if len(eq_unique(chord_symbols.values())) > 1:
             raise ValueError(
                 "Invalid annotation - cannot have manual chord set in the same beat as any other chord annotations."
             )
+        notated_chord = list(chord_symbols.values())[0]
+        if range[0] == 99:
+            print(
+                f"debug: {notated_chord}, {notated_chord.chordKind}, [{notated_chord.root()} {notated_chord.third} {notated_chord.fifth} {notated_chord.seventh}] {notated_chord.normalOrderString}, {notated_chord.pitchedCommonName}"
+            )
         return [
             MusicDataTiming(
-                elem=next(
-                    chord_symbols.values(),
-                    offset=range[0],
-                )
+                elem=notated_chord,
+                offset=range[0],
             )
         ]
 
