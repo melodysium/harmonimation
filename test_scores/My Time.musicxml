@@ -76,11 +76,9 @@
     </credit>
   <credit page="1">
     <credit-type>composer</credit-type>
-    <credit-words default-x="1148.144364" default-y="1411.047256" justify="right" valign="bottom">orig. bo en</credit-words>
-    </credit>
-  <credit page="1">
-    <credit-type>lyricist</credit-type>
-    <credit-words default-x="85.725036" default-y="1411.094564" justify="left" valign="top">arr. melodysium</credit-words>
+    <credit-words default-x="1148.144364" default-y="1411.047256" justify="right" valign="bottom">orig. bo en
+</credit-words>
+    <credit-words>arr. melodysium</credit-words>
     </credit>
   <part-list>
     <score-part id="P1">
@@ -8857,8 +8855,11 @@
         <beam number="2">end</beam>
         </note>
       <backup>
-        <duration>8</duration>
+        <duration>12</duration>
         </backup>
+      <forward>
+        <duration>4</duration>
+        </forward>
       <note default-x="48.29" default-y="-422.96">
         <pitch>
           <step>F</step>
