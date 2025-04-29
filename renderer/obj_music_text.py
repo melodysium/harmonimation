@@ -311,6 +311,9 @@ class PlayMusicText(Succession):
                 previous_time = PlayMusicText.VERY_SMALL
                 continue
 
+            # print(
+            #     f"PlayMusicText step:\n\t{previous_time=}\n\t{text_state.time}, {text_state.text}"
+            # )
             assert text_state.time > previous_time
 
             # create animation for this latest text value
