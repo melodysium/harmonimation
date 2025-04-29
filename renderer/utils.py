@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from manim import Mobject, Group, Scene, VDict, PI
 from music21.base import Music21Object
 from music21.chord import Chord
+from music21.interval import Interval
 from music21.key import Key
 from music21.note import Note, NotRest, Pitch
 from music21.stream import Score, Stream
@@ -145,6 +146,107 @@ def get_key_tonic(m21_key: Key) -> Pitch:
 
 def get_ionian_root(m21_key: Key) -> Pitch:
     return get_key_tonic(m21_key.asKey(mode="ionian"))
+
+
+def display_chord_short_custom(m21_chord: Chord) -> str | None:
+    quality_mapping = {
+        "augmented": "+",
+        "major": "Maj",
+        "minor": "min",
+        "diminished": "dim",
+        "half-diminished": "ø",
+        "full-diminished": "°",
+    }
+
+    if not m21_chord.isChord or len(m21_chord.pitches) < 3:
+        return "no chord"  # TODO: handle other cases
+
+    chord_root = m21_chord.root()
+    chord_root_str = chord_root.name
+    # print(
+    #     f"display_chord_short_custom(): {chord_root=}, {m21_chord.pitches=}, {m21_chord.pitchedCommonName=}"
+    # )
+
+    def steps_above_root(m21_pitch: Pitch = None, pitchClass: int = None) -> int:
+        if m21_pitch is not None:
+            pitchClass = m21_pitch.pitchClass
+        if pitchClass is None:
+            raise ValueError("must provide either pitch or pitchClass")
+        return (pitchClass - chord_root.pitchClass) % 12
+
+    if m21_chord.isTriad():  # 3 notes
+        # print("it's a triad")
+        quality = m21_chord.quality
+        quality_str = quality_mapping.get(quality, quality)
+        return f"{chord_root_str}{quality_str}"
+    # elif m21_chord.isSeventh() or m21_chord.isNinth():  # 4-5 notes
+    # TODO: assume everything else is a 7th or 9th chord
+    else:
+        third_steps = steps_above_root(m21_chord.third)
+        fifth_steps = steps_above_root(m21_chord.fifth)
+        seventh_steps = steps_above_root(m21_chord.seventh)
+        # print(f"{third_steps=}, {fifth_steps=}, {seventh_steps=}")
+        match (third_steps, fifth_steps, seventh_steps):
+            case (4, 7, 11):
+                quality_str = "Maj7"  # major 7
+            case (3, 7, 11):
+                quality_str = "mM7"  # minor-major 7
+            case (4, 7, 10):
+                quality_str = "7"  # dominant
+            case (3, 7, 10):
+                quality_str = "min7"  # minor 7
+            case (3, 6, 10):
+                quality_str = "ø7"  # half-diminished # TODO: or maybe "b5b7"?
+            case (3, 6, 9):
+                quality_str = "°7"  # fully-diminished
+        # print(f"7th quality: {quality_str}")
+
+        # figure out how to display other pitches in the chord
+        other_pitches = [
+            pitch
+            for pitch in m21_chord.pitches
+            if pitch.pitchClass
+            not in (
+                chord_root.pitchClass,
+                m21_chord.third.pitchClass,
+                m21_chord.fifth.pitchClass,
+                m21_chord.seventh.pitchClass,
+            )
+        ]
+        # print(f"{other_pitches=}")
+
+        if len(other_pitches) > 0:
+            # hack for now - handle known cases.
+            # TODO: handle weirder stuff later.
+            if m21_chord.isNinth():
+                # if it's a ninth, hard-code the one case in the piece we care about.
+                # will in the future use Interval(int) to get an interval, render from there
+                if len(other_pitches) == 1:
+                    ninth_steps_above_root = steps_above_root(other_pitches[0])
+                    # if flat ninth, add onto the end
+                    if ninth_steps_above_root == 1:
+                        quality_str += "♭9"
+                    elif ninth_steps_above_root == 2:
+                        assert quality_str in ("Maj7", "7", "min7")
+                        quality_str = quality_str.replace("7", "9")
+                if len(other_pitches) == 2:
+                    assert set(2, 9) == {
+                        steps_above_root(pitch) for pitch in other_pitches
+                    }
+                    assert quality_str == "7"
+                    quality_str = "9add6"
+            elif len(other_pitches) == 1 and steps_above_root(other_pitches[0]) == 2:
+                # if it's just a single major 2nd, render that.
+                quality_str += "add2"
+            elif len(other_pitches) == 1 and steps_above_root(other_pitches[0]) == 9:
+                # if it's jsut a single major 6th, render that.
+                quality_str += "add6"
+            else:
+                # give up, use music21's name
+                return None
+
+    # Add note name to chord quality
+    return f"{_rich_accidental_replacements.get(chord_root_str, chord_root_str)}{quality_str}"
 
 
 def display_chord_short(m21_chord: Chord) -> str:
