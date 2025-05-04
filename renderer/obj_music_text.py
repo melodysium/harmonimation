@@ -38,34 +38,28 @@ myTemplate.add_to_preamble(
 \newunicodechar{𝄪}{\musDoubleSharp}"""
 )
 
-print(f"{USE_LATEX=}")
-if USE_LATEX:
 
-    class MusicText(Tex):
+class MusicText(Tex):
 
-        _original_font_size: float
+    _original_font_size: float
 
-        def __init__(
+    def __init__(
+        self,
+        *args,
+        font_size: float = DEFAULT_FONT_SIZE,
+        **kwargs,
+    ):
+        # apparently when rendering in Tex the font size is much smaller compared to a Text object,
+        # so we'll artificially bump it up here
+        self._original_font_size = font_size
+        font_size = font_size * 1.5
+        Tex.__init__(
             self,
             *args,
-            font_size: float = DEFAULT_FONT_SIZE,
+            tex_template=myTemplate,
+            font_size=font_size,
             **kwargs,
-        ):
-            # apparently when rendering in Tex the font size is much smaller compared to a Text object,
-            # so we'll artificially bump it up here
-            self._original_font_size = font_size
-            font_size = font_size * 1.5
-            Tex.__init__(
-                self,
-                *args,
-                tex_template=myTemplate,
-                font_size=font_size,
-                **kwargs,
-            )
-
-else:
-
-    class MusicText(Text): ...  # TODO: this is weird, should just remove
+        )
 
 
 class ChordText(MusicText):
