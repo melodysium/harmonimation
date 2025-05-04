@@ -6,7 +6,7 @@ import logging
 
 # 3rd party libs
 from manim import *
-from manim.typing import Vector3D
+from manim.typing import Vector3D, Point3D
 from music21 import stream, note
 from music21.note import Pitch
 from more_itertools import peekable
@@ -17,6 +17,7 @@ from obj_music_text import NoteText
 from musicxml import MusicData, MusicDataTiming
 from utils import (
     TimestampedAnimationSuccession,
+    point_at_angle,
     get_ionian_root,
     vector_on_unit_circle_clockwise_from_top,
     generate_group,
@@ -56,16 +57,18 @@ def get_line_between_two_circle_edges(c1: Circle, c2: Circle):
     return Line(c1_point, c2_point)
 
 
-# TODO: add non-root "highlights" around other notes being played
 BASE_PITCH_LABEL_FONT_SIZE = 16
 BASE_PITCH_CIRCLE_RADIUS = 0.2
 DEFAULT_ROTATE_TRANSITION_TIME = 0.3
+DEFAULT_NOTE_IN_KEY_COLOR = WHITE
+DEFAULT_NOTE_NOT_IN_KEY_COLOR = GRAY
 
 
 class Circle12NotesBase(VGroup):
 
     # mobjects
     mob_circle_background: Circle
+    mob_anchors: VGroup  # will not be made visible, just used for movement purposes. hopefully i never have to access them by pitch_idx again
     mob_pitches: VDict  # VDict[int, NoteText]
     mob_select_circles: VDict  # VDict[int, Circle]
 
@@ -98,6 +101,7 @@ class Circle12NotesBase(VGroup):
             if rotate_pitch
             else rotate_angle if rotate_angle else 0
         )
+        # print(f"Circle12NotesBase(): {steps_per_pitch=}, {self.rotate_angle=}")
 
         # add background circle
         self.mob_circle_background = (
@@ -117,19 +121,34 @@ class Circle12NotesBase(VGroup):
         self.add(self.mob_pitches)
         self.mob_select_circles = VDict()
         self.add(self.mob_select_circles)
+        self.mob_anchors = VGroup()
+        self.add(self.mob_anchors)
         # create 12 individual pitches and small highlight circles
         for pitch_idx, pitch_pos in self._list_positions():
-            pitch = note_for_step(pitch_idx)
+            # create an invisible anchor at this position
+            anchor = Dot(
+                radius=0.05, color=RED, fill_opacity=0.8, stroke_opacity=0
+            ).move_to(pitch_pos)
+            self.mob_anchors.add(anchor)
+
+            def create_follow_anchor_updater(
+                target_anchor: Mobject,
+            ) -> Callable[[Mobject], None]:
+                def follow_anchor(mobject: Mobject):
+                    mobject.move_to(target_anchor)
+
+                return follow_anchor
+
             # create NoteText and circle in correct position
-            pitch_label = NoteText(
+            pitch = note_for_step(pitch_idx)
+            self.mob_pitches[pitch_idx] = NoteText(
                 pitch, font_size=BASE_PITCH_LABEL_FONT_SIZE * radius
-            ).shift(pitch_pos)
-            pitch_circle = Circle(
-                color=WHITE, radius=BASE_PITCH_CIRCLE_RADIUS * radius, stroke_opacity=0
-            ).move_to(pitch_label)
-            # save mobjects, add pitch text
-            self.mob_pitches[pitch.scale_step] = pitch_label
-            self.mob_select_circles[pitch.scale_step] = pitch_circle
+            ).add_updater(create_follow_anchor_updater(anchor))
+            self.mob_select_circles[pitch_idx] = Circle(
+                color=WHITE,
+                radius=BASE_PITCH_CIRCLE_RADIUS * radius,
+                stroke_opacity=0,
+            ).add_updater(create_follow_anchor_updater(anchor))
 
     def _list_steps(self) -> Iterable[tuple[int, int]]:  # (pitch, step)
         for step_idx, pitch_idx in enumerate(
@@ -143,14 +162,22 @@ class Circle12NotesBase(VGroup):
 
     def _list_positions(self) -> Iterable[tuple[int, Vector3D]]:
         for step_idx, pitch_idx in self._list_steps():
+            # print(
+            #     f"_list_positions(): {step_idx=}, {pitch_idx=}, pos={point_at_angle(self.mob_circle_background, TAU * step_idx / 12)}"
+            # )
             # calculate position
-            offset = vector_on_unit_circle_clockwise_from_top(
-                (step_idx / 12) + self.rotate_angle
-            )
             yield (
                 pitch_idx,
-                self.mob_circle_background.get_center() + (offset * self.radius,),
+                point_at_angle(self.mob_circle_background, TAU * step_idx / 12),
             )
+
+            # offset = vector_on_unit_circle_clockwise_from_top(
+            #     (step_idx / 12) + self.rotate_angle
+            # )
+            # yield (
+            #     pitch_idx,
+            #     self.get_center() + (offset * self.radius,),
+            # )
 
     # TODO: fix bug where self isn't created, but all its submobjects are
     def create(self) -> Animation:
@@ -163,9 +190,16 @@ class Circle12NotesBase(VGroup):
             lag_ratio=0.18,
         )
 
+    def get_pitch_text(self, pitch_idx: int) -> NoteText:
+        """Gets the pitch text for a given pitch_idx"""
+        return self.mob_pitches[pitch_idx]
+
     def get_pitch_circle(self, pitch_idx: int) -> Circle:
         """Gets the highlight circle around the pitch text for a given pitch_idx"""
         return self.mob_select_circles[pitch_idx]
+
+    def get_center(self) -> Point3D:
+        return self.mob_circle_background.get_center()
 
     def compute_angle_for_pitch(
         self, pitch_idx: int, rotate_angle: float = None
@@ -200,17 +234,19 @@ class Circle12NotesBase(VGroup):
         rotate_diff = angle - self.rotate_angle
         self.rotate_angle = angle
 
-        # rotate some things in-place
+        # rotate things in-place
         self.mob_circle_background.rotate(angle=rotate_diff * -TAU)
+        self.mob_anchors.rotate(angle=rotate_diff * -TAU, about_point=self.get_center())
 
-        # for others, calculate new positions and move to there
-        for pitch_idx, pitch_pos in self._list_positions():
-            self.mob_pitches[pitch_idx].move_to(pitch_pos)
-            self.mob_select_circles[pitch_idx].move_to(pitch_pos)
+        # # for others, calculate new positions and move to there
+        # for pitch_idx, pitch_pos in self._list_positions():
+        #     self.get_pitch_text(pitch_idx).add_updater()
+        #     self.mob_pitches[pitch_idx].move_to(pitch_pos)
+        #     self.mob_select_circles[pitch_idx].move_to(pitch_pos)
         return rotate_diff
 
     def rotate_to_pitch(self, pitch_idx: int) -> None:
-        """Rotate the msuic circle to have step_idx at top"""
+        """Rotate the music circle to have step_idx at top"""
         angle_for_pitch = -self.compute_angle_for_pitch(pitch_idx, rotate_angle=0)
         # print(f"rotate_to_pitch(), {pitch_idx=}, {angle_for_pitch=}")
         self.rotate_to(angle_for_pitch)
@@ -368,7 +404,7 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
         if len(self._selected_pitches) > self.max_selected_steps:
             # remove the circle
             old_step: int = self._selected_pitches.pop()
-            self.get_pitch_circle(pitch_idx=old_step).set_opacity(0)
+            self.get_pitch_circle(pitch_idx=old_step).stroke_opacity = 0
             # remove the oldest connector
             old_select_connector = self.hack_select_connectors.pop()
             self.mob_select_connectors.remove(old_select_connector)
@@ -381,7 +417,15 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
             new_opacity = self.calculate_circle_opacity(
                 select_idx, self.max_selected_steps
             )
-            self.get_pitch_circle(pitch_idx=select_step).set_opacity(new_opacity)
+            setattr(
+                self.get_pitch_circle(pitch_idx=select_step),
+                "stroke_opacity",
+                new_opacity,
+            )
+            self.get_pitch_circle(pitch_idx=select_step).set_stroke(opacity=new_opacity)
+            print(
+                f"select_pitch(): {select_idx=}, {select_step=}, {new_opacity=}, {self.get_pitch_circle(pitch_idx=select_step)=}, {self.get_pitch_circle(pitch_idx=select_step).stroke_opacity=}"
+            )
             # dont update a connector that doesn't exist
             if select_idx != len(self._selected_pitches) - 1:
                 mob_select_connector = self.hack_select_connectors[select_idx]
@@ -390,12 +434,13 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
 
     def rotate_to(self, angle: float) -> None:
         rotate_diff = super().rotate_to(angle)
-        center = self.mob_circle_background.get_center()
         # print(
         #     f"Circle12NoteSequenceConnectors({self.steps_per_pitch=}).rotate_to({angle=}): {rotate_diff=}"
         # )
         for mob_connector in self.mob_select_connectors:
-            mob_connector.rotate(angle=rotate_diff * -TAU, about_point=center)
+            mob_connector.rotate(
+                angle=rotate_diff * -TAU, about_point=self.get_center()
+            )
 
     def play(self, music_data: MusicData) -> Animation:
         return PlayCircle12Notes(
@@ -416,29 +461,29 @@ class PlayCircle12Notes(AnimationGroup):
     ):
         anims: list[Animation] = []
 
-        # only add rotations if there are key changes
+        # only add rotations and highlights if there are key changes
         if len(music_data.keys) > 1:
             anims.append(
-                PlayCircle12NotesRotateForKey(
+                PlayCircle12NotesKeyChanges(
                     circle12=circle12,
                     music_data=music_data,
                     transition_time=transition_time,
                     **kwargs,
                 )
             )
-        # only add chord animations if there are any chords in the piece
-        if len(music_data.chord_roots()) > 0:
-            anims.append(
-                PlayCircle12NotesSelectChordRoots(
-                    circle12=circle12,
-                    music_data=music_data,
-                    **kwargs,
-                )
-            )
+        # # only add chord animations if there are any chords in the piece
+        # if len(music_data.chord_roots()) > 0:
+        #     anims.append(
+        #         PlayCircle12NotesSelectChordRoots(
+        #             circle12=circle12,
+        #             music_data=music_data,
+        #             **kwargs,
+        #         )
+        #     )
         super().__init__(anims, **kwargs)
 
 
-class PlayCircle12NotesRotateForKey(TimestampedAnimationSuccession):
+class PlayCircle12NotesKeyChanges(TimestampedAnimationSuccession):
 
     def __init__(
         self,
@@ -447,26 +492,70 @@ class PlayCircle12NotesRotateForKey(TimestampedAnimationSuccession):
         transition_time: float,
         **kwargs,
     ):
-        # build a sequence of animations to play - waits followed by rotations
+
+        # build a sequence of rotation animations to play
         anims: list[tuple[float, Animation]] = []
-        previous_pitch_class: int = get_ionian_root(music_data.keys[0].elem).pitchClass
+        previous_root_pitch_class: int = get_ionian_root(
+            music_data.keys[0].elem
+        ).pitchClass
+        previous_pitches_in_key: dict[int, bool] = {
+            pitch_idx: pitch_idx
+            in set(p.pitchClass for p in music_data.keys[0].elem.getPitches())
+            for _, pitch_idx in circle12._list_steps()
+        }
 
         for key_info in music_data.keys[1:]:
-            # figure out which pitch to use
-            # TODO: whether to use tonic or ionian root at top should be a config option
-            pitch = get_ionian_root(key_info.elem)
-            assert pitch is not None
-            if pitch.pitchClass == previous_pitch_class:
-                continue  # no need to rotate to same pitch
+            # make a list of animations for this key change
+            key_change_anims: list[Animation] = []
 
-            # create animation for this key change
-            anim = circle12.animate_rotate_to_pitch(pitch.pitchClass)
-            anims.append((key_info.time, anim))
+            # get info about new key
+            key = key_info.elem
+            pitchesInKey = set(p.pitchClass for p in key.getPitches())
+            # figure out which pitch to use for root
+            # TODO: whether to use tonic or ionian root at top should be a config option
+            root_pitch = get_ionian_root(key_info.elem)
+            assert root_pitch is not None
+
+            # if root changed, animate circle rotating
+            if root_pitch.pitchClass != previous_root_pitch_class:
+                anim = circle12.animate_rotate_to_pitch(root_pitch.pitchClass)
+                key_change_anims.append(anim)
+
+            # # animate any individual pitches needing to change highlighting
+            # pitches_in_new_key = {
+            #     pitch_idx: pitch_idx in pitchesInKey
+            #     for _, pitch_idx in circle12._list_steps()
+            # }
+            # for pitch_idx, pitch_is_in_new_key in pitches_in_new_key.items():
+            #     # optimization: skip animation for this pitch if not changed from last key
+            #     if previous_pitches_in_key[pitch_idx] == pitch_is_in_new_key:
+            #         continue
+
+            #     # this pitch needs to animate
+            #     if pitch_is_in_new_key:
+            #         # style as in key
+            #         key_change_anims.append(
+            #             circle12.get_pitch_text(pitch_idx).animate.set_color(
+            #                 DEFAULT_NOTE_IN_KEY_COLOR
+            #             )
+            #         )
+            #     else:
+            #         # style as not in key
+            #         key_change_anims.append(
+            #             circle12.get_pitch_text(pitch_idx).animate.set_color(
+            #                 DEFAULT_NOTE_NOT_IN_KEY_COLOR
+            #             )
+            #         )
 
             # done processing this key change
-            previous_pitch_class = pitch.pitchClass
+            previous_root_pitch_class = root_pitch.pitchClass
+            # previous_pitches_in_key = pitches_in_new_key
 
-        super().__init__(anims, transition_time, **kwargs)
+            # if we ended up with any notes to change, add it to the overall list
+            if len(key_change_anims) > 0:
+                anims.append((key_info.time, AnimationGroup(key_change_anims)))
+
+        super().__init__(anims, 1, **kwargs)
 
 
 class PlayCircle12NotesSelectChordRoots(Animation):
@@ -541,19 +630,28 @@ class test(Scene):
         #     self.wait(step_delay_start * (step_base / (step_base + step)))
         # self.wait(1)
 
-        def rotate_to_pitch_idx(pitch_idx: int):
-            # print(f"rotating both circles to step {pitch_idx} on top")
-            self.play(
-                AnimationGroup(
-                    circle_chromatic.animate_rotate_to_pitch(pitch_idx, run_time=0.5),
-                    circle_fifths.animate_rotate_to_pitch(pitch_idx, run_time=0.5),
-                )
-            )
-            circle_chromatic.select_step(pitch_idx)
-            circle_fifths.select_step(pitch_idx)
+        # # test rotations
+        # def rotate_to_pitch_idx(pitch_idx: int):
+        #     # print(f"rotating both circles to step {pitch_idx} on top")
+        #     self.play(
+        #         AnimationGroup(
+        #             circle_chromatic.animate_rotate_to_pitch(pitch_idx, run_time=0.5),
+        #             circle_fifths.animate_rotate_to_pitch(pitch_idx, run_time=0.5),
+        #         )
+        #     )
+        #     circle_chromatic.select_pitch(pitch_idx)
+        #     circle_fifths.select_pitch(pitch_idx)
 
-        for i in range(1, 13):
-            rotate_to_pitch_idx(-(2 * i + 5) % 12)
+        # for i in range(1, 13):
+        #     rotate_to_pitch_idx(-(2 * i + 5) % 12)
+        #     self.wait(0.5)
+
+        # test changing pitch color
+        for i in range(12):
+            self.play(
+                circle_chromatic.get_pitch_text(i).animate.set_color(color=GRAY),
+                circle_fifths.get_pitch_text(i).animate.set_color(color=GRAY),
+            )
             self.wait(0.5)
 
 

@@ -4,7 +4,19 @@ import math
 import numpy as np
 from dataclasses import dataclass
 
-from manim import Mobject, Group, Scene, VDict, PI, Animation, Wait, Succession
+from manim import (
+    Mobject,
+    Group,
+    Scene,
+    VDict,
+    PI,
+    Animation,
+    Wait,
+    Succession,
+    Circle,
+    TAU,
+)
+from manim.typing import Point3D
 from music21.base import Music21Object
 from music21.chord import Chord
 from music21.interval import Interval
@@ -84,6 +96,12 @@ def callback_add_to_vdict(vdict: VDict, index: Any, object: Mobject):
         vdict[index] = object
 
     return callback
+
+
+def point_at_angle(circle: Circle, angle: float) -> Point3D:
+    proportion = (angle) / TAU
+    proportion -= np.floor(proportion)
+    return circle.point_from_proportion(proportion)
 
 
 class TimestampedAnimationSuccession(Succession):

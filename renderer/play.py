@@ -1,4 +1,5 @@
 from manim import *
+from manim.typing import *
 
 
 class CreateCircle(Scene):
@@ -519,3 +520,143 @@ class testAnimationGroupWithDifferentRunTimes(Scene):
                 square.animate(run_time=1).shift(RIGHT),
             )
         )
+
+
+class MoveToAngleOnCircle(Animation):
+
+    circle: Circle
+    target: Mobject
+    start_angle: float
+    final_angle: float
+    angle_diff: float
+
+    def __init__(
+        self,
+        circle: Circle,
+        target: Mobject,
+        start_angle: float,
+        final_angle: float,
+        **kwargs,
+    ):
+        self.circle = circle
+        self.target = target
+        self.start_angle = start_angle
+        self.final_angle = final_angle
+        self.angle_diff = final_angle - start_angle  # simple version for now
+        super().__init__(target, **kwargs)
+
+    def interpolate_mobject(self, alpha):
+        self.target.move_to(
+            self.circle.point_at_angle(self.start_angle + self.angle_diff * alpha)
+        )
+
+
+class testMoveTextAlongCircleWhileChangingColor(Scene):
+
+    def construct(self):
+        circle = Circle(radius=3)
+        text = Text("Hi!").move_to(circle.point_at_angle(PI))
+        self.play(Create(circle), Create(text))
+        self.wait(1)
+
+        # TODO: why does this get invoked about 3x more than it should?
+        move_along_arc_progress = 0
+
+        def move_along_arc(mobject: Text, dt: float):
+            nonlocal move_along_arc_progress
+            move_along_arc_progress += dt
+            print(f"{dt=}, {move_along_arc_progress=}")
+            pct_complete = min(move_along_arc_progress, 1)
+            mobject.move_to(circle.point_at_angle(PI - PI * pct_complete))
+
+        text.add_updater(move_along_arc)
+        self.play(
+            # MoveToAngleOnCircle(circle, text, PI, 0),
+            # MoveAlongPath(text, Arc(radius=3, start_angle=PI, angle=-PI)),
+            text.animate.set_color(BLUE),
+            Wait(),
+            run_time=1,
+        )
+        text.remove_updater(move_along_arc)
+        self.wait(1)
+
+
+class testMoveTextAlongCircleWhileChangingColorFixed(Scene):
+
+    def construct(self):
+        circle = Circle(radius=3)
+        text_anchor = Point(circle.point_at_angle(PI))
+        text = Text("Hi!").add_updater(lambda mob: mob.move_to(text_anchor))
+        self.play(Create(circle), Create(text))
+        self.wait(1)
+
+        self.play(
+            MoveAlongPath(text_anchor, Arc(radius=3, start_angle=PI, angle=-PI)),
+            text.animate.set_color(BLUE),
+            run_time=1,
+        )
+        self.wait(1)
+
+
+class testCirclePointAtAngle(Scene):
+
+    def construct(self):
+        # Flip circle so that it starts on LEFT, then rotate 1/4 turn clockwise
+        # At the end of this, the start of the circle is at UP, and it proceeds clockwise from there
+        bad_circle = (
+            Circle(radius=2, stroke_color=RED)
+            .flip()
+            .rotate(1 / 4 * -TAU)
+            .move_to(LEFT * 3)
+        )
+        bad_text = Text(
+            "using Circle.point_at_angle()", color=RED, font_size=24
+        ).next_to(bad_circle, DOWN)
+        good_circle = (
+            Circle(radius=2, stroke_color=GREEN)
+            .flip()
+            .rotate(1 / 4 * -TAU)
+            .move_to(RIGHT * 3)
+        )
+        good_text = Text("fixed version", color=GREEN, font_size=24).next_to(
+            good_circle, DOWN
+        )
+        self.play(
+            Create(bad_circle), Create(bad_text), Create(good_circle), Create(good_text)
+        )
+        self.wait(1)
+
+        def fixed_point_at_angle(circle: Circle, angle: float) -> Point3D:
+            proportion = (angle) / TAU
+            proportion -= np.floor(proportion)
+            return circle.point_from_proportion(proportion)
+
+        # Create 12 white dots, spaced evenly around the circle, STARTING where the circle starts.
+        for i in range(12):
+            # BUG: These dots start at LEFT instead of UP.
+            # This is because of the logic in point_at_angle:
+            # - start_angle is computed by projecting circle.points[0] onto the XY plane,
+            #   then reading its angle via angle_of_vector() .. as if the circle was still in "mathematical" orientation.
+            #   here, `start_angle` takes the value 1.570796..., i.e. 90° counterclockwise from mathemetical 0° rotation.
+            # - proportion is then computed as (angle - start_angle) / TAU.
+            #   but param `angle` is "The angle of the point along the circle in radians." Doesn't that mean "from self.points[0]"?
+            #   shouldn't `angle=0` return a point at `self.points[0]`?
+            #   instead proportion takes (0 - 1.570796...) / TAU = -0.75, then the cycling with `np.floor()` brings it to 0.25.
+            # TODO: fix for this should be to just remove start_angle in point_at_angle(). calculate `proportion` as `angle / TAU`.
+            self.add(
+                Point(
+                    bad_circle.point_at_angle(TAU * i / 12),
+                    color=WHITE,
+                    stroke_width=10,
+                )
+            )
+            self.add(
+                Point(
+                    fixed_point_at_angle(good_circle, TAU * i / 12),
+                    color=WHITE,
+                    stroke_width=10,
+                )
+            )
+            self.wait(0.3333333)
+
+        self.wait(1)
