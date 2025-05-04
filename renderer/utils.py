@@ -229,7 +229,6 @@ def display_chord_short_custom(m21_chord: Chord) -> str | None:
         third_steps = steps_above_root(m21_chord.third)
         fifth_steps = steps_above_root(m21_chord.fifth)
         seventh_steps = steps_above_root(m21_chord.seventh)
-        # print(f"{third_steps=}, {fifth_steps=}, {seventh_steps=}")
         match (third_steps, fifth_steps, seventh_steps):
             case (4, 7, 11):
                 quality_str = "Maj7"  # major 7
@@ -243,11 +242,11 @@ def display_chord_short_custom(m21_chord: Chord) -> str | None:
                 quality_str = "ø7"  # half-diminished # TODO: or maybe "b5b7"?
             case (3, 6, 9):
                 quality_str = "°7"  # fully-diminished
-        # print(f"7th quality: {quality_str}")
+        # print(f"{third_steps=}, {fifth_steps=}, {seventh_steps=}, 7th quality={quality_str}")
 
         # figure out how to display other pitches in the chord
-        other_pitches = [
-            pitch
+        other_pitches = {
+            steps_above_root(pitch): pitch
             for pitch in m21_chord.pitches
             if pitch.pitchClass
             not in (
@@ -256,38 +255,38 @@ def display_chord_short_custom(m21_chord: Chord) -> str | None:
                 m21_chord.fifth.pitchClass,
                 m21_chord.seventh.pitchClass,
             )
-        ]
-        # print(f"{other_pitches=}")
+        }
 
         if len(other_pitches) > 0:
             # hack for now - handle known cases.
             # TODO: handle weirder stuff later.
-            if m21_chord.isNinth():
-                # if it's a ninth, hard-code the one case in the piece we care about.
-                # will in the future use Interval(int) to get an interval, render from there
-                if len(other_pitches) == 1:
-                    ninth_steps_above_root = steps_above_root(other_pitches[0])
-                    # if flat ninth, add onto the end
-                    if ninth_steps_above_root == 1:
-                        quality_str += "♭9"
-                    elif ninth_steps_above_root == 2:
-                        assert quality_str in ("Maj7", "7", "min7")
-                        quality_str = quality_str.replace("7", "9")
-                if len(other_pitches) == 2:
-                    assert set(2, 9) == {
-                        steps_above_root(pitch) for pitch in other_pitches
-                    }
-                    assert quality_str == "7"
-                    quality_str = "9add6"
-            elif len(other_pitches) == 1 and steps_above_root(other_pitches[0]) == 2:
-                # if it's just a single major 2nd, render that.
-                quality_str += "add2"
-            elif len(other_pitches) == 1 and steps_above_root(other_pitches[0]) == 9:
-                # if it's jsut a single major 6th, render that.
-                quality_str += "add6"
-            else:
-                # give up, use music21's name
-                return None
+
+            # handle ninth pitches
+            ninth_pitches = {
+                step: p for step, p in other_pitches.items() if step == 1 or step == 2
+            }
+            # print(f"{other_pitches=}, {ninth_pitches=}")
+            if m21_chord.isNinth() or len(ninth_pitches) == 1:
+                assert (
+                    len(ninth_pitches) == 1
+                )  # TODO: handle sharp ninths later if that's a thing I care about?
+                ninth_steps_above_root, _ = list(ninth_pitches.items())[0]
+                if ninth_steps_above_root == 1:
+                    quality_str += "♭9"
+                elif ninth_steps_above_root == 2:
+                    assert quality_str in ("Maj7", "7", "min7")
+                    quality_str = quality_str.replace("7", "9")
+
+                del other_pitches[ninth_steps_above_root]
+
+            # process remaining extra pitches
+            for step, pitch in other_pitches.items():
+                # add6
+                if step == 9:
+                    quality_str += "add6"
+                else:
+                    # give up, use music21's name
+                    return None
 
     # Add note name to chord quality
     return f"{_rich_accidental_replacements.get(chord_root_str, chord_root_str)}{quality_str}"
