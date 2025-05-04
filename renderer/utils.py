@@ -4,7 +4,7 @@ import math
 import numpy as np
 from dataclasses import dataclass
 
-from manim import Mobject, Group, Scene, VDict, PI
+from manim import Mobject, Group, Scene, VDict, PI, Animation, Wait, Succession
 from music21.base import Music21Object
 from music21.chord import Chord
 from music21.interval import Interval
@@ -84,6 +84,49 @@ def callback_add_to_vdict(vdict: VDict, index: Any, object: Mobject):
         vdict[index] = object
 
     return callback
+
+
+class TimestampedAnimationSuccession(Succession):
+    """Given a list of animations which should each end at a particular time,
+    create a Succession of all of them separated by Wait animations."""
+
+    def __init__(
+        self,
+        anims: list[
+            tuple[float, Animation]
+        ],  # list[end_timestamp: second, anim: Animation]
+        transition_time: float,
+        **kwargs,
+    ):
+        # build a sequence of animations to play - waits followed by rotations
+        sequenced_anims: list[Animation] = []
+        # previous_pitch_class: int = get_ionian_root(music_data.keys[0].elem).pitchClass
+        previous_time: float = 0
+
+        for anim_timestamp, anim in anims:
+
+            # print(
+            #     f"TimestampedAnimationSuccession step:\n\t{previous_time=}\n\t{anim_timestamp}, {anim}"
+            # )
+
+            # fiture out how long since last update
+            assert anim_timestamp > previous_time
+            elapsed_time = anim_timestamp - previous_time
+
+            # if we don't have time to do a full wait-then-transition
+            if elapsed_time <= transition_time:
+                # just animate with the time we have
+                anim.run_time = elapsed_time
+                sequenced_anims.append(anim)
+            else:
+                # sleep until start of time when we need to transform
+                sequenced_anims.append(Wait(elapsed_time - transition_time))
+                anim.run_time = transition_time
+                sequenced_anims.append(anim)
+            # done processing this animation
+            previous_time = anim_timestamp
+
+        super().__init__(sequenced_anims, **kwargs)
 
 
 # --------------------MATH HELPERS--------------------

@@ -16,6 +16,7 @@ from music.music_constants import note_for_step
 from obj_music_text import NoteText
 from musicxml import MusicData, MusicDataTiming
 from utils import (
+    TimestampedAnimationSuccession,
     get_ionian_root,
     vector_on_unit_circle_clockwise_from_top,
     generate_group,
@@ -436,9 +437,7 @@ class PlayCircle12Notes(AnimationGroup):
         super().__init__(anims, **kwargs)
 
 
-class PlayCircle12NotesRotateForKey(Succession):
-
-    # TODO: parent class to combine with PlayMusicText. needs to consider transition_time and skip criteria
+class PlayCircle12NotesRotateForKey(TimestampedAnimationSuccession):
 
     def __init__(
         self,
@@ -448,9 +447,8 @@ class PlayCircle12NotesRotateForKey(Succession):
         **kwargs,
     ):
         # build a sequence of animations to play - waits followed by rotations
-        anims: list[Animation] = []
+        anims: list[tuple[float, Animation]] = []
         previous_pitch_class: int = get_ionian_root(music_data.keys[0].elem).pitchClass
-        previous_time: int = 0
 
         for key_info in music_data.keys[1:]:
             # figure out which pitch to use
@@ -462,25 +460,12 @@ class PlayCircle12NotesRotateForKey(Succession):
 
             # create animation for this key change
             anim = circle12.animate_rotate_to_pitch(pitch.pitchClass)
+            anims.append((key_info.time, anim))
 
-            # fiture out how long since last update
-            elapsed_time = key_info.time - previous_time
-
-            # if we don't have time to do a full wait-then-transition
-            if elapsed_time <= transition_time:
-                # just spin with the time we have
-                anim.run_time = elapsed_time
-                anims.append(anim)
-            else:
-                # sleep until start of time when we need to transform
-                anims.append(Wait(elapsed_time - transition_time))
-                anim.run_time = transition_time
-                anims.append(anim)
             # done processing this key change
-            previous_time = key_info.time
             previous_pitch_class = pitch.pitchClass
 
-        super().__init__(anims, **kwargs)
+        super().__init__(anims, transition_time, **kwargs)
 
 
 class PlayCircle12NotesSelectChordRoots(Animation):

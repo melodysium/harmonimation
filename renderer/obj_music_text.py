@@ -24,7 +24,7 @@ from music21.common.types import OffsetQL
 from music.music_constants import Note
 from constants import USE_LATEX
 from musicxml import MusicData, MusicDataTiming
-from utils import display_chord_short, display_key
+from utils import TimestampedAnimationSuccession, display_chord_short, display_key
 
 myTemplate = TexTemplate()
 myTemplate.add_to_preamble(
@@ -259,9 +259,7 @@ class MusicTextState:
     font_size: float | None = None  # None means "keep previous"
 
 
-class PlayMusicText(Succession):
-
-    VERY_SMALL = 2**-32
+class PlayMusicText(TimestampedAnimationSuccession):
 
     def __init__(
         self,
@@ -276,59 +274,23 @@ class PlayMusicText(Succession):
         # TODO: figure out how to specify position / color / etc if not passing a template object in
         # TODO: left alignment?
 
-        anims: list[Animation] = []
-        previous_time = 0
+        anims: list[tuple[float, Animation]] = []
         previous_color = music_text.color
         previous_font_size = music_text._original_font_size
 
-        def get_new_obj(val: MusicTextState) -> MusicText:
-            nonlocal previous_color, previous_font_size
-            color = previous_color = val.color or previous_color
-            font_size = previous_font_size = val.font_size or previous_font_size
-            ob = MusicText(
-                val.text,
+        for text_state in text:
+            # create animation for this latest text value
+            color = previous_color = text_state.color or previous_color
+            font_size = previous_font_size = text_state.font_size or previous_font_size
+            new_music_text = MusicText(
+                text_state.text,
                 color=color,
                 font_size=font_size,
             ).move_to(music_text)
-            return ob
+            anim = Transform(music_text, new_music_text)
+            anims.append((text_state.time, anim))
 
-        for text_state in text:
-            # special case - allow first offset of 0 even though previous_offset = 0
-            if text_state.time == 0:
-                anims.append(
-                    Transform(
-                        music_text,
-                        get_new_obj(text_state),
-                        run_time=PlayMusicText.VERY_SMALL,
-                    )
-                )
-                previous_time = PlayMusicText.VERY_SMALL
-                continue
-
-            # print(
-            #     f"PlayMusicText step:\n\t{previous_time=}\n\t{text_state.time}, {text_state.text}"
-            # )
-            assert text_state.time > previous_time
-
-            # create animation for this latest text value
-            anim = Transform(music_text, get_new_obj(text_state))
-
-            # figure out how long since last update
-            elapsed_time = text_state.time - previous_time
-            # if we don't have time to do a full wait-then-transition
-            if elapsed_time <= transition_time:
-                # just transform with the time we have
-                anim.run_time = elapsed_time
-                anims.append(anim)
-            else:
-                # sleep until start of time when we need to transform
-                anims.append(Wait(elapsed_time - transition_time))
-                anim.run_time = transition_time
-                anims.append(anim)
-            # done processing this offset
-            previous_time = text_state.time
-
-        super().__init__(anims, **kwargs)
+        super().__init__(anims, transition_time, **kwargs)
 
 
 class test(Scene):
