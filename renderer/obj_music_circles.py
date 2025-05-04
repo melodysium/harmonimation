@@ -404,7 +404,7 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
         if len(self._selected_pitches) > self.max_selected_steps:
             # remove the circle
             old_step: int = self._selected_pitches.pop()
-            self.get_pitch_circle(pitch_idx=old_step).stroke_opacity = 0
+            self.get_pitch_circle(pitch_idx=old_step).set_stroke(opacity=0)
             # remove the oldest connector
             old_select_connector = self.hack_select_connectors.pop()
             self.mob_select_connectors.remove(old_select_connector)
@@ -417,6 +417,7 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
             new_opacity = self.calculate_circle_opacity(
                 select_idx, self.max_selected_steps
             )
+            # TODO: why does this only work with set_stroke(opacity=x), and not setting stroke_opacity directly?
             setattr(
                 self.get_pitch_circle(pitch_idx=select_step),
                 "stroke_opacity",
