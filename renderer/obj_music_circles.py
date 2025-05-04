@@ -163,28 +163,9 @@ class Circle12NotesBase(VGroup):
             lag_ratio=0.18,
         )
 
-    def highlight_pitch(self, pitch_idx: int, opacity: float):
-        """Sets the highlight circle around the pitch text for a given step to the specified opacity."""
-        pitch_circle: Circle = self.mob_select_circles[pitch_idx]
-        pitch_circle.set_stroke(opacity=opacity)
-
-    def rotate_to(self, angle: float) -> float:
-        """Rotate the music circle to the given angle (unit=rotations).
-
-        0 = start_pitch at top.
-        Returns the actual rotation as the difference between new and old angle."""
-
-        rotate_diff = angle - self.rotate_angle
-        self.rotate_angle = angle
-
-        # rotate some things in-place
-        self.mob_circle_background.rotate(angle=rotate_diff * -TAU)
-
-        # for others, calculate new positions and move to there
-        for pitch_idx, pitch_pos in self._list_positions():
-            self.mob_pitches[pitch_idx].move_to(pitch_pos)
-            self.mob_select_circles[pitch_idx].move_to(pitch_pos)
-        return rotate_diff
+    def get_pitch_circle(self, pitch_idx: int) -> Circle:
+        """Gets the highlight circle around the pitch text for a given pitch_idx"""
+        return self.mob_select_circles[pitch_idx]
 
     def compute_angle_for_pitch(
         self, pitch_idx: int, rotate_angle: float = None
@@ -209,6 +190,24 @@ class Circle12NotesBase(VGroup):
         #     f"compute_angle_for_pitch({pitch_idx=}, {rotate_angle=}) ({self.steps_per_pitch=}). {pitches_past_start=}, {steps_past_top=}, {rotate_angle_to_use=}, {final_angle=}"
         # )
         return final_angle
+
+    def rotate_to(self, angle: float) -> float:
+        """Rotate the music circle to the given angle (unit=rotations).
+
+        0 = start_pitch at top.
+        Returns the actual rotation as the difference between new and old angle."""
+
+        rotate_diff = angle - self.rotate_angle
+        self.rotate_angle = angle
+
+        # rotate some things in-place
+        self.mob_circle_background.rotate(angle=rotate_diff * -TAU)
+
+        # for others, calculate new positions and move to there
+        for pitch_idx, pitch_pos in self._list_positions():
+            self.mob_pitches[pitch_idx].move_to(pitch_pos)
+            self.mob_select_circles[pitch_idx].move_to(pitch_pos)
+        return rotate_diff
 
     def rotate_to_pitch(self, pitch_idx: int) -> None:
         """Rotate the msuic circle to have step_idx at top"""
@@ -333,19 +332,21 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
             lag_ratio=0.18,
         )
 
-    def select_step(self, step: int):
+    def select_pitch(self, pitch_idx: int):
         logger.debug(
-            f"  invoke select_step({step}); {self._selected_pitches=}, {self.max_selected_steps}, {self.hack_select_connectors}: ",
+            f"  invoke select_pitch({pitch_idx}); {self._selected_pitches=}, {self.max_selected_steps}, {self.hack_select_connectors}: ",
             end="",
         )
 
         # if already selected, ignore
-        if self._selected_pitches and step is self._selected_pitches[0]:
-            logger.debug(f"ignoring redundant select_step({step}); already selected")
+        if self._selected_pitches and pitch_idx is self._selected_pitches[0]:
+            logger.debug(
+                f"ignoring redundant select_pitch({pitch_idx}); already selected"
+            )
             return
 
         # mark this pitch as selected
-        self._selected_pitches.insert(0, step)
+        self._selected_pitches.insert(0, pitch_idx)
 
         # if there is a previous selected pitch, add a connector
         if len(self._selected_pitches) >= 2:
@@ -367,7 +368,7 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
         if len(self._selected_pitches) > self.max_selected_steps:
             # remove the circle
             old_step: int = self._selected_pitches.pop()
-            self.highlight_pitch(pitch_idx=old_step, opacity=0)
+            self.get_pitch_circle(pitch_idx=old_step).set_stroke(opacity=0)
             # remove the oldest connector
             old_select_connector = self.hack_select_connectors.pop()
             self.mob_select_connectors.remove(old_select_connector)
@@ -380,7 +381,9 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
             new_opacity = self.calculate_circle_opacity(
                 select_idx, self.max_selected_steps
             )
-            self.highlight_pitch(pitch_idx=select_step, opacity=new_opacity)
+            # TODO: why does this only work with set_stroke(opacity=x), and not setting stroke_opacity directly?
+            # self.get_pitch_circle(pitch_idx=select_step).stroke_opacity = new_opacity
+            self.get_pitch_circle(pitch_idx=select_step).set_stroke(opacity=new_opacity)
             # dont update a connector that doesn't exist
             if select_idx != len(self._selected_pitches) - 1:
                 mob_select_connector = self.hack_select_connectors[select_idx]
@@ -502,7 +505,7 @@ class PlayCircle12NotesSelectChordRoots(Animation):
                     and pitch_info.elem.pitchClass == self.last_pitch.pitchClass
                 ):
                     continue  # no need to highlight same pitch again
-                self.circle12.select_step(pitch_info.elem.pitchClass)
+                self.circle12.select_pitch(pitch_info.elem.pitchClass)
                 self.last_pitch = pitch_info.elem
         except StopIteration:
             return
@@ -530,12 +533,13 @@ class test(Scene):
         self.play(circle_chromatic.create(), circle_fifths.create(), run_time=2)
         self.wait(1)
 
+        # # test selecting pitches
         # step_count = 12 * 1 + 1
         # step_base = 12
         # step_delay_start = 0.1
         # for step in range(step_count):
-        #     circle_chromatic.select_step(step % 12)
-        #     circle_fifths.select_step(step % 12)
+        #     circle_chromatic.select_pitch(step % 12)
+        #     circle_fifths.select_pitch(step % 12)
         #     self.wait(step_delay_start * (step_base / (step_base + step)))
         # self.wait(1)
 
