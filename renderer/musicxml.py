@@ -1,4 +1,5 @@
 # std library
+print("musicxml: stdlib...", flush=True)
 import re
 from collections import defaultdict
 from dataclasses import dataclass
@@ -7,7 +8,9 @@ from itertools import groupby
 from typing import Any, Callable, Generic, TypeVar
 
 # 3rd party library
+print("musicxml: importing 3rd party stuff...", flush=True)
 from music import music_constants
+print("musicxml: importing music21...", flush=True)
 from music21 import converter
 from music21.base import Music21Object
 from music21.chord import Chord
@@ -17,9 +20,13 @@ from music21.key import KeySignature, Key
 from music21.note import Lyric, Note, NotRest, Pitch
 from music21.search.lyrics import LyricSearcher
 from music21.stream import Stream, Score, Part, Measure
+print("musicxml: importing regex...", flush=True)
 import regex as re  # stdlib re doesn't support multiple named capture groups with the same name, i use it below
 
+
 # project files
+print("musicxml: importing project files", flush=True)
+print("musicxml: importing utils...", flush=True)
 from utils import (
     display_chord_short,
     display_chord_short_custom,
@@ -40,6 +47,7 @@ from utils import (
     display_notRest,
     display_id,
 )
+print("musicxml: imports done!", flush=True)
 
 # TODO: replace 'a' with a different letter since 'a' is a valid chord :(
 DEFAULT_CHORD_SYMBOL = ChordSymbol(kindStr="ma")

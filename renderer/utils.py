@@ -1,10 +1,13 @@
+print("utils: importing stdlib stuff...", flush=True)
 from typing import Any, TypeVar, Iterable, Iterator, Optional
 from fractions import Fraction
 import math
 import numpy as np
 from dataclasses import dataclass
 
+print("utils: importing manim stuff...", flush=True)
 from manim import Mobject, Group, Scene, VDict, PI, Animation, Wait, Succession
+print("utils: importing music21 stuff...", flush=True)
 from music21.base import Music21Object
 from music21.chord import Chord
 from music21.interval import Interval
@@ -13,10 +16,13 @@ from music21.note import Note, NotRest, Pitch
 from music21.stream import Score, Stream
 from music21.common.types import OffsetQL, StreamType
 from music21.duration import Duration
+print("utils: importing regex...", flush=True)
 from regex import Match
 
+print("utils: importing other project files...", flush=True)
 from constants import USE_LATEX
 from music import music_constants
+print("utils: imports done!...", flush=True)
 
 print(f"{USE_LATEX=}")
 

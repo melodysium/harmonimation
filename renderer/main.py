@@ -1,16 +1,24 @@
+print(__name__ + ": top of main.py file", flush=True)
 # standard lib
 import argparse
 from dataclasses import dataclass
 import logging
+print("stdlib imports complete", flush=True)
 
 # 3rd party
 import pyjson5
+print("3rd party imports complete", flush=True)
 
 # project files
+print("importing timing...", flush=True)
 from timing import resolve_timing
+print("importing GlassPanel...", flush=True)
 from scene_glasspanel import GlassPanel
+print("importing layout_config...", flush=True)
 from layout_config import build_widgets
+print("importing musicxml...", flush=True)
 from musicxml import parse_score_data
+print("project imports complete", flush=True)
 
 # log setup
 logger = logging.getLogger(__name__)
@@ -85,11 +93,15 @@ def parse_args():
 
 
 def main():
+    print("program start", flush=True)
+
     # parse program arguments
     args = parse_args()
+    print("arguments parsed", flush=True)
 
     # parse music data
     music_data = parse_score_data(args.musicxml_file.read())
+    print("score parsed", flush=True)
 
     # parse into timing data. (data, beat) -> (data, beat, second). filter if needed.
     if args.beat_range:
@@ -99,15 +111,18 @@ def main():
         # TODO: compensate for create time and start buffer time?
         music_data = music_data.filter_by_time_range(*args.time_range)
     # print(music_data)
+    print("timing resolved", flush=True)
 
     # make harmonimation widgets
     widgets = build_widgets(
         config=pyjson5.load(args.harmonimation_file),
         music_data=music_data,
     )
+    print("config loaded, widgets built", flush=True)
 
     # make harmonimation scene, and render!
     GlassPanel(music_data, widgets).render()
+    print("program complete!", flush=True)
 
 
 if __name__ == "__main__":

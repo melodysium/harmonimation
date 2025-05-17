@@ -1,6 +1,10 @@
+
+print("timing: importing music21 types...", flush=True)
 from music21.common.types import OffsetQL
 
+print("timing: importing musicxml...", flush=True)
 from musicxml import MusicData, MusicDataTiming
+print("timing: imports done!", flush=True)
 
 # TODO: make configurable
 DEFAULT_EXTRA_START_TIME_SEC = 2  # seconds
