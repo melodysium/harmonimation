@@ -9,7 +9,8 @@ from music21.base import Music21Object
 from music21.chord import Chord
 from music21.interval import Interval
 from music21.key import Key
-from music21.note import Note, NotRest, Pitch
+from music21.note import Note, NotRest
+from music21.pitch import Pitch
 from music21.stream import Score, Stream
 from music21.common.types import OffsetQL, StreamType
 from music21.duration import Duration

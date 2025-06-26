@@ -1,0 +1,13 @@
+[project]
+name = "harmonimation"
+version = "0.1.0"
+description = "Visualize music theory from sheet music transcriptions"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "black>=25.1.0",
+    "manim>=0.19.0",
+    "music21>=9.7.1",
+    "pyjson5>=1.6.9",
+    "regex>=2024.11.6",
+]

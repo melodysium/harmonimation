@@ -41,3 +41,28 @@ Currently, very few:
 ## Early design
 
 ![early design](resources/harmonimation-design-early_sketch.png)
+
+## Local install
+
+Not reliably proven, many need to fix your own setup issues.
+
+Prerequisites:
+
+1.  `ffmpeg`
+    -   on mac, I've used `brew install ffmpeg`
+1.  `uv`: <https://github.com/astral-sh/uv>
+
+Installation steps:
+
+1.  Clone this project
+1.  Run `uv sync`
+1.  Activate the `.venv` and/or select its interpreter in your IDE
+1.  Install a LaTeX distro and the following packages on top of manim's guidance:
+    `musicography musixtex-fonts stackengine newunicodechar`
+    -   see <https://docs.manim.community/en/stable/installation/uv.html#step-2-optional-installing-latex>
+    -   I tried to install `TinyTeX` on mac but I ran into issues with `dvisvgm` and missing files, do not recommend
+
+Other issues:
+
+-   On mac, I also needed to `brew install pkgconf` to get `pycairo` to install currectly during `uv sync`.
+-   For some reason, I needed to manually make the `media/Tex` folder necessary for manim to create WIP LaTeX images.
