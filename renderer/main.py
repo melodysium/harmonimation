@@ -49,7 +49,7 @@ def parse_args():
             ) from e
 
     parser = argparse.ArgumentParser(
-        prog="Harmonimation",
+        prog="harmonimation",
         description="A program for visualizing musical harmonic analysis",
         epilog="Created by melodysium",
     )
