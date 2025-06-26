@@ -4,7 +4,6 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-
     {
       "name": "Python Debugger: main.py - My Time (full) - deep",
       "type": "debugpy",
@@ -12,6 +11,15 @@
       "program": "renderer/main.py",
       "console": "integratedTerminal",
       "args": "\"test_scores/My Time.musicxml\" renderer/harmonimation.jsonc",
+      "justMyCode": false,
+    },
+    {
+      "name": "Python Debugger: play.py - deep",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "renderer/play.py",
+      "console": "integratedTerminal",
+      "args": "",
       "justMyCode": false,
     }
   ]
