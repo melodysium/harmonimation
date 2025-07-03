@@ -4,7 +4,22 @@ import math
 import numpy as np
 from dataclasses import dataclass
 
-from manim import Mobject, Group, Scene, VDict, PI, Animation, Wait, Succession
+from manim import (
+    Mobject,
+    Group,
+    Scene,
+    VDict,
+    PI,
+    Animation,
+    Wait,
+    Succession,
+    Circle,
+    TAU,
+    ManimColor,
+    Dot,
+    WHITE,
+)
+from manim.typing import Point3D
 from music21.base import Music21Object
 from music21.chord import Chord
 from music21.interval import Interval
@@ -87,6 +102,12 @@ def callback_add_to_vdict(vdict: VDict, index: Any, object: Mobject):
     return callback
 
 
+def point_at_angle(circle: Circle, angle: float) -> Point3D:
+    proportion = (angle) / TAU
+    proportion -= np.floor(proportion)
+    return circle.point_from_proportion(proportion)
+
+
 class TimestampedAnimationSuccession(Succession):
     """Given a list of animations which should each end at a particular time,
     create a Succession of all of them separated by Wait animations."""
@@ -128,6 +149,32 @@ class TimestampedAnimationSuccession(Succession):
             previous_time = anim_timestamp
 
         super().__init__(sequenced_anims, **kwargs)
+
+
+class Anchor(Dot):
+
+    def __init__(
+        self,
+        point: Point3D,
+        fill_opacity: int = 0,
+        *args,
+        **kwargs,
+    ):
+        super().__init__(*args, point=point, fill_opacity=fill_opacity, **kwargs)
+
+    def add_follower(self, mobject: Mobject) -> "Anchor":
+        def follow_anchor(follower: Mobject):
+            anchor_pos = self.get_center()[0:2]
+            follower_before_pos = follower.get_center()[0:2]
+            follower.move_to(self)
+            if follower.text == "East":
+                follower_after_pos = follower.get_center()[0:2]
+                print(
+                    f"follow_anchor({follower}):\n\t       anchor: {anchor_pos}\n\tfollow_before: {follower_before_pos}\n\t follow_after: {follower_after_pos}"
+                )
+
+        mobject.add_updater(follow_anchor, call_updater=True)
+        return self
 
 
 # --------------------MATH HELPERS--------------------
