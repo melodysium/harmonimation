@@ -371,13 +371,17 @@ class OpacityGradient(Scene):
             [BLUE, BLUE.to_rgba_with_alpha(0.2)], length_of_output=20
         )
         # NOTE: opacity must be set separately from color
-        line = Line(
-            start=LEFT * 3,
-            end=RIGHT * 3,
-            stroke_width=10,
-            stroke_color=[RED, BLUE.to_rgba_with_alpha(0.01)],
-            stroke_opacity=[1, 0],
-        )  # .set_color(color=[RED, BLUE.to_rgba_with_alpha(0.2)])
+        line = (
+            Line(
+                start=LEFT * 3,
+                end=RIGHT * 3,
+                stroke_width=10,
+                # stroke_color=[RED, BLUE.to_rgba_with_alpha(0.01)],
+                # stroke_opacity=[1, 0],
+            )
+            .set_color(color=[RED, BLUE.to_rgba_with_alpha(0.2)])
+            .set_opacity([1, 0])
+        )
         print(line.stroke_width)
         self.play(Create(Circle(color=RED_E, stroke_width=10)), Create(line))
 
