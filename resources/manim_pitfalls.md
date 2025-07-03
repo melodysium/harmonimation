@@ -88,7 +88,12 @@ but maybe it's a start?
 
 ### Gradients
 
-TODO: can only go in a line. also kinda unintuitive how you configure it
+TODO: clean up
+
+-   setting opacity and color is different, despite color having an opacity
+-   type annotations for set_color and set_opacity say single types, but the methods allow lists
+    -   they also seem to apply backwards from the start to the end of the points?
+-   only linear gradient, no other forms. sheen is hard to figure out, under-documented.
 
 ## Bugs
 
