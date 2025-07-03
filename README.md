@@ -36,6 +36,7 @@ Planned for future:
         -   Diatonic radials / pitch highlighting to emphasize in/out of key
         -   Showing all individual notes outside of main ring
         -   Add chord symbols for jazz chord extensions
+        -   Show all current chord tones, not just root
     -   Rhythm circle
         -   Showing all individual notes outside of main ring
 -   More music widgets:
@@ -45,6 +46,7 @@ Planned for future:
     -   Song structure/sections
     -   Vocal register
     -   Embedding other videos like music video
+    -   Tonnetz lattice
 -   Layout/Behavior config file improvements:
     -   Variable BPM
     -   Support other config formats like YAML / KDL
