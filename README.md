@@ -1,6 +1,9 @@
 # harmonimation
 
-A program for visualizing music theory of a given song.
+ A program for visualizing music theory from sheet music transcriptions.
+
+ Mission: Empower music educators, YouTubers, or hobbyists with tools
+ to quickly generate and share stylistic animations of songs or music concepts.
 
 Demo ([<img src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="YouTube icon" width="60"/>](https://www.youtube.com/watch?v=mpmt3kntKTI)):
 
