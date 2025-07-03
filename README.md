@@ -4,39 +4,51 @@ A program for visualizing music theory of a given song.
 
 Discord: <https://discord.gg/bseuGuKaZg>
 
+Demo ([<img src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="YouTube icon" width="60"/>](https://www.youtube.com/watch?v=mpmt3kntKTI)):
+
+[![harmonimation demo (bo en - my time)](https://img.youtube.com/vi/mpmt3kntKTI/0.jpg)](https://www.youtube.com/watch?v=mpmt3kntKTI)
+
 Inspiration ([<img src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="YouTube icon" width="60"/>](https://www.youtube.com/watch?v=1lkJTSdGLG8)):
 
 [![John Coltrane - Giant Steps - Circle of Fifths Diagram](https://img.youtube.com/vi/1lkJTSdGLG8/0.jpg)](https://www.youtube.com/watch?v=1lkJTSdGLG8)
 
 ## Features
 
-Currently, very few:
+Currently:
 
--   [Shell wrapper script](https://github.com/PikaBlue107/harmonimation/blob/main/manim_wrapper/manim)
-    to simplify using the [manim docker image](https://docs.manim.community/en/stable/installation/docker.html)
-    -   [custom Docker image](https://hub.docker.com/repository/docker/pikablue107/manim-music/general)
-        extending the primary manim image with more LaTeX packages (for rendering music)
-    -   I'm considering sharing this with the
-        [Manim Community project](https://github.com/ManimCommunity/manim)
--   Note circles to show note and chord sequences
--   Rhythm circle to visualize beat patterns
+-   **Music animation widgets** created with [manim](https://github.com/ManimCommunity/manim),
+    the animation engine powering [3Blue1Brown's math videos on YouTube](https://www.youtube.com/c/3blue1brown)
+    -   Circle of 12 notes (arranged in both chromatic and Circle of 5ths)
+        -   Connectors to visualize harmonic progressions
+        -   Rotate during key changes
+    -   Rhthm circle to visualize note timing within a measure
+    -   Animated text for Key, Chord, and user notes
+    -   Lyric text with syllable highlighting
+-   **Programmatic parsing of sheet music** from `.musicxml` using [music21 library](https://www.music21.org/music21docs/about/what.html)
+    -   Automatic chord inference (can write in chords if not correct)
+    -   Lyric timing
+-   **Declarative layout config file** for all music widgets and parsing behaviors
 
-## Demos
+Planned for future:
 
-### Note Circles
-
-![note circles render](<resources/note_circles - bo en.gif>)
-
-[version with audio](https://youtu.be/G2AJBk6h4Jg)
-
-### Rhythm Circle
-
-![rhythm circle render](resources/rhythm_circle.gif)
-
-## Upcoming
-
--   Documentation on the shell wrapper script
--   Early prototypes of some of the widgets from the below design
+-   Improvements to existing music widgets:
+    -   12-note music circle
+        -   Diatonic radials / pitch highlighting to emphasize in/out of key
+        -   Showing all individual notes outside of main ring
+        -   Add chord symbols for jazz chord extensions
+    -   Rhythm circle
+        -   Showing all individual notes outside of main ring
+-   More music widgets:
+    -   Piano roll
+    -   Frequency spectrograms / graphs
+    -   Sheet music with playhead
+    -   Song structure/sections
+    -   Vocal register
+    -   Embedding other videos like music video
+-   Layout/Behavior config file improvements:
+    -   Variable BPM
+    -   Support other config formats like YAML / KDL
+-   **Docker image** for rendering `harmonimation` without any local install
 
 ## Early design
 
