@@ -2,8 +2,6 @@
 
 A program for visualizing music theory of a given song.
 
-Discord: <https://discord.gg/bseuGuKaZg>
-
 Demo ([<img src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="YouTube icon" width="60"/>](https://www.youtube.com/watch?v=mpmt3kntKTI)):
 
 [![harmonimation demo (bo en - my time)](https://img.youtube.com/vi/mpmt3kntKTI/0.jpg)](https://www.youtube.com/watch?v=mpmt3kntKTI)
@@ -11,6 +9,9 @@ Demo ([<img src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/yo
 Inspiration ([<img src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="YouTube icon" width="60"/>](https://www.youtube.com/watch?v=1lkJTSdGLG8)):
 
 [![John Coltrane - Giant Steps - Circle of Fifths Diagram](https://img.youtube.com/vi/1lkJTSdGLG8/0.jpg)](https://www.youtube.com/watch?v=1lkJTSdGLG8)
+
+Interested to chat about music or follow along with development?
+Join my community Discord: <https://discord.gg/bseuGuKaZg>
 
 ## Features
 
