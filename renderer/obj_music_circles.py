@@ -6,7 +6,7 @@ import logging
 
 # 3rd party libs
 from manim import *
-from manim.typing import Vector3D
+from manim.typing import Vector3D, Point3D
 from music21 import stream, note
 from music21.note import Pitch
 from more_itertools import peekable
@@ -149,7 +149,7 @@ class Circle12NotesBase(VGroup):
             )
             yield (
                 pitch_idx,
-                self.mob_circle_background.get_center() + (offset * self.radius,),
+                self.get_center() + (offset * self.radius,),
             )
 
     # TODO: fix bug where self isn't created, but all its submobjects are
@@ -166,6 +166,9 @@ class Circle12NotesBase(VGroup):
     def get_pitch_circle(self, pitch_idx: int) -> Circle:
         """Gets the highlight circle around the pitch text for a given pitch_idx"""
         return self.mob_select_circles[pitch_idx]
+
+    def get_center(self) -> Point3D:
+        return self.mob_circle_background.get_center()
 
     def compute_angle_for_pitch(
         self, pitch_idx: int, rotate_angle: float = None
@@ -392,12 +395,13 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
 
     def rotate_to(self, angle: float) -> None:
         rotate_diff = super().rotate_to(angle)
-        center = self.mob_circle_background.get_center()
         # print(
         #     f"Circle12NoteSequenceConnectors({self.steps_per_pitch=}).rotate_to({angle=}): {rotate_diff=}"
         # )
         for mob_connector in self.mob_select_connectors:
-            mob_connector.rotate(angle=rotate_diff * -TAU, about_point=center)
+            mob_connector.rotate(
+                angle=rotate_diff * -TAU, about_point=self.get_center()
+            )
 
     def play(self, music_data: MusicData) -> Animation:
         return PlayCircle12Notes(
