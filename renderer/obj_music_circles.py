@@ -163,6 +163,10 @@ class Circle12NotesBase(VGroup):
             lag_ratio=0.18,
         )
 
+    def get_pitch_text(self, pitch_idx: int) -> NoteText:
+        """Gets the pitch text for a given pitch_idx"""
+        return self.mob_pitches[pitch_idx]
+
     def get_pitch_circle(self, pitch_idx: int) -> Circle:
         """Gets the highlight circle around the pitch text for a given pitch_idx"""
         return self.mob_select_circles[pitch_idx]
