@@ -5,6 +5,7 @@ import logging
 
 # 3rd party
 import pyjson5
+from manim import config
 
 # project files
 from timing import resolve_timing
@@ -107,6 +108,7 @@ def main():
     )
 
     # make harmonimation scene, and render!
+    config.disable_caching = True # TODO: make config / cmd line argument
     GlassPanel(music_data, widgets).render()
 
 
