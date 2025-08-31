@@ -16,6 +16,7 @@ from manim import (
     Circle,
     TAU,
     ManimColor,
+    ParsableManimColor,
     Dot,
     WHITE,
 )
@@ -107,6 +108,40 @@ def point_at_angle(circle: Circle, angle: float) -> Point3D:
     proportion -= np.floor(proportion)
     return circle.point_from_proportion(proportion)
 
+
+class AnimateProperty(Animation):
+    """Animate one propert of a Mobject.
+    This is preferable to `.animate.set_<property>() as it can coexist with other Animations because it doesn't Animate other properties."""
+
+    property_name: str
+    initial_value: Any # TODO: typevar
+    final_value: Any
+    _initial_value_fetched = False
+
+    def __init__(
+            self,
+            mobject: Mobject,
+            property_name: str,
+            final_value: Any,
+            **kwargs
+    ):
+        super().__init__(mobject, **kwargs)
+        self.property_name = property_name
+        self.final_value = final_value
+
+    def interpolate_mobject(self, alpha: float):
+        # TODO: try to find a better way to do this
+
+        if not self._initial_value_fetched:
+            self.initial_value = self.mobject.__getattr__('get_' + self.property_name)()
+            self._initial_value_fetched = True
+
+        interpolated_value: Any = None
+        if isinstance(self.final_value, ManimColor):
+            interpolated_value = ManimColor.interpolate(self.initial_value, self.final_value, alpha)
+        else:
+            raise NotImplementedError()
+        self.mobject.__getattr__('set_' + self.property_name)(interpolated_value)
 
 class TimestampedAnimationSuccession(Succession):
     """Given a list of animations which should each end at a particular time,
