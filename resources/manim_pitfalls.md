@@ -27,6 +27,12 @@ not particularly doing a lot to point out the distinction.
     -   for Text, you get stroke_color as stroke and color as fill (good)
     -   for Tex, you get stroke_color as stroke *and* fill (weird)
 
+### Updaters are suspended during animations
+
+I don't see a good page about updaters in general. So it took me a night of frustration to eventually discover that updaters are disabled during most animations on a Mobject
+
+`suspend_mobject_updating` option on Animation, `updating_suspended` on a Mobject.
+
 ## Limitations
 
 ### Simultaneous Animations
