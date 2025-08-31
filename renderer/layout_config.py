@@ -4,7 +4,11 @@ from manim.typing import Vector3D
 
 # project files
 from musicxml import MusicData
-from obj_music_circles import Circle12NotesSequenceConnectors
+from obj_music_circles import (
+    DEFAULT_NOTE_IN_KEY_COLOR,
+    DEFAULT_NOTE_NOT_IN_KEY_COLOR,
+    Circle12NotesSequenceConnectors,
+)
 from obj_music_text import ChordText, LyricText, KeyText
 from utils import get_ionian_root
 
@@ -61,15 +65,22 @@ def _build_circle12notes(widget_def: dict, music_data: MusicData) -> list[Mobjec
         elif widget_type == "circle_fifths":
             return 7
 
-    starting_pitch = get_ionian_root(music_data.keys[0].elem).pitchClass
+    starting_key = music_data.keys[0].elem
+    starting_root_pitch = get_ionian_root(starting_key).pitchClass
+    starting_key_pitches = {p.pitchClass for p in starting_key.getPitches()}
 
-    circle_chromatic = Circle12NotesSequenceConnectors(
+    circle12n = Circle12NotesSequenceConnectors(
         radius=radius,
         max_selected_steps=max_selected_steps,
         steps_per_pitch=map_note_intervals(widget_def["type"]),
-        rotate_pitch=starting_pitch,
+        rotate_pitch=starting_root_pitch,
     ).shift(_compute_shift(widget_def))
-    c12n_widgets.append(circle_chromatic)
+    for _, pitch_idx in circle12n._list_steps():
+        if pitch_idx in starting_key_pitches:
+            circle12n.get_pitch_text(pitch_idx).color = DEFAULT_NOTE_IN_KEY_COLOR
+        else:
+            circle12n.get_pitch_text(pitch_idx).color = DEFAULT_NOTE_NOT_IN_KEY_COLOR
+    c12n_widgets.append(circle12n)
 
     # make label, unless it's disabled
     def map_label_text(widget_type: str) -> str:
@@ -92,7 +103,7 @@ def _build_circle12notes(widget_def: dict, music_data: MusicData) -> list[Mobjec
                 text=label_def["text"],
                 font_size=label_def.get("font_size", DEFAULT_FONT_SIZE),
             )
-            .move_to(circle_chromatic)
+            .move_to(circle12n)
             .shift(_compute_shift(label_def))
         )
         c12n_widgets.append(text_chromatic)

@@ -23,6 +23,7 @@ from utils import (
     generate_group,
     pick_preferred_rotation,
     Anchor,
+    AnimateProperty,
 )
 
 # log setup
@@ -58,10 +59,11 @@ def get_line_between_two_circle_edges(c1: Circle, c2: Circle):
     return Line(c1_point, c2_point)
 
 
-# TODO: add non-root "highlights" around other notes being played
 BASE_PITCH_LABEL_FONT_SIZE = 16
 BASE_PITCH_CIRCLE_RADIUS = 0.2
 DEFAULT_ROTATE_TRANSITION_TIME = 0.3
+DEFAULT_NOTE_IN_KEY_COLOR = WHITE
+DEFAULT_NOTE_NOT_IN_KEY_COLOR = GRAY
 
 
 class Circle12NotesBase(VGroup):
@@ -436,7 +438,7 @@ class PlayCircle12Notes(AnimationGroup):
     ):
         anims: list[Animation] = []
 
-        # only add rotations if there are key changes
+        # only add rotations and highlights if there are key changes
         if len(music_data.keys) > 1:
             anims.append(
                 PlayCircle12NotesKeyChanges(
@@ -467,24 +469,58 @@ class PlayCircle12NotesKeyChanges(TimestampedAnimationSuccession):
         transition_time: float,
         **kwargs,
     ):
-        # build a sequence of animations to play - waits followed by rotations
+
+        # build a sequence of rotation animations to play
         anims: list[tuple[float, Animation]] = []
-        previous_pitch_class: int = get_ionian_root(music_data.keys[0].elem).pitchClass
+        previous_root_pitch_class: int = get_ionian_root(
+            music_data.keys[0].elem
+        ).pitchClass
+        previous_pitches_in_key: dict[int, bool] = {
+            pitch_idx: pitch_idx
+            in set(p.pitchClass for p in music_data.keys[0].elem.getPitches())
+            for _, pitch_idx in circle12._list_steps()
+        }
 
         for key_info in music_data.keys[1:]:
-            # figure out which pitch to use
-            # TODO: whether to use tonic or ionian root at top should be a config option
-            pitch = get_ionian_root(key_info.elem)
-            assert pitch is not None
-            if pitch.pitchClass == previous_pitch_class:
-                continue  # no need to rotate to same pitch
+            # make a list of animations for this key change
+            key_change_anims: list[Animation] = []
 
-            # create animation for this key change
-            anim = circle12.animate_rotate_to_pitch(pitch.pitchClass)
-            anims.append((key_info.time, anim))
+            # get info about new key
+            key = key_info.elem
+            pitchesInKey = set(p.pitchClass for p in key.getPitches())
+            # figure out which pitch to use for root
+            # TODO: whether to orient tonic or ionian root at top should be a config option
+            root_pitch = get_ionian_root(key_info.elem)
+            assert root_pitch is not None
+
+            # if root changed, animate circle rotating
+            if root_pitch.pitchClass != previous_root_pitch_class:
+                anim = circle12.animate_rotate_to_pitch(root_pitch.pitchClass)
+                key_change_anims.append(anim)
+
+            # animate any individual pitches needing to change highlighting
+            pitches_in_new_key = {
+                pitch_idx: pitch_idx in pitchesInKey
+                for _, pitch_idx in circle12._list_steps()
+            }
+            for pitch_idx, pitch_is_in_new_key in pitches_in_new_key.items():
+                # optimization: skip animation for this pitch if not changed from last key
+                if previous_pitches_in_key[pitch_idx] == pitch_is_in_new_key:
+                    continue
+
+                # this pitch needs to animate
+                final_color = DEFAULT_NOTE_IN_KEY_COLOR if pitch_is_in_new_key else DEFAULT_NOTE_NOT_IN_KEY_COLOR
+                key_change_anims.append(
+                        AnimateProperty(circle12.get_pitch_text(pitch_idx), 'color', final_color)
+                    )
 
             # done processing this key change
-            previous_pitch_class = pitch.pitchClass
+            previous_root_pitch_class = root_pitch.pitchClass
+            previous_pitches_in_key = pitches_in_new_key
+
+            # if we ended up with any notes to change, add it to the overall list
+            if len(key_change_anims) > 0:
+                anims.append((key_info.time, AnimationGroup(key_change_anims)))
 
         super().__init__(anims, transition_time, **kwargs)
 
