@@ -214,7 +214,7 @@ class Circle12NotesBase(VGroup):
 
         # for others, calculate new positions and move to there
         for pitch_idx, pitch_pos in self._list_positions():
-            self.mob_pitches[pitch_idx].move_to(pitch_pos)
+            self.get_pitch_text(pitch_idx).move_to(pitch_pos)
             self.mob_select_circles[pitch_idx].move_to(pitch_pos)
         return rotate_diff
 
