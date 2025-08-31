@@ -8,7 +8,7 @@ import logging
 from manim import *
 from manim.typing import Vector3D, Point3D
 from music21 import stream, note
-from music21.note import Pitch
+from music21.pitch import Pitch
 from more_itertools import peekable
 
 # my files
@@ -71,7 +71,7 @@ class Circle12NotesBase(VGroup):
     mob_select_circles: VDict  # VDict[int, Circle]
 
     # properties
-    circle_color: str
+    circle_color: ParsableManimColor
     radius: float
     start_pitch_idx: int = 0  # TODO: make this configurable?
     steps_per_pitch: int
@@ -99,6 +99,7 @@ class Circle12NotesBase(VGroup):
             if rotate_pitch
             else rotate_angle if rotate_angle else 0
         )
+        # print(f"Circle12NotesBase(): {steps_per_pitch=}, {self.rotate_angle=}")
 
         # add background circle
         self.mob_circle_background = (
@@ -218,7 +219,7 @@ class Circle12NotesBase(VGroup):
         return rotate_diff
 
     def rotate_to_pitch(self, pitch_idx: int) -> None:
-        """Rotate the msuic circle to have step_idx at top"""
+        """Rotate the music circle to have step_idx at top"""
         angle_for_pitch = -self.compute_angle_for_pitch(pitch_idx, rotate_angle=0)
         # print(f"rotate_to_pitch(), {pitch_idx=}, {angle_for_pitch=}")
         self.rotate_to(angle_for_pitch)
@@ -392,6 +393,9 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
             # TODO: why does this only work with set_stroke(opacity=x), and not setting stroke_opacity directly?
             # self.get_pitch_circle(pitch_idx=select_step).stroke_opacity = new_opacity
             self.get_pitch_circle(pitch_idx=select_step).set_stroke(opacity=new_opacity)
+            print(
+                f"select_pitch(): {select_idx=}, {select_step=}, {new_opacity=}, {self.get_pitch_circle(pitch_idx=select_step)=}, {self.get_pitch_circle(pitch_idx=select_step).stroke_opacity=}"
+            )
             # dont update a connector that doesn't exist
             if select_idx != len(self._selected_pitches) - 1:
                 mob_select_connector = self.hack_select_connectors[select_idx]
@@ -430,7 +434,7 @@ class PlayCircle12Notes(AnimationGroup):
         # only add rotations if there are key changes
         if len(music_data.keys) > 1:
             anims.append(
-                PlayCircle12NotesRotateForKey(
+                PlayCircle12NotesKeyChanges(
                     circle12=circle12,
                     music_data=music_data,
                     transition_time=transition_time,
@@ -449,7 +453,7 @@ class PlayCircle12Notes(AnimationGroup):
         super().__init__(anims, **kwargs)
 
 
-class PlayCircle12NotesRotateForKey(TimestampedAnimationSuccession):
+class PlayCircle12NotesKeyChanges(TimestampedAnimationSuccession):
 
     def __init__(
         self,
@@ -552,6 +556,7 @@ class test(Scene):
         #     self.wait(step_delay_start * (step_base / (step_base + step)))
         # self.wait(1)
 
+        # test rotations
         def rotate_to_pitch_idx(pitch_idx: int):
             # print(f"rotating both circles to step {pitch_idx} on top")
             self.play(
@@ -560,8 +565,8 @@ class test(Scene):
                     circle_fifths.animate_rotate_to_pitch(pitch_idx, run_time=0.5),
                 )
             )
-            circle_chromatic.select_step(pitch_idx)
-            circle_fifths.select_step(pitch_idx)
+            circle_chromatic.select_pitch(pitch_idx)
+            circle_fifths.select_pitch(pitch_idx)
 
         for i in range(1, 13):
             rotate_to_pitch_idx(-(2 * i + 5) % 12)
