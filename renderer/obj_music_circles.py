@@ -398,11 +398,15 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
                 select_idx, self.max_selected_steps
             )
             # TODO: why does this only work with set_stroke(opacity=x), and not setting stroke_opacity directly?
-            # self.get_pitch_circle(pitch_idx=select_step).stroke_opacity = new_opacity
-            self.get_pitch_circle(pitch_idx=select_step).set_stroke(opacity=new_opacity)
-            print(
-                f"select_pitch(): {select_idx=}, {select_step=}, {new_opacity=}, {self.get_pitch_circle(pitch_idx=select_step)=}, {self.get_pitch_circle(pitch_idx=select_step).stroke_opacity=}"
+            setattr(
+                self.get_pitch_circle(pitch_idx=select_step),
+                "stroke_opacity",
+                new_opacity,
             )
+            self.get_pitch_circle(pitch_idx=select_step).set_stroke(opacity=new_opacity)
+            # print(
+            #     f"select_pitch(): {select_idx=}, {select_step=}, {new_opacity=}, {self.get_pitch_circle(pitch_idx=select_step)=}, {self.get_pitch_circle(pitch_idx=select_step).stroke_opacity=}"
+            # )
             # dont update a connector that doesn't exist
             if select_idx != len(self._selected_pitches) - 1:
                 mob_select_connector = self.hack_select_connectors[select_idx]
