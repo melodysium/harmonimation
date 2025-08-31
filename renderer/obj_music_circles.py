@@ -124,15 +124,16 @@ class Circle12NotesBase(VGroup):
         for pitch_idx, pitch_pos in self._list_positions():
             pitch = note_for_step(pitch_idx)
             # create NoteText and circle in correct position
-            pitch_label = NoteText(
+
+            self.mob_pitches[pitch_idx] = pitch_text = NoteText(
                 pitch, font_size=BASE_PITCH_LABEL_FONT_SIZE * radius
-            ).shift(pitch_pos)
-            pitch_circle = Circle(
-                color=WHITE, radius=BASE_PITCH_CIRCLE_RADIUS * radius, stroke_opacity=0
-            ).move_to(pitch_label)
-            # save mobjects, add pitch text
-            self.mob_pitches[pitch.scale_step] = pitch_label
-            self.mob_select_circles[pitch.scale_step] = pitch_circle
+            ).move_to(pitch_pos)
+
+            self.mob_select_circles[pitch_idx] = pitch_circle = Circle(
+                color=WHITE,
+                radius=BASE_PITCH_CIRCLE_RADIUS * radius,
+                stroke_opacity=0,
+            ).move_to(pitch_pos)
 
     def _list_steps(self) -> Iterable[tuple[int, int]]:  # (pitch, step)
         for step_idx, pitch_idx in enumerate(
