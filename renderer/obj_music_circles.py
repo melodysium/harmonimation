@@ -17,6 +17,7 @@ from obj_music_text import NoteText
 from musicxml import MusicData, MusicDataTiming
 from utils import (
     TimestampedAnimationSuccession,
+    point_at_angle,
     get_ionian_root,
     vector_on_unit_circle_clockwise_from_top,
     generate_group,
@@ -143,13 +144,13 @@ class Circle12NotesBase(VGroup):
 
     def _list_positions(self) -> Iterable[tuple[int, Vector3D]]:
         for step_idx, pitch_idx in self._list_steps():
-            # calculate position
-            offset = vector_on_unit_circle_clockwise_from_top(
-                (step_idx / 12) + self.rotate_angle
+            print(
+                f"_list_positions(): {step_idx=}, {pitch_idx=}, pos={point_at_angle(self.mob_circle_background, TAU * step_idx / 12)}"
             )
+            # calculate position
             yield (
                 pitch_idx,
-                self.get_center() + (offset * self.radius,),
+                point_at_angle(self.mob_circle_background, TAU * step_idx / 12),
             )
 
     # TODO: fix bug where self isn't created, but all its submobjects are
