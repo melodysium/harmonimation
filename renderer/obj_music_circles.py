@@ -22,6 +22,7 @@ from utils import (
     vector_on_unit_circle_clockwise_from_top,
     generate_group,
     pick_preferred_rotation,
+    Anchor,
 )
 
 # log setup
@@ -145,9 +146,9 @@ class Circle12NotesBase(VGroup):
 
     def _list_positions(self) -> Iterable[tuple[int, Vector3D]]:
         for step_idx, pitch_idx in self._list_steps():
-            print(
-                f"_list_positions(): {step_idx=}, {pitch_idx=}, pos={point_at_angle(self.mob_circle_background, TAU * step_idx / 12)}"
-            )
+            # print(
+            #     f"_list_positions(): {step_idx=}, {pitch_idx=}, pos={point_at_angle(self.mob_circle_background, TAU * step_idx / 12)}"
+            # )
             # calculate position
             yield (
                 pitch_idx,
@@ -216,6 +217,9 @@ class Circle12NotesBase(VGroup):
         for pitch_idx, pitch_pos in self._list_positions():
             self.get_pitch_text(pitch_idx).move_to(pitch_pos)
             self.get_pitch_circle(pitch_idx).move_to(pitch_pos)
+            # if pitch_idx == 0:
+            #     pitch_text = self.get_pitch_text(pitch_idx)
+            #     print(f"animation step: {pitch_text.updating_suspended=}, {pitch_text.get_updaters=}")
         return rotate_diff
 
     def rotate_to_pitch(self, pitch_idx: int) -> None:
@@ -572,6 +576,13 @@ class test(Scene):
             rotate_to_pitch_idx(-(2 * i + 5) % 12)
             self.wait(0.5)
 
+        # # test changing pitch color, one by one
+        # for i in range(12):
+        #     self.play(
+        #         circle_chromatic.get_pitch_text(i).animate.set_color(color=GRAY),
+        #         circle_fifths.get_pitch_text(i).animate.set_color(color=GRAY),
+        #     )
+            self.wait(0.5)
 
 class testPlay(Scene):
     def construct(self):
@@ -617,3 +628,17 @@ class testPlay(Scene):
                 play_circle_fifths,
             )
         )
+
+
+class amIInsaneOrAreUpdatersWeird(Scene):
+    def construct(self):
+        circle = Circle()
+        anchor = Anchor(circle.get_edge_center(UP), fill_opacity=1.0)
+
+        self.add(circle, anchor)
+
+        ring = Circle(radius=0.25, color=BLUE)
+        self.add(ring)
+        anchor.add_follower(ring)
+
+        self.play(Rotate(anchor, angle=PI/2, about_point=circle.get_center()))

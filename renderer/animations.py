@@ -34,7 +34,7 @@ class FocusOut(Transform):
         self,
         focus_point: Union[np.ndarray, Mobject],
         opacity: float = 0.2,
-        color: str = GRAY,
+        color: ParsableManimColor = GRAY,
         run_time: float = 1,
         max_radius: float = 8,
         **kwargs
@@ -64,7 +64,7 @@ class RippleOut(Transform):
         self,
         focus_point: Union[np.ndarray, Mobject],
         opacity: float = 1,
-        color: str = WHITE,
+        color: ParsableManimColor = WHITE,
         stroke_width: float = 2,
         run_time: float = 1,
         max_radius: float = 1,
@@ -90,7 +90,7 @@ class RippleOut(Transform):
             **kwargs
         )
 
-    def create_target(self) -> Dot:
+    def create_target(self) -> Circle:
         final_circle = Circle(
             radius=self.max_radius,
         )

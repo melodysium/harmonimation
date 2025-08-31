@@ -156,7 +156,7 @@ class Anchor(Dot):
     def __init__(
         self,
         point: Point3D,
-        fill_opacity: int = 0,
+        fill_opacity: float = 0,
         *args,
         **kwargs,
     ):
@@ -167,7 +167,8 @@ class Anchor(Dot):
             anchor_pos = self.get_center()[0:2]
             follower_before_pos = follower.get_center()[0:2]
             follower.move_to(self)
-            if follower.text == "East":
+            # some debug stuff iunno
+            if '_debug_anchor' in dir(follower):
                 follower_after_pos = follower.get_center()[0:2]
                 print(
                     f"follow_anchor({follower}):\n\t       anchor: {anchor_pos}\n\tfollow_before: {follower_before_pos}\n\t follow_after: {follower_after_pos}"
