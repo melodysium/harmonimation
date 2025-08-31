@@ -7,9 +7,7 @@ This document collects all of the stumbling blocks I've encountered trying to cr
 ### .animate.rotate()
 
 This doesn't do what you would hope it would do. Use `Rotate(object)` instead.
-
-See [Reference - `.animate`](#animate).
-`.animate` just linearly interpolates from the initial to the final mobject.
+`.animate` just linearly interpolates each point from the initial to the final mobject.
 A rotation is critically *not* a linear interpolation.
 
 ### Opacity is separate from color
@@ -33,11 +31,20 @@ not particularly doing a lot to point out the distinction.
 
 ### Simultaneous Animations
 
-Manim often does not achieve intended results when trying to run two simultaneous animations. Particularly, do not combine:
+Manim often does not achieve intended results when trying to run two simultaneous animations.
 
--   Two Animations controlling the same property
--   An `.animate` and any other animation.
-    -   [`.animate`](#animate) uses a `MoveToTarget` animation, which linearly interpolates *all* of an object's properties, including other properties you're trying to animate.
+Two Animations controlling the same property simply do not work.
+This is pretty reasonable, though it would be nice to additively stack translations on linear properties.
+
+`.animate` and any other animation do not work.
+This is because `.animate` linearly interpolates *all* of an object's properties, including other properties you're trying to animate.
+
+Internallly, `.animate` just applies all of the modifications to a `target` copy of the object,
+and runs a `MoveToTarget` animation from the src to the `target`,
+which touches all of the properties of the Mobject from src to target -
+color, stroke_width, and all the individual points.
+
+It should be possible to implement an alternative `.animate` which only animates the properties which were modified.
 
 ### Elements with no points?
 
@@ -86,14 +93,18 @@ This wouldn't immediatley do the same thing,
 it wouldn't sweep through the object's points like Create() normally does,
 but maybe it's a start?
 
-### Gradients
-
-TODO: clean up
+### Color
 
 -   setting opacity and color is different, despite color having an opacity
 -   type annotations for set_color and set_opacity say single types, but the methods allow lists
     -   they also seem to apply backwards from the start to the end of the points?
--   only linear gradient, no other forms. sheen is hard to figure out, under-documented.
+
+#### Gradients
+
+Gradients are under-documented. It's hard to tell what's possible or how to use it.
+
+-   There's only linear gradient, no other forms.
+-   sheen is hard to figure out, under-documented.
 
 ## Bugs
 
@@ -102,14 +113,3 @@ TODO: clean up
 After a rotation or reflection which moves a Circle's starting point away from the RIGHT axis, Circle.point_at_angle() returns incorrect results.
 
 Reported to ManimCommunity in [github.com/ManimCommunity issue #4236](https://github.com/ManimCommunity/manim/issues/4236)
-
-## Reference
-
-Extra details and further info in support of the above.
-
-### .animate
-
-Internallly, `.animate` just applies all of the modifications to a `target` copy of the object,
-and runs a `MoveToTarget` animation from the src to the `target`,
-which just linearly interpolates all of the properties of the Mobject from src to target -
-color, stroke_width, and most importantly, all the individual points.
