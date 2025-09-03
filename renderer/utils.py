@@ -19,6 +19,11 @@ from manim import (
     ParsableManimColor,
     Dot,
     WHITE,
+    VGroup,
+    RED,
+    AnimationGroup,
+    Text,
+    Create,
 )
 from manim.typing import Point3D
 from music21.base import Music21Object
@@ -211,6 +216,27 @@ class Anchor(Dot):
 
         mobject.add_updater(follow_anchor, call_updater=True)
         return self
+
+
+class LabelledCircle(VGroup):
+
+    def __init__(self, circle_color=RED, text="Circle", **kwargs):
+        VGroup.__init__(self, **kwargs)
+        self.circle_color = circle_color
+        self.circle = Circle(color=circle_color)
+        self.text = Text(text=text)
+        self.add(self.circle)
+        self.add(self.text)
+
+    def create(self):
+        return AnimationGroup(Create(self.circle), Create(self.text), lag_ratio=0.5)
+
+
+class testLabelledCircle(Scene):
+    def construct(self):
+        circle = LabelledCircle()
+        self.play(circle.create(), run_time=2)
+        self.wait(1)
 
 
 # --------------------MATH HELPERS--------------------

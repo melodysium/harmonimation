@@ -31,27 +31,6 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
 
-class LabelledCircle(VGroup):
-
-    def __init__(self, circle_color=RED, text="Circle", **kwargs):
-        VGroup.__init__(self, **kwargs)
-        self.circle_color = circle_color
-        self.circle = Circle(color=circle_color)
-        self.text = Text(text=text)
-        self.add(self.circle)
-        self.add(self.text)
-
-    def create(self):
-        return AnimationGroup(Create(self.circle), Create(self.text), lag_ratio=0.5)
-
-
-class testLabelledCircle(Scene):
-    def construct(self):
-        circle = LabelledCircle()
-        self.play(circle.create(), run_time=2)
-        self.wait(1)
-
-
 def get_line_between_two_circle_edges(c1: Circle, c2: Circle):
     direction = Line(c1.get_center(), c2.get_center()).get_unit_vector()
     c1_point = c1.get_center() + direction * c1.radius
