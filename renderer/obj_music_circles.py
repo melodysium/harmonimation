@@ -106,15 +106,16 @@ class Circle12NotesBase(VGroup):
         self.add(self.mob_pitches)
         self.mob_select_circles = VDict()
         self.add(self.mob_select_circles)
-        # create 12 individual pitches and small highlight circles
+        # create elements for 12 individual pitches
         for pitch_idx, pitch_pos in self._list_positions():
             pitch = note_for_step(pitch_idx)
-            # create NoteText and circle in correct position
 
+            # Text displaying pitch name
             self.mob_pitches[pitch_idx] = pitch_text = NoteText(
                 pitch, font_size=BASE_PITCH_LABEL_FONT_SIZE * radius
             ).move_to(pitch_pos)
 
+            # Highlight circle around this pitch
             self.mob_select_circles[pitch_idx] = pitch_circle = Circle(
                 color=WHITE,
                 radius=BASE_PITCH_CIRCLE_RADIUS * radius,
@@ -429,7 +430,6 @@ class Circle12NotesSequenceConnectors(Circle12NotesBase):
         return PlayCircle12Notes(
             circle12=self,
             music_data=music_data,
-            transition_time=DEFAULT_ROTATE_TRANSITION_TIME,
         )
 
 
@@ -439,7 +439,7 @@ class PlayCircle12Notes(AnimationGroup):
         self,
         circle12: Circle12NotesBase,
         music_data: MusicData,
-        transition_time: float,
+        transition_time: float = DEFAULT_ROTATE_TRANSITION_TIME,
         **kwargs,
     ):
         anims: list[Animation] = []
@@ -638,25 +638,32 @@ class testPlay(Scene):
         self.wait(1)
 
         # duration.Duration()
+        from music21.key import Key
 
         class StubMusicData:
-            def __init__(self, pitches):
-                self.pitches = pitches
+            def __init__(self, chord_roots: list[MusicDataTiming[Pitch]], keys: list[MusicDataTiming[Key]] = []):
+                self._chord_roots = chord_roots
+                self.keys = keys
 
             def chord_roots(self):
-                return self.pitches
+                return self._chord_roots
 
         melody = StubMusicData(
             [
-                MusicDataTiming(note.Note("C", quarterLength=2), 1, 1),
-                MusicDataTiming(note.Note("F", quarterLength=2), 2, 2),
-                MusicDataTiming(note.Note("B-", quarterLength=2), 3, 3),
-                MusicDataTiming(note.Note("E-", quarterLength=2), 4, 4),
-                MusicDataTiming(note.Note("C", quarterLength=2), 5, 5),
-                MusicDataTiming(note.Note("F", quarterLength=2), 6, 6),
-                MusicDataTiming(note.Note("G", quarterLength=2.75), 7, 7),
-                MusicDataTiming(note.Note("C", quarterLength=1.25), 8, 8),
-            ]
+                MusicDataTiming(Pitch("C4"), 0, 0),
+
+                MusicDataTiming(Pitch("C"), 0, 0),
+                MusicDataTiming(Pitch("F"), 2, 2),
+                MusicDataTiming(Pitch("B-"), 3, 3),
+                MusicDataTiming(Pitch("E-"), 4, 4),
+                MusicDataTiming(Pitch("C"), 5, 5),
+                MusicDataTiming(Pitch("F"), 6, 6),
+                MusicDataTiming(Pitch("G"), 7, 7),
+                MusicDataTiming(Pitch("C"), 8, 8),
+            ],
+            [
+                MusicDataTiming(Key("C"), 0, 0)
+            ],
         )
 
         play_circle_chromatic = PlayCircle12Notes(

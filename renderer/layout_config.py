@@ -74,6 +74,7 @@ def _build_circle12notes(widget_def: dict, music_data: MusicData) -> list[Mobjec
         max_selected_steps=max_selected_steps,
         steps_per_pitch=map_note_intervals(widget_def["type"]),
         rotate_pitch=starting_root_pitch,
+        
     ).shift(_compute_shift(widget_def))
     for _, pitch_idx in circle12n._list_steps():
         if pitch_idx in starting_key_pitches:

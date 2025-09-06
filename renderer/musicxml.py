@@ -14,7 +14,8 @@ from music21.chord import Chord
 from music21.common.types import OffsetQL
 from music21.harmony import ChordSymbol, NoChord
 from music21.key import KeySignature, Key
-from music21.note import Lyric, Note, NotRest, Pitch
+from music21.note import Lyric, Note, NotRest
+from music21.pitch import Pitch
 from music21.search.lyrics import LyricSearcher
 from music21.stream import Stream, Score, Part, Measure
 import regex as re  # stdlib re doesn't support multiple named capture groups with the same name, i use it below
@@ -61,12 +62,13 @@ class MusicData:
     # new ones
     chords: list[MusicDataTiming[Chord]]
     all_notes: list[MusicDataTiming[Note]]
-    all_notes_by_part: dict[Part, list[MusicDataTiming[NotRest]]]
+    all_notes_by_part: dict[Part, list[MusicDataTiming[Note]]]
     lyrics: list[MusicDataTiming[list[MusicDataTiming[str]]]]
     keys: list[MusicDataTiming[Key]]
     bpm: float = 180  # object = None  # TODO: what would this look like?
     comments: object = None  # TODO: what would this look like?
 
+    @staticmethod
     def from_score(m21_score: Score):
         return MusicData(
             chords=extract_harmonic_clusters(m21_score),
@@ -78,7 +80,7 @@ class MusicData:
             keys=extract_keys(m21_score),
         )
 
-    def chord_roots(self) -> list[MusicDataTiming[Pitch]]:
+    def chord_roots(self) -> list[MusicDataTiming[Pitch|None]]:
         return [
             MusicDataTiming(
                 elem=get_chord_root(chord_info.elem),
@@ -616,7 +618,7 @@ def parse_score_data(data) -> MusicData:
     if not isinstance(m21_score, Score):
         raise ValueError(
             "Can only render musicxml files containing a Score, not a "
-            + type(m21_score)
+            + str(type(m21_score))
         )
 
     music_data = MusicData.from_score(m21_score)
