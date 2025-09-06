@@ -627,6 +627,13 @@ class test(Scene):
         #     )
             self.wait(0.5)
 
+
+class logo(Scene):
+    def construct(self):
+        circle_fifths = Circle12NotesBase(radius=2, steps_per_pitch=7, show_radials=False)
+        self.add(circle_fifths)
+
+
 class testPlay(Scene):
     def construct(self):
         self.wait(0.2)
