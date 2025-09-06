@@ -82,5 +82,8 @@ Installation steps:
 
 Other issues:
 
--   On mac, I also needed to `brew install pkgconf` to get `pycairo` to install currectly during `uv sync`.
+-   In general, for any issues related to `manim`/`cairo`/etc, check
+    <https://docs.manim.community/en/stable/installation/uv.html>
+    -   On mac, I also needed to `brew install pkgconf` to get `pycairo` to install currectly during `uv sync`.
+    -   On linux, there are extra system packages to install.
 -   For some reason, I needed to manually make the `media/Tex` folder necessary for manim to create WIP LaTeX images.
