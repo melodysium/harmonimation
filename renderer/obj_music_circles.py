@@ -51,6 +51,7 @@ class Circle12NotesBase(VGroup):
     mob_circle_background: Circle
     mob_pitches: VDict  # VDict[int, NoteText]
     mob_select_circles: VDict  # VDict[int, Circle]
+    mob_radials: VDict  # VDict[int, Line]
 
     # properties
     circle_color: ParsableManimColor
@@ -66,6 +67,7 @@ class Circle12NotesBase(VGroup):
         steps_per_pitch: int = 1,
         rotate_angle: float = None,
         rotate_pitch: int = None,
+        show_radials: bool = False,
         **kwargs,
     ):
         VGroup.__init__(self, **kwargs)
@@ -97,6 +99,9 @@ class Circle12NotesBase(VGroup):
         )
         self.add(self.mob_circle_background)
         # set up pitches
+        if show_radials:
+            self.mob_radials = VDict()
+            self.add(self.mob_radials)
         self.mob_pitches = VDict()
         self.add(self.mob_pitches)
         self.mob_select_circles = VDict()
@@ -115,6 +120,23 @@ class Circle12NotesBase(VGroup):
                 radius=BASE_PITCH_CIRCLE_RADIUS * radius,
                 stroke_opacity=0,
             ).move_to(pitch_pos)
+
+            # Radial underneath this pitch
+            if show_radials:
+                unit_vector_from_center: Vector3D = pitch_pos - self.get_center()
+                start_distance = 1.0
+                end_distance = 1.8
+                start_pos = unit_vector_from_center * start_distance
+                end_pos = unit_vector_from_center * end_distance
+                if pitch_idx == 0:
+                    print(f"{self.get_center()=}, {pitch_pos=}, {unit_vector_from_center=}, {start_distance=}, {end_distance=}, {start_pos=}, {end_pos=}")
+                self.mob_radials[pitch_idx] = pitch_radial = Line(
+                    color=LIGHT_GRAY,
+                    stroke_opacity=0.5,
+                    stroke_width=2,
+                    start=start_pos,
+                    end=end_pos,
+                )
 
     def _list_steps(self) -> Iterable[tuple[int, int]]:  # (pitch, step)
         for step_idx, pitch_idx in enumerate(
@@ -142,8 +164,9 @@ class Circle12NotesBase(VGroup):
         return AnimationGroup(
             Create(self.mob_circle_background, rate_func=rate_functions.ease_in_sine),
             AnimationGroup(
-                Create(self.mob_pitches),
+                *(_ for _ in (Create(self.mob_pitches),
                 Create(self.mob_select_circles),
+                Create(self.mob_radials) if self.mob_radials else None) if _),
             ),
             lag_ratio=0.18,
         )
