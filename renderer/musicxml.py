@@ -1,7 +1,7 @@
 # std library
 import re
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict, field
 from fractions import Fraction
 from itertools import groupby
 from typing import Any, Callable, Generic, TypeVar
@@ -54,6 +54,10 @@ class MusicDataTiming(Generic[MusicInfo]):
     elem: MusicInfo  # music information, e.g. Chord, Note, lyric str, etc.
     offset: OffsetQL  # beat in the piece
     time: float = None  # timestamp in seconds
+    _type: str = ''
+
+    def __post_init__(self):
+        self._type = f"{self.__class__.__name__}" # TODO: try to get generic showing?
 
 
 # data transfer class
@@ -68,6 +72,22 @@ class MusicData:
     bpm: float = 180  # object = None  # TODO: what would this look like?
     comments: object = None  # TODO: what would this look like?
 
+    # overridden in __post_init__()
+    chord_roots: list[MusicDataTiming[Pitch|None]] = field(default_factory=list)
+    _type: str = ''
+
+    def __post_init__(self):
+        self.chord_roots = [
+            MusicDataTiming(
+                elem=get_chord_root(chord_info.elem),
+                offset=chord_info.offset,
+                time=chord_info.time,
+            )
+            for chord_info in self.chords
+            if len(chord_info.elem.pitches) > 0
+        ]
+        self._type = self.__class__.__name__
+
     @staticmethod
     def from_score(m21_score: Score):
         return MusicData(
@@ -79,17 +99,6 @@ class MusicData:
             lyrics=extract_lyrics(m21_score),
             keys=extract_keys(m21_score),
         )
-
-    def chord_roots(self) -> list[MusicDataTiming[Pitch|None]]:
-        return [
-            MusicDataTiming(
-                elem=get_chord_root(chord_info.elem),
-                offset=chord_info.offset,
-                time=chord_info.time,
-            )
-            for chord_info in self.chords
-            if len(chord_info.elem.pitches) > 0
-        ]
 
     def _modify_by_func(
         self,
@@ -107,6 +116,8 @@ class MusicData:
             for lyric_syl_e in lyric_e.elem:
                 modify_func(lyric_syl_e)
         for e in self.keys:
+            modify_func(e)
+        for e in self.chord_roots:
             modify_func(e)
 
     # def _replace_by_func(

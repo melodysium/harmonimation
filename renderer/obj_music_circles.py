@@ -455,7 +455,7 @@ class PlayCircle12Notes(AnimationGroup):
                 )
             )
         # only add chord animations if there are any chords in the piece
-        if len(music_data.chord_roots()) > 0:
+        if len(music_data.chord_roots) > 0:
             anims.append(
                 PlayCircle12NotesSelectChordRoots(
                     circle12=circle12,
@@ -549,7 +549,7 @@ class PlayCircle12NotesSelectChordRoots(Animation):
         music_data: MusicData,
         **kwargs,
     ):
-        pitches = music_data.chord_roots()
+        pitches = music_data.chord_roots
         self.total_time = pitches[-1].time + 1
         super().__init__(circle12, run_time=self.total_time, **kwargs)
         self.circle12 = circle12
@@ -651,9 +651,6 @@ class testPlay(Scene):
             def __init__(self, chord_roots: list[MusicDataTiming[Pitch]], keys: list[MusicDataTiming[Key]] = []):
                 self._chord_roots = chord_roots
                 self.keys = keys
-
-            def chord_roots(self):
-                return self._chord_roots
 
         melody = StubMusicData(
             [
