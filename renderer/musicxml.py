@@ -1,5 +1,6 @@
 # std library
 import re
+import json
 from collections import defaultdict
 from dataclasses import dataclass, asdict, field
 from fractions import Fraction
@@ -198,6 +199,95 @@ all_notes_by_part: len={len(self.all_notes_by_part)}, elems={self.all_notes_by_p
 lyrics: len={len(self.lyrics)}, elems={self.lyrics}
 keys: len={len(self.keys)}, elems={self.keys}
 """
+
+    def export(self, indent: str='  ') -> str:
+
+        def _convert_special_objs(obj):
+            def convert_pitch(p: Pitch) -> str:
+                return p.nameWithOctave
+
+            def convert_note(n: Note, include_quarter_length: bool=True) -> dict:
+                disp: dict = {
+                    'pitch': convert_pitch(n.pitch)
+                }
+                if include_quarter_length:
+                    disp['quarterLength'] = n.quarterLength
+                return disp
+
+            def convert_chord(c: Chord) -> dict:
+                return {
+                    'notes': [convert_note(n, include_quarter_length=False) for n in c.notes],
+                    'name': display_chord_short_custom(c),
+                    'quarterLength': c.quarterLength
+                }
+
+            def convert_part(p: Part) -> str:
+                return p.partName
+
+            def convert_key(k: Key) -> dict:
+                return {
+                    'name': k.name,
+                    'pitch': convert_pitch(k.pitchFromDegree(1)),
+                    'quality': k.mode,
+                }
+
+            if isinstance(obj, Chord):
+                return convert_chord(obj)
+            if isinstance(obj, Note):
+                return convert_note(obj)
+            if isinstance(obj, Pitch):
+                return convert_pitch(obj)
+            if isinstance(obj, Part):
+                return convert_part(obj)
+            if isinstance(obj, Key):
+                return convert_key(obj)
+
+            raise TypeError()
+
+        def _convert_or_leave(obj):
+            try:
+                return _convert_special_objs(obj)
+            except TypeError:
+                return obj
+
+        class CustomEncoder(json.JSONEncoder):
+
+            def encode(self, o):
+                print(f"{o=}")
+                if isinstance(o, dict):
+                    new_dict = {}
+                    for k, v in o.items():
+                        print(f"{k=}, {v=}")
+                        k = _convert_or_leave(k)
+                        new_dict[k] = v
+                    return super().encode(new_dict)
+                return super().encode(o)
+
+            def default(self, o):
+                try:
+                    return _convert_special_objs(o)
+                except TypeError:
+                    # Let the base class default method raise a TypeError for unhandled types
+                    return json.JSONEncoder.default(self, o)
+
+
+        def preprocess(e):
+            e = _convert_or_leave(e)
+            if isinstance(e, dict):
+                new_d = {}
+                for k, v in e.items():
+                    new_d[preprocess(k)] = preprocess(v)
+                return new_d
+            elif isinstance(e, list):
+                return [preprocess(o) for o in e]
+            else:
+                return e
+
+
+        # TODO: bother python maintainers to actually apply default handler on dict keys :(((
+        d = preprocess(asdict(self))
+        # print(d)
+        return json.dumps(d, indent=indent, cls=CustomEncoder)
 
 
 def extract_notes_with_offset(

@@ -1,6 +1,5 @@
 # standard lib
 import argparse
-from dataclasses import dataclass
 import logging
 
 # 3rd party
@@ -100,6 +99,10 @@ def main():
         # TODO: compensate for create time and start buffer time?
         music_data = music_data.filter_by_time_range(*args.time_range)
     # print(music_data)
+
+    # export music_data
+    with open("music_data.json", 'w') as f:
+        f.write(music_data.export())
 
     # make harmonimation widgets
     widgets = build_widgets(
