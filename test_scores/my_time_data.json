@@ -1,0 +1,9507 @@
+{
+  "chords": [
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "F2"
+          },
+          {
+            "pitch": "C4"
+          },
+          {
+            "pitch": "E4"
+          },
+          {
+            "pitch": "A3"
+          },
+          {
+            "pitch": "C2"
+          }
+        ],
+        "name": "FMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 0.0,
+      "time": 2.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "F2"
+          },
+          {
+            "pitch": "C4"
+          },
+          {
+            "pitch": "E4"
+          },
+          {
+            "pitch": "A3"
+          },
+          {
+            "pitch": "C2"
+          }
+        ],
+        "name": "FMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 6.0,
+      "time": 4.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "F2"
+          },
+          {
+            "pitch": "A-3"
+          },
+          {
+            "pitch": "C4"
+          },
+          {
+            "pitch": "E-4"
+          },
+          {
+            "pitch": "C2"
+          }
+        ],
+        "name": "Fmin7",
+        "quarterLength": 1.0
+      },
+      "offset": 12.0,
+      "time": 6.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "F2"
+          },
+          {
+            "pitch": "A-3"
+          },
+          {
+            "pitch": "B-2"
+          },
+          {
+            "pitch": "B-3"
+          },
+          {
+            "pitch": "D4"
+          }
+        ],
+        "name": "B\u266d7",
+        "quarterLength": 1.0
+      },
+      "offset": 18.0,
+      "time": 8.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "B-1"
+          },
+          {
+            "pitch": "E-2"
+          },
+          {
+            "pitch": "G3"
+          },
+          {
+            "pitch": "B-3"
+          },
+          {
+            "pitch": "D4"
+          }
+        ],
+        "name": "E\u266dMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 24.0,
+      "time": 10.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "B-1"
+          },
+          {
+            "pitch": "E-2"
+          },
+          {
+            "pitch": "G3"
+          },
+          {
+            "pitch": "B-3"
+          },
+          {
+            "pitch": "D4"
+          }
+        ],
+        "name": "E\u266dMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 30.0,
+      "time": 12.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "G-3"
+          },
+          {
+            "pitch": "B-1"
+          },
+          {
+            "pitch": "D-4"
+          },
+          {
+            "pitch": "E-2"
+          },
+          {
+            "pitch": "B-3"
+          }
+        ],
+        "name": "E\u266dmin7",
+        "quarterLength": 1.0
+      },
+      "offset": 36.0,
+      "time": 14.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "G-3"
+          },
+          {
+            "pitch": "A-2"
+          },
+          {
+            "pitch": "A-3"
+          },
+          {
+            "pitch": "E-2"
+          },
+          {
+            "pitch": "C4"
+          }
+        ],
+        "name": "A\u266d7",
+        "quarterLength": 1.0
+      },
+      "offset": 42.0,
+      "time": 16.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A-3"
+          },
+          {
+            "pitch": "C4"
+          },
+          {
+            "pitch": "F3"
+          },
+          {
+            "pitch": "A-1"
+          },
+          {
+            "pitch": "D-2"
+          }
+        ],
+        "name": "D\u266dMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 48.0,
+      "time": 18.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A-3"
+          },
+          {
+            "pitch": "C4"
+          },
+          {
+            "pitch": "F3"
+          },
+          {
+            "pitch": "A-1"
+          },
+          {
+            "pitch": "D-2"
+          }
+        ],
+        "name": "D\u266dMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 54.0,
+      "time": 20.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "B3"
+          },
+          {
+            "pitch": "E3"
+          },
+          {
+            "pitch": "G#3"
+          },
+          {
+            "pitch": "G#1"
+          },
+          {
+            "pitch": "C#2"
+          }
+        ],
+        "name": "C\u266fmin7",
+        "quarterLength": 1.0
+      },
+      "offset": 60.0,
+      "time": 22.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "F#3"
+          },
+          {
+            "pitch": "E3"
+          },
+          {
+            "pitch": "F#2"
+          },
+          {
+            "pitch": "A#3"
+          },
+          {
+            "pitch": "C#2"
+          }
+        ],
+        "name": "F\u266f7",
+        "quarterLength": 1.0
+      },
+      "offset": 66.0,
+      "time": 24.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "F#3"
+          },
+          {
+            "pitch": "D#3"
+          },
+          {
+            "pitch": "B1"
+          },
+          {
+            "pitch": "A#3"
+          },
+          {
+            "pitch": "F#1"
+          }
+        ],
+        "name": "BMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 72.0,
+      "time": 26.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "F#3"
+          },
+          {
+            "pitch": "D#3"
+          },
+          {
+            "pitch": "B1"
+          },
+          {
+            "pitch": "A#3"
+          },
+          {
+            "pitch": "F#1"
+          }
+        ],
+        "name": "BMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 78.0,
+      "time": 28.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "F#3"
+          },
+          {
+            "pitch": "B1"
+          },
+          {
+            "pitch": "D3"
+          },
+          {
+            "pitch": "A3"
+          },
+          {
+            "pitch": "F#1"
+          }
+        ],
+        "name": "Bmin7",
+        "quarterLength": 1.0
+      },
+      "offset": 84.0,
+      "time": 30.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "B5"
+          },
+          {
+            "pitch": "E2"
+          },
+          {
+            "pitch": "E3"
+          },
+          {
+            "pitch": "G#3"
+          },
+          {
+            "pitch": "B1"
+          },
+          {
+            "pitch": "D3"
+          }
+        ],
+        "name": "E7",
+        "quarterLength": 1.0
+      },
+      "offset": 90.0,
+      "time": 32.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "C#5"
+          },
+          {
+            "pitch": "A1"
+          },
+          {
+            "pitch": "E5"
+          },
+          {
+            "pitch": "G#5"
+          }
+        ],
+        "name": "AMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 96.0,
+      "time": 34.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A-2"
+          },
+          {
+            "pitch": "C3"
+          },
+          {
+            "pitch": "E-3"
+          },
+          {
+            "pitch": "F3"
+          },
+          {
+            "pitch": "G-3"
+          }
+        ],
+        "name": "A\u266d7add6",
+        "quarterLength": 0.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "C6"
+          },
+          {
+            "pitch": "D-2"
+          },
+          {
+            "pitch": "F5"
+          },
+          {
+            "pitch": "F6"
+          },
+          {
+            "pitch": "A-5"
+          }
+        ],
+        "name": "D\u266dMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 102.0,
+      "time": 36.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "E5"
+          },
+          {
+            "pitch": "B-5"
+          },
+          {
+            "pitch": "E6"
+          },
+          {
+            "pitch": "G5"
+          },
+          {
+            "pitch": "C2"
+          }
+        ],
+        "name": "C7",
+        "quarterLength": 1.0
+      },
+      "offset": 105.0,
+      "time": 37.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A5"
+          },
+          {
+            "pitch": "C6"
+          },
+          {
+            "pitch": "F2"
+          },
+          {
+            "pitch": "E5"
+          }
+        ],
+        "name": "FMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 108.0,
+      "time": 38.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "E3"
+          },
+          {
+            "pitch": "G#3"
+          },
+          {
+            "pitch": "B3"
+          },
+          {
+            "pitch": "C#4"
+          },
+          {
+            "pitch": "D4"
+          }
+        ],
+        "name": "E7add6",
+        "quarterLength": 0.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A2"
+          },
+          {
+            "pitch": "E5"
+          },
+          {
+            "pitch": "C#6"
+          },
+          {
+            "pitch": "E6"
+          },
+          {
+            "pitch": "G#5"
+          }
+        ],
+        "name": "AMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 114.0,
+      "time": 40.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A-2"
+          },
+          {
+            "pitch": "C3"
+          },
+          {
+            "pitch": "E-3"
+          },
+          {
+            "pitch": "F3"
+          },
+          {
+            "pitch": "G-3"
+          }
+        ],
+        "name": "A\u266d7add6",
+        "quarterLength": 0.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "C6"
+          },
+          {
+            "pitch": "D-2"
+          },
+          {
+            "pitch": "F5"
+          },
+          {
+            "pitch": "F6"
+          },
+          {
+            "pitch": "A-5"
+          }
+        ],
+        "name": "D\u266dMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 120.0,
+      "time": 42.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "E5"
+          },
+          {
+            "pitch": "B-4"
+          },
+          {
+            "pitch": "C6"
+          },
+          {
+            "pitch": "G5"
+          },
+          {
+            "pitch": "C2"
+          }
+        ],
+        "name": "C7",
+        "quarterLength": 1.0
+      },
+      "offset": 123.0,
+      "time": 43.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A5"
+          },
+          {
+            "pitch": "C6"
+          },
+          {
+            "pitch": "F2"
+          },
+          {
+            "pitch": "E5"
+          }
+        ],
+        "name": "FMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 126.0,
+      "time": 44.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "E3"
+          },
+          {
+            "pitch": "G#3"
+          },
+          {
+            "pitch": "B3"
+          },
+          {
+            "pitch": "C#4"
+          },
+          {
+            "pitch": "D4"
+          }
+        ],
+        "name": "E7add6",
+        "quarterLength": 0.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A2"
+          },
+          {
+            "pitch": "E5"
+          },
+          {
+            "pitch": "C#6"
+          },
+          {
+            "pitch": "E6"
+          },
+          {
+            "pitch": "G#5"
+          }
+        ],
+        "name": "AMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 132.0,
+      "time": 46.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A-2"
+          },
+          {
+            "pitch": "C3"
+          },
+          {
+            "pitch": "E-3"
+          },
+          {
+            "pitch": "F3"
+          },
+          {
+            "pitch": "G-3"
+          }
+        ],
+        "name": "A\u266d7add6",
+        "quarterLength": 0.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "C6"
+          },
+          {
+            "pitch": "D-2"
+          },
+          {
+            "pitch": "F6"
+          },
+          {
+            "pitch": "A-5"
+          },
+          {
+            "pitch": "E-5"
+          }
+        ],
+        "name": "D\u266dMaj9",
+        "quarterLength": 1.0
+      },
+      "offset": 138.0,
+      "time": 48.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "C3"
+          },
+          {
+            "pitch": "E3"
+          },
+          {
+            "pitch": "G3"
+          },
+          {
+            "pitch": "A3"
+          },
+          {
+            "pitch": "B-3"
+          },
+          {
+            "pitch": "D4"
+          }
+        ],
+        "name": "C9add6",
+        "quarterLength": 0.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A4"
+          },
+          {
+            "pitch": "C5"
+          },
+          {
+            "pitch": "F2"
+          },
+          {
+            "pitch": "F4"
+          }
+        ],
+        "name": "FMaj",
+        "quarterLength": 1.0
+      },
+      "offset": 144.0,
+      "time": 50.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "E2"
+          },
+          {
+            "pitch": "G#4"
+          },
+          {
+            "pitch": "F5"
+          },
+          {
+            "pitch": "D5"
+          },
+          {
+            "pitch": "G#4"
+          },
+          {
+            "pitch": "B4"
+          },
+          {
+            "pitch": "E4"
+          }
+        ],
+        "name": "E7\u266d9",
+        "quarterLength": 1.0
+      },
+      "offset": 147.0,
+      "time": 51.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A2"
+          },
+          {
+            "pitch": "C6"
+          },
+          {
+            "pitch": "C4"
+          },
+          {
+            "pitch": "G3"
+          },
+          {
+            "pitch": "E4"
+          }
+        ],
+        "name": "Amin7",
+        "quarterLength": 1.0
+      },
+      "offset": 150.0,
+      "time": 52.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "B-3"
+          },
+          {
+            "pitch": "D4"
+          },
+          {
+            "pitch": "F3"
+          },
+          {
+            "pitch": "G2"
+          }
+        ],
+        "name": "Gmin7",
+        "quarterLength": 1.0
+      },
+      "offset": 153.0,
+      "time": 53.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "B-3"
+          },
+          {
+            "pitch": "G4"
+          },
+          {
+            "pitch": "E4"
+          },
+          {
+            "pitch": "C3"
+          }
+        ],
+        "name": "C7",
+        "quarterLength": 1.0
+      },
+      "offset": 154.5,
+      "time": 53.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "E5"
+          },
+          {
+            "pitch": "F4"
+          },
+          {
+            "pitch": "F5"
+          },
+          {
+            "pitch": "E6"
+          },
+          {
+            "pitch": "C6"
+          },
+          {
+            "pitch": "F3"
+          },
+          {
+            "pitch": "C4"
+          },
+          {
+            "pitch": "A4"
+          },
+          {
+            "pitch": "C5"
+          },
+          {
+            "pitch": "A3"
+          },
+          {
+            "pitch": "E4"
+          },
+          {
+            "pitch": "A5"
+          }
+        ],
+        "name": "FMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 156.0,
+      "time": 54.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "E2"
+          },
+          {
+            "pitch": "G#4"
+          },
+          {
+            "pitch": "F5"
+          },
+          {
+            "pitch": "D5"
+          },
+          {
+            "pitch": "G#4"
+          },
+          {
+            "pitch": "B4"
+          },
+          {
+            "pitch": "E4"
+          }
+        ],
+        "name": "E7\u266d9",
+        "quarterLength": 1.0
+      },
+      "offset": 159.0,
+      "time": 55.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A2"
+          },
+          {
+            "pitch": "C6"
+          },
+          {
+            "pitch": "G5"
+          },
+          {
+            "pitch": "C4"
+          },
+          {
+            "pitch": "B4"
+          },
+          {
+            "pitch": "E4"
+          }
+        ],
+        "name": "Amin9",
+        "quarterLength": 1.0
+      },
+      "offset": 162.0,
+      "time": 56.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [],
+        "name": "no chord",
+        "quarterLength": 1.0
+      },
+      "offset": 165.0,
+      "time": 57.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "C4"
+          },
+          {
+            "pitch": "F2"
+          },
+          {
+            "pitch": "A3"
+          },
+          {
+            "pitch": "F3"
+          }
+        ],
+        "name": "FMaj",
+        "quarterLength": 1.0
+      },
+      "offset": 168.0,
+      "time": 58.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "E2"
+          },
+          {
+            "pitch": "G#2"
+          },
+          {
+            "pitch": "B2"
+          },
+          {
+            "pitch": "D3"
+          },
+          {
+            "pitch": "F3"
+          }
+        ],
+        "name": "E7\u266d9",
+        "quarterLength": 0.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A2"
+          },
+          {
+            "pitch": "G3"
+          },
+          {
+            "pitch": "C4"
+          },
+          {
+            "pitch": "E4"
+          }
+        ],
+        "name": "Amin7",
+        "quarterLength": 1.0
+      },
+      "offset": 174.0,
+      "time": 60.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "B-3"
+          },
+          {
+            "pitch": "D4"
+          },
+          {
+            "pitch": "F3"
+          },
+          {
+            "pitch": "G2"
+          }
+        ],
+        "name": "Gmin7",
+        "quarterLength": 1.0
+      },
+      "offset": 177.0,
+      "time": 61.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "B-3"
+          },
+          {
+            "pitch": "G4"
+          },
+          {
+            "pitch": "E4"
+          },
+          {
+            "pitch": "C3"
+          }
+        ],
+        "name": "C7",
+        "quarterLength": 1.0
+      },
+      "offset": 178.5,
+      "time": 61.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "F2"
+          },
+          {
+            "pitch": "A3"
+          },
+          {
+            "pitch": "C4"
+          },
+          {
+            "pitch": "E4"
+          }
+        ],
+        "name": "FMaj7",
+        "quarterLength": 1.0
+      },
+      "offset": 180.0,
+      "time": 62.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "E2"
+          },
+          {
+            "pitch": "G#2"
+          },
+          {
+            "pitch": "B2"
+          },
+          {
+            "pitch": "D3"
+          },
+          {
+            "pitch": "F3"
+          }
+        ],
+        "name": "E7\u266d9",
+        "quarterLength": 0.0
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "notes": [
+          {
+            "pitch": "A2"
+          },
+          {
+            "pitch": "C6"
+          },
+          {
+            "pitch": "B3"
+          },
+          {
+            "pitch": "G4"
+          },
+          {
+            "pitch": "A1"
+          },
+          {
+            "pitch": "C4"
+          },
+          {
+            "pitch": "A4"
+          },
+          {
+            "pitch": "C5"
+          },
+          {
+            "pitch": "A3"
+          },
+          {
+            "pitch": "E4"
+          }
+        ],
+        "name": "Amin9",
+        "quarterLength": 1.0
+      },
+      "offset": 186.0,
+      "time": 64.0,
+      "_type": "MusicDataTiming"
+    }
+  ],
+  "all_notes": [
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 0.0,
+      "time": 2.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F2",
+        "quarterLength": 1.0
+      },
+      "offset": 0.0,
+      "time": 2.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 1.0,
+      "time": 2.3333333333333335,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 1.0,
+      "time": 2.3333333333333335,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 1.0,
+      "time": 2.3333333333333335,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 2.0,
+      "time": 2.6666666666666665,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 2.0,
+      "time": 2.6666666666666665,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 2.0,
+      "time": 2.6666666666666665,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C2",
+        "quarterLength": 1.0
+      },
+      "offset": 3.0,
+      "time": 3.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 4.0,
+      "time": 3.333333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 4.0,
+      "time": 3.333333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 4.0,
+      "time": 3.333333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 5.0,
+      "time": 3.666666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 5.0,
+      "time": 3.666666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 5.0,
+      "time": 3.666666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F2",
+        "quarterLength": 1.0
+      },
+      "offset": 6.0,
+      "time": 4.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 7.0,
+      "time": 4.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 7.0,
+      "time": 4.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 7.0,
+      "time": 4.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 8.0,
+      "time": 4.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 8.0,
+      "time": 4.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 8.0,
+      "time": 4.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 3.0
+      },
+      "offset": 9.0,
+      "time": 5.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C2",
+        "quarterLength": 1.0
+      },
+      "offset": 9.0,
+      "time": 5.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 10.0,
+      "time": 5.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 10.0,
+      "time": 5.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 10.0,
+      "time": 5.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 11.0,
+      "time": 5.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 11.0,
+      "time": 5.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 11.0,
+      "time": 5.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 3.0
+      },
+      "offset": 12.0,
+      "time": 6.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F2",
+        "quarterLength": 1.0
+      },
+      "offset": 12.0,
+      "time": 6.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 13.0,
+      "time": 6.333333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 13.0,
+      "time": 6.333333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-4",
+        "quarterLength": 1.0
+      },
+      "offset": 13.0,
+      "time": 6.333333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 14.0,
+      "time": 6.666666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 14.0,
+      "time": 6.666666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-4",
+        "quarterLength": 1.0
+      },
+      "offset": 14.0,
+      "time": 6.666666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 3.0
+      },
+      "offset": 15.0,
+      "time": 7.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C2",
+        "quarterLength": 1.0
+      },
+      "offset": 15.0,
+      "time": 7.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 16.0,
+      "time": 7.333333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 16.0,
+      "time": 7.333333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-4",
+        "quarterLength": 1.0
+      },
+      "offset": 16.0,
+      "time": 7.333333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 17.0,
+      "time": 7.666666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 17.0,
+      "time": 7.666666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-4",
+        "quarterLength": 1.0
+      },
+      "offset": 17.0,
+      "time": 7.666666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 3.0
+      },
+      "offset": 18.0,
+      "time": 8.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-2",
+        "quarterLength": 1.0
+      },
+      "offset": 18.0,
+      "time": 8.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 19.0,
+      "time": 8.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 19.0,
+      "time": 8.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 19.0,
+      "time": 8.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 20.0,
+      "time": 8.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 20.0,
+      "time": 8.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 20.0,
+      "time": 8.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 3.0
+      },
+      "offset": 21.0,
+      "time": 9.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F2",
+        "quarterLength": 1.0
+      },
+      "offset": 21.0,
+      "time": 9.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 22.0,
+      "time": 9.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 22.0,
+      "time": 9.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 22.0,
+      "time": 9.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 23.0,
+      "time": 9.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 23.0,
+      "time": 9.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 23.0,
+      "time": 9.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 24.0,
+      "time": 10.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-2",
+        "quarterLength": 1.0
+      },
+      "offset": 24.0,
+      "time": 10.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 25.0,
+      "time": 10.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 25.0,
+      "time": 10.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 25.0,
+      "time": 10.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 26.0,
+      "time": 10.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 26.0,
+      "time": 10.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 26.0,
+      "time": 10.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-1",
+        "quarterLength": 1.0
+      },
+      "offset": 27.0,
+      "time": 11.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 28.0,
+      "time": 11.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 28.0,
+      "time": 11.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 28.0,
+      "time": 11.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 29.0,
+      "time": 11.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 29.0,
+      "time": 11.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 29.0,
+      "time": 11.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-2",
+        "quarterLength": 1.0
+      },
+      "offset": 30.0,
+      "time": 12.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 31.0,
+      "time": 12.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 31.0,
+      "time": 12.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 31.0,
+      "time": 12.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 32.0,
+      "time": 12.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 32.0,
+      "time": 12.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 32.0,
+      "time": 12.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-1",
+        "quarterLength": 1.0
+      },
+      "offset": 33.0,
+      "time": 13.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-3",
+        "quarterLength": 0.5
+      },
+      "offset": 34.0,
+      "time": 13.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 34.0,
+      "time": 13.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 34.0,
+      "time": 13.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 34.0,
+      "time": 13.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 0.5
+      },
+      "offset": 34.5,
+      "time": 13.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-3",
+        "quarterLength": 0.5
+      },
+      "offset": 35.0,
+      "time": 13.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 35.0,
+      "time": 13.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 35.0,
+      "time": 13.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 35.0,
+      "time": 13.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 0.5
+      },
+      "offset": 35.5,
+      "time": 13.833333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 3.0
+      },
+      "offset": 36.0,
+      "time": 14.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-2",
+        "quarterLength": 1.0
+      },
+      "offset": 36.0,
+      "time": 14.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 37.0,
+      "time": 14.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 37.0,
+      "time": 14.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D-4",
+        "quarterLength": 1.0
+      },
+      "offset": 37.0,
+      "time": 14.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 38.0,
+      "time": 14.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 38.0,
+      "time": 14.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D-4",
+        "quarterLength": 1.0
+      },
+      "offset": 38.0,
+      "time": 14.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 3.0
+      },
+      "offset": 39.0,
+      "time": 15.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-1",
+        "quarterLength": 1.0
+      },
+      "offset": 39.0,
+      "time": 15.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 40.0,
+      "time": 15.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 40.0,
+      "time": 15.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D-4",
+        "quarterLength": 1.0
+      },
+      "offset": 40.0,
+      "time": 15.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 41.0,
+      "time": 15.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 41.0,
+      "time": 15.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D-4",
+        "quarterLength": 1.0
+      },
+      "offset": 41.0,
+      "time": 15.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 3.0
+      },
+      "offset": 42.0,
+      "time": 16.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-2",
+        "quarterLength": 1.0
+      },
+      "offset": 42.0,
+      "time": 16.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 43.0,
+      "time": 16.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 43.0,
+      "time": 16.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 43.0,
+      "time": 16.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 44.0,
+      "time": 16.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 44.0,
+      "time": 16.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 44.0,
+      "time": 16.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 3.0
+      },
+      "offset": 45.0,
+      "time": 17.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-2",
+        "quarterLength": 1.0
+      },
+      "offset": 45.0,
+      "time": 17.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 46.0,
+      "time": 17.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 46.0,
+      "time": 17.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 46.0,
+      "time": 17.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 47.0,
+      "time": 17.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 47.0,
+      "time": 17.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 47.0,
+      "time": 17.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 48.0,
+      "time": 18.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D-2",
+        "quarterLength": 1.0
+      },
+      "offset": 48.0,
+      "time": 18.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 49.0,
+      "time": 18.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 49.0,
+      "time": 18.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 49.0,
+      "time": 18.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 50.0,
+      "time": 18.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 50.0,
+      "time": 18.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 50.0,
+      "time": 18.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-1",
+        "quarterLength": 1.0
+      },
+      "offset": 51.0,
+      "time": 19.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 52.0,
+      "time": 19.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 52.0,
+      "time": 19.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 52.0,
+      "time": 19.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 53.0,
+      "time": 19.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 53.0,
+      "time": 19.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 53.0,
+      "time": 19.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D-2",
+        "quarterLength": 1.0
+      },
+      "offset": 54.0,
+      "time": 20.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 55.0,
+      "time": 20.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 55.0,
+      "time": 20.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 55.0,
+      "time": 20.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 56.0,
+      "time": 20.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 56.0,
+      "time": 20.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 56.0,
+      "time": 20.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-1",
+        "quarterLength": 1.0
+      },
+      "offset": 57.0,
+      "time": 21.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D-3",
+        "quarterLength": 0.5
+      },
+      "offset": 58.0,
+      "time": 21.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 58.0,
+      "time": 21.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 58.0,
+      "time": 21.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 58.0,
+      "time": 21.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-3",
+        "quarterLength": 0.5
+      },
+      "offset": 58.5,
+      "time": 21.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D-3",
+        "quarterLength": 0.5
+      },
+      "offset": 59.0,
+      "time": 21.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 59.0,
+      "time": 21.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-3",
+        "quarterLength": 1.0
+      },
+      "offset": 59.0,
+      "time": 21.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 59.0,
+      "time": 21.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-3",
+        "quarterLength": 0.5
+      },
+      "offset": 59.5,
+      "time": 21.833333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 3.0
+      },
+      "offset": 60.0,
+      "time": 22.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#2",
+        "quarterLength": 1.0
+      },
+      "offset": 60.0,
+      "time": 22.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 61.0,
+      "time": 22.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 61.0,
+      "time": 22.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 1.0
+      },
+      "offset": 61.0,
+      "time": 22.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 62.0,
+      "time": 22.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 62.0,
+      "time": 22.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 1.0
+      },
+      "offset": 62.0,
+      "time": 22.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 3.0
+      },
+      "offset": 63.0,
+      "time": 23.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#1",
+        "quarterLength": 1.0
+      },
+      "offset": 63.0,
+      "time": 23.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 64.0,
+      "time": 23.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 64.0,
+      "time": 23.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 1.0
+      },
+      "offset": 64.0,
+      "time": 23.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 65.0,
+      "time": 23.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 65.0,
+      "time": 23.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 1.0
+      },
+      "offset": 65.0,
+      "time": 23.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 3.0
+      },
+      "offset": 66.0,
+      "time": 24.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#2",
+        "quarterLength": 1.0
+      },
+      "offset": 66.0,
+      "time": 24.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 67.0,
+      "time": 24.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 67.0,
+      "time": 24.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 1.0
+      },
+      "offset": 67.0,
+      "time": 24.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 68.0,
+      "time": 24.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 68.0,
+      "time": 24.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 1.0
+      },
+      "offset": 68.0,
+      "time": 24.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 3.0
+      },
+      "offset": 69.0,
+      "time": 25.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#2",
+        "quarterLength": 1.0
+      },
+      "offset": 69.0,
+      "time": 25.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 70.0,
+      "time": 25.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 70.0,
+      "time": 25.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 1.0
+      },
+      "offset": 70.0,
+      "time": 25.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 71.0,
+      "time": 25.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 71.0,
+      "time": 25.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 1.0
+      },
+      "offset": 71.0,
+      "time": 25.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D#3",
+        "quarterLength": 1.0
+      },
+      "offset": 72.0,
+      "time": 26.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B1",
+        "quarterLength": 1.0
+      },
+      "offset": 72.0,
+      "time": 26.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D#3",
+        "quarterLength": 1.0
+      },
+      "offset": 73.0,
+      "time": 26.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 73.0,
+      "time": 26.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 1.0
+      },
+      "offset": 73.0,
+      "time": 26.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D#3",
+        "quarterLength": 1.0
+      },
+      "offset": 74.0,
+      "time": 26.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 74.0,
+      "time": 26.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 1.0
+      },
+      "offset": 74.0,
+      "time": 26.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#1",
+        "quarterLength": 1.0
+      },
+      "offset": 75.0,
+      "time": 27.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D#3",
+        "quarterLength": 1.0
+      },
+      "offset": 76.0,
+      "time": 27.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 76.0,
+      "time": 27.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 1.0
+      },
+      "offset": 76.0,
+      "time": 27.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D#3",
+        "quarterLength": 1.0
+      },
+      "offset": 77.0,
+      "time": 27.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 77.0,
+      "time": 27.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 1.0
+      },
+      "offset": 77.0,
+      "time": 27.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B1",
+        "quarterLength": 1.0
+      },
+      "offset": 78.0,
+      "time": 28.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D#3",
+        "quarterLength": 1.0
+      },
+      "offset": 79.0,
+      "time": 28.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 79.0,
+      "time": 28.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 1.0
+      },
+      "offset": 79.0,
+      "time": 28.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D#3",
+        "quarterLength": 1.0
+      },
+      "offset": 80.0,
+      "time": 28.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 80.0,
+      "time": 28.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 1.0
+      },
+      "offset": 80.0,
+      "time": 28.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#1",
+        "quarterLength": 1.0
+      },
+      "offset": 81.0,
+      "time": 29.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B2",
+        "quarterLength": 0.5
+      },
+      "offset": 82.0,
+      "time": 29.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D#3",
+        "quarterLength": 1.0
+      },
+      "offset": 82.0,
+      "time": 29.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 82.0,
+      "time": 29.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 1.0
+      },
+      "offset": 82.0,
+      "time": 29.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#3",
+        "quarterLength": 0.5
+      },
+      "offset": 82.5,
+      "time": 29.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B2",
+        "quarterLength": 0.5
+      },
+      "offset": 83.0,
+      "time": 29.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D#3",
+        "quarterLength": 1.0
+      },
+      "offset": 83.0,
+      "time": 29.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 83.0,
+      "time": 29.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A#3",
+        "quarterLength": 1.0
+      },
+      "offset": 83.0,
+      "time": 29.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#3",
+        "quarterLength": 0.5
+      },
+      "offset": 83.5,
+      "time": 29.833333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 3.0
+      },
+      "offset": 84.0,
+      "time": 30.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B1",
+        "quarterLength": 1.0
+      },
+      "offset": 84.0,
+      "time": 30.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 1.0
+      },
+      "offset": 85.0,
+      "time": 30.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 85.0,
+      "time": 30.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 85.0,
+      "time": 30.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 1.0
+      },
+      "offset": 86.0,
+      "time": 30.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 86.0,
+      "time": 30.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 86.0,
+      "time": 30.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 3.0
+      },
+      "offset": 87.0,
+      "time": 31.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#1",
+        "quarterLength": 1.0
+      },
+      "offset": 87.0,
+      "time": 31.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 1.0
+      },
+      "offset": 88.0,
+      "time": 31.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 88.0,
+      "time": 31.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 88.0,
+      "time": 31.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 1.0
+      },
+      "offset": 89.0,
+      "time": 31.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F#3",
+        "quarterLength": 1.0
+      },
+      "offset": 89.0,
+      "time": 31.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 89.0,
+      "time": 31.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 3.0
+      },
+      "offset": 90.0,
+      "time": 32.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E2",
+        "quarterLength": 1.0
+      },
+      "offset": 90.0,
+      "time": 32.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 1.0
+      },
+      "offset": 91.0,
+      "time": 32.33333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 91.0,
+      "time": 32.33333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 91.0,
+      "time": 32.33333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 1.0
+      },
+      "offset": 92.0,
+      "time": 32.66666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 92.0,
+      "time": 32.66666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 92.0,
+      "time": 32.66666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 3.0
+      },
+      "offset": 93.0,
+      "time": 33.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B1",
+        "quarterLength": 1.0
+      },
+      "offset": 93.0,
+      "time": 33.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B5",
+        "quarterLength": 2.0
+      },
+      "offset": 94.0,
+      "time": 33.33333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 1.0
+      },
+      "offset": 94.0,
+      "time": 33.33333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 94.0,
+      "time": 33.33333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 94.0,
+      "time": 33.33333333333333,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 1.0
+      },
+      "offset": 95.0,
+      "time": 33.66666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 95.0,
+      "time": 33.66666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 95.0,
+      "time": 33.66666666666667,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#3",
+        "quarterLength": 1.0
+      },
+      "offset": 96.0,
+      "time": 34.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#5",
+        "quarterLength": 1.0
+      },
+      "offset": 96.0,
+      "time": 34.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E5",
+        "quarterLength": 1.0
+      },
+      "offset": 96.0,
+      "time": 34.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#5",
+        "quarterLength": 1.0
+      },
+      "offset": 96.0,
+      "time": 34.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A1",
+        "quarterLength": 1.0
+      },
+      "offset": 96.0,
+      "time": 34.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-4",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-2",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C3",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-3",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-5",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-5",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F6",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-2",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C3",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-3",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-1",
+        "quarterLength": 1.0
+      },
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F4",
+        "quarterLength": 1.0
+      },
+      "offset": 102.0,
+      "time": 36.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F5",
+        "quarterLength": 1.0
+      },
+      "offset": 102.0,
+      "time": 36.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-5",
+        "quarterLength": 1.0
+      },
+      "offset": 102.0,
+      "time": 36.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 1.0
+      },
+      "offset": 102.0,
+      "time": 36.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F6",
+        "quarterLength": 1.0
+      },
+      "offset": 102.0,
+      "time": 36.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D-2",
+        "quarterLength": 1.0
+      },
+      "offset": 102.0,
+      "time": 36.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 105.0,
+      "time": 37.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E5",
+        "quarterLength": 1.0
+      },
+      "offset": 105.0,
+      "time": 37.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G5",
+        "quarterLength": 1.0
+      },
+      "offset": 105.0,
+      "time": 37.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-5",
+        "quarterLength": 1.0
+      },
+      "offset": 105.0,
+      "time": 37.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E6",
+        "quarterLength": 1.0
+      },
+      "offset": 105.0,
+      "time": 37.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C2",
+        "quarterLength": 1.0
+      },
+      "offset": 105.0,
+      "time": 37.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A4",
+        "quarterLength": 1.0
+      },
+      "offset": 108.0,
+      "time": 38.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E5",
+        "quarterLength": 1.0
+      },
+      "offset": 108.0,
+      "time": 38.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A5",
+        "quarterLength": 1.0
+      },
+      "offset": 108.0,
+      "time": 38.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 1.0
+      },
+      "offset": 108.0,
+      "time": 38.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F2",
+        "quarterLength": 1.0
+      },
+      "offset": 108.0,
+      "time": 38.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#4",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#4",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B4",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D5",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#5",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#6",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#4",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E2",
+        "quarterLength": 1.0
+      },
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A4",
+        "quarterLength": 1.0
+      },
+      "offset": 114.0,
+      "time": 40.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E5",
+        "quarterLength": 1.0
+      },
+      "offset": 114.0,
+      "time": 40.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#5",
+        "quarterLength": 1.0
+      },
+      "offset": 114.0,
+      "time": 40.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#6",
+        "quarterLength": 1.0
+      },
+      "offset": 114.0,
+      "time": 40.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E6",
+        "quarterLength": 1.0
+      },
+      "offset": 114.0,
+      "time": 40.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A2",
+        "quarterLength": 1.0
+      },
+      "offset": 114.0,
+      "time": 40.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C5",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-2",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C3",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-3",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-5",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-5",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F6",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-2",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C3",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-3",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-2",
+        "quarterLength": 1.0
+      },
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D-5",
+        "quarterLength": 1.0
+      },
+      "offset": 120.0,
+      "time": 42.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F5",
+        "quarterLength": 1.0
+      },
+      "offset": 120.0,
+      "time": 42.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-5",
+        "quarterLength": 1.0
+      },
+      "offset": 120.0,
+      "time": 42.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 1.0
+      },
+      "offset": 120.0,
+      "time": 42.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F6",
+        "quarterLength": 1.0
+      },
+      "offset": 120.0,
+      "time": 42.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D-2",
+        "quarterLength": 1.0
+      },
+      "offset": 120.0,
+      "time": 42.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C5",
+        "quarterLength": 1.0
+      },
+      "offset": 123.0,
+      "time": 43.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-4",
+        "quarterLength": 1.0
+      },
+      "offset": 123.0,
+      "time": 43.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E5",
+        "quarterLength": 1.0
+      },
+      "offset": 123.0,
+      "time": 43.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G5",
+        "quarterLength": 1.0
+      },
+      "offset": 123.0,
+      "time": 43.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 1.0
+      },
+      "offset": 123.0,
+      "time": 43.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C2",
+        "quarterLength": 1.0
+      },
+      "offset": 123.0,
+      "time": 43.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F5",
+        "quarterLength": 1.0
+      },
+      "offset": 126.0,
+      "time": 44.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E5",
+        "quarterLength": 1.0
+      },
+      "offset": 126.0,
+      "time": 44.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A5",
+        "quarterLength": 1.0
+      },
+      "offset": 126.0,
+      "time": 44.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 1.0
+      },
+      "offset": 126.0,
+      "time": 44.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F2",
+        "quarterLength": 1.0
+      },
+      "offset": 126.0,
+      "time": 44.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E5",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#4",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B4",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D5",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#5",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#6",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#4",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E2",
+        "quarterLength": 1.0
+      },
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#5",
+        "quarterLength": 1.0
+      },
+      "offset": 132.0,
+      "time": 46.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E5",
+        "quarterLength": 1.0
+      },
+      "offset": 132.0,
+      "time": 46.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#5",
+        "quarterLength": 1.0
+      },
+      "offset": 132.0,
+      "time": 46.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C#6",
+        "quarterLength": 1.0
+      },
+      "offset": 132.0,
+      "time": 46.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E6",
+        "quarterLength": 1.0
+      },
+      "offset": 132.0,
+      "time": 46.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A2",
+        "quarterLength": 1.0
+      },
+      "offset": 132.0,
+      "time": 46.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C5",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-2",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C3",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-3",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-5",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-5",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F6",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-2",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C3",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-3",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G-3",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-2",
+        "quarterLength": 1.0
+      },
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-5",
+        "quarterLength": 1.0
+      },
+      "offset": 138.0,
+      "time": 48.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E-5",
+        "quarterLength": 1.0
+      },
+      "offset": 138.0,
+      "time": 48.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A-5",
+        "quarterLength": 1.0
+      },
+      "offset": 138.0,
+      "time": 48.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 1.0
+      },
+      "offset": 138.0,
+      "time": 48.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F6",
+        "quarterLength": 1.0
+      },
+      "offset": 138.0,
+      "time": 48.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D-2",
+        "quarterLength": 1.0
+      },
+      "offset": 138.0,
+      "time": 48.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E5",
+        "quarterLength": 3.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C3",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 0.5
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 0.5
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G4",
+        "quarterLength": 0.5
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A4",
+        "quarterLength": 0.5
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C5",
+        "quarterLength": 0.5
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C3",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C2",
+        "quarterLength": 1.0
+      },
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C5",
+        "quarterLength": 0.5
+      },
+      "offset": 141.5,
+      "time": 49.166666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D5",
+        "quarterLength": 0.5
+      },
+      "offset": 141.5,
+      "time": 49.166666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D5",
+        "quarterLength": 0.5
+      },
+      "offset": 142.0,
+      "time": 49.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E5",
+        "quarterLength": 0.5
+      },
+      "offset": 142.0,
+      "time": 49.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G2",
+        "quarterLength": 1.0
+      },
+      "offset": 142.0,
+      "time": 49.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E5",
+        "quarterLength": 0.5
+      },
+      "offset": 142.5,
+      "time": 49.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G5",
+        "quarterLength": 0.5
+      },
+      "offset": 142.5,
+      "time": 49.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G5",
+        "quarterLength": 0.5
+      },
+      "offset": 143.0,
+      "time": 49.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A5",
+        "quarterLength": 0.5
+      },
+      "offset": 143.0,
+      "time": 49.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C3",
+        "quarterLength": 1.0
+      },
+      "offset": 143.0,
+      "time": 49.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A5",
+        "quarterLength": 0.5
+      },
+      "offset": 143.5,
+      "time": 49.833333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 0.5
+      },
+      "offset": 143.5,
+      "time": 49.833333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 144.0,
+      "time": 50.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F2",
+        "quarterLength": 1.0
+      },
+      "offset": 144.0,
+      "time": 50.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 145.0,
+      "time": 50.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F4",
+        "quarterLength": 1.0
+      },
+      "offset": 145.0,
+      "time": 50.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A4",
+        "quarterLength": 1.0
+      },
+      "offset": 145.0,
+      "time": 50.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C5",
+        "quarterLength": 1.0
+      },
+      "offset": 145.0,
+      "time": 50.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 146.0,
+      "time": 50.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F4",
+        "quarterLength": 1.0
+      },
+      "offset": 146.0,
+      "time": 50.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A4",
+        "quarterLength": 1.0
+      },
+      "offset": 146.0,
+      "time": 50.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C5",
+        "quarterLength": 1.0
+      },
+      "offset": 146.0,
+      "time": 50.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 147.0,
+      "time": 51.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F4",
+        "quarterLength": 2.0
+      },
+      "offset": 148.0,
+      "time": 51.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 0.5
+      },
+      "offset": 148.0,
+      "time": 51.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#4",
+        "quarterLength": 0.5
+      },
+      "offset": 148.0,
+      "time": 51.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E2",
+        "quarterLength": 1.0
+      },
+      "offset": 148.0,
+      "time": 51.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#4",
+        "quarterLength": 0.5
+      },
+      "offset": 148.5,
+      "time": 51.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B4",
+        "quarterLength": 0.5
+      },
+      "offset": 148.5,
+      "time": 51.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B4",
+        "quarterLength": 0.5
+      },
+      "offset": 149.0,
+      "time": 51.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D5",
+        "quarterLength": 0.5
+      },
+      "offset": 149.0,
+      "time": 51.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D5",
+        "quarterLength": 0.5
+      },
+      "offset": 149.5,
+      "time": 51.833333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F5",
+        "quarterLength": 0.5
+      },
+      "offset": 149.5,
+      "time": 51.833333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 150.0,
+      "time": 52.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A2",
+        "quarterLength": 1.0
+      },
+      "offset": 150.0,
+      "time": 52.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 0.5
+      },
+      "offset": 151.0,
+      "time": 52.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 151.0,
+      "time": 52.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 151.0,
+      "time": 52.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 151.0,
+      "time": 52.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 1.0
+      },
+      "offset": 151.0,
+      "time": 52.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.5
+      },
+      "offset": 151.5,
+      "time": 52.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 152.0,
+      "time": 52.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 152.0,
+      "time": 52.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 152.0,
+      "time": 52.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.5
+      },
+      "offset": 153.0,
+      "time": 53.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.5
+      },
+      "offset": 153.0,
+      "time": 53.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.5
+      },
+      "offset": 153.0,
+      "time": 53.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.5
+      },
+      "offset": 153.0,
+      "time": 53.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G2",
+        "quarterLength": 1.5
+      },
+      "offset": 153.0,
+      "time": 53.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F4",
+        "quarterLength": 1.5
+      },
+      "offset": 154.5,
+      "time": 53.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.5
+      },
+      "offset": 154.5,
+      "time": 53.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.5
+      },
+      "offset": 154.5,
+      "time": 53.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G4",
+        "quarterLength": 1.5
+      },
+      "offset": 154.5,
+      "time": 53.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C3",
+        "quarterLength": 1.5
+      },
+      "offset": 154.5,
+      "time": 53.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 156.0,
+      "time": 54.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 157.0,
+      "time": 54.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F4",
+        "quarterLength": 0.25
+      },
+      "offset": 157.0,
+      "time": 54.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 0.25
+      },
+      "offset": 157.0,
+      "time": 54.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A4",
+        "quarterLength": 0.25
+      },
+      "offset": 157.25,
+      "time": 54.416666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 0.25
+      },
+      "offset": 157.25,
+      "time": 54.416666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C5",
+        "quarterLength": 0.25
+      },
+      "offset": 157.5,
+      "time": 54.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 0.25
+      },
+      "offset": 157.5,
+      "time": 54.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E5",
+        "quarterLength": 0.25
+      },
+      "offset": 157.75,
+      "time": 54.583333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 0.25
+      },
+      "offset": 157.75,
+      "time": 54.583333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 158.0,
+      "time": 54.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F5",
+        "quarterLength": 0.25
+      },
+      "offset": 158.0,
+      "time": 54.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F4",
+        "quarterLength": 1.0
+      },
+      "offset": 158.0,
+      "time": 54.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A5",
+        "quarterLength": 0.25
+      },
+      "offset": 158.25,
+      "time": 54.75,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 0.25
+      },
+      "offset": 158.5,
+      "time": 54.833333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E6",
+        "quarterLength": 0.25
+      },
+      "offset": 158.75,
+      "time": 54.916666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.5
+      },
+      "offset": 159.0,
+      "time": 55.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B4",
+        "quarterLength": 1.0
+      },
+      "offset": 159.0,
+      "time": 55.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D5",
+        "quarterLength": 1.0
+      },
+      "offset": 159.0,
+      "time": 55.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F5",
+        "quarterLength": 1.0
+      },
+      "offset": 159.0,
+      "time": 55.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E2",
+        "quarterLength": 1.0
+      },
+      "offset": 159.0,
+      "time": 55.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#4",
+        "quarterLength": 1.0
+      },
+      "offset": 160.0,
+      "time": 55.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B4",
+        "quarterLength": 1.0
+      },
+      "offset": 160.0,
+      "time": 55.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D5",
+        "quarterLength": 1.0
+      },
+      "offset": 160.0,
+      "time": 55.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.5
+      },
+      "offset": 160.5,
+      "time": 55.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 161.0,
+      "time": 55.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#4",
+        "quarterLength": 1.0
+      },
+      "offset": 161.0,
+      "time": 55.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B4",
+        "quarterLength": 1.0
+      },
+      "offset": 161.0,
+      "time": 55.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 3.0
+      },
+      "offset": 162.0,
+      "time": 56.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 162.0,
+      "time": 56.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 162.0,
+      "time": 56.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B4",
+        "quarterLength": 1.0
+      },
+      "offset": 162.0,
+      "time": 56.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A2",
+        "quarterLength": 1.0
+      },
+      "offset": 162.0,
+      "time": 56.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 2.0
+      },
+      "offset": 163.0,
+      "time": 56.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G5",
+        "quarterLength": 2.0
+      },
+      "offset": 163.0,
+      "time": 56.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 168.0,
+      "time": 58.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F2",
+        "quarterLength": 1.0
+      },
+      "offset": 168.0,
+      "time": 58.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 169.0,
+      "time": 58.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 169.0,
+      "time": 58.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 169.0,
+      "time": 58.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 169.0,
+      "time": 58.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 170.0,
+      "time": 58.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 170.0,
+      "time": 58.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 170.0,
+      "time": 58.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 170.0,
+      "time": 58.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E2",
+        "quarterLength": 1.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#2",
+        "quarterLength": 1.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B2",
+        "quarterLength": 1.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 1.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E2",
+        "quarterLength": 1.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#2",
+        "quarterLength": 1.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B2",
+        "quarterLength": 1.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 1.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E2",
+        "quarterLength": 1.0
+      },
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F4",
+        "quarterLength": 2.0
+      },
+      "offset": 172.0,
+      "time": 59.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 2.0
+      },
+      "offset": 172.0,
+      "time": 59.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 2.0
+      },
+      "offset": 172.0,
+      "time": 59.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F4",
+        "quarterLength": 2.0
+      },
+      "offset": 172.0,
+      "time": 59.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.5
+      },
+      "offset": 174.0,
+      "time": 60.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A2",
+        "quarterLength": 1.0
+      },
+      "offset": 174.0,
+      "time": 60.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 175.0,
+      "time": 60.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 175.0,
+      "time": 60.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 175.0,
+      "time": 60.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.5
+      },
+      "offset": 175.5,
+      "time": 60.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G3",
+        "quarterLength": 1.0
+      },
+      "offset": 176.0,
+      "time": 60.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 176.0,
+      "time": 60.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 176.0,
+      "time": 60.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.5
+      },
+      "offset": 177.0,
+      "time": 61.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.5
+      },
+      "offset": 177.0,
+      "time": 61.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.5
+      },
+      "offset": 177.0,
+      "time": 61.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.5
+      },
+      "offset": 177.0,
+      "time": 61.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G2",
+        "quarterLength": 1.5
+      },
+      "offset": 177.0,
+      "time": 61.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F4",
+        "quarterLength": 1.5
+      },
+      "offset": 178.5,
+      "time": 61.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B-3",
+        "quarterLength": 1.5
+      },
+      "offset": 178.5,
+      "time": 61.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.5
+      },
+      "offset": 178.5,
+      "time": 61.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G4",
+        "quarterLength": 1.5
+      },
+      "offset": 178.5,
+      "time": 61.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C3",
+        "quarterLength": 1.5
+      },
+      "offset": 178.5,
+      "time": 61.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 180.0,
+      "time": 62.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F2",
+        "quarterLength": 1.0
+      },
+      "offset": 180.0,
+      "time": 62.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D4",
+        "quarterLength": 1.0
+      },
+      "offset": 181.0,
+      "time": 62.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 181.0,
+      "time": 62.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 181.0,
+      "time": 62.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 181.0,
+      "time": 62.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 182.0,
+      "time": 62.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 1.0
+      },
+      "offset": 182.0,
+      "time": 62.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 1.0
+      },
+      "offset": 182.0,
+      "time": 62.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 1.0
+      },
+      "offset": 182.0,
+      "time": 62.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 1.5
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E2",
+        "quarterLength": 1.0
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#2",
+        "quarterLength": 1.0
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B2",
+        "quarterLength": 1.0
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 1.0
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E2",
+        "quarterLength": 1.0
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#2",
+        "quarterLength": 1.0
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B2",
+        "quarterLength": 1.0
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "D3",
+        "quarterLength": 1.0
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F3",
+        "quarterLength": 1.0
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E2",
+        "quarterLength": 1.0
+      },
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G#3",
+        "quarterLength": 2.0
+      },
+      "offset": 184.0,
+      "time": 63.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 2.0
+      },
+      "offset": 184.0,
+      "time": 63.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "F4",
+        "quarterLength": 2.0
+      },
+      "offset": 184.0,
+      "time": 63.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E3",
+        "quarterLength": 1.5
+      },
+      "offset": 184.5,
+      "time": 63.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 3.0
+      },
+      "offset": 186.0,
+      "time": 64.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A3",
+        "quarterLength": 0.5
+      },
+      "offset": 186.0,
+      "time": 64.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 0.5
+      },
+      "offset": 186.0,
+      "time": 64.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A1",
+        "quarterLength": 1.0
+      },
+      "offset": 186.0,
+      "time": 64.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A2",
+        "quarterLength": 1.0
+      },
+      "offset": 186.0,
+      "time": 64.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "B3",
+        "quarterLength": 0.5
+      },
+      "offset": 186.5,
+      "time": 64.16666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 0.5
+      },
+      "offset": 186.5,
+      "time": 64.16666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C4",
+        "quarterLength": 0.5
+      },
+      "offset": 187.0,
+      "time": 64.33333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 0.5
+      },
+      "offset": 187.0,
+      "time": 64.33333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C6",
+        "quarterLength": 2.0
+      },
+      "offset": 187.0,
+      "time": 64.33333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "E4",
+        "quarterLength": 0.5
+      },
+      "offset": 187.5,
+      "time": 64.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G4",
+        "quarterLength": 0.5
+      },
+      "offset": 187.5,
+      "time": 64.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "G4",
+        "quarterLength": 0.5
+      },
+      "offset": 188.0,
+      "time": 64.66666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A4",
+        "quarterLength": 0.5
+      },
+      "offset": 188.0,
+      "time": 64.66666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "A4",
+        "quarterLength": 0.5
+      },
+      "offset": 188.5,
+      "time": 64.83333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "pitch": "C5",
+        "quarterLength": 0.5
+      },
+      "offset": 188.5,
+      "time": 64.83333333333334,
+      "_type": "MusicDataTiming"
+    }
+  ],
+  "all_notes_by_part": {
+    "Soprano": [
+      {
+        "elem": {
+          "pitch": "A-4",
+          "quarterLength": 1.0
+        },
+        "offset": 99.0,
+        "time": 35.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F4",
+          "quarterLength": 1.0
+        },
+        "offset": 102.0,
+        "time": 36.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E4",
+          "quarterLength": 1.0
+        },
+        "offset": 105.0,
+        "time": 37.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A4",
+          "quarterLength": 1.0
+        },
+        "offset": 108.0,
+        "time": 38.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#4",
+          "quarterLength": 1.0
+        },
+        "offset": 111.0,
+        "time": 39.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A4",
+          "quarterLength": 1.0
+        },
+        "offset": 114.0,
+        "time": 40.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C5",
+          "quarterLength": 1.0
+        },
+        "offset": 117.0,
+        "time": 41.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D-5",
+          "quarterLength": 1.0
+        },
+        "offset": 120.0,
+        "time": 42.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C5",
+          "quarterLength": 1.0
+        },
+        "offset": 123.0,
+        "time": 43.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F5",
+          "quarterLength": 1.0
+        },
+        "offset": 126.0,
+        "time": 44.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E5",
+          "quarterLength": 1.0
+        },
+        "offset": 129.0,
+        "time": 45.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C#5",
+          "quarterLength": 1.0
+        },
+        "offset": 132.0,
+        "time": 46.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C5",
+          "quarterLength": 1.0
+        },
+        "offset": 135.0,
+        "time": 47.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E-5",
+          "quarterLength": 1.0
+        },
+        "offset": 138.0,
+        "time": 48.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E5",
+          "quarterLength": 3.0
+        },
+        "offset": 141.0,
+        "time": 49.0,
+        "_type": "MusicDataTiming"
+      }
+    ],
+    "Tenor": [
+      {
+        "elem": {
+          "pitch": "A3",
+          "quarterLength": 1.0
+        },
+        "offset": 0.0,
+        "time": 2.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A3",
+          "quarterLength": 3.0
+        },
+        "offset": 9.0,
+        "time": 5.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A-3",
+          "quarterLength": 3.0
+        },
+        "offset": 12.0,
+        "time": 6.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C4",
+          "quarterLength": 3.0
+        },
+        "offset": 15.0,
+        "time": 7.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D4",
+          "quarterLength": 3.0
+        },
+        "offset": 18.0,
+        "time": 8.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B-3",
+          "quarterLength": 3.0
+        },
+        "offset": 21.0,
+        "time": 9.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G3",
+          "quarterLength": 1.0
+        },
+        "offset": 24.0,
+        "time": 10.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E-3",
+          "quarterLength": 0.5
+        },
+        "offset": 34.0,
+        "time": 13.333333333333334,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F3",
+          "quarterLength": 0.5
+        },
+        "offset": 34.5,
+        "time": 13.5,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E-3",
+          "quarterLength": 0.5
+        },
+        "offset": 35.0,
+        "time": 13.666666666666666,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F3",
+          "quarterLength": 0.5
+        },
+        "offset": 35.5,
+        "time": 13.833333333333334,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G-3",
+          "quarterLength": 3.0
+        },
+        "offset": 36.0,
+        "time": 14.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B-3",
+          "quarterLength": 3.0
+        },
+        "offset": 39.0,
+        "time": 15.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C4",
+          "quarterLength": 3.0
+        },
+        "offset": 42.0,
+        "time": 16.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A-3",
+          "quarterLength": 3.0
+        },
+        "offset": 45.0,
+        "time": 17.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F3",
+          "quarterLength": 1.0
+        },
+        "offset": 48.0,
+        "time": 18.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D-3",
+          "quarterLength": 0.5
+        },
+        "offset": 58.0,
+        "time": 21.333333333333332,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E-3",
+          "quarterLength": 0.5
+        },
+        "offset": 58.5,
+        "time": 21.5,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D-3",
+          "quarterLength": 0.5
+        },
+        "offset": 59.0,
+        "time": 21.666666666666668,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E-3",
+          "quarterLength": 0.5
+        },
+        "offset": 59.5,
+        "time": 21.833333333333332,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E3",
+          "quarterLength": 3.0
+        },
+        "offset": 60.0,
+        "time": 22.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#3",
+          "quarterLength": 3.0
+        },
+        "offset": 63.0,
+        "time": 23.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A#3",
+          "quarterLength": 3.0
+        },
+        "offset": 66.0,
+        "time": 24.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F#3",
+          "quarterLength": 3.0
+        },
+        "offset": 69.0,
+        "time": 25.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D#3",
+          "quarterLength": 1.0
+        },
+        "offset": 72.0,
+        "time": 26.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B2",
+          "quarterLength": 0.5
+        },
+        "offset": 82.0,
+        "time": 29.333333333333332,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C#3",
+          "quarterLength": 0.5
+        },
+        "offset": 82.5,
+        "time": 29.5,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B2",
+          "quarterLength": 0.5
+        },
+        "offset": 83.0,
+        "time": 29.666666666666668,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C#3",
+          "quarterLength": 0.5
+        },
+        "offset": 83.5,
+        "time": 29.833333333333332,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D3",
+          "quarterLength": 3.0
+        },
+        "offset": 84.0,
+        "time": 30.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F#3",
+          "quarterLength": 3.0
+        },
+        "offset": 87.0,
+        "time": 31.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#3",
+          "quarterLength": 3.0
+        },
+        "offset": 90.0,
+        "time": 32.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E3",
+          "quarterLength": 3.0
+        },
+        "offset": 93.0,
+        "time": 33.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C#3",
+          "quarterLength": 1.0
+        },
+        "offset": 96.0,
+        "time": 34.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A3",
+          "quarterLength": 1.0
+        },
+        "offset": 144.0,
+        "time": 50.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A3",
+          "quarterLength": 1.0
+        },
+        "offset": 145.0,
+        "time": 50.333333333333336,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A3",
+          "quarterLength": 1.0
+        },
+        "offset": 146.0,
+        "time": 50.666666666666664,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#3",
+          "quarterLength": 1.0
+        },
+        "offset": 147.0,
+        "time": 51.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F4",
+          "quarterLength": 2.0
+        },
+        "offset": 148.0,
+        "time": 51.333333333333336,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E4",
+          "quarterLength": 1.0
+        },
+        "offset": 150.0,
+        "time": 52.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D4",
+          "quarterLength": 0.5
+        },
+        "offset": 151.0,
+        "time": 52.333333333333336,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C4",
+          "quarterLength": 1.5
+        },
+        "offset": 151.5,
+        "time": 52.5,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D4",
+          "quarterLength": 1.5
+        },
+        "offset": 153.0,
+        "time": 53.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F4",
+          "quarterLength": 1.5
+        },
+        "offset": 154.5,
+        "time": 53.5,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E4",
+          "quarterLength": 1.0
+        },
+        "offset": 156.0,
+        "time": 54.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D4",
+          "quarterLength": 1.0
+        },
+        "offset": 157.0,
+        "time": 54.333333333333336,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C4",
+          "quarterLength": 1.0
+        },
+        "offset": 158.0,
+        "time": 54.666666666666664,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#3",
+          "quarterLength": 1.5
+        },
+        "offset": 159.0,
+        "time": 55.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E3",
+          "quarterLength": 1.5
+        },
+        "offset": 160.5,
+        "time": 55.5,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B3",
+          "quarterLength": 3.0
+        },
+        "offset": 162.0,
+        "time": 56.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A3",
+          "quarterLength": 1.0
+        },
+        "offset": 168.0,
+        "time": 58.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A3",
+          "quarterLength": 1.0
+        },
+        "offset": 169.0,
+        "time": 58.333333333333336,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A3",
+          "quarterLength": 1.0
+        },
+        "offset": 170.0,
+        "time": 58.666666666666664,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#3",
+          "quarterLength": 1.0
+        },
+        "offset": 171.0,
+        "time": 59.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F4",
+          "quarterLength": 2.0
+        },
+        "offset": 172.0,
+        "time": 59.333333333333336,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E4",
+          "quarterLength": 1.5
+        },
+        "offset": 174.0,
+        "time": 60.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D4",
+          "quarterLength": 1.5
+        },
+        "offset": 175.5,
+        "time": 60.5,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C4",
+          "quarterLength": 1.5
+        },
+        "offset": 177.0,
+        "time": 61.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F4",
+          "quarterLength": 1.5
+        },
+        "offset": 178.5,
+        "time": 61.5,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E4",
+          "quarterLength": 1.0
+        },
+        "offset": 180.0,
+        "time": 62.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D4",
+          "quarterLength": 1.0
+        },
+        "offset": 181.0,
+        "time": 62.333333333333336,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C4",
+          "quarterLength": 1.0
+        },
+        "offset": 182.0,
+        "time": 62.666666666666664,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#3",
+          "quarterLength": 1.5
+        },
+        "offset": 183.0,
+        "time": 63.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E3",
+          "quarterLength": 1.5
+        },
+        "offset": 184.5,
+        "time": 63.5,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B3",
+          "quarterLength": 3.0
+        },
+        "offset": 186.0,
+        "time": 64.0,
+        "_type": "MusicDataTiming"
+      }
+    ],
+    "Piano": [
+      {
+        "elem": {
+          "pitch": "F2",
+          "quarterLength": 1.0
+        },
+        "offset": 0.0,
+        "time": 2.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C2",
+          "quarterLength": 1.0
+        },
+        "offset": 3.0,
+        "time": 3.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F2",
+          "quarterLength": 1.0
+        },
+        "offset": 6.0,
+        "time": 4.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C2",
+          "quarterLength": 1.0
+        },
+        "offset": 9.0,
+        "time": 5.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F2",
+          "quarterLength": 1.0
+        },
+        "offset": 12.0,
+        "time": 6.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C2",
+          "quarterLength": 1.0
+        },
+        "offset": 15.0,
+        "time": 7.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B-2",
+          "quarterLength": 1.0
+        },
+        "offset": 18.0,
+        "time": 8.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F2",
+          "quarterLength": 1.0
+        },
+        "offset": 21.0,
+        "time": 9.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E-2",
+          "quarterLength": 1.0
+        },
+        "offset": 24.0,
+        "time": 10.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B-1",
+          "quarterLength": 1.0
+        },
+        "offset": 27.0,
+        "time": 11.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E-2",
+          "quarterLength": 1.0
+        },
+        "offset": 30.0,
+        "time": 12.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B-1",
+          "quarterLength": 1.0
+        },
+        "offset": 33.0,
+        "time": 13.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E-2",
+          "quarterLength": 1.0
+        },
+        "offset": 36.0,
+        "time": 14.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B-1",
+          "quarterLength": 1.0
+        },
+        "offset": 39.0,
+        "time": 15.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A-2",
+          "quarterLength": 1.0
+        },
+        "offset": 42.0,
+        "time": 16.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E-2",
+          "quarterLength": 1.0
+        },
+        "offset": 45.0,
+        "time": 17.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D-2",
+          "quarterLength": 1.0
+        },
+        "offset": 48.0,
+        "time": 18.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A-1",
+          "quarterLength": 1.0
+        },
+        "offset": 51.0,
+        "time": 19.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D-2",
+          "quarterLength": 1.0
+        },
+        "offset": 54.0,
+        "time": 20.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A-1",
+          "quarterLength": 1.0
+        },
+        "offset": 57.0,
+        "time": 21.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C#2",
+          "quarterLength": 1.0
+        },
+        "offset": 60.0,
+        "time": 22.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#1",
+          "quarterLength": 1.0
+        },
+        "offset": 63.0,
+        "time": 23.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F#2",
+          "quarterLength": 1.0
+        },
+        "offset": 66.0,
+        "time": 24.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C#2",
+          "quarterLength": 1.0
+        },
+        "offset": 69.0,
+        "time": 25.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B1",
+          "quarterLength": 1.0
+        },
+        "offset": 72.0,
+        "time": 26.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F#1",
+          "quarterLength": 1.0
+        },
+        "offset": 75.0,
+        "time": 27.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B1",
+          "quarterLength": 1.0
+        },
+        "offset": 78.0,
+        "time": 28.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F#1",
+          "quarterLength": 1.0
+        },
+        "offset": 81.0,
+        "time": 29.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B1",
+          "quarterLength": 1.0
+        },
+        "offset": 84.0,
+        "time": 30.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F#1",
+          "quarterLength": 1.0
+        },
+        "offset": 87.0,
+        "time": 31.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E2",
+          "quarterLength": 1.0
+        },
+        "offset": 90.0,
+        "time": 32.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B1",
+          "quarterLength": 1.0
+        },
+        "offset": 93.0,
+        "time": 33.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D3",
+          "quarterLength": 1.0
+        },
+        "offset": 94.0,
+        "time": 33.33333333333333,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E3",
+          "quarterLength": 1.0
+        },
+        "offset": 94.0,
+        "time": 33.33333333333333,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#3",
+          "quarterLength": 1.0
+        },
+        "offset": 94.0,
+        "time": 33.33333333333333,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D3",
+          "quarterLength": 1.0
+        },
+        "offset": 95.0,
+        "time": 33.66666666666667,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E3",
+          "quarterLength": 1.0
+        },
+        "offset": 95.0,
+        "time": 33.66666666666667,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#3",
+          "quarterLength": 1.0
+        },
+        "offset": 95.0,
+        "time": 33.66666666666667,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A1",
+          "quarterLength": 1.0
+        },
+        "offset": 96.0,
+        "time": 34.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A-2",
+          "quarterLength": 1.0
+        },
+        "offset": 99.0,
+        "time": 35.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C3",
+          "quarterLength": 1.0
+        },
+        "offset": 99.0,
+        "time": 35.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E-3",
+          "quarterLength": 1.0
+        },
+        "offset": 99.0,
+        "time": 35.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F3",
+          "quarterLength": 1.0
+        },
+        "offset": 99.0,
+        "time": 35.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G-3",
+          "quarterLength": 1.0
+        },
+        "offset": 99.0,
+        "time": 35.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A-1",
+          "quarterLength": 1.0
+        },
+        "offset": 99.0,
+        "time": 35.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D-2",
+          "quarterLength": 1.0
+        },
+        "offset": 102.0,
+        "time": 36.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C2",
+          "quarterLength": 1.0
+        },
+        "offset": 105.0,
+        "time": 37.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F2",
+          "quarterLength": 1.0
+        },
+        "offset": 108.0,
+        "time": 38.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E3",
+          "quarterLength": 1.0
+        },
+        "offset": 111.0,
+        "time": 39.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#3",
+          "quarterLength": 1.0
+        },
+        "offset": 111.0,
+        "time": 39.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B3",
+          "quarterLength": 1.0
+        },
+        "offset": 111.0,
+        "time": 39.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C#4",
+          "quarterLength": 1.0
+        },
+        "offset": 111.0,
+        "time": 39.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D4",
+          "quarterLength": 1.0
+        },
+        "offset": 111.0,
+        "time": 39.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E2",
+          "quarterLength": 1.0
+        },
+        "offset": 111.0,
+        "time": 39.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A2",
+          "quarterLength": 1.0
+        },
+        "offset": 114.0,
+        "time": 40.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A-2",
+          "quarterLength": 1.0
+        },
+        "offset": 117.0,
+        "time": 41.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C3",
+          "quarterLength": 1.0
+        },
+        "offset": 117.0,
+        "time": 41.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E-3",
+          "quarterLength": 1.0
+        },
+        "offset": 117.0,
+        "time": 41.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F3",
+          "quarterLength": 1.0
+        },
+        "offset": 117.0,
+        "time": 41.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G-3",
+          "quarterLength": 1.0
+        },
+        "offset": 117.0,
+        "time": 41.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A-2",
+          "quarterLength": 1.0
+        },
+        "offset": 117.0,
+        "time": 41.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D-2",
+          "quarterLength": 1.0
+        },
+        "offset": 120.0,
+        "time": 42.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C2",
+          "quarterLength": 1.0
+        },
+        "offset": 123.0,
+        "time": 43.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F2",
+          "quarterLength": 1.0
+        },
+        "offset": 126.0,
+        "time": 44.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E3",
+          "quarterLength": 1.0
+        },
+        "offset": 129.0,
+        "time": 45.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#3",
+          "quarterLength": 1.0
+        },
+        "offset": 129.0,
+        "time": 45.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B3",
+          "quarterLength": 1.0
+        },
+        "offset": 129.0,
+        "time": 45.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C#4",
+          "quarterLength": 1.0
+        },
+        "offset": 129.0,
+        "time": 45.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D4",
+          "quarterLength": 1.0
+        },
+        "offset": 129.0,
+        "time": 45.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E2",
+          "quarterLength": 1.0
+        },
+        "offset": 129.0,
+        "time": 45.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A2",
+          "quarterLength": 1.0
+        },
+        "offset": 132.0,
+        "time": 46.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A-2",
+          "quarterLength": 1.0
+        },
+        "offset": 135.0,
+        "time": 47.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C3",
+          "quarterLength": 1.0
+        },
+        "offset": 135.0,
+        "time": 47.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E-3",
+          "quarterLength": 1.0
+        },
+        "offset": 135.0,
+        "time": 47.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F3",
+          "quarterLength": 1.0
+        },
+        "offset": 135.0,
+        "time": 47.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G-3",
+          "quarterLength": 1.0
+        },
+        "offset": 135.0,
+        "time": 47.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A-2",
+          "quarterLength": 1.0
+        },
+        "offset": 135.0,
+        "time": 47.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D-2",
+          "quarterLength": 1.0
+        },
+        "offset": 138.0,
+        "time": 48.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C3",
+          "quarterLength": 1.0
+        },
+        "offset": 141.0,
+        "time": 49.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E3",
+          "quarterLength": 1.0
+        },
+        "offset": 141.0,
+        "time": 49.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G3",
+          "quarterLength": 1.0
+        },
+        "offset": 141.0,
+        "time": 49.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A3",
+          "quarterLength": 1.0
+        },
+        "offset": 141.0,
+        "time": 49.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B-3",
+          "quarterLength": 1.0
+        },
+        "offset": 141.0,
+        "time": 49.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D4",
+          "quarterLength": 1.0
+        },
+        "offset": 141.0,
+        "time": 49.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C2",
+          "quarterLength": 1.0
+        },
+        "offset": 141.0,
+        "time": 49.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G2",
+          "quarterLength": 1.0
+        },
+        "offset": 142.0,
+        "time": 49.333333333333336,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C3",
+          "quarterLength": 1.0
+        },
+        "offset": 143.0,
+        "time": 49.666666666666664,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F2",
+          "quarterLength": 1.0
+        },
+        "offset": 144.0,
+        "time": 50.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E2",
+          "quarterLength": 1.0
+        },
+        "offset": 148.0,
+        "time": 51.333333333333336,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A2",
+          "quarterLength": 1.0
+        },
+        "offset": 150.0,
+        "time": 52.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C6",
+          "quarterLength": 1.0
+        },
+        "offset": 151.0,
+        "time": 52.333333333333336,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G2",
+          "quarterLength": 1.5
+        },
+        "offset": 153.0,
+        "time": 53.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C3",
+          "quarterLength": 1.5
+        },
+        "offset": 154.5,
+        "time": 53.5,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E2",
+          "quarterLength": 1.0
+        },
+        "offset": 159.0,
+        "time": 55.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A2",
+          "quarterLength": 1.0
+        },
+        "offset": 162.0,
+        "time": 56.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F2",
+          "quarterLength": 1.0
+        },
+        "offset": 168.0,
+        "time": 58.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E2",
+          "quarterLength": 1.0
+        },
+        "offset": 171.0,
+        "time": 59.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#2",
+          "quarterLength": 1.0
+        },
+        "offset": 171.0,
+        "time": 59.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B2",
+          "quarterLength": 1.0
+        },
+        "offset": 171.0,
+        "time": 59.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D3",
+          "quarterLength": 1.0
+        },
+        "offset": 171.0,
+        "time": 59.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F3",
+          "quarterLength": 1.0
+        },
+        "offset": 171.0,
+        "time": 59.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E2",
+          "quarterLength": 1.0
+        },
+        "offset": 171.0,
+        "time": 59.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A2",
+          "quarterLength": 1.0
+        },
+        "offset": 174.0,
+        "time": 60.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G2",
+          "quarterLength": 1.5
+        },
+        "offset": 177.0,
+        "time": 61.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C3",
+          "quarterLength": 1.5
+        },
+        "offset": 178.5,
+        "time": 61.5,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F2",
+          "quarterLength": 1.0
+        },
+        "offset": 180.0,
+        "time": 62.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E2",
+          "quarterLength": 1.0
+        },
+        "offset": 183.0,
+        "time": 63.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "G#2",
+          "quarterLength": 1.0
+        },
+        "offset": 183.0,
+        "time": 63.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "B2",
+          "quarterLength": 1.0
+        },
+        "offset": 183.0,
+        "time": 63.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "D3",
+          "quarterLength": 1.0
+        },
+        "offset": 183.0,
+        "time": 63.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "F3",
+          "quarterLength": 1.0
+        },
+        "offset": 183.0,
+        "time": 63.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "E2",
+          "quarterLength": 1.0
+        },
+        "offset": 183.0,
+        "time": 63.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A1",
+          "quarterLength": 1.0
+        },
+        "offset": 186.0,
+        "time": 64.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "A2",
+          "quarterLength": 1.0
+        },
+        "offset": 186.0,
+        "time": 64.0,
+        "_type": "MusicDataTiming"
+      },
+      {
+        "elem": {
+          "pitch": "C6",
+          "quarterLength": 2.0
+        },
+        "offset": 187.0,
+        "time": 64.33333333333334,
+        "_type": "MusicDataTiming"
+      }
+    ]
+  },
+  "lyrics": [
+    {
+      "elem": [
+        {
+          "elem": "Close",
+          "offset": 0.0,
+          "time": 2.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 0.0,
+      "time": 2.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "your",
+          "offset": 9.0,
+          "time": 5.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 9.0,
+      "time": 5.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "eyes",
+          "offset": 12.0,
+          "time": 6.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 12.0,
+      "time": 6.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "you'll",
+          "offset": 15.0,
+          "time": 7.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 15.0,
+      "time": 7.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "be",
+          "offset": 18.0,
+          "time": 8.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 18.0,
+      "time": 8.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "here",
+          "offset": 21.0,
+          "time": 9.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 21.0,
+      "time": 9.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "soon",
+          "offset": 24.0,
+          "time": 10.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 24.0,
+      "time": 10.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "I",
+          "offset": 34.0,
+          "time": 13.333333333333334,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "chi",
+          "offset": 34.5,
+          "time": 13.5,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 34.0,
+      "time": 13.333333333333334,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "ni",
+          "offset": 35.0,
+          "time": 13.666666666666666,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 35.0,
+      "time": 13.666666666666666,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "san",
+          "offset": 36.0,
+          "time": 14.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 36.0,
+      "time": 14.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "shi",
+          "offset": 39.0,
+          "time": 15.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 39.0,
+      "time": 15.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "go",
+          "offset": 42.0,
+          "time": 16.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 42.0,
+      "time": 16.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "fu",
+          "offset": 45.0,
+          "time": 17.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "n",
+          "offset": 48.0,
+          "time": 18.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 45.0,
+      "time": 17.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "Do",
+          "offset": 58.0,
+          "time": 21.333333333333332,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "ki",
+          "offset": 58.5,
+          "time": 21.5,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 58.0,
+      "time": 21.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "do",
+          "offset": 59.0,
+          "time": 21.666666666666668,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "ki",
+          "offset": 59.5,
+          "time": 21.833333333333332,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 59.0,
+      "time": 21.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "hon",
+          "offset": 60.0,
+          "time": 22.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "tou",
+          "offset": 63.0,
+          "time": 23.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 60.0,
+      "time": 22.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "ni",
+          "offset": 66.0,
+          "time": 24.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 66.0,
+      "time": 24.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "ne",
+          "offset": 69.0,
+          "time": 25.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "tai",
+          "offset": 72.0,
+          "time": 26.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 69.0,
+      "time": 25.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "De",
+          "offset": 82.0,
+          "time": 29.333333333333332,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "mo",
+          "offset": 82.5,
+          "time": 29.5,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 82.0,
+      "time": 29.333333333333332,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "ko",
+          "offset": 83.0,
+          "time": 29.666666666666668,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "no",
+          "offset": 83.5,
+          "time": 29.833333333333332,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 83.0,
+      "time": 29.666666666666668,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "wa",
+          "offset": 84.0,
+          "time": 30.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "do",
+          "offset": 87.0,
+          "time": 31.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 84.0,
+      "time": 30.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "de",
+          "offset": 90.0,
+          "time": 32.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "ki",
+          "offset": 93.0,
+          "time": 33.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "nai",
+          "offset": 96.0,
+          "time": 34.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 90.0,
+      "time": 32.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "O",
+          "offset": 99.0,
+          "time": 35.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "ya",
+          "offset": 102.0,
+          "time": 36.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "su",
+          "offset": 105.0,
+          "time": 37.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "mi",
+          "offset": 108.0,
+          "time": 38.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "O",
+          "offset": 111.0,
+          "time": 39.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "ya",
+          "offset": 114.0,
+          "time": 40.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "su",
+          "offset": 117.0,
+          "time": 41.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "mi",
+          "offset": 120.0,
+          "time": 42.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "O",
+          "offset": 123.0,
+          "time": 43.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "ya",
+          "offset": 126.0,
+          "time": 44.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "su",
+          "offset": 129.0,
+          "time": 45.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "mi",
+          "offset": 132.0,
+          "time": 46.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 123.0,
+      "time": 43.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "O",
+          "offset": 135.0,
+          "time": 47.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "ya",
+          "offset": 138.0,
+          "time": 48.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "suuu!",
+          "offset": 141.0,
+          "time": 49.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "O",
+          "offset": 144.0,
+          "time": 50.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "ya",
+          "offset": 145.0,
+          "time": 50.333333333333336,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "su",
+          "offset": 146.0,
+          "time": 50.666666666666664,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "mi",
+          "offset": 147.0,
+          "time": 51.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 144.0,
+      "time": 50.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "O",
+          "offset": 148.0,
+          "time": 51.333333333333336,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "ya",
+          "offset": 150.0,
+          "time": 52.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "su",
+          "offset": 151.0,
+          "time": 52.333333333333336,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "mi",
+          "offset": 151.5,
+          "time": 52.5,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 148.0,
+      "time": 51.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "Close",
+          "offset": 153.0,
+          "time": 53.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 153.0,
+      "time": 53.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "your",
+          "offset": 154.5,
+          "time": 53.5,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 154.5,
+      "time": 53.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "eyes",
+          "offset": 156.0,
+          "time": 54.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 156.0,
+      "time": 54.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "and",
+          "offset": 157.0,
+          "time": 54.333333333333336,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 157.0,
+      "time": 54.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "you'll",
+          "offset": 158.0,
+          "time": 54.666666666666664,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 158.0,
+      "time": 54.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "leave",
+          "offset": 159.0,
+          "time": 55.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 159.0,
+      "time": 55.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "this",
+          "offset": 160.5,
+          "time": 55.5,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 160.5,
+      "time": 55.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "dream!",
+          "offset": 162.0,
+          "time": 56.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 162.0,
+      "time": 56.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "O",
+          "offset": 168.0,
+          "time": 58.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "ya",
+          "offset": 169.0,
+          "time": 58.333333333333336,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "su",
+          "offset": 170.0,
+          "time": 58.666666666666664,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "mi",
+          "offset": 171.0,
+          "time": 59.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 168.0,
+      "time": 58.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "O",
+          "offset": 172.0,
+          "time": 59.333333333333336,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "ya",
+          "offset": 174.0,
+          "time": 60.0,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "su",
+          "offset": 175.5,
+          "time": 60.5,
+          "_type": "MusicDataTiming"
+        },
+        {
+          "elem": "mi",
+          "offset": 177.0,
+          "time": 61.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 172.0,
+      "time": 59.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "I",
+          "offset": 178.5,
+          "time": 61.5,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 178.5,
+      "time": 61.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "know",
+          "offset": 180.0,
+          "time": 62.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 180.0,
+      "time": 62.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "that",
+          "offset": 181.0,
+          "time": 62.333333333333336,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 181.0,
+      "time": 62.333333333333336,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "it's",
+          "offset": 182.0,
+          "time": 62.666666666666664,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 182.0,
+      "time": 62.666666666666664,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "hard",
+          "offset": 183.0,
+          "time": 63.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "to",
+          "offset": 184.5,
+          "time": 63.5,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 184.5,
+      "time": 63.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": [
+        {
+          "elem": "do",
+          "offset": 186.0,
+          "time": 64.0,
+          "_type": "MusicDataTiming"
+        }
+      ],
+      "offset": 186.0,
+      "time": 64.0,
+      "_type": "MusicDataTiming"
+    }
+  ],
+  "keys": [
+    {
+      "elem": {
+        "name": "F major",
+        "pitch": "F4",
+        "quality": "major"
+      },
+      "offset": 0.0,
+      "time": 2.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "name": "E- major",
+        "pitch": "E-4",
+        "quality": "major"
+      },
+      "offset": 12.0,
+      "time": 6.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "name": "D- major",
+        "pitch": "D-4",
+        "quality": "major"
+      },
+      "offset": 36.0,
+      "time": 14.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "name": "B major",
+        "pitch": "B4",
+        "quality": "major"
+      },
+      "offset": 60.0,
+      "time": 22.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "name": "A major",
+        "pitch": "A4",
+        "quality": "major"
+      },
+      "offset": 84.0,
+      "time": 30.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": {
+        "name": "A minor",
+        "pitch": "A4",
+        "quality": "minor"
+      },
+      "offset": 96.0,
+      "time": 34.0,
+      "_type": "MusicDataTiming"
+    }
+  ],
+  "bpm": 180,
+  "comments": null,
+  "_chord_roots": [
+    {
+      "elem": "F2",
+      "offset": 0.0,
+      "time": 2.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "F2",
+      "offset": 6.0,
+      "time": 4.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "F2",
+      "offset": 12.0,
+      "time": 6.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "B-2",
+      "offset": 18.0,
+      "time": 8.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "E-2",
+      "offset": 24.0,
+      "time": 10.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "E-2",
+      "offset": 30.0,
+      "time": 12.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "E-2",
+      "offset": 36.0,
+      "time": 14.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "A-2",
+      "offset": 42.0,
+      "time": 16.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "D-2",
+      "offset": 48.0,
+      "time": 18.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "D-2",
+      "offset": 54.0,
+      "time": 20.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "C#2",
+      "offset": 60.0,
+      "time": 22.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "F#3",
+      "offset": 66.0,
+      "time": 24.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "B1",
+      "offset": 72.0,
+      "time": 26.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "B1",
+      "offset": 78.0,
+      "time": 28.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "B1",
+      "offset": 84.0,
+      "time": 30.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "E2",
+      "offset": 90.0,
+      "time": 32.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "A1",
+      "offset": 96.0,
+      "time": 34.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "A-2",
+      "offset": 99.0,
+      "time": 35.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "D-2",
+      "offset": 102.0,
+      "time": 36.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "C2",
+      "offset": 105.0,
+      "time": 37.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "F2",
+      "offset": 108.0,
+      "time": 38.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "E3",
+      "offset": 111.0,
+      "time": 39.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "A2",
+      "offset": 114.0,
+      "time": 40.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "A-2",
+      "offset": 117.0,
+      "time": 41.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "D-2",
+      "offset": 120.0,
+      "time": 42.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "C6",
+      "offset": 123.0,
+      "time": 43.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "F2",
+      "offset": 126.0,
+      "time": 44.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "E3",
+      "offset": 129.0,
+      "time": 45.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "A2",
+      "offset": 132.0,
+      "time": 46.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "A-2",
+      "offset": 135.0,
+      "time": 47.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "D-2",
+      "offset": 138.0,
+      "time": 48.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "C3",
+      "offset": 141.0,
+      "time": 49.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "F2",
+      "offset": 144.0,
+      "time": 50.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "E2",
+      "offset": 147.0,
+      "time": 51.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "A2",
+      "offset": 150.0,
+      "time": 52.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "G2",
+      "offset": 153.0,
+      "time": 53.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "C3",
+      "offset": 154.5,
+      "time": 53.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "F4",
+      "offset": 156.0,
+      "time": 54.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "E2",
+      "offset": 159.0,
+      "time": 55.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "A2",
+      "offset": 162.0,
+      "time": 56.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "F2",
+      "offset": 168.0,
+      "time": 58.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "E2",
+      "offset": 171.0,
+      "time": 59.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "A2",
+      "offset": 174.0,
+      "time": 60.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "G2",
+      "offset": 177.0,
+      "time": 61.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "C3",
+      "offset": 178.5,
+      "time": 61.5,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "F2",
+      "offset": 180.0,
+      "time": 62.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "E2",
+      "offset": 183.0,
+      "time": 63.0,
+      "_type": "MusicDataTiming"
+    },
+    {
+      "elem": "A2",
+      "offset": 186.0,
+      "time": 64.0,
+      "_type": "MusicDataTiming"
+    }
+  ],
+  "_type": "MusicData"
+}
