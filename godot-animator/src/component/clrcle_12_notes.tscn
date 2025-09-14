@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtt7fea8ejgy"]
+
+[ext_resource type="Script" uid="uid://bgesanr787ht6" path="res://src/component/common/circle_2d.gd" id="1_uhmis"]
+
+[node name="Clrcle12Notes" type="Node2D"]
+
+[node name="Circle2D" type="Node2D" parent="."]
+script = ExtResource("1_uhmis")
+radius = 50.0
+color = Color(0.511259, 0.511259, 0.511259, 1)
+filled = false
+width = 3.0
+metadata/_custom_type_script = "uid://bgesanr787ht6"
