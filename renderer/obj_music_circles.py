@@ -649,7 +649,7 @@ class testPlay(Scene):
 
         class StubMusicData:
             def __init__(self, chord_roots: list[MusicDataTiming[Pitch]], keys: list[MusicDataTiming[Key]] = []):
-                self._chord_roots = chord_roots
+                self.chord_roots = chord_roots
                 self.keys = keys
 
         melody = StubMusicData(
