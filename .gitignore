@@ -137,3 +137,5 @@ media
 # Musescore extra files
 .*.mscz~
 *.autosave
+
+.DS_Store
