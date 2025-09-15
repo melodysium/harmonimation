@@ -1,13 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtt7fea8ejgy"]
+[gd_scene load_steps=3 format=3 uid="uid://dtt7fea8ejgy"]
 
+[ext_resource type="Script" uid="uid://bl84d6jpwnsw0" path="res://src/component/clrcle_12_notes.gd" id="1_4fjao"]
 [ext_resource type="Script" uid="uid://bgesanr787ht6" path="res://src/component/common/circle_2d.gd" id="1_uhmis"]
 
-[node name="Clrcle12Notes" type="Node2D"]
+[node name="Clrcle12Notes" type="Node2D" node_paths=PackedStringArray("_background_circle_node", "_pitch_text_parent_node", "_pitch_circles_parent_node")]
+script = ExtResource("1_4fjao")
+pitches_per_step = 7
+_background_circle_node = NodePath("BackgroundCircle")
+_pitch_text_parent_node = NodePath("PitchText")
+_pitch_circles_parent_node = NodePath("PitchCircles")
 
-[node name="Circle2D" type="Node2D" parent="."]
+[node name="BackgroundCircle" type="Node2D" parent="."]
 script = ExtResource("1_uhmis")
 radius = 50.0
 color = Color(0.511259, 0.511259, 0.511259, 1)
 filled = false
 width = 3.0
 metadata/_custom_type_script = "uid://bgesanr787ht6"
+
+[node name="PitchText" type="Node2D" parent="."]
+
+[node name="PitchCircles" type="Node2D" parent="."]
