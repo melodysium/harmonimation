@@ -6,27 +6,51 @@ extends Node2D
 
 const ORIGIN := Vector2(0, 0)
 
-@export_range(0, 100, 1.0, "or_greater") var radius := 10.0:
+const DEFAULT_RADIUS := 10.0
+@export_range(0, 100, 1.0, "or_greater") var radius := DEFAULT_RADIUS:
 	set(val):
 		radius = val
 		queue_redraw()
-@export var color := Color.WHITE:
+
+const DEFAULT_COLOR := Color.WHITE
+@export var color := DEFAULT_COLOR:
 	set(val):
 		color = val
 		queue_redraw()
-@export var filled := true:
+
+const DEFAULT_FILLED := true
+@export var filled := DEFAULT_FILLED:
 	set(val):
 		filled = val
 		queue_redraw()
-@export_range(0, 10, 0.01, "or_greater") var width := 0.0:
+
+const DEFAULT_WIDTH := 0.0
+@export_range(0, 10, 0.01, "or_greater") var width := DEFAULT_WIDTH:
 	set(val):
 		width = val
 		if not filled:
 			queue_redraw()
-@export var antialiased := false:
+
+const DEFAULT_ANTIALIASED := false
+@export var antialiased := DEFAULT_ANTIALIASED:
 	set(val):
 		antialiased = val
 		queue_redraw()
+
+
+func _init(
+		radius := DEFAULT_RADIUS,
+		color := DEFAULT_COLOR,
+		filled := DEFAULT_FILLED,
+		width := DEFAULT_WIDTH,
+		antialiased := DEFAULT_ANTIALIASED,
+	) -> void:
+	self.radius = radius
+	self.color = color
+	self.filled = filled
+	self.width = width
+	self.antialiased = antialiased
+
 
 #var _script_vars: Array = get_script().get_script_property_list().map(func(prop_dict: Dictionary): return prop_dict.name)
 
