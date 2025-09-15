@@ -28,9 +28,9 @@ const ORIGIN := Vector2(0, 0)
 		antialiased = val
 		queue_redraw()
 
-#var _script_vars: Array = Utils.map(get_script().get_script_property_list(), func(prop_dict: Dictionary): return prop_dict.name)
+#var _script_vars: Array = get_script().get_script_property_list().map(func(prop_dict: Dictionary): return prop_dict.name)
 
-	
+
 #func _ready() -> void:
 	#print(get_property_list())
 	#var thisScript: GDScript = get_script()
