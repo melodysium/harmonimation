@@ -5,7 +5,7 @@
 
 [node name="Clrcle12Notes" type="Node2D" node_paths=PackedStringArray("_background_circle_node", "_pitch_text_parent_node", "_pitch_circles_parent_node")]
 script = ExtResource("1_4fjao")
-pitches_per_step = 7
+pitch_circle_colors = Array[Color]([Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)])
 _background_circle_node = NodePath("BackgroundCircle")
 _pitch_text_parent_node = NodePath("PitchText")
 _pitch_circles_parent_node = NodePath("PitchCircles")
