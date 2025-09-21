@@ -5,6 +5,20 @@ extends Node
 
 var DEFAULT_FONT := preload("res://assets/Hack-Regular.ttf")
 
+var MUSIC_DATA := preload("res://assets/my_time_data.json")
+
+## Fill an array with the same element n times.
+## WARNING: `elem` is not copied when adding. Modifying the element will modify all elements of the array.
+func fill_array(size: int, elem: Variant) -> Array:
+	print_verbose("start Utils.fill_array(size=%s, elem=%s)" % [size, elem])
+	var arr := []
+	for i in range(size):
+		arr.append(elem)
+	print_verbose("end Utils.fill_array(), return=%s" % [arr])
+	return arr
+
+
+## Represents a single Pitch name, with multiple ways of displaying it as a string.
 class Pitch:
 
 	# TODO: make into Dictionary[Dictionary[String, Variant]] for more info
