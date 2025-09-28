@@ -5,11 +5,25 @@ extends Node
 
 var DEFAULT_FONT := preload("res://assets/Hack-Regular.ttf")
 
-var MUSIC_DATA := preload("res://assets/my_time_data.json")
+var MUSIC_DATA: Dictionary[String, Array] = json_to_dict("res://assets/my_time_data.json") # TODO: fix typing
 
 
 func print_err(...args: Array) -> void:
 	print_rich("[color=red]", "".join(args), "[/color]")
+
+
+func json_to_dict(json_file: String) -> Variant: # Optional[Dictionary]
+	var json_string := FileAccess.get_file_as_string(json_file)
+	var json := JSON.new()
+	var error := json.parse(json_string)
+	if error != OK:
+		print_err("ERROR(json_to_dict): JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+		return null;
+	if typeof(json.data) == TYPE_DICTIONARY:
+		return json.data
+	else:
+		print_err("ERROR(json_to_dict): Unexpected json data type: " + type_string(typeof(json.data)))
+		return null
 
 
 ## Fill an array with the same element n times.
