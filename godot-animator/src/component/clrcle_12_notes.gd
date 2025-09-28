@@ -65,15 +65,12 @@ const BASE_PITCH_CIRCLE_RADIUS := 0.2
 		if self._pitch_circle_nodes != null and self._pitch_circle_nodes.size() == 12:
 			_configure_pitch_circle_nodes()
 		
-
-
-@export_group("internal links")
 ## Background ring underneath pitches
-@export var _background_circle_node: Circle2D
+@onready var _background_circle_node : Circle2D = $BackgroundCircle
 ## Parent node for dynamically-added pitch text
-@export var _pitch_text_parent_node: Node2D
+@onready var _pitch_text_parent_node : Node2D = $PitchText
 ## Parent node for dynamically-added pitch circles
-@export var _pitch_circles_parent_node: Node2D
+@onready var _pitch_circles_parent_node : Node2D = $PitchCircles
 
 
 ## Mapping of pitch_class to pitch labels
