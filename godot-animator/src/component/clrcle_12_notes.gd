@@ -156,3 +156,12 @@ func _ready() -> void:
 	self._move_pitch_nodes()
 	self._configure_pitch_text_nodes()
 	self._configure_pitch_circle_nodes()
+
+
+## Given structured information about the song, create a list of animations to play at set times.
+#func animate_on_data(music_data: Dictionary) -> Array[Utils.AnimationStep]
+	#return [];
+
+## Testing: Create an animation to rotate the circle
+func animate_rotate(angle_start: float, angle_end: float, time_start: float, time_end: float) -> Utils.AnimationStep:
+	return Utils.AnimationStep.new(self, time_start, time_end, [Utils.PropertyChange.new("rotate_angle", angle_start, angle_end)])
