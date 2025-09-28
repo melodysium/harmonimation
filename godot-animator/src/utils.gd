@@ -7,6 +7,11 @@ var DEFAULT_FONT := preload("res://assets/Hack-Regular.ttf")
 
 var MUSIC_DATA := preload("res://assets/my_time_data.json")
 
+
+func print_err(...args: Array) -> void:
+	print_rich("[color=red]", "".join(args), "[/color]")
+
+
 ## Fill an array with the same element n times.
 ## WARNING: `elem` is not copied when adding. Modifying the element will modify all elements of the array.
 func fill_array(size: int, elem: Variant) -> Array:

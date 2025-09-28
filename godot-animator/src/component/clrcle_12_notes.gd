@@ -25,7 +25,7 @@ const BASE_PITCH_CIRCLE_RADIUS := 0.2
 @export_range(1, 11, 1.0) var pitches_per_step := 1:
 	set(val):
 		if ![1, 5, 7, 11].has(val):
-			print_rich("[color=red]WARNING: Circle12Notes currently only supports pitches_per_step values of [1, 5, 7, 11], but you picked: %s. Ignoring.[/color]" % val)
+			Utils.print_err("WARNING: Circle12Notes currently only supports pitches_per_step values of [1, 5, 7, 11], but you picked: %s. Ignoring." % val)
 			return
 		pitches_per_step = val
 		_move_pitch_nodes()
@@ -51,15 +51,15 @@ const BASE_PITCH_CIRCLE_RADIUS := 0.2
 @export var pitch_circle_colors: Array[Color] = Array(Utils.fill_array(12, Color.TRANSPARENT), TYPE_COLOR, "", null):
 	set(val):
 		# TODO: This property seems unable to be reset at all in the editor. Maybe add a manual "reset" button? Maybe investigate resetting arrays in properties?
-		print("pitch_circle_colors.set(val=%s), oldval=%s" % [val, pitch_circle_colors])
+		print_verbose("pitch_circle_colors.set(val=%s), oldval=%s" % [val, pitch_circle_colors])
 		if val == null:
-			print_rich("[color=red]WARNING: pitch_circle_colors requires a non-null array, but null provided. Ignoring.[/color]" % val.size())
+			Utils.print_err("[color=red]WARNING: pitch_circle_colors requires a non-null array, but null provided. Ignoring.[/color]" % val.size())
 			return
 		if val.size() != 12:
-			print_rich("[color=red]WARNING: pitch_circle_colors requires an array of 12 elements, but provided one has size()=%s. Ignoring.[/color]" % val.size())
+			Utils.print_err("[color=red]WARNING: pitch_circle_colors requires an array of 12 elements, but provided one has size()=%s. Ignoring.[/color]" % val.size())
 			return
 		if val.any(func(elem: Variant) -> bool: return elem is not Color):
-			print_rich("[color=red]WARNING: pitch_circle_colors requires an array of Color elements, but provided one some non-Color elements. Ignoring.[/color]" % val.size())
+			Utils.print_err("[color=red]WARNING: pitch_circle_colors requires an array of Color elements, but provided one some non-Color elements. Ignoring.[/color]" % val.size())
 			return
 		pitch_circle_colors = val
 		if self._pitch_circle_nodes != null and self._pitch_circle_nodes.size() == 12:
