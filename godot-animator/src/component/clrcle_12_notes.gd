@@ -40,10 +40,12 @@ const BASE_PITCH_CIRCLE_RADIUS := 0.2
 @export_group("animation controls")
 
 ## Rotate angle (keeps note text oriented upwards)
-@export_range(0.0, TAU, 0.01) var rotate_angle := 0.0:
+@export_range(-TAU, TAU, 0.01, "or_less", "or_greater") var rotate_angle := 0.0:
 	set(val):
 		# if < 0 or >= TAU (radians), cycle back within that range
-		val = fmod(val, TAU)
+		if val <= -TAU or val >= TAU:
+			print_verbose("trying to wrap, should come out as %f" % fmod(val, TAU))
+			val = fmod(val, TAU)
 		rotate_angle = val
 		_move_pitch_nodes()
 
