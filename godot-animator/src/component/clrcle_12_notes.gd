@@ -12,7 +12,7 @@ const BASE_PITCH_CIRCLE_RADIUS := 0.2
 
 @export_group("setup options")
 
-## Radius for main circle / pitch names 
+## Radius for main circle / pitch names
 @export_range(0, 100, 1.0, "or_greater") var radius := 50.0:
 	set(val):
 		assert(_background_circle_node != null)
@@ -66,7 +66,7 @@ const BASE_PITCH_CIRCLE_RADIUS := 0.2
 		pitch_circle_colors = val
 		if self._pitch_circle_nodes != null and self._pitch_circle_nodes.size() == 12:
 			_configure_pitch_circle_nodes()
-		
+
 ## Background ring underneath pitches
 @onready var _background_circle_node : Circle2D = $BackgroundCircle
 ## Parent node for dynamically-added pitch text
@@ -84,11 +84,11 @@ var _pitch_circle_nodes: Dictionary[int, Circle2D] = {}
 class PitchInfo:
 	var pitch_class: int
 	var pos: Vector2
-	
+
 	func _init(pitch_class: int, pos: Vector2) -> void:
 		self.pitch_class = pitch_class
 		self.pos = pos
-	
+
 	func _to_string() -> String:
 		return "PitchInfo[pcls=%s, pos=%s]" % [self.pitch_class, self.pos]
 
@@ -125,7 +125,7 @@ func _ready() -> void:
 
 	# Construct child nodes
 	for pitch_info: PitchInfo in _list_positions():
-		
+
 		# Pitch text
 		var pitch_name := Utils.Pitch.pitchclass_to_pitchname(pitch_info.pitch_class)
 		var text := Text2D.new(
@@ -141,7 +141,7 @@ func _ready() -> void:
 		#text.position = pitch_info.pos
 		#print("PitchInfo(pitch_class=%s, pos=%s)" % [pitch_info.pitch_class, pitch_info.pos])
 		#print("text.global_position=%s" % text.global_position)
-		
+
 		# Pitch circle
 		var circle := Circle2D.new(
 			self.radius * BASE_PITCH_CIRCLE_RADIUS,
