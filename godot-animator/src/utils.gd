@@ -28,6 +28,10 @@ func json_to_dict(json_file: String) -> Variant: # Optional[Dictionary]
 		print_err("ERROR(json_to_dict): JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 		return null;
 	if typeof(json.data) == TYPE_DICTIONARY:
+		var json_dict: Dictionary = json.data
+		print_verbose("Successfully loaded json file %s with %d keys: %s" % [json_file, json_dict.size(), json_dict.keys().map(
+			func(key: String) -> String: return "%s: %s" % [key, type_string(typeof(json_dict[key]))]
+		)])
 		return json.data
 	else:
 		print_err("ERROR(json_to_dict): Unexpected json data type: " + type_string(typeof(json.data)))
@@ -122,9 +126,9 @@ func setup_animation(player: AnimationPlayer, animation_length: float = 200.0, d
 		library.add_animation(Utils.ANIMATION_NAME_AUTOGEN, animation)
 
 	# print some debug information about the animation
-	print("animation: %s(%s), track_count=%d" % [animation.resource_name, animation, animation.get_track_count()])
+	print_verbose("animation: %s(%s), track_count=%d" % [animation.resource_name, animation, animation.get_track_count()])
 	for i in range(animation.get_track_count()):
-		print("animation track %d. path=%s, type=%s" % [i, animation.track_get_path(i), animation.track_get_type(i)])
+		print_verbose("animation track %d. path=%s, type=%s" % [i, animation.track_get_path(i), animation.track_get_type(i)])
 	return animation
 
 
@@ -146,3 +150,4 @@ func apply_animation(animation_step: Utils.AnimationStep, player: AnimationPlaye
 		# Set start and end keyframes
 		animation.track_insert_key(track_idx, animation_step.time_start, property_change.val_start, -4.0)
 		animation.track_insert_key(track_idx, animation_step.time_end, property_change.val_end, 0)
+		print_verbose("  added keyframe for (%ss: %s) - (%ss: %s)" % [animation_step.time_start, property_change.val_start, animation_step.time_end, property_change.val_end])

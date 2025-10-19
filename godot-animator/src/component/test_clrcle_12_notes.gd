@@ -7,9 +7,6 @@ extends Node2D
 
 func _ready() -> void:
 	#print(animation_player.get_animation("play_music_circle"))
-	for key: String in Utils.MUSIC_DATA.keys():
-		print(key)
-	print(Utils.MUSIC_DATA.size())
 	
 	## TODO: REMOVE. testing: call animate
 	if animation_player != null:
