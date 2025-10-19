@@ -1,3 +1,4 @@
+# NOTE: because this is a project autoload, if I want to re-load it for testing changes, I need to reload the whole project
 @tool
 
 extends Node
