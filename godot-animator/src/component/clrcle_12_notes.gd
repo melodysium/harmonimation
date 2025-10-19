@@ -9,6 +9,10 @@ extends Node2D
 const BASE_PITCH_NAME_FONT_SIZE := 12
 ## Circle radius for pitch circles
 const BASE_PITCH_CIRCLE_RADIUS := 0.2
+## Default time before a new key change when the Circle will start rotating
+const DEFAULT_ROTATE_TRANSITION_TIME = 0.3
+
+# TODO: whether to orient tonic or ionian root at top should be a config option
 
 @export_group("setup options")
 
@@ -66,6 +70,12 @@ const BASE_PITCH_CIRCLE_RADIUS := 0.2
 		pitch_circle_colors = val
 		if self._pitch_circle_nodes != null and self._pitch_circle_nodes.size() == 12:
 			_configure_pitch_circle_nodes()
+
+
+@export_group("animation meta config")
+
+## Time before a new key change when the Circle will start rotating
+@export_range(0.0, 2.0, 0.01, "or_greater") var transition_time := DEFAULT_ROTATE_TRANSITION_TIME
 
 ## Background ring underneath pitches
 @onready var _background_circle_node : Circle2D = $BackgroundCircle
