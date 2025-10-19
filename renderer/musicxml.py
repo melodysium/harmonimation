@@ -58,7 +58,7 @@ class MusicDataTiming(Generic[MusicInfo]):
     _type: str = ''
 
     def __post_init__(self):
-        self._type = f"{self.__class__.__name__}" # TODO: try to get generic showing?
+        self._type = f"{self.__class__.__name__}[{self.elem.__class__.__name__}]" # TODO: try to get generic showing?
 
 
 # data transfer class
@@ -203,12 +203,17 @@ keys: len={len(self.keys)}, elems={self.keys}
     def export(self, indent: str='  ') -> str:
 
         def _convert_special_objs(obj):
-            def convert_pitch(p: Pitch) -> str:
-                return p.nameWithOctave
+            def convert_pitch(p: Pitch) -> dict:
+                return {
+                    "pitchClass": p.pitchClass,
+                    "pitchName": p.nameWithOctave,
+                    '_type': 'Pitch',
+                }
 
             def convert_note(n: Note, include_quarter_length: bool=True) -> dict:
                 disp: dict = {
-                    'pitch': convert_pitch(n.pitch)
+                    'pitch': convert_pitch(n.pitch),
+                    '_type': 'Note',
                 }
                 if include_quarter_length:
                     disp['quarterLength'] = n.quarterLength
@@ -218,7 +223,8 @@ keys: len={len(self.keys)}, elems={self.keys}
                 return {
                     'notes': [convert_note(n, include_quarter_length=False) for n in c.notes],
                     'name': display_chord_short_custom(c),
-                    'quarterLength': c.quarterLength
+                    'quarterLength': c.quarterLength,
+                    '_type': 'Chord',
                 }
 
             def convert_part(p: Part) -> str:
@@ -229,6 +235,8 @@ keys: len={len(self.keys)}, elems={self.keys}
                     'name': k.name,
                     'pitch': convert_pitch(k.pitchFromDegree(1)),
                     'quality': k.mode,
+                    'pitches': list(set(p.pitchClass for p in k.getPitches())),
+                    '_type': 'Key',
                 }
 
             if isinstance(obj, Chord):
