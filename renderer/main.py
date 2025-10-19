@@ -54,12 +54,12 @@ def parse_args():
     )
     parser.add_argument(
         "musicxml_file",
-        type=argparse.FileType(),
+        type=argparse.FileType('r', encoding='UTF-8'),
         help="musicxml file to render music from",
     )
     parser.add_argument(
         "harmonimation_file",
-        type=argparse.FileType(),
+        type=argparse.FileType('r', encoding="UTF-8"),
         help="harmonimation.json file to configure layout",
     )
     parser.add_argument(
