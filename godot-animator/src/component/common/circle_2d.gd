@@ -24,8 +24,8 @@ const DEFAULT_FILLED := true
 		filled = val
 		queue_redraw()
 
-const DEFAULT_WIDTH := 0.0
-@export_range(0, 10, 0.01, "or_greater") var width := DEFAULT_WIDTH:
+const DEFAULT_WIDTH := -1.0
+@export_range(-1, 10, 0.01, "or_greater") var width := DEFAULT_WIDTH:
 	set(val):
 		width = val
 		if not filled:
@@ -77,4 +77,5 @@ func _init(
 	#return false
 
 func _draw() -> void:
+	# warning is almost always printed: The draw_circle() "width" argument has no effect when "filled" is "true".
 	draw_circle(ORIGIN, radius, color, filled, width, antialiased)
