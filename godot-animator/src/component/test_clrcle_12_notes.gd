@@ -1,11 +1,20 @@
+@tool
+
 extends Node2D
 
 @onready var animation_player: AnimationPlayer = $Clrcle12Notes/AnimationPlayer
 @onready var circle_12_notes: Circle12Notes = $Clrcle12Notes
 
 func _ready() -> void:
-	print(animation_player.get_animation("play_music_circle"))
+	#print(animation_player.get_animation("play_music_circle"))
+	for key: String in Utils.MUSIC_DATA.keys():
+		print(key)
+	print(Utils.MUSIC_DATA.size())
 	
-	# TODO: REMOVE. testing: call animate
+	## TODO: REMOVE. testing: call animate
 	if animation_player != null:
-		Utils.apply_animation(circle_12_notes.animate_rotate(0, PI / 3, 2, 3), animation_player)
+		var animation := Utils.setup_animation(animation_player)
+		#Utils.apply_animation(circle_12_notes.animate_rotate(0, PI / 3, 2, 3), animation_player, animation)
+		
+		for anim in circle_12_notes.animate_on_data(Utils.MUSIC_DATA):
+			Utils.apply_animation(anim, animation_player, animation)
