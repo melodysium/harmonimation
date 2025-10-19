@@ -95,9 +95,9 @@ class PitchInfo:
 	var pitch_class: int
 	var pos: Vector2
 
-	func _init(pitch_class: int, pos: Vector2) -> void:
-		self.pitch_class = pitch_class
-		self.pos = pos
+	func _init(_pitch_class: int, _pos: Vector2) -> void:
+		self.pitch_class = _pitch_class
+		self.pos = _pos
 
 	func _to_string() -> String:
 		return "PitchInfo[pcls=%s, pos=%s]" % [self.pitch_class, self.pos]
