@@ -101,24 +101,36 @@ class AnimationStep:
 		self.time_end = _time_end
 		self.property_changes = _property_changes
 
-
-## Create at runtime an Animation on the specified AnimationPlayer with the specified animation properties.
-func apply_animation(animation_step: Utils.AnimationStep, player: AnimationPlayer) -> void:
-	# TODO: separate out getting animation to apply to
-	# TODO: make configurable whether to delete existing track if it exists
-
-	# Find/make the animation used for auto-generated animations
+# TODO: deal with magic number
+## Find/make the animation used for auto-generated animations
+func setup_animation(player: AnimationPlayer, animation_length: float = 200.0, delete_existing := true) -> Animation:
 	var library := player.get_animation_library("") # "" means "get global library"
-	if library.has_animation(Utils.ANIMATION_NAME_AUTOGEN):
-		# delete it
+
+	# if delete_existing always, then delete any pre-existing animation
+	if delete_existing and library.has_animation(Utils.ANIMATION_NAME_AUTOGEN):
 		library.remove_animation(Utils.ANIMATION_NAME_AUTOGEN)
-	# create new animation to use, add it to the library
-	var animation := Animation.new()
-	animation.length = 10.0
-	library.add_animation(Utils.ANIMATION_NAME_AUTOGEN, animation)
+
+	# Find or make an Animation
+	var animation: Animation = null
+	# If animation already exists, just fetch it
+	if library.has_animation(Utils.ANIMATION_NAME_AUTOGEN):
+		animation = library.get_animation(Utils.ANIMATION_NAME_AUTOGEN)
+	else:
+		# create new animation to use, add it to the library
+		animation = Animation.new()
+		animation.length = animation_length
+		library.add_animation(Utils.ANIMATION_NAME_AUTOGEN, animation)
+
+	# print some debug information about the animation
 	print("animation: %s(%s), track_count=%d" % [animation.resource_name, animation, animation.get_track_count()])
 	for i in range(animation.get_track_count()):
 		print("animation track %d. path=%s, type=%s" % [i, animation.track_get_path(i), animation.track_get_type(i)])
+	return animation
+
+
+## Create at runtime an Animation on the specified AnimationPlayer with the specified animation properties.
+func apply_animation(animation_step: Utils.AnimationStep, player: AnimationPlayer, animation: Animation) -> void:
+	# TODO: make configurable whether to delete existing track if it exists
 
 	# Set up animation tracks for the requested AnimationStep
 	var path_to_me := player.get_node(player.root_node).get_path_to(animation_step.node)
