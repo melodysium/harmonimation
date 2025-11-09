@@ -64,6 +64,7 @@ def parse_args():
         prog="harmonimation",
         description="A program for visualizing musical harmonic analysis",
         epilog="Created by melodysium",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
         "musicxml_file",
