@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmd7msd5w456u"]
+
+[ext_resource type="Script" uid="uid://y051m1xewj7c" path="res://addons/harmonimation/dock_editor/harmonimation_editor.gd" id="1_40jfi"]
+
+[node name="Harmonimation" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_40jfi")
+
+[node name="HarmonimateButton" type="Button" parent="."]
+layout_mode = 2
+text = "Harmonimate!"
+
+[node name="WidgetParentSelector" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="WidgetParentSelector"]
+layout_mode = 2
+text = "AnimationPlayer"
+
+[node name="WidgetButton" type="Button" parent="WidgetParentSelector"]
+layout_mode = 2
