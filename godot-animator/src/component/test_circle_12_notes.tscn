@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbrmwr4wfkgtv"]
 
-[ext_resource type="PackedScene" uid="uid://dtt7fea8ejgy" path="res://src/component/circle_12_notes.tscn" id="1_hfom0"]
-[ext_resource type="Script" uid="uid://cnixij7en2yb5" path="res://src/component/test_clrcle_12_notes.gd" id="1_pcsw7"]
+[ext_resource type="Script" uid="uid://cnixij7en2yb5" path="res://src/component/test_circle_12_notes.gd" id="1_4jm0j"]
+[ext_resource type="PackedScene" uid="uid://dtt7fea8ejgy" path="res://src/component/circle_12_notes.tscn" id="2_8bggj"]
 
 [sub_resource type="Animation" id="Animation_pcsw7"]
 length = 8.0
@@ -81,9 +81,9 @@ _data = {
 }
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_pcsw7")
+script = ExtResource("1_4jm0j")
 
-[node name="Clrcle12Notes" parent="." instance=ExtResource("1_hfom0")]
+[node name="Clrcle12Notes" parent="." instance=ExtResource("2_8bggj")]
 
 [node name="HarmonimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Clrcle12Notes")
