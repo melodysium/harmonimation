@@ -1,7 +1,9 @@
 # standard lib
 import argparse
 import logging
+import sys
 from enum import Enum
+from pathlib import Path
 
 # 3rd party
 import pyjson5
@@ -17,7 +19,7 @@ from musicxml import parse_score_data
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
-import sys
+DEFAULT_MUSIC_DATA_JSON_FILENAME = "music_data.json"
 
 logger.debug(f"Python version: {sys.version}")
 logger.debug(f"Version info: {sys.version_info}")
@@ -94,6 +96,13 @@ def parse_args():
         default=ProcessStage.timing,
         help="Processing stage to stop after."
     )
+    parser.add_argument(
+        '-f',
+        '--music-data-file',
+        type=Path,
+        help="Output JSON file path for music data parsed from musicxml",
+        default=Path(f"./{DEFAULT_MUSIC_DATA_JSON_FILENAME}")
+    )
     args = parser.parse_args()
     if args.beat_range is not None and args.time_range is not None:
         # TODO: figure out how to print this nicer
@@ -112,6 +121,7 @@ def parse_args():
 def main():
     # parse program arguments
     args = parse_args()
+    music_data_json_filename = DEFAULT_MUSIC_DATA_JSON_FILENAME
 
     # parse music data
     music_data = parse_score_data(args.musicxml_file.read())
@@ -119,7 +129,7 @@ def main():
         # filter by beat
         music_data = music_data.filter_by_beat_range(*args.beat_range)
     if args.stage == ProcessStage.parse_score:
-        with open("music_data.json", 'w') as f:
+        with open(music_data_json_filename, 'w') as f:
             f.write(music_data.export())
         return
 
@@ -130,7 +140,7 @@ def main():
         # TODO: compensate for create time and start buffer time?
         music_data = music_data.filter_by_time_range(*args.time_range)
     # always export at this stage
-    with open("music_data.json", 'w') as f:
+    with open(music_data_json_filename, 'w') as f:
         f.write(music_data.export())
     if args.stage == ProcessStage.timing:
         return
