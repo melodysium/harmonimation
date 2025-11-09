@@ -2,7 +2,9 @@
 
 extends Node2D
 
-@onready var animation_player: AnimationPlayer = $Clrcle12Notes/AnimationPlayer
+@export var dummy: NodePath
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var circle_12_notes: Circle12Notes = $Clrcle12Notes
 
 func _ready() -> void:

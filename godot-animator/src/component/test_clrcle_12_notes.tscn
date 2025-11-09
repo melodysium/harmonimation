@@ -85,7 +85,8 @@ script = ExtResource("1_pcsw7")
 
 [node name="Clrcle12Notes" parent="." instance=ExtResource("1_hfom0")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Clrcle12Notes"]
+[node name="HarmonimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Clrcle12Notes")
 libraries = {
 &"": SubResource("AnimationLibrary_pcsw7")
 }
