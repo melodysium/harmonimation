@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8i2fcm6csm7m"]
+
+[ext_resource type="PackedScene" uid="uid://dtt7fea8ejgy" path="res://src/component/circle_12_notes.tscn" id="1_dt7ry"]
+
+[node name="VideoScene" type="Node2D"]
+
+[node name="Widgets" type="Node2D" parent="."]
+
+[node name="Circle12Notes" parent="Widgets" instance=ExtResource("1_dt7ry")]
+position = Vector2(560, 318)
+scale = Vector2(3.6566422, 3.6566422)
+
+[node name="HarmonimationPlayer" type="AnimationPlayer" parent="."]
