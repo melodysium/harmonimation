@@ -128,6 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# VS Code locak workspace config
+.vscode/settings.json
+
 # MANUAL: folder I use for local testing
 local_playground
 
