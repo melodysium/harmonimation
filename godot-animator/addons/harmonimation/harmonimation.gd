@@ -61,15 +61,8 @@ func _harmonimate() -> void:
 	if harmonimation_player == null: # TODO: also check that it's still within the current edited scene. or maybe just re-pick it every time
 		harmonimation_player = _select_animation_player()
 	print(harmonimation_player.get_path())
-	
-	printerr("TODO implement: open file dialog to retrieve musicxml file path (might require adding an EditorImportPlugin)")
-	printerr("TODO implement: save the file path in some resource somewhere and just use it as a default going forward unless user changes it")
-	printerr("TODO implement: shell command to invoke python script")
-	printerr("TODO implement: file watching on the musicxml file?")
-	printerr("TODO implement: save output music_data.json of python script as resource file with checksum of the musicxml")
-	printerr("TODO implement: scan the editor tree to find all Harmonimation widgets")
-	printerr("TODO implement: pass music_data into all Harmonimation widgets, then place into AnimationPlayer")
-	
+
+
 #var _viewport := EditorInterface.get_editor_viewport_2d()
 #
 #@export_tool_button("Load Musicxml File") var load_musicxml_action := load_musicxml_file

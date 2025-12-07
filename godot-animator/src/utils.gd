@@ -7,7 +7,7 @@ extends Node
 var DEFAULT_FONT := preload("res://assets/Hack-Regular.ttf")
 
 # TODO: fix typing & warning here
-var MUSIC_DATA: Dictionary = Dictionary(json_to_dict("res://assets/my_time_data.json"))
+var MUSIC_DATA: Dictionary = load_json_to_dict("res://assets/my_time_data.json").v
 	#Dictionary(
 	#TYPE_STRING, "", null,
 	#TYPE_MAX, "", null) # TODO: this is wrong. can I find the TYPE_VARIANT that doesn't seem to exist?
@@ -20,21 +20,39 @@ func print_err(...args: Array) -> void:
 	print_rich("[color=red]", "".join(args), "[/color]")
 
 
-func json_to_dict(json_file: String) -> Variant: # Optional[Dictionary]
+class OptionalDictionary:
+	var v: Dictionary
+	func _init(dict: Dictionary) -> void:
+		v = dict
+
+
+func load_json_to_dict(json_file: String) -> OptionalDictionary:
+	var json := load_json(json_file)
+	if json == null:
+		return null
+	return json_to_dict(json)
+
+
+func load_json(json_file: String) -> JSON:
 	var json_string := FileAccess.get_file_as_string(json_file)
 	var json := JSON.new()
 	var error := json.parse(json_string)
 	if error != OK:
-		print_err("ERROR(json_to_dict): JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+		print_err("ERROR(load_json): JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 		return null;
+	print_verbose("Successfully loaded json file %s" % json_file)
+	return json
+
+
+func json_to_dict(json: JSON) -> OptionalDictionary:
 	if typeof(json.data) == TYPE_DICTIONARY:
 		var json_dict: Dictionary = json.data
-		print_verbose("Successfully loaded json file %s with %d keys: %s" % [json_file, json_dict.size(), json_dict.keys().map(
+		print_verbose("json is a dictionary with %d keys: %s" % [json_dict.size(), json_dict.keys().map(
 			func(key: String) -> String: return "%s: %s" % [key, type_string(typeof(json_dict[key]))]
 		)])
-		return json.data
+		return OptionalDictionary.new(json_dict)
 	else:
-		print_err("ERROR(json_to_dict): Unexpected json data type: " + type_string(typeof(json.data)))
+		print_err("ERROR(load_json_to_dict): Unexpected json data type: " + type_string(typeof(json.data)))
 		return null
 
 
@@ -108,7 +126,11 @@ class AnimationStep:
 # TODO: deal with magic number
 ## Find/make the animation used for auto-generated animations
 func setup_animation(player: AnimationPlayer, animation_length: float = 200.0, delete_existing := true) -> Animation:
+	if not player.has_animation_library(""):
+		print("AnimationPlayer doesn't yet have the global library. adding it...")
+		player.add_animation_library("", AnimationLibrary.new())
 	var library := player.get_animation_library("") # "" means "get global library"
+	
 
 	# if delete_existing always, then delete any pre-existing animation
 	if delete_existing and library.has_animation(Utils.ANIMATION_NAME_AUTOGEN):
