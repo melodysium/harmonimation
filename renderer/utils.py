@@ -40,7 +40,7 @@ from regex import Match
 from constants import USE_LATEX
 from music import music_constants
 
-print(f"{USE_LATEX=}")
+# print(f"{USE_LATEX=}")
 
 # --------------------PYTHON HELPERS--------------------
 

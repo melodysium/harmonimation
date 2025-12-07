@@ -261,11 +261,11 @@ keys: len={len(self.keys)}, elems={self.keys}
         class CustomEncoder(json.JSONEncoder):
 
             def encode(self, o):
-                print(f"{o=}")
+                # print(f"{o=}")
                 if isinstance(o, dict):
                     new_dict = {}
                     for k, v in o.items():
-                        print(f"{k=}, {v=}")
+                        # print(f"{k=}, {v=}")
                         k = _convert_or_leave(k)
                         new_dict[k] = v
                     return super().encode(new_dict)
@@ -474,10 +474,10 @@ def process_chord_annotation(
                 "Invalid annotation - cannot have manual chord set in the same beat as any other chord annotations."
             )
         notated_chord = list(chord_symbols.values())[0]
-        if range[0] == 99:
-            print(
-                f"debug: {notated_chord}, {notated_chord.chordKind}, [{notated_chord.root()} {notated_chord.third} {notated_chord.fifth} {notated_chord.seventh}] {notated_chord.normalOrderString}, {notated_chord.pitchedCommonName}"
-            )
+        # if range[0] == 99:
+        #     print(
+        #         f"debug: {notated_chord}, {notated_chord.chordKind}, [{notated_chord.root()} {notated_chord.third} {notated_chord.fifth} {notated_chord.seventh}] {notated_chord.normalOrderString}, {notated_chord.pitchedCommonName}"
+        #     )
         return [
             MusicDataTiming(
                 elem=notated_chord,

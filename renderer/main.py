@@ -120,9 +120,12 @@ def parse_args():
 
 
 def main():
+    # use UTF-8 output encoding
+    sys.stdout.reconfigure(encoding='utf-8')
+
     # parse program arguments
     args = parse_args()
-    music_data_json_filename = DEFAULT_MUSIC_DATA_JSON_FILENAME
+    music_data_json_filename = args.music_data_file
 
     # parse music data
     music_data = parse_score_data(args.musicxml_file.read())
