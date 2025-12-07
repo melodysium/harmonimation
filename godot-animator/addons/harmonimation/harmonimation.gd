@@ -3,6 +3,9 @@ extends EditorPlugin
 
 class_name HarmonimationPlugin
 
+# The main plugin is located at res://addons/my_plugin/
+const PLUGIN_NAME = "harmonimation"
+
 const ANIMATION_PLAYER_NODE_NAME = "HarmonimationPlayer"
 
 # A class member to hold the dock during the plugin life cycle.
@@ -14,12 +17,11 @@ var harmonimation_player: AnimationPlayer = null
 
 func _enable_plugin() -> void:
 	# Add autoloads here.
-	pass
-
+	EditorInterface.set_plugin_enabled(PLUGIN_NAME + "/harmonimation_inspector", true)
 
 func _disable_plugin() -> void:
 	# Remove autoloads here.
-	pass
+	EditorInterface.set_plugin_enabled(PLUGIN_NAME + "/harmonimation_inspector", false)
 
 
 func _enter_tree() -> void:

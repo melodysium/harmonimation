@@ -29,7 +29,7 @@ gdscript/warnings/unsafe_call_argument=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/harmonimation/plugin.cfg")
+enabled=PackedStringArray("res://addons/harmonimation/harmonimation_inspector/plugin.cfg", "res://addons/harmonimation/plugin.cfg")
 
 [gui]
 
