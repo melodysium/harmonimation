@@ -4,7 +4,7 @@ extends Node2D
 
 @export var dummy: NodePath
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $HarmonimationPlayer
 @onready var circle_12_notes: Circle12Notes = $Clrcle12Notes
 
 func _ready() -> void:
