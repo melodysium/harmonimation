@@ -19,7 +19,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="WidgetParentSelector"]
 layout_mode = 2
-text = "AnimationPlayer"
+text = "HarmonimationPlayer"
 
 [node name="WidgetButton" type="Button" parent="WidgetParentSelector"]
 layout_mode = 2

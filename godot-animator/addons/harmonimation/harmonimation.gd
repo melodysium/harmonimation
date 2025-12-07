@@ -6,10 +6,11 @@ class_name HarmonimationPlugin
 const ANIMATION_PLAYER_NODE_NAME = "HarmonimationPlayer"
 
 # A class member to hold the dock during the plugin life cycle.
-var dock: Control # TODO: figure out if i can type hint the specific scene?
+var dock: HarmonimationEditor
 
 var harmonimation_player: AnimationPlayer = null
 # TODO: tie to the AnimationPlayer
+
 
 func _enable_plugin() -> void:
 	# Add autoloads here.
@@ -24,11 +25,11 @@ func _disable_plugin() -> void:
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here.
 	# Load the dock scene and instantiate it.
-	dock = (preload("res://addons/harmonimation/dock_editor/harmonimation_editor.tscn").instantiate() as Control)
-	dock.connect("harmonimate", _harmonimate)
-
+	dock = (preload("res://addons/harmonimation/dock_editor/harmonimation_editor.tscn").instantiate())
 	# Add the loaded scene to the docks.
 	add_control_to_dock(DOCK_SLOT_RIGHT_BL, dock)
+	
+	dock.harmonimate_button.connect("button_up", _harmonimate)
 
 
 
