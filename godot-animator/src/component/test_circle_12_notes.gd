@@ -3,6 +3,8 @@
 extends Node2D
 
 @export var dummy: NodePath
+@export var json: MusicScoreData
+@export var pic: RectangleShape2D
 
 @onready var animation_player: AnimationPlayer = $HarmonimationPlayer
 @onready var circle_12_notes: Circle12Notes = $Clrcle12Notes
