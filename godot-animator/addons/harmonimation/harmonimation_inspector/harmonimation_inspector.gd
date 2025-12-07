@@ -14,7 +14,7 @@ func _disable_plugin() -> void:
 
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here.
-	print("inspector plugin loaded woa!")
+	print_verbose("inspector plugin loaded woa!")
 	pass
 
 

@@ -25,6 +25,7 @@ func _disable_plugin() -> void:
 
 
 func _enter_tree() -> void:
+	print_verbose("start harmonimation._enter_tree()")
 	# Initialization of the plugin goes here.
 	# Load the dock scene and instantiate it.
 	dock = (preload("res://addons/harmonimation/dock_editor/harmonimation_editor.tscn").instantiate())
@@ -32,7 +33,7 @@ func _enter_tree() -> void:
 	add_control_to_dock(DOCK_SLOT_RIGHT_BL, dock)
 	
 	dock.harmonimate_button.connect("button_up", _harmonimate)
-
+	print_verbose("done harmonimation._enter_tree()")
 
 
 func _exit_tree() -> void:
