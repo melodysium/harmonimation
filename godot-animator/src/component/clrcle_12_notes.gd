@@ -14,10 +14,11 @@ const DEFAULT_ROTATE_TRANSITION_TIME = 0.3
 
 # TODO: whether to orient tonic or ionian root at top should be a config option
 
-@export_group("setup options")
+@export_group("User Config")
 
 ## Radius for main circle / pitch names
-@export_range(0, 100, 1.0, "or_greater") var radius := 50.0:
+@export_range(0, 100, 1.0, "or_greater")
+var radius := 50.0:
 	set(val):
 		assert(_background_circle_node != null)
 		_background_circle_node.radius = val
@@ -25,8 +26,11 @@ const DEFAULT_ROTATE_TRANSITION_TIME = 0.3
 		_move_pitch_nodes()
 
 
-## Number of steps between each pitch
-@export_range(1, 11, 1.0) var pitches_per_step := 1:
+## Number of pitches advanced every step once clockwise.
+## Note this is equivalent to number of steps for one half-note increase in pitch, at least for values [1, 5, 7, 11]
+# due to n^2 % 12 == 1. advancing n pitches across n steps results in getting to pitch n+1 at the end.
+@export_range(1, 11, 1.0)
+var pitches_per_step := 1:
 	set(val):
 		if ![1, 5, 7, 11].has(val):
 			Utils.print_err("WARNING: Circle12Notes currently only supports pitches_per_step values of [1, 5, 7, 11], but you picked: %s. Ignoring." % val)
@@ -35,16 +39,22 @@ const DEFAULT_ROTATE_TRANSITION_TIME = 0.3
 		_move_pitch_nodes()
 
 ## First pitch class at the "top" of the node. 0 = C, 1 = Db, ... 11 = B
-@export_range(0, 11, 1.0) var first_pitch_class := 0:
+@export_range(0, 11, 1.0)
+var first_pitch_class := 0:
 	set(val):
 		first_pitch_class = val
 		_move_pitch_nodes()
 
+## Time before a new key change when the Circle will start rotating
+@export_range(0.0, 2.0, 0.01, "or_greater")
+var transition_time := DEFAULT_ROTATE_TRANSITION_TIME
 
-@export_group("animation controls")
+
+#@export_group("Raw Animation Primitives")
 
 ## Rotate angle (keeps note text oriented upwards)
-@export_range(-TAU, TAU, 0.01, "or_less", "or_greater") var rotate_angle := 0.0:
+#@export_range(-TAU, TAU, 0.01, "or_less", "or_greater")
+var rotate_angle := 0.0:
 	set(val):
 		# if < 0 or >= TAU (radians), cycle back within that range
 		if val <= -TAU or val >= TAU:
@@ -54,7 +64,8 @@ const DEFAULT_ROTATE_TRANSITION_TIME = 0.3
 		_move_pitch_nodes()
 
 ## Colors used for pitch highlight circles. Start transparent.
-@export var pitch_circle_colors: Array[Color] = Array(Utils.fill_array(12, Color.TRANSPARENT), TYPE_COLOR, "", null):
+#@export
+var pitch_circle_colors: Array[Color] = Array(Utils.fill_array(12, Color.TRANSPARENT), TYPE_COLOR, "", null):
 	set(val):
 		# TODO: This property seems unable to be reset at all in the editor. Maybe add a manual "reset" button? Maybe investigate resetting arrays in properties?
 		print_verbose("pitch_circle_colors.set(val=%s), oldval=%s" % [val, pitch_circle_colors])
@@ -72,17 +83,15 @@ const DEFAULT_ROTATE_TRANSITION_TIME = 0.3
 			_configure_pitch_circle_nodes()
 
 
-@export_group("animation meta config")
-
-## Time before a new key change when the Circle will start rotating
-@export_range(0.0, 2.0, 0.01, "or_greater") var transition_time := DEFAULT_ROTATE_TRANSITION_TIME
-
 ## Background ring underneath pitches
-@onready var _background_circle_node : Circle2D = $BackgroundCircle
+@onready
+var _background_circle_node : Circle2D = $BackgroundCircle
 ## Parent node for dynamically-added pitch text
-@onready var _pitch_text_parent_node : Node2D = $PitchText
+@onready
+var _pitch_text_parent_node : Node2D = $PitchText
 ## Parent node for dynamically-added pitch circles
-@onready var _pitch_circles_parent_node : Node2D = $PitchCircles
+@onready
+var _pitch_circles_parent_node : Node2D = $PitchCircles
 
 
 ## Mapping of pitch_class to pitch labels
@@ -104,8 +113,12 @@ class PitchInfo:
 
 const ONE_STEP_ANGLE := TAU / 12
 
+
 func _angle_for_pitch_at_top(selected_pitch_class: int, previous_angle: float = 0.0) -> float:
-	var new_angle := (first_pitch_class - selected_pitch_class) * (ONE_STEP_ANGLE)
+	# TODO: this should use pitches_per_step somewhere. but where?
+	var diff_pitch_classes := first_pitch_class - selected_pitch_class
+	var diff_steps := diff_pitch_classes * pitches_per_step
+	var new_angle := diff_steps * (ONE_STEP_ANGLE)
 	new_angle += roundf((new_angle - previous_angle) / TAU) * -TAU
 	return new_angle
 
@@ -123,6 +136,8 @@ func _list_positions() -> Array[PitchInfo]:
 
 
 func _move_pitch_nodes() -> void:
+	if not is_node_ready():
+		return
 	for pitch_info: PitchInfo in _list_positions():
 		_pitch_text_nodes[pitch_info.pitch_class].position = pitch_info.pos
 		_pitch_circle_nodes[pitch_info.pitch_class].position = pitch_info.pos
@@ -182,14 +197,46 @@ func hrmn_animate(music_data: Dictionary) -> Array[Utils.AnimationStep]:
 	animations.append_array(animate_key_changes(keys))
 
 	# TODO: animate pitch selections (i.e. chords)
+	var chord_roots: Array[Dictionary] = Array(music_data["chord_roots"], TYPE_DICTIONARY, "", null) # TODO: handle warning?
+	animations.append_array(animate_chord_roots(chord_roots))
 
 	# TODO: animate notes played
 
 	return animations
 
+func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.AnimationStep]:
+	var anims: Array[Utils.AnimationStep] = []
+	
+	var previous_pitch_circle_colors := pitch_circle_colors
+	var previous_selected_pitch_class := -1 # -1 = none, 0-11 = selected
+	
+	for chord_root: Dictionary in chord_roots:
+		var time: float = chord_root["time"]
+		var new_pitch_class: int = chord_root["elem"]["pitchClass"]
+		
+		if new_pitch_class == previous_selected_pitch_class:
+			# same pitch, no need to animate
+			continue
+		
+		# create a clone of pitch_circle_colors for this new selection
+		var new_pitch_circle_colors: Array[Color] = []
+		for i in range(12):
+			if i == new_pitch_class:
+				new_pitch_circle_colors.append(Color.WHITE)
+			#elif i == previous_selected_pitch_class:
+				#new_pitch_circle_colors.append(Color.TRANSPARENT)
+			else:
+				new_pitch_circle_colors.append(Color.TRANSPARENT)
+		anims.append(Utils.AnimationStep.new(self, time - .05, time + .05, [Utils.PropertyChange.new("pitch_circle_colors", previous_pitch_circle_colors, new_pitch_circle_colors)]))
+		
+		# update tracking vars for next iteration
+		previous_selected_pitch_class = new_pitch_class
+		previous_pitch_circle_colors = new_pitch_circle_colors
+	
+	return anims
+
 
 func animate_key_changes(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:
-
 	# build a sequence of rotation animations to play
 	var anims: Array[Utils.AnimationStep] = []
 
@@ -220,6 +267,7 @@ func animate_key_changes(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:
 				_angle_for_pitch_at_top(root_pitch_class)))
 
 		# TODO: animate any individual pitches needing to change highlighting
+		# TODO: this will require adding data in music_data.json: pitches_in_key
 		# pitches_in_new_key = {
 		#     pitch_idx: pitch_idx in pitchesInKey
 		#     for _, pitch_idx in circle12._list_steps()

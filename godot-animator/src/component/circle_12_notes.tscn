@@ -5,7 +5,6 @@
 
 [node name="Clrcle12Notes" type="Node2D"]
 script = ExtResource("1_4fjao")
-pitch_circle_colors = Array[Color]([Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)])
 
 [node name="BackgroundCircle" type="Node2D" parent="."]
 script = ExtResource("1_uhmis")
