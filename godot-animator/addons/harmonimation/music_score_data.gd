@@ -27,8 +27,6 @@ const TMP_MUSIC_DATA_JSON_FILEPATH := "tmp_music_data.json"
 		_script_vars_ready["_music_data"] = true
 		if val != null:
 			_music_data_dict = Utils.json_to_dict(_music_data).v
-		_manual_ready()
-
 
 ## checksum of musicxml data that was used to compute the current music_data. if checksum of input_music_data_filepath matches, no need to re-compute.
 @export_storage var _input_music_data_checksum: PackedByteArray = []:
@@ -36,7 +34,6 @@ const TMP_MUSIC_DATA_JSON_FILEPATH := "tmp_music_data.json"
 		print_verbose("setting _input_music_data_checksum = %s" % val.hex_encode())
 		_input_music_data_checksum = val
 		_script_vars_ready["_input_music_data_checksum"] = true
-		_manual_ready()
 
 
 # TODO: file watch on this, re-run harmonimation parse on changes
@@ -46,7 +43,7 @@ const TMP_MUSIC_DATA_JSON_FILEPATH := "tmp_music_data.json"
 		print_verbose("setting input_music_data_filepath = %s" % val)
 		input_music_data_filepath = val
 		_script_vars_ready["input_music_data_filepath"] = true
-		_manual_ready()
+		call_deferred("_manual_ready")
 
 
 # TODO: make this use setget?
@@ -105,17 +102,33 @@ func _force_recalculate() -> void:
 		emit_changed()
 		return
 
-	# set up new data
+	# early indicators that we need to re-compute
+	if _music_data == null:
+		print_verbose("missing _music_data for input file %s; re-parsing music score data" % input_music_data_filepath)
+		_proprocess_and_save_music_data(_compute_checksum(input_music_data_filepath))
+	if DISABLE_CACHING:
+		print_verbose("checksum-based caching of music_data disabled; re-parsing music score data")
+		_proprocess_and_save_music_data(_compute_checksum(input_music_data_filepath))
+
+	# check if we need to re-compute music_data
 	print_verbose("computing checksum of previous music score data. previous: %s" % _input_music_data_checksum.hex_encode())
 	var new_checksum = _check_input_changed(input_music_data_filepath, _input_music_data_checksum)
-	if DISABLE_CACHING or new_checksum.size() > 0:
-		print_verbose("checksum changed; re-parsing music score data")
-		_music_data = _parse_input_music_data(input_music_data_filepath)
-		_input_music_data_checksum = new_checksum
-	else:
+	if new_checksum.size() == 0:
 		print_verbose("checksum identical; skipping re-parse")
+		return
+	else:
+		print_verbose("checksum of file %s (%s) differs from previously saved checksum (%s); re-parsing music score data" % [input_music_data_filepath, new_checksum, _input_music_data_checksum])
+
+	# file has changed from last compute, need to re-compute
+	_proprocess_and_save_music_data(new_checksum)
+
+
+## parse input music data, save results and checksum
+func _proprocess_and_save_music_data(new_checksum: PackedByteArray) -> void:
+	_music_data = _parse_input_music_data(input_music_data_filepath)
+	_input_music_data_checksum = new_checksum
 	emit_changed()
-	
+
 
 ## invoke shell commands to parse input_music_data_filepath via python script into music_data
 func _parse_input_music_data(input_path: String) -> JSON:
@@ -124,14 +137,17 @@ func _parse_input_music_data(input_path: String) -> JSON:
 		printerr("_parse_input_music_data: file %s is invalid" % input_path)
 		return null
 
-	# Invoke Command Prompt to: 1) load python virtual environment, then 2) invoke harmonimation python script to parse input musicxmlf ile
-	var output = []
-	var cmd_to_execute = """\
-		..\\.venv-win\\Scripts\\activate.bat \
-		&& python3 ..\\renderer\\main.py --music-data-file \"%s\" \"%s\"""" % [TMP_MUSIC_DATA_JSON_FILEPATH, input_path]
-	print("Invoking external python script, please wait...")
-	print("command: %s" % cmd_to_execute)
-	OS.execute("CMD.exe", ["/C", cmd_to_execute], output, true)
+	# Invoke python script for processing musicxml into music_data JSON
+	var output: Array[String]
+	if OS.has_feature("windows"):
+		print_verbose("detected win environment, invoking python via CMD.exe")
+		output = _invoke_python_win(input_path)
+	elif OS.has_feature("macos"):
+		print_verbose("detected macos environment, invoking python via /bin/sh")
+		output = _invoke_python_mac(input_path)
+	else:
+		printerr("Unknown platform. Skipping python musicxml parse. Harmonimation will not work yet!") # TODO: print platform tags
+		return null
 	for line in output:
 		print(line)
 
@@ -142,11 +158,36 @@ func _parse_input_music_data(input_path: String) -> JSON:
 	if error != OK:
 		printerr("_parse_input_music_data: JSON Parse Error: ", music_data.get_error_message(), " in ", json_string, " at line ", music_data.get_error_line())
 		return null;
-
+#
 	# JSON loaded; delete the file
 	DirAccess.remove_absolute(TMP_MUSIC_DATA_JSON_FILEPATH)
-
+#
 	return music_data
+
+
+func _invoke_python_win(input_path: String) -> Array[String]:
+	# Invoke Command Prompt to:
+	# 1) load python virtual environment, then
+	# 2) invoke harmonimation python script to parse input musicxmlf ile
+	var output: Array[String] = []
+	var cmd_to_execute = """\
+		..\\.venv-win\\Scripts\\activate.bat \
+		&& python3 ..\\renderer\\main.py --music-data-file \"%s\" \"%s\"""" % [TMP_MUSIC_DATA_JSON_FILEPATH, input_path]
+	print_verbose("Invoking external python script on Windows via `CMD.exe`, please wait...")
+	print_verbose("command: %s" % cmd_to_execute)
+	OS.execute("CMD.exe", ["/C", cmd_to_execute], output, true)
+	return output
+
+
+func _invoke_python_mac(input_path: String) -> Array[String]:
+	var output: Array[String] = []
+	var cmd_to_execute = """\
+		source ../.venv/bin/activate \
+		&& python3 ../renderer/main.py --music-data-file \'%s\' \'%s\'""" % [TMP_MUSIC_DATA_JSON_FILEPATH, input_path]
+	print_verbose("Invoking external python script on Mac via `/bin/sh`, please wait...")
+	print_verbose("command: %s" % cmd_to_execute)
+	OS.execute("/bin/sh", ["-c", cmd_to_execute], output, true)
+	return output
 
 
 ## Compute a checksum of provided data
@@ -175,13 +216,13 @@ func _compute_checksum(filepath: String) -> PackedByteArray:
 ## Determine if we need to re-compute music data based on file change. null = no change,
 func _check_input_changed(input_filepath: String, checksum: PackedByteArray) -> PackedByteArray:
 	# if no previous checksum, yes we need to re-compute
-	if checksum == null:
+	if checksum.size() == 0:
 		return _compute_checksum(input_filepath)
 	# compute new checksum
 	var file_checksum = _compute_checksum(input_filepath)
 	if file_checksum.size() == 0:
 		# file is invalid. panic?
-		return [null] # can't recompute if file is invalid
+		return [] # can't recompute if file is invalid
 	if file_checksum == checksum:
 		return [] # no change, no re-compute necessary
 	else:
