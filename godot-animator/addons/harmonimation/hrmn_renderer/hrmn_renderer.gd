@@ -46,12 +46,13 @@ func apply_animations() -> void:
 
 	# loop thru all registered widgets
 	if widgets == null or widgets.size() == 0:
-		printerr("apply_animations(): no widgets to animate")
+		print("harmonimation: no widgets to animate")
+		print_verbose("apply_animations(): done (no objects to animate)")
 		return
 	print_verbose("apply_animations(): looping thru %d widgets to set animations" % widgets.size())
 	for widget in widgets:
 		# determine all animations to apply on this widget, and apply them
 		for anim in widget.hrmn_animate(music_data._music_data_dict):
 			Utils.apply_animation(anim, self, animation)
-	print("successfully applied music_data to harmonimation widgets!")
-	print_verbose("apply_animations(): done")
+	print("harmonimation: successfully applied music_data to harmonimation widgets!")
+	print_verbose("apply_animations(): done (animations applied)")

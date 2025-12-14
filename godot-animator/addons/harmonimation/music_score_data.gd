@@ -2,9 +2,7 @@
 class_name MusicScoreData
 extends Resource
 
-# TODO: get the caching actually working. maybe I need to delay checking until later? why is the export data all null during _init()?
 # TODO: if the user selects a different musicxml file during a session, it should trigger a re-load
-# TODO: find better more encapsulated way for MusicScoreData to own and update re-processing input file without getting brainrot from checksum being not yet loaded from export when filepath export gets loaded first
 
 ## number of bytes for each hash iteration when computing checksum
 const HASH_CHUNK_SIZE = 1024
