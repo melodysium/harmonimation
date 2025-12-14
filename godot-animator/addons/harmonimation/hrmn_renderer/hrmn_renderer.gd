@@ -15,10 +15,9 @@ extends AnimationPlayer
 # TODO: add button to force manually re-compute json
 
 
-# TODO: make parent class for "hrmn animateable nodes"
 # TODO: auto-discover mode
 ## Animation widgets, provided data from music score
-@export var widgets: Array[Circle12Notes] = []:
+@export var widgets: Array[HarmonimationWidget] = []:
 	set(val):
 		widgets = val
 		if is_node_ready():
@@ -52,7 +51,7 @@ func apply_animations() -> void:
 	print_verbose("apply_animations(): looping thru %d widgets to set animations" % widgets.size())
 	for widget in widgets:
 		# determine all animations to apply on this widget, and apply them
-		for anim in widget.animate_on_data(music_data._music_data_dict):
+		for anim in widget.hrmn_animate(music_data._music_data_dict):
 			Utils.apply_animation(anim, self, animation)
 	print("successfully applied music_data to harmonimation widgets!")
 	print_verbose("apply_animations(): done")

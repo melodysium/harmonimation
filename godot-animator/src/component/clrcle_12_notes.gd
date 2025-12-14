@@ -2,7 +2,7 @@
 
 class_name Circle12Notes
 
-extends Node2D
+extends HarmonimationWidget
 
 ## TODO: make these configurable?
 ## Font size for pitch names
@@ -174,7 +174,7 @@ func _ready() -> void:
 
 
 ## Given structured information about the song, create a list of animations to play at set times.
-func animate_on_data(music_data: Dictionary) -> Array[Utils.AnimationStep]:
+func hrmn_animate(music_data: Dictionary) -> Array[Utils.AnimationStep]:
 	var animations: Array[Utils.AnimationStep] = []
 
 	# animate key changes
