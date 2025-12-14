@@ -4,13 +4,38 @@ class_name Circle12Notes
 
 extends HarmonimationWidget
 
-## TODO: make these configurable?
+#region constants and types
+
+# TODO: make some of these configurable?
+
 ## Font size for pitch names
 const BASE_PITCH_NAME_FONT_SIZE := 12
+
 ## Circle radius for pitch circles
 const BASE_PITCH_CIRCLE_RADIUS := 0.2
+
 ## Default time before a new key change when the Circle will start rotating
 const DEFAULT_ROTATE_TRANSITION_TIME = 0.3
+
+## Angle (in radians) for one step of twelve around the circle
+const ONE_STEP_ANGLE := TAU / 12
+
+## Tuple of (pitch class [0-11], position (Vec2 relative to center))
+class PitchInfo:
+	var pitch_class: int
+	var pos: Vector2
+
+	func _init(_pitch_class: int, _pos: Vector2) -> void:
+		self.pitch_class = _pitch_class
+		self.pos = _pos
+
+	func _to_string() -> String:
+		return "PitchInfo[pcls=%s, pos=%s]" % [self.pitch_class, self.pos]
+
+#endregion
+
+
+#region user config exports
 
 # TODO: whether to orient tonic or ionian root at top should be a config option
 
@@ -50,6 +75,11 @@ var first_pitch_class := 0:
 var transition_time := DEFAULT_ROTATE_TRANSITION_TIME
 
 
+#endregion
+
+
+#region animation primitives
+
 #@export_group("Raw Animation Primitives")
 
 ## Rotate angle (keeps note text oriented upwards)
@@ -83,6 +113,11 @@ var pitch_circle_colors: Array[Color] = Array(Utils.fill_array(12, Color.TRANSPA
 			_configure_pitch_circle_nodes()
 
 
+#endregion
+
+
+#region onready vars
+
 ## Background ring underneath pitches
 @onready
 var _background_circle_node : Circle2D = $BackgroundCircle
@@ -93,6 +128,10 @@ var _pitch_text_parent_node : Node2D = $PitchText
 @onready
 var _pitch_circles_parent_node : Node2D = $PitchCircles
 
+#endregion
+
+
+#region internal state vars
 
 ## Mapping of pitch_class to pitch labels
 var _pitch_text_nodes: Dictionary[int, Text2D] = {}
@@ -100,22 +139,12 @@ var _pitch_text_nodes: Dictionary[int, Text2D] = {}
 ## Mapping of pitch_class to pitch labels
 var _pitch_circle_nodes: Dictionary[int, Circle2D] = {}
 
-class PitchInfo:
-	var pitch_class: int
-	var pos: Vector2
+#endregion
 
-	func _init(_pitch_class: int, _pos: Vector2) -> void:
-		self.pitch_class = _pitch_class
-		self.pos = _pos
 
-	func _to_string() -> String:
-		return "PitchInfo[pcls=%s, pos=%s]" % [self.pitch_class, self.pos]
-
-const ONE_STEP_ANGLE := TAU / 12
-
+#region private helpers
 
 func _angle_for_pitch_at_top(selected_pitch_class: int, previous_angle: float = 0.0) -> float:
-	# TODO: this should use pitches_per_step somewhere. but where?
 	var diff_pitch_classes := first_pitch_class - selected_pitch_class
 	var diff_steps := diff_pitch_classes * pitches_per_step
 	var new_angle := diff_steps * (ONE_STEP_ANGLE)
@@ -150,6 +179,9 @@ func _configure_pitch_circle_nodes() -> void:
 func _configure_pitch_text_nodes() -> void:
 	for i in range(12):
 		_pitch_text_nodes[i].text = Utils.Pitch.pitchclass_to_pitchname(i)
+
+#endregion
+
 
 func _ready() -> void:
 
@@ -188,6 +220,8 @@ func _ready() -> void:
 	self._configure_pitch_circle_nodes()
 
 
+#region animations
+
 ## Given structured information about the song, create a list of animations to play at set times.
 func hrmn_animate(music_data: Dictionary) -> Array[Utils.AnimationStep]:
 	var animations: Array[Utils.AnimationStep] = []
@@ -206,18 +240,18 @@ func hrmn_animate(music_data: Dictionary) -> Array[Utils.AnimationStep]:
 
 func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.AnimationStep]:
 	var anims: Array[Utils.AnimationStep] = []
-	
+
 	var previous_pitch_circle_colors := pitch_circle_colors
 	var previous_selected_pitch_class := -1 # -1 = none, 0-11 = selected
-	
+
 	for chord_root: Dictionary in chord_roots:
 		var time: float = chord_root["time"]
 		var new_pitch_class: int = chord_root["elem"]["pitchClass"]
-		
+
 		if new_pitch_class == previous_selected_pitch_class:
 			# same pitch, no need to animate
 			continue
-		
+
 		# create a clone of pitch_circle_colors for this new selection
 		var new_pitch_circle_colors: Array[Color] = []
 		for i in range(12):
@@ -228,11 +262,11 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.Animatio
 			else:
 				new_pitch_circle_colors.append(Color.TRANSPARENT)
 		anims.append(Utils.AnimationStep.new(self, time - .05, time + .05, [Utils.PropertyChange.new("pitch_circle_colors", previous_pitch_circle_colors, new_pitch_circle_colors)]))
-		
+
 		# update tracking vars for next iteration
 		previous_selected_pitch_class = new_pitch_class
 		previous_pitch_circle_colors = new_pitch_circle_colors
-	
+
 	return anims
 
 
@@ -302,3 +336,5 @@ func animate_rotate(angle_start: float, angle_end: float, time_start: float, tim
 
 func animate_rotate_pitch(pitch_start: int, pitch_end: int, time_start: float, time_end: float) -> Utils.AnimationStep:
 	return animate_rotate(_angle_for_pitch_at_top(pitch_start), _angle_for_pitch_at_top(pitch_end), time_start, time_end)
+
+#endregion

@@ -51,8 +51,16 @@ func apply_animations() -> void:
 		return
 	print_verbose("apply_animations(): looping thru %d widgets to set animations" % widgets.size())
 	for widget in widgets:
-		# determine all animations to apply on this widget, and apply them
-		for anim in widget.hrmn_animate(music_data._music_data_dict):
-			Utils.apply_animation(anim, self, animation)
+		animate_widget(animation, widget)
 	print("harmonimation: successfully applied music_data to harmonimation widgets!")
 	print_verbose("apply_animations(): done (animations applied)")
+
+
+# TODO: call this when any widget emits "animate_config_changed" (and define that signal in the first place)
+## Compute and apply animation tracks for one widget onto the selected animation track
+func animate_widget(animation: Animation, widget: HarmonimationWidget) -> void:
+	# TODO: clear all previous animations on this widget
+	# determine all animations to apply on this widget, and apply them
+	for anim in widget.hrmn_animate(music_data._music_data_dict):
+		Utils.apply_animation(anim, self, animation)
+	# TODO: also apply initial state to RESET track
