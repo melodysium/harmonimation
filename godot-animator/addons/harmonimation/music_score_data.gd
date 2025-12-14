@@ -6,7 +6,7 @@ extends Resource
 # TODO: if the user selects a different musicxml file during a session, it should trigger a re-load
 # TODO: find better more encapsulated way for MusicScoreData to own and update re-processing input file without getting brainrot from checksum being not yet loaded from export when filepath export gets loaded first
 
-## number of v for each hash iteration when computing checksum
+## number of bytes for each hash iteration when computing checksum
 const HASH_CHUNK_SIZE = 1024
 
 ## set to true to always re-compute music_data upon load
@@ -79,7 +79,6 @@ func _init() -> void:
 
 func _handle_fallback_load_timer() -> void:
 	print_verbose("_fallback_load timer triggered")
-	#_fallback_load.free()
 	_force_recalculate()
 
 

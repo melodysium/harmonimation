@@ -11,6 +11,10 @@ extends AnimationPlayer
 		if is_node_ready():
 			apply_animations()
 
+# TODO: add label to indicate current JSON load state
+# TODO: add button to force manually re-compute json
+
+
 # TODO: make parent class for "hrmn animateable nodes"
 # TODO: auto-discover mode
 ## Animation widgets, provided data from music score
@@ -33,6 +37,7 @@ func apply_animations() -> void:
 		printerr("apply_animations(): missing Music Data, cannot animate harmonimation widgets.")
 		return
 	# refresh any input filename updates first
+	# TODO: I think this isn't necessary anymore?
 	print_verbose("apply_animations(): checking for score re-parse")
 	music_data._manual_ready()
 
