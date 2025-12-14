@@ -28,6 +28,7 @@ func _ready() -> void:
 
 
 func apply_animations() -> void:
+	print_verbose("apply_animations(): start. music_data=%s, music_data._music_data=%s, music_data._music_data_dict=%s" % [music_data, music_data._music_data, "loaded" if music_data._music_data_dict != null else "null"])
 	if music_data == null or music_data._music_data == null:
 		printerr("apply_animations(): missing Music Data, cannot animate harmonimation widgets.")
 		return
@@ -48,4 +49,5 @@ func apply_animations() -> void:
 		# determine all animations to apply on this widget, and apply them
 		for anim in widget.animate_on_data(music_data._music_data_dict):
 			Utils.apply_animation(anim, self, animation)
+	print("successfully applied music_data to harmonimation widgets!")
 	print_verbose("apply_animations(): done")

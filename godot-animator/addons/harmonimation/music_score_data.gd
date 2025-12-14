@@ -52,7 +52,6 @@ var _music_data_dict : Dictionary
 
 
 func place_in_dict(dict: Dictionary, val: Variant) -> Dictionary: #[String, bool]
-	print_verbose("place_in_dict(dict=%s, val=%s)" % [dict, val])
 	dict[val] = false
 	return dict
 var _script_vars_ready: Dictionary = (get_script().get_script_property_list()
@@ -64,15 +63,15 @@ var _script_vars_ready: Dictionary = (get_script().get_script_property_list()
 func _init() -> void:
 	print_verbose("initializing MusicScoreData. initial state: input_music_data_filepath=%s, _input_music_data_checksum=%s, _music_data=%s" % [input_music_data_filepath, _input_music_data_checksum.hex_encode(), _music_data])
 	print_verbose(_script_vars_ready)
-	#print(get_script().get_script_property_list())
+	#print_verbose(get_script().get_script_property_list())
 	#var thisScript: GDScript = get_script()
-	#print('Exported Properties of "%s":' % [ thisScript.resource_path ])
+	#print_verbose('Exported Properties of "%s":' % [ thisScript.resource_path ])
 	#for propertyInfo: Dictionary in thisScript.get_script_property_list():
 		#if propertyInfo.has("usage") and propertyInfo["usage"] & PROPERTY_USAGE_STORAGE:
 			#var propertyName: String = propertyInfo.name
 			#var propertyValue = get(propertyName)
-			#print(' %s = %s' % [ propertyName, propertyValue ])
-	
+			#print_verbose(' %s = %s' % [ propertyName, propertyValue ])
+
 	# set up fallback load timer to just go ahead, even if export vars seem incomplete
 	var _fallback_load: SceneTreeTimer = Engine.get_main_loop().create_timer(1.0)
 	_fallback_load.connect("timeout", _handle_fallback_load_timer)
@@ -149,8 +148,8 @@ func _parse_input_music_data(input_path: String) -> JSON:
 		printerr("Unknown platform. Skipping python musicxml parse. Harmonimation will not work yet!") # TODO: print platform tags
 		return null
 	for line in output:
-		print(line)
-
+		print_verbose(line)
+#
 	# Load created JSON file into this resource
 	var json_string := FileAccess.get_file_as_string(TMP_MUSIC_DATA_JSON_FILEPATH)
 	var music_data = JSON.new()
