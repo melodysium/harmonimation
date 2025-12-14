@@ -23,6 +23,8 @@ extends AnimationPlayer
 
 func _ready() -> void:
 	apply_animations()
+	# connect JSON change signal to re-apply animations
+	music_data.connect("changed", apply_animations)
 
 
 func apply_animations() -> void:
