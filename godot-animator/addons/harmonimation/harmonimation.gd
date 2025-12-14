@@ -8,59 +8,68 @@ const PLUGIN_NAME = "harmonimation"
 
 const ANIMATION_PLAYER_NODE_NAME = "HarmonimationPlayer"
 
-# A class member to hold the dock during the plugin life cycle.
-var dock: HarmonimationEditor
-
-var harmonimation_player: AnimationPlayer = null
-# TODO: tie to the AnimationPlayer
+## A class member to hold the dock during the plugin life cycle.
+#var dock: HarmonimationEditor
+#
+#var harmonimation_player: AnimationPlayer = null
+## TODO: tie to the AnimationPlayer
 
 
 func _enable_plugin() -> void:
 	# Add autoloads here.
-	EditorInterface.set_plugin_enabled(PLUGIN_NAME + "/harmonimation_inspector", true)
+	pass
+	#EditorInterface.set_plugin_enabled(PLUGIN_NAME + "/harmonimation_inspector", true)
 
 func _disable_plugin() -> void:
 	# Remove autoloads here.
-	EditorInterface.set_plugin_enabled(PLUGIN_NAME + "/harmonimation_inspector", false)
+	pass
+	#EditorInterface.set_plugin_enabled(PLUGIN_NAME + "/harmonimation_inspector", false)
 
 
 func _enter_tree() -> void:
 	print_verbose("start harmonimation._enter_tree()")
-	# Initialization of the plugin goes here.
-	# Load the dock scene and instantiate it.
-	dock = (preload("res://addons/harmonimation/dock_editor/harmonimation_editor.tscn").instantiate())
-	# Add the loaded scene to the docks.
-	add_control_to_dock(DOCK_SLOT_RIGHT_BL, dock)
-	
-	dock.harmonimate_button.connect("button_up", _harmonimate)
-	print_verbose("done harmonimation._enter_tree()")
 
 
 func _exit_tree() -> void:
-	# Clean-up of the plugin goes here.
-	# Remove the dock.
-	remove_control_from_docks(dock)
-	# Erase the control from the memory.
-	dock.free()
+	pass
 
 
-func _select_animation_player() -> AnimationPlayer:
-	var editor_interface = get_editor_interface()
-	var scene_root = editor_interface.get_edited_scene_root()
-	# try to load just by name as direct child of scene root
-	var found_node = scene_root.find_child(ANIMATION_PLAYER_NODE_NAME, false)
-	if found_node != null:
-		return found_node
-	# if still doesn't exist, creat it and add it
-	printerr("TODO implement creating AnimationPlayer in user's Scene Tree")
-	return null
-
-
-func _harmonimate() -> void:
-	print("harmonimate, go!")
-	if harmonimation_player == null: # TODO: also check that it's still within the current edited scene. or maybe just re-pick it every time
-		harmonimation_player = _select_animation_player()
-	print(harmonimation_player.get_path())
+#func _add_dock_editor() -> void:
+	## Initialization of the plugin goes here.
+	## Load the dock scene and instantiate it.
+	#dock = (preload("res://addons/harmonimation/unused/dock_editor/harmonimation_editor.tscn").instantiate())
+	## Add the loaded scene to the docks.
+	#add_control_to_dock(DOCK_SLOT_RIGHT_BL, dock)
+	#
+	#dock.harmonimate_button.connect("button_up", _harmonimate)
+	#print_verbose("done harmonimation._enter_tree()")
+#
+#
+#func _remove_dock_editor() -> void:
+	## Clean-up of the plugin goes here.
+	## Remove the dock.
+	#remove_control_from_docks(dock)
+	## Erase the control from the memory.
+	#dock.free()
+#
+#
+#func _select_animation_player() -> AnimationPlayer:
+	#var editor_interface = get_editor_interface()
+	#var scene_root = editor_interface.get_edited_scene_root()
+	## try to load just by name as direct child of scene root
+	#var found_node = scene_root.find_child(ANIMATION_PLAYER_NODE_NAME, false)
+	#if found_node != null:
+		#return found_node
+	## if still doesn't exist, creat it and add it
+	#printerr("TODO implement creating AnimationPlayer in user's Scene Tree")
+	#return null
+#
+#
+#func _harmonimate() -> void:
+	#print("harmonimate, go!")
+	#if harmonimation_player == null: # TODO: also check that it's still within the current edited scene. or maybe just re-pick it every time
+		#harmonimation_player = _select_animation_player()
+	#print(harmonimation_player.get_path())
 
 
 #var _viewport := EditorInterface.get_editor_viewport_2d()

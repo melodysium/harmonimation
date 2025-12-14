@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cmd7msd5w456u"]
 
-[ext_resource type="Script" uid="uid://y051m1xewj7c" path="res://addons/harmonimation/dock_editor/harmonimation_editor.gd" id="1_40jfi"]
+[ext_resource type="Script" uid="uid://y051m1xewj7c" path="res://addons/harmonimation/unused/dock_editor/harmonimation_editor.gd" id="1_40jfi"]
 
 [node name="Harmonimation" type="VBoxContainer"]
 anchors_preset = 15
