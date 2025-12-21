@@ -46,7 +46,13 @@ const DEFAULT_FONT_SIZE := 16
 	set(val):
 		font_size = val
 		queue_redraw()
-# TODO: others: max_lines, modulate, brk_flags, justification_flags, direction, orientation
+
+const DEFAULT_MODULATE_COLOR := Color.WHITE
+@export var modulate_color := DEFAULT_MODULATE_COLOR:
+	set(val):
+		modulate_color = val
+		queue_redraw()
+# TODO: others: max_lines, brk_flags, justification_flags, direction, orientation
 
 
 func _init(
@@ -56,6 +62,7 @@ func _init(
 		v_alignment := DEFAULT_V_ALIGNMENT,
 		width := DEFAULT_WIDTH,
 		font_size := DEFAULT_FONT_SIZE,
+		modulate_color := DEFAULT_MODULATE_COLOR
 	) -> void:
 	self.font = font
 	self.text = text
@@ -63,6 +70,7 @@ func _init(
 	self.v_alignment = v_alignment
 	self.width = width
 	self.font_size = font_size
+	self.modulate_color = modulate_color
 
 
 func _draw() -> void:
@@ -71,7 +79,7 @@ func _draw() -> void:
 	var h_draw_offset := 0.0
 	var v_draw_offset := 0.0
 	if h_alignment == HORIZONTAL_ALIGNMENT_CENTER:
-		h_draw_offset = -width/2
+		h_draw_offset = -width/2.0
 	if v_alignment == VERTICAL_ALIGNMENT_CENTER:
 		v_draw_offset = font_size/font_vertical_ratio
 		#print("v_draw_offset=%s" % v_draw_offset)
@@ -82,5 +90,6 @@ func _draw() -> void:
 	draw_set_transform(Vector2(h_draw_offset, v_draw_offset))
 	
 	# Draw the actual text, woa!
-	draw_string(font, ORIGIN, text, h_alignment, width, font_size)
+	draw_string_outline(font, ORIGIN, text, h_alignment, width, font_size, 2, Color.BLACK)
+	draw_string(font, ORIGIN, text, h_alignment, width, font_size, modulate_color)
 	#draw_multiline_string(font, ORIGIN, text, h_alignment, width, font_size)
