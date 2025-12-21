@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ha6iwhir4uqn"]
+
+[ext_resource type="Script" uid="uid://g256pv81brs4" path="res://src/component/common/arc_2d.gd" id="1_tfqar"]
+
+[node name="Arc2D" type="Node2D"]
+script = ExtResource("1_tfqar")
