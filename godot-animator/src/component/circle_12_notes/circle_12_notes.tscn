@@ -1,14 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtt7fea8ejgy"]
 
-[ext_resource type="Script" uid="uid://bl84d6jpwnsw0" path="res://src/component/clrcle_12_notes.gd" id="1_4fjao"]
-[ext_resource type="Script" uid="uid://bgesanr787ht6" path="res://src/component/common/circle_2d.gd" id="1_uhmis"]
-[ext_resource type="Script" uid="uid://g256pv81brs4" path="res://src/component/common/arc_2d.gd" id="3_8muxq"]
+[ext_resource type="Script" uid="uid://bl84d6jpwnsw0" path="res://src/component/circle_12_notes/clrcle_12_notes.gd" id="1_4fjao"]
+[ext_resource type="Script" uid="uid://bgesanr787ht6" path="res://src/component/common/circle_2d/circle_2d.gd" id="1_uhmis"]
+[ext_resource type="Script" uid="uid://g256pv81brs4" path="res://src/component/common/arc_2d/arc_2d.gd" id="3_8muxq"]
 
 [node name="Clrcle12Notes" type="Node2D"]
 script = ExtResource("1_4fjao")
 rotate_arc_color = Color(0.5294118, 0.80784315, 0.98039216, 1)
-num_pitch_circles_selectable = null
-pitch_circle_history_alpha_decay_factor = null
 
 [node name="BackgroundCircle" type="Node2D" parent="."]
 script = ExtResource("1_uhmis")
@@ -25,7 +23,3 @@ radius = 50.0
 end_angle = 0.0
 color = Color(0.5294118, 0.80784315, 0.98039216, 1)
 metadata/_custom_type_script = "uid://g256pv81brs4"
-
-[node name="PitchText" type="Node2D" parent="."]
-
-[node name="PitchCircles" type="Node2D" parent="."]
