@@ -8,6 +8,8 @@ const PLUGIN_NAME = "harmonimation"
 
 const ANIMATION_PLAYER_NODE_NAME = "HarmonimationPlayer"
 
+const SIGNAL_BUS_AUTOLOAD_NAME = "HrmnSignalBus"
+
 ## A class member to hold the dock during the plugin life cycle.
 #var dock: HarmonimationEditor
 #
@@ -16,13 +18,11 @@ const ANIMATION_PLAYER_NODE_NAME = "HarmonimationPlayer"
 
 
 func _enable_plugin() -> void:
-	# Add autoloads here.
-	pass
+	add_autoload_singleton(SIGNAL_BUS_AUTOLOAD_NAME, "res://addons/harmonimation/hrmn_signal_bus.gd")
 	#EditorInterface.set_plugin_enabled(PLUGIN_NAME + "/harmonimation_inspector", true)
 
 func _disable_plugin() -> void:
-	# Remove autoloads here.
-	pass
+	remove_autoload_singleton(SIGNAL_BUS_AUTOLOAD_NAME)
 	#EditorInterface.set_plugin_enabled(PLUGIN_NAME + "/harmonimation_inspector", false)
 
 
