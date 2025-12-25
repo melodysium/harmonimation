@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxcutimp1lgbq"]
 
-[ext_resource type="Script" uid="uid://ddpnjpbhksxb3" path="res://src/component/common/text_2d.gd" id="1_pijs5"]
+[ext_resource type="Script" uid="uid://ddpnjpbhksxb3" path="res://src/component/common/text_2d/text_2d.gd" id="1_pijs5"]
 [ext_resource type="FontFile" uid="uid://cmvvv0lu7gptt" path="res://assets/Hack-Regular.ttf" id="2_57u72"]
 
 [node name="Text2D" type="Node2D"]
