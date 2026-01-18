@@ -73,6 +73,13 @@ func fill_array(size: int, elem: Variant) -> Array:
 	return arr
 
 
+## Given an Array[T] and a Callable[[T], Dictionary[A, B], return a single Dictionary[A, B]
+#func collect_to_dict(arr: Array, map: Callable) -> Dictionary:
+	#return (arr.map(map)
+			#.reduce(func (d: Dictionary, e: Dictionary) -> Dictionary:
+				#return d.merged(e)))
+
+
 ## Represents a single Pitch name, with multiple ways of displaying it as a string.
 class Pitch:
 
@@ -96,38 +103,73 @@ class Pitch:
 	static func pitchclass_to_pitchname(pitch_class: int) -> String:
 		return _PITCH_CLASS_NAME_MAPPING[pitch_class % 12]
 
-## Describes a single property with a before-and-after value
+## Single key frame on the AnimationPlayer track
+class PropertyKeyframe:
+	var value: Variant
+	var transition: float
+	
+	func _init(
+		_value: Variant,
+		_transition: float = 0.0
+	) -> void:
+		self.value = _value
+		self.transition = _transition
+
+
+## Describes a single property with a list of sequential values to animate
 class PropertyChange:
 	var property_name: String
-	var val_start: Variant
-	var val_end: Variant
+	var values: Array[PropertyKeyframe]
 
 	func _init(
 		_property_name: String,
-		_val_start: Variant,
-		_val_end: Variant
+		_values: Array[PropertyKeyframe],
 	) -> void:
 		self.property_name = _property_name
-		self.val_start = _val_start
-		self.val_end = _val_end
+		self.values = _values
+	
+	static func pair(
+		_property_name: String,
+		_val_start: Variant,
+		_val_end: Variant,
+		_transition_start: float=-4.0,
+		_transition_end: float=0.0,
+	) -> PropertyChange:
+		return PropertyChange.new(
+			_property_name,
+			[
+				PropertyKeyframe.new(_val_start, _transition_start),
+				PropertyKeyframe.new(_val_end, _transition_end),
+			]
+		)
 
-## Describes animating one or more properties of a given Node over a fixed time range.
+
+## Describes animating one or more properties of a given Node over a given time range.
 class AnimationStep:
-	var node: Node
-	var time_start: float
-	var time_end: float
-	var property_changes: Array[PropertyChange]
+	var times: PackedFloat32Array
+	var node_changes: Dictionary[Node, Array] # Dictionary[Node, Array[PropertyChange]]
 
 	func _init(
-		_node: Node,
-		_time_start: float,
-		_time_end: float,
-		_property_changes: Array[PropertyChange]
+		_times: PackedFloat32Array,
+		_node_changes: Dictionary[Node, Array]
 	) -> void:
-		self.node = _node
-		self.time_start = _time_start
-		self.time_end = _time_end
-		self.property_changes = _property_changes
+		# check assumptions
+		assert(_times.size() >= 1, "AnimationStep.init(%s, %s): cannot accept a times array with 0 elements" % [_times, _node_changes])
+		assert(_node_changes.size() >= 1, "AnimationStep.init(%s, %s): cannot accept an empty _node_changes map" % [_times, _node_changes])
+
+		# validate _node_changes elements
+		for node: Node in _node_changes.keys():
+			assert(node != null, "AnimationStep.init(%s, %s): cannot accept a null node in _node_changes map" % [_times, _node_changes])
+			var array_prop_changes: Array = _node_changes[node] # Array[PropertyChange]
+			# validate each prop_change
+			for prop_change: PropertyChange in array_prop_changes:
+				assert(prop_change != null, "AnimationStep.init(%s, %s): cannot accept a null PropertyChange" % [_times, _node_changes])
+				assert(prop_change.values.size() == _times.size(), "AnimationStep.init(%s, %s): cannot accept a PropertyChange for property %s of len %d (should match times.size() of %d)" % [_times, _node_changes, prop_change.property_name, prop_change.values.size(), _times.size()])
+		
+		# init
+		self.times = _times
+		self.node_changes = _node_changes
+
 
 # TODO: deal with magic number
 ## Find/make the animation used for auto-generated animations
@@ -136,7 +178,6 @@ func setup_animation(player: AnimationPlayer, animation_length: float = 200.0, d
 		print("AnimationPlayer doesn't yet have the global library. adding it...")
 		player.add_animation_library("", AnimationLibrary.new())
 	var library := player.get_animation_library("") # "" means "get global library"
-	
 
 	# if delete_existing always, then delete any pre-existing animation
 	if delete_existing and library.has_animation(Utils.ANIMATION_NAME_AUTOGEN):
@@ -163,19 +204,29 @@ func setup_animation(player: AnimationPlayer, animation_length: float = 200.0, d
 ## Create at runtime an Animation on the specified AnimationPlayer with the specified animation properties.
 func apply_animation(animation_step: Utils.AnimationStep, player: AnimationPlayer, animation: Animation) -> void:
 	# TODO: make configurable whether to delete existing track if it exists
+	print("Utils.apply_animation(%s, %s, %s): start" % [
+		animation_step.node_changes.keys().map(func (n: Node) -> String: return n.name),
+		animation_step.times,
+		animation_step.node_changes.values()[0].map(func(pc: PropertyChange) -> String: return pc.property_name)
+		])
 
-	# Set up animation tracks for the requested AnimationStep
-	var path_to_me := player.get_node(player.root_node).get_path_to(animation_step.node)
-	for property_change in animation_step.property_changes:
-		var path_to_me_property := "%s:%s" % [path_to_me, property_change.property_name]
-		var track_idx := animation.find_track(path_to_me_property, Animation.TYPE_VALUE)
-		# if track doesn't exist yet for this property, add it
-		if track_idx == -1:
-			track_idx = animation.add_track(Animation.TYPE_VALUE)
-			animation.track_set_path(track_idx, path_to_me_property)
-		print_verbose("track: ", track_idx)
+	# Loop over all nodes to animate
+	for node: Node in animation_step.node_changes.keys():
+		var property_changes: Array = animation_step.node_changes[node]
+		var path_to_puppet_node := player.get_node(player.root_node).get_path_to(node)
+		
+		# Loop over each property to set on this node
+		for property_change: PropertyChange in property_changes:
+			var path_to_puppet_property := "%s:%s" % [path_to_puppet_node, property_change.property_name]
+			var track_idx := animation.find_track(path_to_puppet_property, Animation.TYPE_VALUE)
+			# if track doesn't exist yet for this property, add it
+			if track_idx == -1:
+				track_idx = animation.add_track(Animation.TYPE_VALUE)
+				animation.track_set_path(track_idx, path_to_puppet_property)
+			print_verbose("  node=%s, prop_name=%s, track_idx=%d", node.name, property_change.property_name, track_idx)
 
-		# Set start and end keyframes
-		animation.track_insert_key(track_idx, animation_step.time_start, property_change.val_start, -4.0)
-		animation.track_insert_key(track_idx, animation_step.time_end, property_change.val_end, 0)
-		print_verbose("  added keyframe for (%ss: %s) - (%ss: %s)" % [animation_step.time_start, property_change.val_start, animation_step.time_end, property_change.val_end])
+			# Set keyframes at different times:
+			for i in range(animation_step.times.size()):
+				var keyframe := property_change.values[i]
+				animation.track_insert_key(track_idx, animation_step.times[i], keyframe.value, keyframe.transition)
+				print_verbose("    added keyframe for (%fs: val=%s, easing=%f)" % [animation_step.times[i], keyframe.value, keyframe.transition])

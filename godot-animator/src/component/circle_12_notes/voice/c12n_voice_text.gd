@@ -34,24 +34,24 @@ var pitch_circle_history_alpha_decay_factor := 0.6
 
 #region Animation Primitives
 
-#@export
-## Colors used for pitch label text. Start solid white. Indexed by pitch_class.
-var pitch_text_colors: Array[Color] = Array(Utils.fill_array(12, DEFAULT_NOTE_IN_KEY_COLOR), TYPE_COLOR, "", null):
-	set(val):
-		# TODO: This property seems unable to be reset at all in the editor. Maybe add a manual "reset" button? Maybe investigate resetting arrays in properties?
-		print_verbose("pitch_text_colors.set(val=%s), oldval=%s" % [val, pitch_text_colors])
-		if val == null:
-			Utils.print_err("[color=red]WARNING: pitch_text_colors requires a non-null array, but null provided. Ignoring.[/color]" % val.size())
-			return
-		if val.size() != 12:
-			Utils.print_err("[color=red]WARNING: pitch_text_colors requires an array of 12 elements, but provided one has size()=%s. Ignoring.[/color]" % val.size())
-			return
-		if val.any(func(elem: Variant) -> bool: return elem is not Color):
-			Utils.print_err("[color=red]WARNING: pitch_text_colors requires an array of Color elements, but provided one some non-Color elements. Ignoring.[/color]" % val.size())
-			return
-		pitch_text_colors = val
-		if self._pitch_text_nodes != null and self._pitch_text_nodes.size() == 12:
-			_configure_pitch_text_nodes()
+##@export
+### Colors used for pitch label text. Start solid white. Indexed by pitch_class.
+#var pitch_text_colors: Array[Color] = Array(Utils.fill_array(12, DEFAULT_NOTE_IN_KEY_COLOR), TYPE_COLOR, "", null):
+	#set(val):
+		## TODO: This property seems unable to be reset at all in the editor. Maybe add a manual "reset" button? Maybe investigate resetting arrays in properties?
+		#print_verbose("pitch_text_colors.set(val=%s), oldval=%s" % [val, pitch_text_colors])
+		#if val == null:
+			#Utils.print_err("[color=red]WARNING: pitch_text_colors requires a non-null array, but null provided. Ignoring.[/color]" % val.size())
+			#return
+		#if val.size() != 12:
+			#Utils.print_err("[color=red]WARNING: pitch_text_colors requires an array of 12 elements, but provided one has size()=%s. Ignoring.[/color]" % val.size())
+			#return
+		#if val.any(func(elem: Variant) -> bool: return elem is not Color):
+			#Utils.print_err("[color=red]WARNING: pitch_text_colors requires an array of Color elements, but provided one some non-Color elements. Ignoring.[/color]" % val.size())
+			#return
+		#pitch_text_colors = val
+		#if self._pitch_text_nodes != null and self._pitch_text_nodes.size() == 12:
+			#_configure_pitch_text_nodes()
 
 #endregion
 
@@ -99,8 +99,9 @@ func _ready() -> void:
 			VERTICAL_ALIGNMENT_CENTER,
 			5000,
 			BASE_PITCH_NAME_FONT_SIZE,
-			pitch_text_colors[pitch_info.pitch_class]
+			Color.WHITE
 		)
+		text.name = "C12NText_%s" % [pitch_name]
 		_pitch_text_nodes[pitch_info.pitch_class] = text
 		_c12n.add_child(text, true)
 		text.position = pitch_info.pos
@@ -113,8 +114,8 @@ func _ready() -> void:
 	# re-compute layout whenever necessary
 	_c12n.connect("layout_changed", _move_pitch_nodes)
 	
-	# connect animation signals
-	super._connect_signals()
+	## connect animation signals
+	#super._connect_signals()
 
 #region Private helpers
 
@@ -125,10 +126,10 @@ func _move_pitch_nodes() -> void:
 		_pitch_text_nodes[pitch_info.pitch_class].position = pitch_info.pos
 
 func _configure_pitch_text_nodes() -> void:
-	print_verbose("start _configure_pitch_text_nodes(). _pitch_text_nodes=%s, pitch_text_colors=%s" % [_pitch_text_nodes, pitch_text_colors])
+	print_verbose("start _configure_pitch_text_nodes(). _pitch_text_nodes=%s" % [_pitch_text_nodes])
 	for i in range(12):
 		_pitch_text_nodes[i].text = Utils.Pitch.pitchclass_to_pitchname(i)
-		_pitch_text_nodes[i].modulate_color = pitch_text_colors[i]
+		#_pitch_text_nodes[i].modulate_color = pitch_text_colors[i]
 
 
 ## Given an array of pitch classes which are in a key, compute the colors that should be used when displaying those pitches
@@ -166,14 +167,20 @@ func animate_key_changes(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:
 	# build a sequence of rotation animations to play
 	var anims: Array[Utils.AnimationStep] = []
 
-	# set initial animation states
+	# track colors from previous chord to add a "keep this color until <x> keyframe" later
 	var previous_pitch_text_colors: Array[Color] = _compute_pitch_text_colors(
 		Array(Utils.as_array(keys[0]["elem"]["pitches"]), TYPE_INT, "", null))
+	# add keyfames at time 0
+	var initial_state_map: Dictionary[Node, Array] = {}
+	for i in range(12):
+		initial_state_map[_pitch_text_nodes[i]] = [Utils.PropertyChange.new("modulate_color", [
+					Utils.PropertyKeyframe.new(previous_pitch_text_colors[i])])]
+	anims.append(Utils.AnimationStep.new([0], initial_state_map))
 
 	for key: Dictionary in keys.slice(1):
 
 		# make a list of property changes for this key change
-		var key_change_anims: Array[Utils.PropertyChange] = []
+		var key_change_anims: Dictionary[Node, Array] = {} # Dictionary[Node, Array[Utils.PropertyChange]]
 		# figure out start and end time for the main key change animation
 		var target_end_time: float = key["time"]
 		var start_time := target_end_time - _c12n.transition_time
@@ -186,15 +193,20 @@ func animate_key_changes(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:
 		# color individual pitches based on key
 		var new_pitch_text_colors: Array[Color] = _compute_pitch_text_colors(
 			Array(Utils.as_array(key["elem"]["pitches"]), TYPE_INT, "", null))
+		# only do anything if the colors changed
 		if new_pitch_text_colors != previous_pitch_text_colors:
-			key_change_anims.append(Utils.PropertyChange.new("pitch_text_colors",
-				previous_pitch_text_colors,
-				new_pitch_text_colors))
+			for i in range(12):
+				key_change_anims[_pitch_text_nodes[i]] = [Utils.PropertyChange.pair("modulate_color",
+				previous_pitch_text_colors[i],
+				new_pitch_text_colors[i])]
+			# set animations for each pitch
 			previous_pitch_text_colors = new_pitch_text_colors
 
 		# if we ended up with any notes to change, add it to the overall list
 		if key_change_anims.size() > 0:
-			anims.append(Utils.AnimationStep.new(self, start_time, target_end_time, key_change_anims))
+			anims.append(Utils.AnimationStep.new(
+				PackedFloat32Array([start_time, target_end_time]),
+				key_change_anims))
 
 	print_verbose("animate_key_changes(): end")
 	return anims

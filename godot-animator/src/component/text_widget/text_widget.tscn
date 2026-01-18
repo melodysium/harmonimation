@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5hbwbfhwnf86"]
+
+[ext_resource type="Script" uid="uid://b53vlaogv463j" path="res://src/component/text_widget/text_widget.gd" id="1_l5oku"]
+[ext_resource type="Script" uid="uid://be4g1qi3neqjq" path="res://src/component/hrmn_listener_parent_delegate.gd" id="2_fnvyj"]
+
+[node name="HrmnTextWidget" type="RichTextLabel"]
+offset_left = 143.0
+offset_top = 507.0
+offset_right = 540.0
+offset_bottom = 547.0
+bbcode_enabled = true
+text = "teststsetstststs"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_l5oku")
+animation_source = null
+
+[node name="HrmnListener" type="Node" parent="."]
+script = ExtResource("2_fnvyj")

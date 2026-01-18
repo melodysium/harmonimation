@@ -4,6 +4,8 @@ class_name Circle12Notes
 
 extends HarmonimationWidget
 
+# TODO: user or animation configure whether to use all/some flats or sharps for non-natural pitches
+
 #region constants and types
 
 ## Layout changed, indicating possible need to reposition other components
@@ -15,7 +17,7 @@ signal layout_changed
 const DEFAULT_ROTATE_TRANSITION_TIME = 0.3
 
 ## Angle (in radians) for one step of twelve around the circle
-const ONE_STEP_ANGLE := TAU / 12
+const ANGLE_PER_STEP := TAU / 12
 
 ## Tuple of (pitch class [0-11], position (Vec2 relative to center))
 class PitchInfo:
@@ -153,23 +155,36 @@ var _rotate_arc: Arc2D = $RotateArc
 func _angle_for_pitch_at_top(selected_pitch_class: int, previous_angle: float = 0.0) -> float:
 	var diff_pitch_classes := first_pitch_class - selected_pitch_class
 	var diff_steps := diff_pitch_classes * pitches_per_step
-	var new_angle := diff_steps * (ONE_STEP_ANGLE)
+	var new_angle := diff_steps * (ANGLE_PER_STEP)
 	new_angle += roundf((new_angle - previous_angle) / TAU) * -TAU
 	return new_angle
 
-
+## get local position at the top of this circle
 func _circle_start() -> Vector2:
 	return Vector2.UP * self.radius
 
-
-func _list_positions() -> Array[PitchInfo]:
+## all positions around the circle, indexed by pitch_class
+func _list_positions(_radius: float = self.radius) -> Array[PitchInfo]:
 	var positions: Array[PitchInfo] = []
-	for i: int in range(12):
-		var step := (i * self.pitches_per_step + self.first_pitch_class) % 12
-		var pos := _circle_start().rotated(ONE_STEP_ANGLE * i + self.rotate_angle)
-		positions.append(PitchInfo.new(step, pos))
+	for pitch_class: int in range(12):
+		var pos := _get_position_for_pitchclass(pitch_class, _radius)
+		positions.append(PitchInfo.new(pitch_class, pos))
 	print_verbose("_list_positions(). pitches_per_step=%s; first_pitch_class=%s; rotate_angle=%s; positions=%s" % [pitches_per_step, first_pitch_class, rotate_angle, positions])
 	return positions
+
+
+func _get_step_for_pitchclass(pitch_class: int) -> int:
+	return (pitch_class - self.first_pitch_class) * self.pitches_per_step % 12
+
+
+func _get_pitchclass_for_step(step: int) -> int:
+	return (step * self.pitches_per_step + self.first_pitch_class) % 12
+
+
+func _get_position_for_pitchclass(pitch_class: int, _radius: float = self.radius) -> Vector2:
+	var step := _get_step_for_pitchclass(pitch_class)
+	var angle := ANGLE_PER_STEP * step + self.rotate_angle
+	return (Vector2.UP * _radius).rotated(angle)
 
 
 func _minimize_angle_absolute_diff(angle: float, target: float=0) -> float:
@@ -189,17 +204,13 @@ func _minimize_angle_absolute_diff(angle: float, target: float=0) -> float:
 
 
 func _ready() -> void:
-	print("Circle12Notes._ready(): start")
 	# set up rotation arc
 	self._rotate_arc.start_angle = self.rotate_arc_start_angle
 	self._rotate_arc.end_angle = self.rotate_arc_end_angle
 	self._rotate_arc.color = self.rotate_arc_color
-	
-	# connect animation signals
-	super._connect_signals()
-	
-	print("Circle12Notes._ready(): end")
 
+	## connect animation signals
+	#super._connect_signals()
 
 
 #region animations
@@ -246,21 +257,24 @@ func animate_key_changes(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:
 			var new_rotate_angle := _minimize_angle_absolute_diff(
 				_angle_for_pitch_at_top(root_pitch_class), previous_rotate_angle)
 			# add extra animation of rotate_arc appearing one "transition_time" increment earlier
-			anims.append(Utils.AnimationStep.new(self, start_time - transition_time * 1.5, start_time - transition_time * 0.5 - 0.05,
-				[Utils.PropertyChange.new("rotate_arc_end_angle", 0.0, previous_rotate_angle - new_rotate_angle)]))
+			anims.append(Utils.AnimationStep.new(
+				PackedFloat32Array([start_time - transition_time * 1.5, start_time - transition_time * 0.5 - 0.05]),
+				{self: [Utils.PropertyChange.pair("rotate_arc_end_angle", 0.0, previous_rotate_angle - new_rotate_angle)]}))
 			# in the main key-change animation, add the follow-up step to retract the arc end alongside the rotation
-			key_change_anims.append(Utils.PropertyChange.new("rotate_arc_end_angle", previous_rotate_angle - new_rotate_angle, 0.0))
+			key_change_anims.append(Utils.PropertyChange.pair("rotate_arc_end_angle", previous_rotate_angle - new_rotate_angle, 0.0))
 			#key_change_anims.append(Utils.PropertyChange.new("rotate_arc_end_angle", previous_rotate_angle, new_rotate_angle))
 			
 			# animate circle rotating
-			key_change_anims.append(Utils.PropertyChange.new("rotate_angle",
+			key_change_anims.append(Utils.PropertyChange.pair("rotate_angle",
 				previous_rotate_angle, new_rotate_angle))
 			previous_root_pitch_class = root_pitch_class
 			previous_rotate_angle = new_rotate_angle
 
 		# if we ended up with any notes to change, add it to the overall list
 		if key_change_anims.size() > 0:
-			anims.append(Utils.AnimationStep.new(self, start_time, target_end_time, key_change_anims))
+			anims.append(Utils.AnimationStep.new(
+				PackedFloat32Array([start_time, target_end_time]),
+				{self: key_change_anims}))
 
 	print_verbose("animate_key_changes(): end")
 	return anims
@@ -269,7 +283,9 @@ func animate_key_changes(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:
 # TODO: rename to animate_rotate_angle
 ## Testing: Create an animation to rotate the circle
 func animate_rotate(angle_start: float, angle_end: float, time_start: float, time_end: float) -> Utils.AnimationStep:
-	return Utils.AnimationStep.new(self, time_start, time_end, [Utils.PropertyChange.new("rotate_angle", angle_start, angle_end)])
+	return Utils.AnimationStep.new(
+		PackedFloat32Array([time_start, time_end]),
+		{self: [Utils.PropertyChange.pair("rotate_angle", angle_start, angle_end)]})
 
 func animate_rotate_pitch(pitch_start: int, pitch_end: int, time_start: float, time_end: float) -> Utils.AnimationStep:
 	return animate_rotate(_angle_for_pitch_at_top(pitch_start), _angle_for_pitch_at_top(pitch_end), time_start, time_end)

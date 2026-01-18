@@ -7,7 +7,7 @@ extends Node2D
 @export var pic: RectangleShape2D
 
 @onready var animation_player: AnimationPlayer = $HarmonimationPlayer
-@onready var circle_12_notes: Circle12Notes = $Circle12Notes
+@onready var circle_12_notes: Circle12Notes = $TestCircle12Notes
 
 func _ready() -> void:
 	#print(animation_player.get_animation("play_music_circle"))

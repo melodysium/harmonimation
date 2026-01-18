@@ -56,25 +56,25 @@ const DEFAULT_MODULATE_COLOR := Color.WHITE
 
 
 func _init(
-		font := DEFAULT_FONT,
-		text := DEFAULT_TEXT, 
-		h_alignment := DEFAULT_H_ALIGNMENT,
-		v_alignment := DEFAULT_V_ALIGNMENT,
-		width := DEFAULT_WIDTH,
-		font_size := DEFAULT_FONT_SIZE,
-		modulate_color := DEFAULT_MODULATE_COLOR
+		_font := DEFAULT_FONT,
+		_text := DEFAULT_TEXT,
+		_h_alignment := DEFAULT_H_ALIGNMENT,
+		_v_alignment := DEFAULT_V_ALIGNMENT,
+		_width := DEFAULT_WIDTH,
+		_font_size := DEFAULT_FONT_SIZE,
+		_modulate_color := DEFAULT_MODULATE_COLOR
 	) -> void:
-	self.font = font
-	self.text = text
-	self.h_alignment = h_alignment
-	self.v_alignment = v_alignment
-	self.width = width
-	self.font_size = font_size
-	self.modulate_color = modulate_color
+	self.font = _font
+	self.text = _text
+	self.h_alignment = _h_alignment
+	self.v_alignment = _v_alignment
+	self.width = _width
+	self.font_size = _font_size
+	self.modulate_color = _modulate_color
 
 
 func _draw() -> void:
-	
+
 	# HACK: offset draw position to center of node based on alignment
 	var h_draw_offset := 0.0
 	var v_draw_offset := 0.0
@@ -88,7 +88,7 @@ func _draw() -> void:
 	else:
 		assert(false, "vertial alignments other than CENTER and BOTTOM not yet implemented")
 	draw_set_transform(Vector2(h_draw_offset, v_draw_offset))
-	
+
 	# Draw the actual text, woa!
 	draw_string_outline(font, ORIGIN, text, h_alignment, width, font_size, 2, Color.BLACK)
 	draw_string(font, ORIGIN, text, h_alignment, width, font_size, modulate_color)

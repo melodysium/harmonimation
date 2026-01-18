@@ -39,17 +39,17 @@ const DEFAULT_ANTIALIASED := false
 
 
 func _init(
-		radius := DEFAULT_RADIUS,
-		color := DEFAULT_COLOR,
-		filled := DEFAULT_FILLED,
-		width := DEFAULT_WIDTH,
-		antialiased := DEFAULT_ANTIALIASED,
+		_radius := DEFAULT_RADIUS,
+		_color := DEFAULT_COLOR,
+		_filled := DEFAULT_FILLED,
+		_width := DEFAULT_WIDTH,
+		_antialiased := DEFAULT_ANTIALIASED,
 	) -> void:
-	self.radius = radius
-	self.color = color
-	self.filled = filled
-	self.width = width
-	self.antialiased = antialiased
+	self.radius = _radius
+	self.color = _color
+	self.filled = _filled
+	self.width = _width
+	self.antialiased = _antialiased
 
 
 #var _script_vars: Array = get_script().get_script_property_list().map(func(prop_dict: Dictionary): return prop_dict.name)

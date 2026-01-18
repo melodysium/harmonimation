@@ -20,10 +20,6 @@ const BASE_PITCH_CIRCLE_RADIUS := 0.2
 @export
 var template: NodePath
 
-## Multiplicative alpha decay for previously selected pitch circles. Lower number = fade faster.
-@export_range(0.0, 1.0, 0.01)
-var pitch_circle_history_alpha_decay_factor := 0.6
-
 #endregion
 
 
@@ -31,22 +27,22 @@ var pitch_circle_history_alpha_decay_factor := 0.6
 
 #@export
 ## Colors used for pitch highlight circles. Start transparent. Indexed by pitch_class.
-var pitch_circle_colors: Array[Color] = Array(Utils.fill_array(12, Color.TRANSPARENT), TYPE_COLOR, "", null):
-	set(val):
-		# TODO: This property seems unable to be reset at all in the editor. Maybe add a manual "reset" button? Maybe investigate resetting arrays in properties?
-		print_verbose("pitch_circle_colors.set(val=%s), oldval=%s" % [val, pitch_circle_colors])
-		if val == null:
-			Utils.print_err("[color=red]WARNING: pitch_circle_colors requires a non-null array, but null provided. Ignoring.[/color]" % val.size())
-			return
-		if val.size() != 12:
-			Utils.print_err("[color=red]WARNING: pitch_circle_colors requires an array of 12 elements, but provided one has size()=%s. Ignoring.[/color]" % val.size())
-			return
-		if val.any(func(elem: Variant) -> bool: return elem is not Color):
-			Utils.print_err("[color=red]WARNING: pitch_circle_colors requires an array of Color elements, but provided one some non-Color elements. Ignoring.[/color]" % val.size())
-			return
-		pitch_circle_colors = val
-		if self._pitch_circle_nodes != null and self._pitch_circle_nodes.size() == 12:
-			_configure_pitch_circle_nodes()
+#var pitch_circle_colors: Array[Color] = Array(Utils.fill_array(12, Color.TRANSPARENT), TYPE_COLOR, "", null):
+	#set(val):
+		## TODO: This property seems unable to be reset at all in the editor. Maybe add a manual "reset" button? Maybe investigate resetting arrays in properties?
+		#print_verbose("pitch_circle_colors.set(val=%s), oldval=%s" % [val, pitch_circle_colors])
+		#if val == null:
+			#Utils.print_err("[color=red]WARNING: pitch_circle_colors requires a non-null array, but null provided. Ignoring.[/color]" % val.size())
+			#return
+		#if val.size() != 12:
+			#Utils.print_err("[color=red]WARNING: pitch_circle_colors requires an array of 12 elements, but provided one has size()=%s. Ignoring.[/color]" % val.size())
+			#return
+		#if val.any(func(elem: Variant) -> bool: return elem is not Color):
+			#Utils.print_err("[color=red]WARNING: pitch_circle_colors requires an array of Color elements, but provided one some non-Color elements. Ignoring.[/color]" % val.size())
+			#return
+		#pitch_circle_colors = val
+		#if self._pitch_circle_nodes != null and self._pitch_circle_nodes.size() == 12:
+			#_configure_pitch_circle_nodes()
 
 #endregion
 
@@ -95,19 +91,20 @@ func _ready() -> void:
 			false,
 			_c12n.radius * .02 # TODO: make into constant or configurable
 		)
+		circle.name = "C12NPoint_%s" % [Utils.Pitch.pitchclass_to_pitchname(pitch_info.pitch_class)]
 		_pitch_circle_nodes[pitch_info.pitch_class] = circle
 		_c12n.add_child(circle, true)
 		#circle.visible = false # start off by default
 		#circle.position = pitch_info.pos
 	
 	self._move_pitch_nodes()
-	self._configure_pitch_circle_nodes()
+	#self._configure_pitch_circle_nodes()
 	
 	# re-compute layout whenever necessary
 	_c12n.connect("layout_changed", _move_pitch_nodes)
 	
-	# connect animation signals
-	super._connect_signals()
+	## connect animation signals
+	#super._connect_signals()
 
 
 #region Private helpers
@@ -118,10 +115,10 @@ func _move_pitch_nodes() -> void:
 	for pitch_info: Circle12Notes.PitchInfo in _c12n._list_positions():
 		_pitch_circle_nodes[pitch_info.pitch_class].position = pitch_info.pos
 
-func _configure_pitch_circle_nodes() -> void:
-	print_verbose("start _configire_pitch_circle_nodes(). _pitch_circle_nodes=%s, pitch_circle_colors=%s" % [_pitch_circle_nodes, pitch_circle_colors])
-	for i in range(12):
-		_pitch_circle_nodes[i].color = pitch_circle_colors[i]
+#func _configure_pitch_circle_nodes() -> void:
+	#print_verbose("start _configire_pitch_circle_nodes(). _pitch_circle_nodes=%s, pitch_circle_colors=%s" % [_pitch_circle_nodes, pitch_circle_colors])
+	#for i in range(12):
+		#_pitch_circle_nodes[i].color = pitch_circle_colors[i]
 
 #endregion
 
@@ -148,11 +145,19 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.Animatio
 	print_verbose("animate_chord_roots(): start")
 	var anims: Array[Utils.AnimationStep] = []
 
-
+	# set up loop vars
 	var selected_pitches: Array[int] = []
-	var previous_pitch_circle_colors := pitch_circle_colors
+	var previous_pitch_circle_colors := Utils.fill_array(12, Color.TRANSPARENT)
 	var previous_selected_pitch_class := -1 # -1 = none, 0-11 = selected
-
+	
+	# set initial states at time 0
+	var initial_state_map: Dictionary[Node, Array] = {}
+	for i in range(12):
+		initial_state_map[_pitch_circle_nodes[i]] = [
+			Utils.PropertyChange.new("color", [Utils.PropertyKeyframe.new(previous_pitch_circle_colors[i])])]
+	anims.append(Utils.AnimationStep.new([0], initial_state_map))
+	
+	# loop over all chord roots in the piece
 	for chord_root: Dictionary in chord_roots:
 		var time: float = chord_root["time"]
 		var new_pitch_class: int = chord_root["elem"]["pitchClass"]
@@ -165,6 +170,7 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.Animatio
 		selected_pitches.insert(0, new_pitch_class)
 		if _voice.max_active != null and selected_pitches.size() > _voice.max_active.v:
 			selected_pitches.pop_back()
+		
 		# create a new pitch_circle_colors for this new selection
 		var new_pitch_circle_colors: Array[Color] = Array(Utils.fill_array(12, Color.TRANSPARENT), TYPE_COLOR, "", null)
 		var selected_indexes_to_set := range(selected_pitches.size())
@@ -173,9 +179,19 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.Animatio
 			var pitch_class := selected_pitches[i]
 			#var color := Color(1.0, 1.0, 1.0, 0.6) ** i
 			var color := Color.WHITE
-			color.a =  pitch_circle_history_alpha_decay_factor ** i
+			color.a = _voice.alpha_decay_factor ** i
 			new_pitch_circle_colors[pitch_class] = color
-		anims.append(Utils.AnimationStep.new(self, time - .05, time + .05, [Utils.PropertyChange.new("pitch_circle_colors", previous_pitch_circle_colors, new_pitch_circle_colors)]))
+		
+		# create map of changes per node
+		var node_changes: Dictionary[Node, Array] = {}
+		for i in range(12):
+			if previous_pitch_circle_colors[i] != new_pitch_circle_colors[i]:
+				node_changes[_pitch_circle_nodes[i]] = [Utils.PropertyChange.pair("color", previous_pitch_circle_colors[i], new_pitch_circle_colors[i])]
+		
+		# save in animation step with times
+		anims.append(Utils.AnimationStep.new(
+			PackedFloat32Array([time - .1, time]),
+			node_changes))
 
 		# update tracking vars for next iteration
 		previous_selected_pitch_class = new_pitch_class

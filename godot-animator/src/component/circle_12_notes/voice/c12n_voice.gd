@@ -24,8 +24,12 @@ var max_active: OptionalInt = null
 var radius: OptionalFloat = null
 
 ## Behavior to decay pitch elements over time. If null, leave elements until destroyed by max_active
-@export
-var decay_behavior: DecayBehavior = null # TODO: actually implement and respect
+#@export
+#var decay_behavior: DecayBehavior = null # TODO: actually implement and respect
+
+## Multiplicative alpha decay for previously selected pitches. Lower number = fade faster.
+@export_range(0.0, 1.0, 0.01)
+var alpha_decay_factor := 0.6
 
 #endregion
 

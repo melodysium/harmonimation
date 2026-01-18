@@ -232,7 +232,7 @@ keys: len={len(self.keys)}, elems={self.keys}
 
             def convert_key(k: Key) -> dict:
                 return {
-                    'name': k.name,
+                    'name': k.name.replace('-', '♭').replace('+', '♯'),
                     'pitch': convert_pitch(k.pitchFromDegree(1)),
                     'quality': k.mode,
                     'pitches': list(set(p.pitchClass for p in k.getPitches())),

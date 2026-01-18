@@ -8,6 +8,7 @@ const PLUGIN_NAME = "harmonimation"
 
 const ANIMATION_PLAYER_NODE_NAME = "HarmonimationPlayer"
 
+# TODO: remove
 const SIGNAL_BUS_AUTOLOAD_NAME = "HrmnSignalBus"
 
 ## A class member to hold the dock during the plugin life cycle.
