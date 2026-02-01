@@ -103,6 +103,34 @@ class Pitch:
 	static func pitchclass_to_pitchname(pitch_class: int) -> String:
 		return _PITCH_CLASS_NAME_MAPPING[pitch_class % 12]
 
+## Single key frame with a "lead-in" time to animate if no closer preceding keyframe
+class PropertyKeyframePoint:
+	## The value to set on the property being animated at this keyframe.
+	var value: Variant
+	## The time at which to place this keyframe in the animation timeline.
+	var time: float
+	## Optional. If > 0, will try to add another keyframe at (time - lead_in_time) with value <previous.value> and transition <this.transition>.
+	var lead_in_time: float
+	## Paired with lead_in_time. Set the transition (easing) of a lead-in keyframe.
+	var transition: float
+
+	func _init(
+		_value: Variant,
+		_time: float,
+		_lead_in_time: float = 0.0,
+		_transition: float = 0.0
+	) -> void:
+		self.value = _value
+		self.time = _time
+		self.lead_in_time = _lead_in_time
+		self.transition = _transition
+
+
+# TODO: probably don't need this, just use Dict[N, Dict[Str, Arr[Keyframe]]] as a function arg
+class AnimationSpec:
+	var nodes: Dictionary[Node, Dictionary] # Dictionary[Node, Dictionary[String(property), Array[Keyframe]]
+
+
 ## Single key frame on the AnimationPlayer track
 class PropertyKeyframe:
 	var value: Variant
