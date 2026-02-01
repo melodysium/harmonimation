@@ -1612,7 +1612,7 @@ tracks/132/keys = {
 }
 tracks/133/type = "audio"
 tracks/133/imported = false
-tracks/133/enabled = false
+tracks/133/enabled = true
 tracks/133/path = NodePath("AudioStreamPlayer")
 tracks/133/interp = 1
 tracks/133/loop_wrap = true
@@ -1709,7 +1709,7 @@ offset_right = 966.0
 offset_bottom = 569.0
 theme = ExtResource("11_4pb6b")
 theme_override_constants/outline_size = 6
-text = "Amin9"
+text = "D♭Maj7"
 text_source = 2
 
 [node name="CurrentLyrics" parent="." unique_id=948670699 instance=ExtResource("10_0d2eh")]
@@ -1719,7 +1719,7 @@ offset_right = 504.0
 offset_bottom = 586.0
 theme = ExtResource("11_4pb6b")
 theme_override_constants/outline_size = 8
-text = "do"
+text = "[color=dark_gray]fu[/color][color=dark_gray]-[/color]n"
 text_source = 1
 transition_time = 0.001
 
@@ -1730,7 +1730,7 @@ offset_right = 915.0
 offset_bottom = 619.0
 theme = ExtResource("11_4pb6b")
 theme_override_constants/outline_size = 8
-text = "A minor"
+text = "D- major"
 horizontal_alignment = 0
 text_source = 3
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqy577x2yxxb"]
+[gd_scene format=3 uid="uid://bqy577x2yxxb"]
 
 [ext_resource type="Script" uid="uid://duj6thascfcym" path="res://addons/harmonimation/hrmn_renderer/hrmn_renderer.gd" id="1_fnky3"]
 
-[node name="HarmonimationRenderer" type="Node2D"]
+[node name="HarmonimationRenderer" type="Node2D" unique_id=92090230]
 script = ExtResource("1_fnky3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1235818502]
