@@ -99,29 +99,26 @@ func _position_line(line_state: LineState) -> void:
 #region animations
 
 ## Given structured information about the song, create a list of animations to play at set times.
-func hrmn_animate(music_data: Dictionary) -> Array[Utils.AnimationStep]:
+## Full return type: Dictionary[Node, Dictionary[String(property), Array[Keyframe]]
+func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
 	print_verbose("C12NVoiceConnector.hrmn_animate(): start")
-	var animations: Array[Utils.AnimationStep] = []
+	var animations: Dictionary[Node, Dictionary] = {}
 
 	## animate chord roots
 	print_verbose("C12NVoiceConnector.hrmn_animate(): animating chord roots")
 	var chord_roots: Array[Dictionary] = Array(Utils.as_array(music_data["chord_roots"]), TYPE_DICTIONARY, "", null)
-	animations.append_array(animate_chord_roots(chord_roots))
+	animations = Utils.merge_animations(animations, animate_chord_roots(chord_roots))
 	
 	print_verbose("C12NVoiceConnector.hrmn_animate(): end")
 	return animations
 
 
-func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.AnimationStep]:
+func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
 	print_verbose("C12NVoiceConnector.animate_chord_roots(): start")
-	var anims: Array[Utils.AnimationStep] = []
+	var anims: Dictionary[Node, Dictionary] = {}
 
 	var selected_pitches: Array[int] = []
 	var previous_line_states: Dictionary[Node, Color] = {} # TODO maybe expand Color into a full LineState?
-	
-	# set up dict to collect initial state for all lines
-	var initial_states: Dictionary[Node, Array] = {}
-
 
 	for chord_root: Dictionary in chord_roots:
 		var time: float = chord_root["time"]
@@ -140,9 +137,6 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.Animatio
 		selected_pitches.append(newest_pitch_class)
 		print_verbose("    new selected_pitches=%s, previous_pitch_class=%d" % [selected_pitches, previous_pitch_class])
 		
-		# set up mapping of state changes for this animation
-		var state_changes: Dictionary[Node, Array] = {} # Dictionary[Node, Array[PropertyChange]]
-		
 		# setup for adding a line
 		var new_line := Line2D.new()
 		new_line.default_color = Color.TRANSPARENT
@@ -156,7 +150,7 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.Animatio
 		_position_line(line_state)
 		_lines.append(line_state)
 		_c12n.add_child(new_line)
-		initial_states[new_line] = [Utils.PropertyChange.new("default_color", [Utils.PropertyKeyframe.new(Color.TRANSPARENT)])]
+		anims[new_line] = {"default_color": [Utils.PropertyKeyframePoint.new(Color.TRANSPARENT, 0)]}
 		previous_line_states[new_line] = Color.TRANSPARENT
 		# TODO: debug incorrect line colors set in keyframes
 		
@@ -168,7 +162,7 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.Animatio
 			# add PropertyChange for turning off this line
 			var old_line_idx := _lines.size() - selected_pitches.size()
 			var old_line := _lines[old_line_idx].line
-			state_changes[old_line] = [Utils.PropertyChange.pair("default_color", previous_line_states[old_line], Color.TRANSPARENT)]
+			Utils.as_array(anims[old_line]["default_color"]).append(Utils.PropertyKeyframePoint.new(Color.TRANSPARENT, time, 0.0, 0.1, -4.0))
 		
 		print_verbose("    setting up for new selected_pitches: %s at time %ss" % [selected_pitches, time])
 		
@@ -178,24 +172,10 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.Animatio
 			var new_color := Color.WHITE
 			new_color.a = _voice.alpha_decay_factor ** (i+1)
 			var selected_line := _lines[line_idx].line
-			state_changes[selected_line] = [Utils.PropertyChange.pair("default_color",
-			previous_line_states[selected_line],
-			new_color)]
+			Utils.as_array(anims[selected_line]["default_color"]).append(Utils.PropertyKeyframePoint.new(new_color, time, 0.0, 0.1, -4.0))
 			print_verbose("      i=%d, line_idx=%d, previous_color=%s, new_color=%s" % [i, line_idx, previous_line_states[selected_line], new_color])
 			previous_line_states[selected_line] = new_color
-		
-		## LineState arrays created! let's put them in the animation
-		anims.append(Utils.AnimationStep.new(
-			PackedFloat32Array([
-				time - .1,
-				time
-			]),
-			state_changes
-		))
 	
-	# set initial state for all lines
-	anims.append(Utils.AnimationStep.new([0], initial_states))
-
 	print_verbose("C12NVoiceConnector.animate_chord_roots(): end")
 	return anims
 

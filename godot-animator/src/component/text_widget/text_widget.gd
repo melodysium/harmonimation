@@ -14,30 +14,27 @@ var text_source: TextSource = TextSource.STATIC
 var transition_time: float = DEFAULT_TRANSITION_TIME
 
 ## Given data about a piece of music, determine all of the animation steps to apply
-func hrmn_animate(music_data: Dictionary) -> Array[Utils.AnimationStep]:	
-	var animations: Array[Utils.AnimationStep] = []
-	
+## Full return type: Dictionary[Node, Dictionary[String(property), Array[Keyframe]]
+func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
 	match text_source:
 		TextSource.LYRICS:
 			var lyrics: Array[Dictionary] = Array(Utils.as_array(music_data["lyrics"]), TYPE_DICTIONARY, "", null)
 			print(lyrics)
-			animations.append_array(animate_lyrics(lyrics))
+			return animate_lyrics(lyrics)
 		TextSource.CHORDS:
 			var chords: Array[Dictionary] = Array(Utils.as_array(music_data["chords"]), TYPE_DICTIONARY, "", null)
-			animations.append_array(animate_chords(chords))
+			return animate_chords(chords)
 		TextSource.KEY:
 			var keys: Array[Dictionary] = Array(Utils.as_array(music_data["keys"]), TYPE_DICTIONARY, "", null)
-			animations.append_array(animate_keys(keys))
+			return animate_keys(keys)
 		TextSource.STATIC:
-			pass # nothing to animate
+			return {} # nothing to animate
 		_:
-			print("TextWidget.hrmn_animate(): ignoring un-implemented Text Source type: %s" % [text_source])
-	
-	return animations
+			printerr("TextWidget.hrmn_animate(): ignoring un-implemented Text Source type: %s" % [text_source])
+			return {}
 
 
-
-func animate_lyrics(lyrics: Array[Dictionary]) -> Array[Utils.AnimationStep]:
+func animate_lyrics(lyrics: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
 	
 	# example dict element
 	#{
@@ -60,12 +57,10 @@ func animate_lyrics(lyrics: Array[Dictionary]) -> Array[Utils.AnimationStep]:
 	  #"_type": "MusicDataTiming[list]"
 	#},
 	
-	var animations: Array[Utils.AnimationStep] = []
-	
-	var previous_text := ""
-	var previous_time := -1.0
-		
-	# TODO: extract this logic into a general "animation builder" taking in a list of keyframes and a transition time
+	var animations: Array[Utils.PropertyKeyframePoint] = [Utils.PropertyKeyframePoint.new("", 0)]
+	var animation_map: Dictionary[Node, Dictionary] = {self: {
+		"text": animations
+	}}
 	
 	for lyric in lyrics:
 		print("starting lyric loop. lyric=%s" % [lyric])
@@ -94,55 +89,37 @@ func animate_lyrics(lyrics: Array[Dictionary]) -> Array[Utils.AnimationStep]:
 			var new_text: String = new_text_parts.reduce(func (acc: String, el: String) -> String: return acc + el, "")
 			
 			# add animation for this syllable
+			
 			# if previous animation was too recent, just add this as a single keyframe
-			if time - transition_time <= previous_time:
-				animations.append(Utils.AnimationStep.new(
-					[time],
-					{self: [Utils.PropertyChange.new("text", [Utils.PropertyKeyframe.new(new_text)])]}
-				))
-			else:
-				animations.append(Utils.AnimationStep.new(
-					[time - transition_time, time],
-					{self: [Utils.PropertyChange.pair("text", previous_text, new_text)]}
-					))
-			previous_text = new_text
-			previous_time = time
+			animations.append(Utils.PropertyKeyframePoint.new(new_text, time, 0.0, transition_time, -4.0))
 	
-	return animations
+	return animation_map
 
 
-func animate_chords(chords: Array[Dictionary]) -> Array[Utils.AnimationStep]:	
-	var animations: Array[Utils.AnimationStep] = []
-	
-	var previous_text := ""
+func animate_chords(chords: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
+	var animations: Array[Utils.PropertyKeyframePoint] = [Utils.PropertyKeyframePoint.new("", 0)]
+	var animation_map: Dictionary[Node, Dictionary] = {self: {
+		"text": animations
+	}}
 	
 	for chord in chords:
 		var time: float = chord["time"]
 		var chord_text: String = chord["elem"]["name"]
-
-		animations.append(Utils.AnimationStep.new(
-			[time - transition_time, time],
-			{self: [Utils.PropertyChange.pair("text", previous_text, chord_text)]}
-			))
-		previous_text = chord_text
+		animations.append(Utils.PropertyKeyframePoint.new(chord_text, time, 0.0, transition_time, -4.0))
 	
-	return animations
+	return animation_map
 
 
 
-func animate_keys(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:	
-	var animations: Array[Utils.AnimationStep] = []
-	
-	var previous_text := ""
+func animate_keys(keys: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
+	var animations: Array[Utils.PropertyKeyframePoint] = [Utils.PropertyKeyframePoint.new("", 0)]
+	var animation_map: Dictionary[Node, Dictionary] = {self: {
+		"text": animations
+	}}
 	
 	for key in keys:
 		var time: float = key["time"]
-		var chord_text: String = key["elem"]["name"]
-
-		animations.append(Utils.AnimationStep.new(
-			[time - transition_time, time],
-			{self: [Utils.PropertyChange.pair("text", previous_text, chord_text)]}
-			))
-		previous_text = chord_text
+		var key_text: String = key["elem"]["name"]
+		animations.append(Utils.PropertyKeyframePoint.new(key_text, time, 0.0, transition_time, -4.0))
 	
-	return animations
+	return animation_map

@@ -126,14 +126,15 @@ func _move_pitch_nodes() -> void:
 #region animations
 
 ## Given structured information about the song, create a list of animations to play at set times.
-func hrmn_animate(music_data: Dictionary) -> Array[Utils.AnimationStep]:
+## Full return type: 
+func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
 	print_verbose("C12NVoice.hrmn_animate(): start")
-	var animations: Array[Utils.AnimationStep] = []
+	var animations: Dictionary[Node, Dictionary] ={}
 
 	## animate chord roots
 	print_verbose("hrmn_animate(): animating chord roots")
 	var chord_roots: Array[Dictionary] = Array(Utils.as_array(music_data["chord_roots"]), TYPE_DICTIONARY, "", null)
-	animations.append_array(animate_chord_roots(chord_roots))
+	animations = Utils.merge_animations(animations, animate_chord_roots(chord_roots))
 
 	# TODO: animate notes played
 	
@@ -141,21 +142,19 @@ func hrmn_animate(music_data: Dictionary) -> Array[Utils.AnimationStep]:
 	return animations
 
 
-func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.AnimationStep]:
+func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
 	print_verbose("animate_chord_roots(): start")
-	var anims: Array[Utils.AnimationStep] = []
 
 	# set up loop vars
 	var selected_pitches: Array[int] = []
 	var previous_pitch_circle_colors := Utils.fill_array(12, Color.TRANSPARENT)
 	var previous_selected_pitch_class := -1 # -1 = none, 0-11 = selected
 	
+	# set up top-level anims
+	var anims: Dictionary[Node, Dictionary] = {}
 	# set initial states at time 0
-	var initial_state_map: Dictionary[Node, Array] = {}
 	for i in range(12):
-		initial_state_map[_pitch_circle_nodes[i]] = [
-			Utils.PropertyChange.new("color", [Utils.PropertyKeyframe.new(previous_pitch_circle_colors[i])])]
-	anims.append(Utils.AnimationStep.new([0], initial_state_map))
+		anims[_pitch_circle_nodes[i]] = {"color": [Utils.PropertyKeyframePoint.new(previous_pitch_circle_colors[i], 0)]}
 	
 	# loop over all chord roots in the piece
 	for chord_root: Dictionary in chord_roots:
@@ -183,15 +182,9 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Array[Utils.Animatio
 			new_pitch_circle_colors[pitch_class] = color
 		
 		# create map of changes per node
-		var node_changes: Dictionary[Node, Array] = {}
 		for i in range(12):
 			if previous_pitch_circle_colors[i] != new_pitch_circle_colors[i]:
-				node_changes[_pitch_circle_nodes[i]] = [Utils.PropertyChange.pair("color", previous_pitch_circle_colors[i], new_pitch_circle_colors[i])]
-		
-		# save in animation step with times
-		anims.append(Utils.AnimationStep.new(
-			PackedFloat32Array([time - .1, time]),
-			node_changes))
+				Utils.as_array(anims[_pitch_circle_nodes[i]]["color"]).append(Utils.PropertyKeyframePoint.new(new_pitch_circle_colors[i], time, 0.0, 0.1, -4.0))
 
 		# update tracking vars for next iteration
 		previous_selected_pitch_class = new_pitch_class

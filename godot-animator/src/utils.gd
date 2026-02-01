@@ -109,21 +109,25 @@ class PropertyKeyframePoint:
 	var value: Variant
 	## The time at which to place this keyframe in the animation timeline.
 	var time: float
-	## Optional. If > 0, will try to add another keyframe at (time - lead_in_time) with value <previous.value> and transition <this.transition>.
-	var lead_in_time: float
-	## Paired with lead_in_time. Set the transition (easing) of a lead-in keyframe.
+	## Optional. Controls the transition (easing) for this main keyframe.
 	var transition: float
+	## Optional. If > 0, will try to add another keyframe at (time - lead_in_timespan) with value <previous.value> and transition <this.transition>.
+	var lead_in_timespan: float
+	## Optional. Paired with lead_in_timespan. Set the transition (easing) of a lead-in keyframe.
+	var lead_in_transition: float
 
 	func _init(
 		_value: Variant,
 		_time: float,
-		_lead_in_time: float = 0.0,
-		_transition: float = 0.0
+		_transition: float = 0.0,
+		_lead_in_timespan: float = 0.0,
+		_lead_in_transition: float = 0.0,
 	) -> void:
 		self.value = _value
 		self.time = _time
-		self.lead_in_time = _lead_in_time
 		self.transition = _transition
+		self.lead_in_timespan = _lead_in_timespan
+		self.lead_in_transition = _lead_in_transition
 
 
 # TODO: probably don't need this, just use Dict[N, Dict[Str, Arr[Keyframe]]] as a function arg
@@ -131,72 +135,29 @@ class AnimationSpec:
 	var nodes: Dictionary[Node, Dictionary] # Dictionary[Node, Dictionary[String(property), Array[Keyframe]]
 
 
-## Single key frame on the AnimationPlayer track
-class PropertyKeyframe:
-	var value: Variant
-	var transition: float
-	
-	func _init(
-		_value: Variant,
-		_transition: float = 0.0
-	) -> void:
-		self.value = _value
-		self.transition = _transition
-
-
-## Describes a single property with a list of sequential values to animate
-class PropertyChange:
-	var property_name: String
-	var values: Array[PropertyKeyframe]
-
-	func _init(
-		_property_name: String,
-		_values: Array[PropertyKeyframe],
-	) -> void:
-		self.property_name = _property_name
-		self.values = _values
-	
-	static func pair(
-		_property_name: String,
-		_val_start: Variant,
-		_val_end: Variant,
-		_transition_start: float=-4.0,
-		_transition_end: float=0.0,
-	) -> PropertyChange:
-		return PropertyChange.new(
-			_property_name,
-			[
-				PropertyKeyframe.new(_val_start, _transition_start),
-				PropertyKeyframe.new(_val_end, _transition_end),
-			]
-		)
-
-
-## Describes animating one or more properties of a given Node over a given time range.
-class AnimationStep:
-	var times: PackedFloat32Array
-	var node_changes: Dictionary[Node, Array] # Dictionary[Node, Array[PropertyChange]]
-
-	func _init(
-		_times: PackedFloat32Array,
-		_node_changes: Dictionary[Node, Array]
-	) -> void:
-		# check assumptions
-		assert(_times.size() >= 1, "AnimationStep.init(%s, %s): cannot accept a times array with 0 elements" % [_times, _node_changes])
-		assert(_node_changes.size() >= 1, "AnimationStep.init(%s, %s): cannot accept an empty _node_changes map" % [_times, _node_changes])
-
-		# validate _node_changes elements
-		for node: Node in _node_changes.keys():
-			assert(node != null, "AnimationStep.init(%s, %s): cannot accept a null node in _node_changes map" % [_times, _node_changes])
-			var array_prop_changes: Array = _node_changes[node] # Array[PropertyChange]
-			# validate each prop_change
-			for prop_change: PropertyChange in array_prop_changes:
-				assert(prop_change != null, "AnimationStep.init(%s, %s): cannot accept a null PropertyChange" % [_times, _node_changes])
-				assert(prop_change.values.size() == _times.size(), "AnimationStep.init(%s, %s): cannot accept a PropertyChange for property %s of len %d (should match times.size() of %d)" % [_times, _node_changes, prop_change.property_name, prop_change.values.size(), _times.size()])
-		
-		# init
-		self.times = _times
-		self.node_changes = _node_changes
+func merge_animations(a1: Dictionary[Node, Dictionary], a2: Dictionary[Node, Dictionary]) -> Dictionary[Node, Dictionary]:
+	var ret: Dictionary[Node, Dictionary] = Dictionary(a1,
+		TYPE_OBJECT, "Node", null,
+		TYPE_DICTIONARY, "", null,)
+	for node: Node in a2.keys():
+		if !ret.has(node):
+			# copy and set from a2 to ret
+			ret[node] = Dictionary(a2[node],
+				TYPE_STRING, "", null,
+				TYPE_ARRAY, "", null,)
+		else:
+			# merge dictionaries per mode
+			for property_name: String in a2.values():
+				var a2_arr: Array = a2[node][property_name]
+				if !ret[node].has(property_name):
+					# copy and set froma a2 to ret
+					ret[node][property_name] = Array(a2_arr,
+						TYPE_OBJECT, "PropertyKeyframePoint", null)
+				else:
+					# arrays exist for both; join them
+					var ret_arr: Array = ret[node][property_name]
+					ret_arr.append_array(a2_arr)
+	return ret
 
 
 # TODO: deal with magic number
@@ -230,31 +191,52 @@ func setup_animation(player: AnimationPlayer, animation_length: float = 200.0, d
 
 
 ## Create at runtime an Animation on the specified AnimationPlayer with the specified animation properties.
-func apply_animation(animation_step: Utils.AnimationStep, player: AnimationPlayer, animation: Animation) -> void:
+## animation_step full type: Dictionary[Node, Dictionary[String(property), Array[PropertyKeyframePoint]]
+func apply_animation(animation_step: Dictionary[Node, Dictionary], player: AnimationPlayer, animation: Animation) -> void:
 	# TODO: make configurable whether to delete existing track if it exists
 	print("Utils.apply_animation(%s, %s, %s): start" % [
-		animation_step.node_changes.keys().map(func (n: Node) -> String: return n.name),
-		animation_step.times,
-		animation_step.node_changes.values()[0].map(func(pc: PropertyChange) -> String: return pc.property_name)
+		animation_step.keys().map(func (n: Node) -> String: return n.name),
+		animation_step.values()[0].keys(),
+		animation_step.values()[0].values()[0].map(func (k: PropertyKeyframePoint) -> float: return k.time)
 		])
 
+
 	# Loop over all nodes to animate
-	for node: Node in animation_step.node_changes.keys():
-		var property_changes: Array = animation_step.node_changes[node]
+	for node: Node in animation_step.keys():
+		var property_changes: Dictionary = animation_step[node] # Dictionary[String, Array[PropertyKeyframePoint]] NOTE: type hinting seems to break here with weird "cant cast <X> to <X>" errors
 		var path_to_puppet_node := player.get_node(player.root_node).get_path_to(node)
 		
 		# Loop over each property to set on this node
-		for property_change: PropertyChange in property_changes:
-			var path_to_puppet_property := "%s:%s" % [path_to_puppet_node, property_change.property_name]
+		for property_name: String in property_changes.keys():
+			var keyframes: Array = property_changes[property_name] # Array[PropertyKeyframePoint] NOTE: type hinting seems to break here with weird "cant cast <X> to <X>" errors
+			
+			var path_to_puppet_property := "%s:%s" % [path_to_puppet_node, property_name]
 			var track_idx := animation.find_track(path_to_puppet_property, Animation.TYPE_VALUE)
 			# if track doesn't exist yet for this property, add it
 			if track_idx == -1:
 				track_idx = animation.add_track(Animation.TYPE_VALUE)
 				animation.track_set_path(track_idx, path_to_puppet_property)
-			print_verbose("  node=%s, prop_name=%s, track_idx=%d", node.name, property_change.property_name, track_idx)
+			print_verbose("  node=%s, prop_name=%s, track_idx=%d", node.name, property_name, track_idx)
 
 			# Set keyframes at different times:
-			for i in range(animation_step.times.size()):
-				var keyframe := property_change.values[i]
-				animation.track_insert_key(track_idx, animation_step.times[i], keyframe.value, keyframe.transition)
-				print_verbose("    added keyframe for (%fs: val=%s, easing=%f)" % [animation_step.times[i], keyframe.value, keyframe.transition])
+			var previous_keyframe: PropertyKeyframePoint = null
+			for keyframe: PropertyKeyframePoint in keyframes:
+				animation.track_insert_key(track_idx, keyframe.time, keyframe.value, keyframe.transition)
+				print_verbose("    added keyframe for (%fs: val=%s, easing=%f)" % [keyframe.time, keyframe.value, keyframe.transition])
+				
+				if keyframe.lead_in_timespan > 0:
+					# try to add a lead-in keyframe too
+					var lead_in_time := keyframe.time - keyframe.lead_in_timespan
+					if previous_keyframe != null:
+						# only add lead-in keyframe if lead_in_time comes after the previous keyframe
+						if lead_in_time > previous_keyframe.time:
+							animation.track_insert_key(track_idx, lead_in_time, previous_keyframe.value, keyframe.lead_in_transition)
+							print_verbose("    added lead-in keyframe for (%fs: val=%s, easing=%f)" % [lead_in_time, previous_keyframe.value, keyframe.lead_in_transition])
+						else:
+							# set transition on previous keyframe to animate into this one
+							var key_idx := animation.track_find_key(track_idx, previous_keyframe.time, Animation.FindMode.FIND_MODE_EXACT)
+							animation.track_set_key_transition(track_idx, key_idx, keyframe.lead_in_transition)
+					else:
+						pass # TODO: maybe I can set some default value here? for now, just expect widgets to set a keyframe at time=0 with no lead-in
+						printerr("Cannot add a lead-in keyframe on the first keyframe of a track, as I don't know what previous value to set.")
+				previous_keyframe = keyframe

@@ -217,23 +217,23 @@ func _ready() -> void:
 
 
 ## Given structured information about the song, create a list of animations to play at set times.
-func hrmn_animate(music_data: Dictionary) -> Array[Utils.AnimationStep]:
+## Full return type: Dictionary[Node, Dictionary[String(property), Array[PropertyKeyframePoint]]
+func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
 	print_verbose("hrmn_animate(): start")
-	var animations: Array[Utils.AnimationStep] = []
+	var animations: Dictionary[Node, Dictionary] = {}
 
 	# animate key changes
 	print_verbose("hrmn_animate(): animating key changes")
 	var keys: Array[Dictionary] = Array(Utils.as_array(music_data["keys"]), TYPE_DICTIONARY, "", null)
-	animations.append_array(animate_key_changes(keys))
+	animations = Utils.merge_animations(animations, animate_key_changes(keys))
 	
 	print_verbose("hrmn_animate(): end")
 	return animations
 
 
-func animate_key_changes(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:
+## Full return type: Dictionary[Node, Dictionary[String(property), Array[PropertyKeyframePoint]]
+func animate_key_changes(keys: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
 	print_verbose("animate_key_changes(): start")
-	# build a sequence of rotation animations to play
-	var anims: Array[Utils.AnimationStep] = []
 
 	# set initial animation states
 	var previous_root_pitch_class: int = keys[0]["elem"]["pitch"]["pitchClass"]
@@ -241,13 +241,13 @@ func animate_key_changes(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:
 	#var previous_pitch_text_colors: Array[Color] = _compute_pitch_text_colors(
 		#Array(Utils.as_array(keys[0]["elem"]["pitches"]), TYPE_INT, "", null))
 
-	for key: Dictionary in keys.slice(1):
+	# build a sequence of rotation animations to play
+	var anims: Dictionary[Node, Dictionary] = {self: {
+		"rotate_angle": [Utils.PropertyKeyframePoint.new(_angle_for_pitch_at_top(previous_root_pitch_class), 0)],
+		"rotate_arc_end_angle": [Utils.PropertyKeyframePoint.new(0, 0)],
+	}}
 
-		# make a list of property changes for this key change
-		var key_change_anims: Array[Utils.PropertyChange] = []
-		# figure out start and end time for the main key change animation
-		var target_end_time: float = key["time"]
-		var start_time := target_end_time - transition_time
+	for key: Dictionary in keys.slice(1):
 
 		# detect if root changed
 		var root_pitch_class: int = key["elem"]["pitch"]["pitchClass"]
@@ -257,24 +257,15 @@ func animate_key_changes(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:
 			var new_rotate_angle := _minimize_angle_absolute_diff(
 				_angle_for_pitch_at_top(root_pitch_class), previous_rotate_angle)
 			# add extra animation of rotate_arc appearing one "transition_time" increment earlier
-			anims.append(Utils.AnimationStep.new(
-				PackedFloat32Array([start_time - transition_time * 1.5, start_time - transition_time * 0.5 - 0.05]),
-				{self: [Utils.PropertyChange.pair("rotate_arc_end_angle", 0.0, previous_rotate_angle - new_rotate_angle)]}))
+			anims[self]["rotate_arc_end_angle"].append(Utils.PropertyKeyframePoint.new(previous_rotate_angle - new_rotate_angle, key["time"] - transition_time * 1.5, -4.0))
 			# in the main key-change animation, add the follow-up step to retract the arc end alongside the rotation
-			key_change_anims.append(Utils.PropertyChange.pair("rotate_arc_end_angle", previous_rotate_angle - new_rotate_angle, 0.0))
+			anims[self]["rotate_arc_end_angle"].append(Utils.PropertyKeyframePoint.new(0.0, key["time"], 0.0, transition_time, -4.0))
 			#key_change_anims.append(Utils.PropertyChange.new("rotate_arc_end_angle", previous_rotate_angle, new_rotate_angle))
 			
 			# animate circle rotating
-			key_change_anims.append(Utils.PropertyChange.pair("rotate_angle",
-				previous_rotate_angle, new_rotate_angle))
+			anims[self]["rotate_angle"].append(Utils.PropertyKeyframePoint.new(new_rotate_angle, key["time"], 0.0, transition_time, -4.0))
 			previous_root_pitch_class = root_pitch_class
 			previous_rotate_angle = new_rotate_angle
-
-		# if we ended up with any notes to change, add it to the overall list
-		if key_change_anims.size() > 0:
-			anims.append(Utils.AnimationStep.new(
-				PackedFloat32Array([start_time, target_end_time]),
-				{self: key_change_anims}))
 
 	print_verbose("animate_key_changes(): end")
 	return anims
@@ -282,12 +273,12 @@ func animate_key_changes(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:
 
 # TODO: rename to animate_rotate_angle
 ## Testing: Create an animation to rotate the circle
-func animate_rotate(angle_start: float, angle_end: float, time_start: float, time_end: float) -> Utils.AnimationStep:
-	return Utils.AnimationStep.new(
-		PackedFloat32Array([time_start, time_end]),
-		{self: [Utils.PropertyChange.pair("rotate_angle", angle_start, angle_end)]})
-
-func animate_rotate_pitch(pitch_start: int, pitch_end: int, time_start: float, time_end: float) -> Utils.AnimationStep:
-	return animate_rotate(_angle_for_pitch_at_top(pitch_start), _angle_for_pitch_at_top(pitch_end), time_start, time_end)
+#func animate_rotate(angle_start: float, angle_end: float, time_start: float, time_end: float) -> Utils.AnimationStep:
+	#return Utils.AnimationStep.new(
+		#PackedFloat32Array([time_start, time_end]),
+		#{self: [Utils.PropertyChange.pair("rotate_angle", angle_start, angle_end)]})
+#
+#func animate_rotate_pitch(pitch_start: int, pitch_end: int, time_start: float, time_end: float) -> Utils.AnimationStep:
+	#return animate_rotate(_angle_for_pitch_at_top(pitch_start), _angle_for_pitch_at_top(pitch_end), time_start, time_end)
 
 #endregion

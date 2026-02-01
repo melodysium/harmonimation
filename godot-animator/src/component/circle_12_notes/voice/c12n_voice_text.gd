@@ -149,41 +149,37 @@ func _compute_pitch_text_colors(pitches: Array[int]) -> Array[Color]:
 #region animations
 
 ## Given structured information about the song, create a list of animations to play at set times.
-func hrmn_animate(music_data: Dictionary) -> Array[Utils.AnimationStep]:
+## Full return type: Dictionary[Node, Dictionary[String(property), Array[Keyframe]]
+func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
 	print_verbose("C12NVoice.hrmn_animate(): start")
-	var animations: Array[Utils.AnimationStep] = []
+	var animations: Dictionary[Node, Dictionary] = {}
 
 	# animate key changes
 	print_verbose("hrmn_animate(): animating key changes")
 	var keys: Array[Dictionary] = Array(Utils.as_array(music_data["keys"]), TYPE_DICTIONARY, "", null)
-	animations.append_array(animate_key_changes(keys))
+	animations = Utils.merge_animations(animations, animate_key_changes(keys))
 	
 	print_verbose("C12NVoice.hrmn_animate(): end")
 	return animations
 
 
-func animate_key_changes(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:
+func animate_key_changes(keys: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
 	print_verbose("animate_key_changes(): start")
-	# build a sequence of rotation animations to play
-	var anims: Array[Utils.AnimationStep] = []
 
-	# track colors from previous chord to add a "keep this color until <x> keyframe" later
-	var previous_pitch_text_colors: Array[Color] = _compute_pitch_text_colors(
-		Array(Utils.as_array(keys[0]["elem"]["pitches"]), TYPE_INT, "", null))
+	# build a sequence of rotation animations to play
+	var anims: Dictionary[Node, Dictionary] = {}
+	# track previous key to skip duplicates
+	var previous_key: Array[int] = Array(Utils.as_array(keys[0]["elem"]["pitches"]), TYPE_INT, "", null)
+	# track colors from previous chord to skip any 
+	var previous_pitch_text_colors: Array[Color] = _compute_pitch_text_colors(previous_key)
 	# add keyfames at time 0
-	var initial_state_map: Dictionary[Node, Array] = {}
 	for i in range(12):
-		initial_state_map[_pitch_text_nodes[i]] = [Utils.PropertyChange.new("modulate_color", [
-					Utils.PropertyKeyframe.new(previous_pitch_text_colors[i])])]
-	anims.append(Utils.AnimationStep.new([0], initial_state_map))
+		anims[_pitch_text_nodes[i]] = {"modulate_color": [Utils.PropertyKeyframePoint.new(previous_pitch_text_colors[i], 0)]}
 
 	for key: Dictionary in keys.slice(1):
 
-		# make a list of property changes for this key change
-		var key_change_anims: Dictionary[Node, Array] = {} # Dictionary[Node, Array[Utils.PropertyChange]]
 		# figure out start and end time for the main key change animation
 		var target_end_time: float = key["time"]
-		var start_time := target_end_time - _c12n.transition_time
 
 		# detect if root changed
 		var root_pitch_class: int = key["elem"]["pitch"]["pitchClass"]
@@ -196,17 +192,10 @@ func animate_key_changes(keys: Array[Dictionary]) -> Array[Utils.AnimationStep]:
 		# only do anything if the colors changed
 		if new_pitch_text_colors != previous_pitch_text_colors:
 			for i in range(12):
-				key_change_anims[_pitch_text_nodes[i]] = [Utils.PropertyChange.pair("modulate_color",
-				previous_pitch_text_colors[i],
-				new_pitch_text_colors[i])]
+				anims[_pitch_text_nodes[i]]["modulate_color"].append(
+					Utils.PropertyKeyframePoint.new(new_pitch_text_colors[i], target_end_time, 0.0, _c12n.transition_time, -4.0))
 			# set animations for each pitch
 			previous_pitch_text_colors = new_pitch_text_colors
-
-		# if we ended up with any notes to change, add it to the overall list
-		if key_change_anims.size() > 0:
-			anims.append(Utils.AnimationStep.new(
-				PackedFloat32Array([start_time, target_end_time]),
-				key_change_anims))
 
 	print_verbose("animate_key_changes(): end")
 	return anims
