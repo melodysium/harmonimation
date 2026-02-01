@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8i2fcm6csm7m"]
+[gd_scene format=3 uid="uid://b8i2fcm6csm7m"]
 
 [ext_resource type="PackedScene" uid="uid://dtt7fea8ejgy" path="res://src/component/circle_12_notes/circle_12_notes.tscn" id="1_dt7ry"]
 [ext_resource type="Script" uid="uid://duj6thascfcym" path="res://addons/harmonimation/hrmn_renderer/hrmn_renderer.gd" id="1_oxdmo"]
@@ -1641,102 +1641,100 @@ script = ExtResource("6_oxdmo")
 v = 7
 metadata/_custom_type_script = "uid://0e4sadresek3"
 
-[node name="HarmonimationScene" type="Node2D"]
+[node name="HarmonimationScene" type="Node2D" unique_id=515163253]
 script = ExtResource("1_oxdmo")
 music_data = ExtResource("2_xqbfy")
 song_audio = ExtResource("9_xqbfy")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_4pb6b")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1853232059]
+libraries/ = SubResource("AnimationLibrary_4pb6b")
 
-[node name="Chromatic Circle" parent="." instance=ExtResource("1_dt7ry")]
+[node name="Chromatic Circle" parent="." unique_id=1967897926 instance=ExtResource("1_dt7ry")]
 position = Vector2(342, 280)
 scale = Vector2(3.3555903, 3.3555903)
 
-[node name="KeySource" type="Node" parent="Chromatic Circle"]
+[node name="KeySource" type="Node" parent="Chromatic Circle" unique_id=1121029449]
 script = ExtResource("4_wod8t")
 metadata/_custom_type_script = "uid://cswoi2ulms38l"
 
-[node name="PitchesInKey" type="Node" parent="Chromatic Circle/KeySource"]
+[node name="PitchesInKey" type="Node" parent="Chromatic Circle/KeySource" unique_id=1769928271]
 script = ExtResource("5_lbcb2")
 metadata/_custom_type_script = "uid://bsb7hruywuhj"
 
-[node name="ChordSource" type="Node" parent="Chromatic Circle"]
+[node name="ChordSource" type="Node" parent="Chromatic Circle" unique_id=542833809]
 script = ExtResource("4_wod8t")
 max_active = SubResource("Resource_xqbfy")
 metadata/_custom_type_script = "uid://cswoi2ulms38l"
 
-[node name="CirclePlayedChords" type="Node" parent="Chromatic Circle/ChordSource"]
+[node name="CirclePlayedChords" type="Node" parent="Chromatic Circle/ChordSource" unique_id=1245037804]
 script = ExtResource("5_t0067")
 metadata/_custom_type_script = "uid://cf20l3in8ynmy"
 
-[node name="ConnectPlayedChords" type="Node" parent="Chromatic Circle/ChordSource"]
+[node name="ConnectPlayedChords" type="Node" parent="Chromatic Circle/ChordSource" unique_id=1902164306]
 script = ExtResource("8_tjhhp")
 metadata/_custom_type_script = "uid://ckd4t2dh4svug"
 
-[node name="Circle of Fifths" parent="." instance=ExtResource("1_dt7ry")]
+[node name="Circle of Fifths" parent="." unique_id=1304159495 instance=ExtResource("1_dt7ry")]
 position = Vector2(816, 280)
 scale = Vector2(3.355919, 3.355919)
 pitches_per_step = 7
 
-[node name="KeySource" type="Node" parent="Circle of Fifths"]
+[node name="KeySource" type="Node" parent="Circle of Fifths" unique_id=1000119627]
 script = ExtResource("4_wod8t")
 metadata/_custom_type_script = "uid://cswoi2ulms38l"
 
-[node name="PitchesInKey" type="Node" parent="Circle of Fifths/KeySource"]
+[node name="PitchesInKey" type="Node" parent="Circle of Fifths/KeySource" unique_id=90128178]
 script = ExtResource("5_lbcb2")
 metadata/_custom_type_script = "uid://bsb7hruywuhj"
 
-[node name="ChordSource" type="Node" parent="Circle of Fifths"]
+[node name="ChordSource" type="Node" parent="Circle of Fifths" unique_id=2132488601]
 script = ExtResource("4_wod8t")
 max_active = SubResource("Resource_oxdmo")
 metadata/_custom_type_script = "uid://cswoi2ulms38l"
 
-[node name="CirclePlayedChords" type="Node" parent="Circle of Fifths/ChordSource"]
+[node name="CirclePlayedChords" type="Node" parent="Circle of Fifths/ChordSource" unique_id=173939407]
 script = ExtResource("5_t0067")
 metadata/_custom_type_script = "uid://cf20l3in8ynmy"
 
-[node name="ConnectPlayedChords" type="Node" parent="Circle of Fifths/ChordSource"]
+[node name="ConnectPlayedChords" type="Node" parent="Circle of Fifths/ChordSource" unique_id=1505510096]
 script = ExtResource("8_tjhhp")
 metadata/_custom_type_script = "uid://ckd4t2dh4svug"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=504241043]
 
-[node name="CurrentChordText" parent="." instance=ExtResource("10_0d2eh")]
+[node name="CurrentChordText" parent="." unique_id=418119648 instance=ExtResource("10_0d2eh")]
 offset_left = 672.0
 offset_top = 529.0
 offset_right = 966.0
 offset_bottom = 569.0
 theme = ExtResource("11_4pb6b")
 theme_override_constants/outline_size = 6
-text = "Amin9"
+text = ""
 text_source = 2
 
-[node name="CurrentLyrics" parent="." instance=ExtResource("10_0d2eh")]
+[node name="CurrentLyrics" parent="." unique_id=948670699 instance=ExtResource("10_0d2eh")]
 offset_left = 179.0
 offset_top = 524.0
 offset_right = 504.0
 offset_bottom = 586.0
 theme = ExtResource("11_4pb6b")
 theme_override_constants/outline_size = 8
-text = "do"
+text = ""
 text_source = 1
 transition_time = 0.001
 
-[node name="CurrentKey" parent="." instance=ExtResource("10_0d2eh")]
+[node name="CurrentKey" parent="." unique_id=1712847294 instance=ExtResource("10_0d2eh")]
 offset_left = 590.0
 offset_top = 557.0
 offset_right = 915.0
 offset_bottom = 619.0
 theme = ExtResource("11_4pb6b")
 theme_override_constants/outline_size = 8
-text = "A minor"
+text = ""
 horizontal_alignment = 0
 text_source = 3
 
-[node name="ChromaticCircle" type="Label" parent="."]
+[node name="ChromaticCircle" type="Label" parent="." unique_id=24504712]
 offset_left = 150.0
 offset_top = 473.0
 offset_right = 536.0
@@ -1749,7 +1747,7 @@ theme_override_font_sizes/font_size = 32
 text = "Chromatic Circle"
 horizontal_alignment = 1
 
-[node name="KeyText" type="Label" parent="."]
+[node name="KeyText" type="Label" parent="." unique_id=721667323]
 offset_left = 463.0
 offset_top = 571.0
 offset_right = 593.0
@@ -1761,7 +1759,7 @@ theme_override_constants/outline_size = 8
 text = "Key: "
 horizontal_alignment = 2
 
-[node name="Circle5ths" type="Label" parent="."]
+[node name="Circle5ths" type="Label" parent="." unique_id=1946308878]
 offset_left = 622.0
 offset_top = 479.0
 offset_right = 1008.0
@@ -1773,7 +1771,7 @@ theme_override_font_sizes/font_size = 32
 text = "Circle of Fifths"
 horizontal_alignment = 1
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=1749800211]
 offset_left = 314.0
 offset_top = 24.0
 offset_right = 835.0
@@ -1785,7 +1783,7 @@ theme_override_font_sizes/font_size = 48
 text = "harmonimation demo"
 horizontal_alignment = 1
 
-[node name="key CC" type="Label" parent="."]
+[node name="key CC" type="Label" parent="." unique_id=866580801]
 offset_left = 298.0
 offset_top = 215.0
 offset_right = 382.0
@@ -1797,14 +1795,14 @@ theme_override_font_sizes/font_size = 20
 text = "key"
 horizontal_alignment = 1
 
-[node name="key line CC" type="Line2D" parent="."]
+[node name="key line CC" type="Line2D" parent="." unique_id=1198326771]
 position = Vector2(339, 139)
 points = PackedVector2Array(0, 0, 0, 70)
 width = 3.0
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="key C5" type="Label" parent="."]
+[node name="key C5" type="Label" parent="." unique_id=456638728]
 offset_left = 773.0
 offset_top = 215.0
 offset_right = 857.0
@@ -1816,14 +1814,14 @@ theme_override_font_sizes/font_size = 20
 text = "key"
 horizontal_alignment = 1
 
-[node name="key line C5" type="Line2D" parent="."]
+[node name="key line C5" type="Line2D" parent="." unique_id=1619612438]
 position = Vector2(814, 139)
 points = PackedVector2Array(0, 0, 0, 70)
 width = 3.0
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1328207892]
 visible = false
 offset_right = 475.0
 offset_bottom = 40.0
