@@ -329,23 +329,23 @@ tracks/25/keys = {
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("Chromatic Circle/C12NLine1_FtoB♭:default_color")
-tracks/26/interp = 1
+tracks/26/path = NodePath("Chromatic Circle/ChordSource/ConnectPlayedChords:_line_state_trigger")
+tracks/26/interp = 0
 tracks/26/loop_wrap = true
 tracks/26/keys = {
-"times": PackedFloat32Array(0, 7.9, 8, 9.9, 10, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32),
-"transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(8, 10, 16, 18, 24, 26, 32, 32.001, 34, 34.001, 35, 35.001, 36, 36.001, 37, 37.001, 38, 38.001, 39, 39.001, 40, 40.001, 41, 41.001, 42, 42.001, 43, 43.001, 44, 44.001, 45, 45.001, 46, 46.001, 47, 47.001, 48, 48.001, 49, 49.001, 50, 50.001, 51, 51.001, 52, 52.001, 53, 53.001, 53.5, 53.501, 54, 54.001, 55, 55.001, 56, 56.001, 58, 58.001, 59, 59.001, 60, 60.001, 61, 61.001, 61.5, 61.501, 62, 62.001, 63, 63.001, 64, 64.001),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 0, 7, 1, 8, 2, 9, 3, 10, 4, 11, 5, 12, 6, 13, 7, 14, 8, 15, 9, 16, 10, 17, 11, 18, 12, 19, 13, 20, 14, 21, 15, 22, 16, 23, 17, 24, 18, 25, 19, 26, 20, 27, 21, 28, 22, 29, 23, 30, 24, 31, 25, 32, 26, 33, 27, 34, 28, 35, 29, 36, 30, 37, 31, 38, 32]
 }
 tracks/27/type = "value"
 tracks/27/imported = false
 tracks/27/enabled = true
-tracks/27/path = NodePath("Chromatic Circle/C12NLine2_B♭toE♭:default_color")
+tracks/27/path = NodePath("Chromatic Circle/C12NLine_0:default_color")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = {
-"times": PackedFloat32Array(0, 9.9, 10, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34),
+"times": PackedFloat32Array(0, 7.9, 8, 9.9, 10, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -353,11 +353,11 @@ tracks/27/keys = {
 tracks/28/type = "value"
 tracks/28/imported = false
 tracks/28/enabled = true
-tracks/28/path = NodePath("Chromatic Circle/C12NLine3_E♭toA♭:default_color")
+tracks/28/path = NodePath("Chromatic Circle/C12NLine_1:default_color")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = {
-"times": PackedFloat32Array(0, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35),
+"times": PackedFloat32Array(0, 9.9, 10, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -365,11 +365,11 @@ tracks/28/keys = {
 tracks/29/type = "value"
 tracks/29/imported = false
 tracks/29/enabled = true
-tracks/29/path = NodePath("Chromatic Circle/C12NLine4_A♭toD♭:default_color")
+tracks/29/path = NodePath("Chromatic Circle/C12NLine_2:default_color")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/keys = {
-"times": PackedFloat32Array(0, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36),
+"times": PackedFloat32Array(0, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -377,11 +377,11 @@ tracks/29/keys = {
 tracks/30/type = "value"
 tracks/30/imported = false
 tracks/30/enabled = true
-tracks/30/path = NodePath("Chromatic Circle/C12NLine5_D♭toG♭:default_color")
+tracks/30/path = NodePath("Chromatic Circle/C12NLine_3:default_color")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/keys = {
-"times": PackedFloat32Array(0, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37),
+"times": PackedFloat32Array(0, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -389,11 +389,11 @@ tracks/30/keys = {
 tracks/31/type = "value"
 tracks/31/imported = false
 tracks/31/enabled = true
-tracks/31/path = NodePath("Chromatic Circle/C12NLine6_G♭toB:default_color")
+tracks/31/path = NodePath("Chromatic Circle/C12NLine_4:default_color")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/keys = {
-"times": PackedFloat32Array(0, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38),
+"times": PackedFloat32Array(0, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -401,11 +401,11 @@ tracks/31/keys = {
 tracks/32/type = "value"
 tracks/32/imported = false
 tracks/32/enabled = true
-tracks/32/path = NodePath("Chromatic Circle/C12NLine7_BtoE:default_color")
+tracks/32/path = NodePath("Chromatic Circle/C12NLine_5:default_color")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/keys = {
-"times": PackedFloat32Array(0, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39),
+"times": PackedFloat32Array(0, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -413,11 +413,11 @@ tracks/32/keys = {
 tracks/33/type = "value"
 tracks/33/imported = false
 tracks/33/enabled = true
-tracks/33/path = NodePath("Chromatic Circle/C12NLine8_EtoA:default_color")
+tracks/33/path = NodePath("Chromatic Circle/C12NLine_6:default_color")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/keys = {
-"times": PackedFloat32Array(0, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40),
+"times": PackedFloat32Array(0, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -425,11 +425,11 @@ tracks/33/keys = {
 tracks/34/type = "value"
 tracks/34/imported = false
 tracks/34/enabled = true
-tracks/34/path = NodePath("Chromatic Circle/C12NLine9_AtoA♭:default_color")
+tracks/34/path = NodePath("Chromatic Circle/C12NLine_7:default_color")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/keys = {
-"times": PackedFloat32Array(0, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41),
+"times": PackedFloat32Array(0, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -437,11 +437,11 @@ tracks/34/keys = {
 tracks/35/type = "value"
 tracks/35/imported = false
 tracks/35/enabled = true
-tracks/35/path = NodePath("Chromatic Circle/C12NLine10_A♭toD♭:default_color")
+tracks/35/path = NodePath("Chromatic Circle/C12NLine_8:default_color")
 tracks/35/interp = 1
 tracks/35/loop_wrap = true
 tracks/35/keys = {
-"times": PackedFloat32Array(0, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42),
+"times": PackedFloat32Array(0, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -449,11 +449,11 @@ tracks/35/keys = {
 tracks/36/type = "value"
 tracks/36/imported = false
 tracks/36/enabled = true
-tracks/36/path = NodePath("Chromatic Circle/C12NLine11_D♭toC:default_color")
+tracks/36/path = NodePath("Chromatic Circle/C12NLine_9:default_color")
 tracks/36/interp = 1
 tracks/36/loop_wrap = true
 tracks/36/keys = {
-"times": PackedFloat32Array(0, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43),
+"times": PackedFloat32Array(0, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -461,11 +461,11 @@ tracks/36/keys = {
 tracks/37/type = "value"
 tracks/37/imported = false
 tracks/37/enabled = true
-tracks/37/path = NodePath("Chromatic Circle/C12NLine12_CtoF:default_color")
+tracks/37/path = NodePath("Chromatic Circle/C12NLine_10:default_color")
 tracks/37/interp = 1
 tracks/37/loop_wrap = true
 tracks/37/keys = {
-"times": PackedFloat32Array(0, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44),
+"times": PackedFloat32Array(0, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -473,11 +473,11 @@ tracks/37/keys = {
 tracks/38/type = "value"
 tracks/38/imported = false
 tracks/38/enabled = true
-tracks/38/path = NodePath("Chromatic Circle/C12NLine13_FtoE:default_color")
+tracks/38/path = NodePath("Chromatic Circle/C12NLine_11:default_color")
 tracks/38/interp = 1
 tracks/38/loop_wrap = true
 tracks/38/keys = {
-"times": PackedFloat32Array(0, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45),
+"times": PackedFloat32Array(0, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -485,11 +485,11 @@ tracks/38/keys = {
 tracks/39/type = "value"
 tracks/39/imported = false
 tracks/39/enabled = true
-tracks/39/path = NodePath("Chromatic Circle/C12NLine14_EtoA:default_color")
+tracks/39/path = NodePath("Chromatic Circle/C12NLine_12:default_color")
 tracks/39/interp = 1
 tracks/39/loop_wrap = true
 tracks/39/keys = {
-"times": PackedFloat32Array(0, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46),
+"times": PackedFloat32Array(0, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -497,11 +497,11 @@ tracks/39/keys = {
 tracks/40/type = "value"
 tracks/40/imported = false
 tracks/40/enabled = true
-tracks/40/path = NodePath("Chromatic Circle/C12NLine15_AtoA♭:default_color")
+tracks/40/path = NodePath("Chromatic Circle/C12NLine_13:default_color")
 tracks/40/interp = 1
 tracks/40/loop_wrap = true
 tracks/40/keys = {
-"times": PackedFloat32Array(0, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47),
+"times": PackedFloat32Array(0, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -509,11 +509,11 @@ tracks/40/keys = {
 tracks/41/type = "value"
 tracks/41/imported = false
 tracks/41/enabled = true
-tracks/41/path = NodePath("Chromatic Circle/C12NLine16_A♭toD♭:default_color")
+tracks/41/path = NodePath("Chromatic Circle/C12NLine_14:default_color")
 tracks/41/interp = 1
 tracks/41/loop_wrap = true
 tracks/41/keys = {
-"times": PackedFloat32Array(0, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48),
+"times": PackedFloat32Array(0, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -521,11 +521,11 @@ tracks/41/keys = {
 tracks/42/type = "value"
 tracks/42/imported = false
 tracks/42/enabled = true
-tracks/42/path = NodePath("Chromatic Circle/C12NLine17_D♭toC:default_color")
+tracks/42/path = NodePath("Chromatic Circle/C12NLine_15:default_color")
 tracks/42/interp = 1
 tracks/42/loop_wrap = true
 tracks/42/keys = {
-"times": PackedFloat32Array(0, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49),
+"times": PackedFloat32Array(0, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -533,11 +533,11 @@ tracks/42/keys = {
 tracks/43/type = "value"
 tracks/43/imported = false
 tracks/43/enabled = true
-tracks/43/path = NodePath("Chromatic Circle/C12NLine18_CtoF:default_color")
+tracks/43/path = NodePath("Chromatic Circle/C12NLine_16:default_color")
 tracks/43/interp = 1
 tracks/43/loop_wrap = true
 tracks/43/keys = {
-"times": PackedFloat32Array(0, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50),
+"times": PackedFloat32Array(0, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -545,11 +545,11 @@ tracks/43/keys = {
 tracks/44/type = "value"
 tracks/44/imported = false
 tracks/44/enabled = true
-tracks/44/path = NodePath("Chromatic Circle/C12NLine19_FtoE:default_color")
+tracks/44/path = NodePath("Chromatic Circle/C12NLine_17:default_color")
 tracks/44/interp = 1
 tracks/44/loop_wrap = true
 tracks/44/keys = {
-"times": PackedFloat32Array(0, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51),
+"times": PackedFloat32Array(0, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -557,11 +557,11 @@ tracks/44/keys = {
 tracks/45/type = "value"
 tracks/45/imported = false
 tracks/45/enabled = true
-tracks/45/path = NodePath("Chromatic Circle/C12NLine20_EtoA:default_color")
+tracks/45/path = NodePath("Chromatic Circle/C12NLine_18:default_color")
 tracks/45/interp = 1
 tracks/45/loop_wrap = true
 tracks/45/keys = {
-"times": PackedFloat32Array(0, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52),
+"times": PackedFloat32Array(0, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -569,11 +569,11 @@ tracks/45/keys = {
 tracks/46/type = "value"
 tracks/46/imported = false
 tracks/46/enabled = true
-tracks/46/path = NodePath("Chromatic Circle/C12NLine21_AtoA♭:default_color")
+tracks/46/path = NodePath("Chromatic Circle/C12NLine_19:default_color")
 tracks/46/interp = 1
 tracks/46/loop_wrap = true
 tracks/46/keys = {
-"times": PackedFloat32Array(0, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53),
+"times": PackedFloat32Array(0, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -581,11 +581,11 @@ tracks/46/keys = {
 tracks/47/type = "value"
 tracks/47/imported = false
 tracks/47/enabled = true
-tracks/47/path = NodePath("Chromatic Circle/C12NLine22_A♭toD♭:default_color")
+tracks/47/path = NodePath("Chromatic Circle/C12NLine_20:default_color")
 tracks/47/interp = 1
 tracks/47/loop_wrap = true
 tracks/47/keys = {
-"times": PackedFloat32Array(0, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5),
+"times": PackedFloat32Array(0, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -593,11 +593,11 @@ tracks/47/keys = {
 tracks/48/type = "value"
 tracks/48/imported = false
 tracks/48/enabled = true
-tracks/48/path = NodePath("Chromatic Circle/C12NLine23_D♭toC:default_color")
+tracks/48/path = NodePath("Chromatic Circle/C12NLine_21:default_color")
 tracks/48/interp = 1
 tracks/48/loop_wrap = true
 tracks/48/keys = {
-"times": PackedFloat32Array(0, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54),
+"times": PackedFloat32Array(0, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -605,11 +605,11 @@ tracks/48/keys = {
 tracks/49/type = "value"
 tracks/49/imported = false
 tracks/49/enabled = true
-tracks/49/path = NodePath("Chromatic Circle/C12NLine24_CtoF:default_color")
+tracks/49/path = NodePath("Chromatic Circle/C12NLine_22:default_color")
 tracks/49/interp = 1
 tracks/49/loop_wrap = true
 tracks/49/keys = {
-"times": PackedFloat32Array(0, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55),
+"times": PackedFloat32Array(0, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -617,11 +617,11 @@ tracks/49/keys = {
 tracks/50/type = "value"
 tracks/50/imported = false
 tracks/50/enabled = true
-tracks/50/path = NodePath("Chromatic Circle/C12NLine25_FtoE:default_color")
+tracks/50/path = NodePath("Chromatic Circle/C12NLine_23:default_color")
 tracks/50/interp = 1
 tracks/50/loop_wrap = true
 tracks/50/keys = {
-"times": PackedFloat32Array(0, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56),
+"times": PackedFloat32Array(0, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -629,11 +629,11 @@ tracks/50/keys = {
 tracks/51/type = "value"
 tracks/51/imported = false
 tracks/51/enabled = true
-tracks/51/path = NodePath("Chromatic Circle/C12NLine26_EtoA:default_color")
+tracks/51/path = NodePath("Chromatic Circle/C12NLine_24:default_color")
 tracks/51/interp = 1
 tracks/51/loop_wrap = true
 tracks/51/keys = {
-"times": PackedFloat32Array(0, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58),
+"times": PackedFloat32Array(0, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -641,11 +641,11 @@ tracks/51/keys = {
 tracks/52/type = "value"
 tracks/52/imported = false
 tracks/52/enabled = true
-tracks/52/path = NodePath("Chromatic Circle/C12NLine27_AtoG:default_color")
+tracks/52/path = NodePath("Chromatic Circle/C12NLine_25:default_color")
 tracks/52/interp = 1
 tracks/52/loop_wrap = true
 tracks/52/keys = {
-"times": PackedFloat32Array(0, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59),
+"times": PackedFloat32Array(0, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -653,11 +653,11 @@ tracks/52/keys = {
 tracks/53/type = "value"
 tracks/53/imported = false
 tracks/53/enabled = true
-tracks/53/path = NodePath("Chromatic Circle/C12NLine28_GtoC:default_color")
+tracks/53/path = NodePath("Chromatic Circle/C12NLine_26:default_color")
 tracks/53/interp = 1
 tracks/53/loop_wrap = true
 tracks/53/keys = {
-"times": PackedFloat32Array(0, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60),
+"times": PackedFloat32Array(0, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -665,11 +665,11 @@ tracks/53/keys = {
 tracks/54/type = "value"
 tracks/54/imported = false
 tracks/54/enabled = true
-tracks/54/path = NodePath("Chromatic Circle/C12NLine29_CtoF:default_color")
+tracks/54/path = NodePath("Chromatic Circle/C12NLine_27:default_color")
 tracks/54/interp = 1
 tracks/54/loop_wrap = true
 tracks/54/keys = {
-"times": PackedFloat32Array(0, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61),
+"times": PackedFloat32Array(0, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -677,11 +677,11 @@ tracks/54/keys = {
 tracks/55/type = "value"
 tracks/55/imported = false
 tracks/55/enabled = true
-tracks/55/path = NodePath("Chromatic Circle/C12NLine30_FtoE:default_color")
+tracks/55/path = NodePath("Chromatic Circle/C12NLine_28:default_color")
 tracks/55/interp = 1
 tracks/55/loop_wrap = true
 tracks/55/keys = {
-"times": PackedFloat32Array(0, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5),
+"times": PackedFloat32Array(0, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -689,11 +689,11 @@ tracks/55/keys = {
 tracks/56/type = "value"
 tracks/56/imported = false
 tracks/56/enabled = true
-tracks/56/path = NodePath("Chromatic Circle/C12NLine31_EtoA:default_color")
+tracks/56/path = NodePath("Chromatic Circle/C12NLine_29:default_color")
 tracks/56/interp = 1
 tracks/56/loop_wrap = true
 tracks/56/keys = {
-"times": PackedFloat32Array(0, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62),
+"times": PackedFloat32Array(0, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -701,11 +701,11 @@ tracks/56/keys = {
 tracks/57/type = "value"
 tracks/57/imported = false
 tracks/57/enabled = true
-tracks/57/path = NodePath("Chromatic Circle/C12NLine32_AtoF:default_color")
+tracks/57/path = NodePath("Chromatic Circle/C12NLine_30:default_color")
 tracks/57/interp = 1
 tracks/57/loop_wrap = true
 tracks/57/keys = {
-"times": PackedFloat32Array(0, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63),
+"times": PackedFloat32Array(0, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -713,11 +713,11 @@ tracks/57/keys = {
 tracks/58/type = "value"
 tracks/58/imported = false
 tracks/58/enabled = true
-tracks/58/path = NodePath("Chromatic Circle/C12NLine33_FtoE:default_color")
+tracks/58/path = NodePath("Chromatic Circle/C12NLine_31:default_color")
 tracks/58/interp = 1
 tracks/58/loop_wrap = true
 tracks/58/keys = {
-"times": PackedFloat32Array(0, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
+"times": PackedFloat32Array(0, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -725,383 +725,383 @@ tracks/58/keys = {
 tracks/59/type = "value"
 tracks/59/imported = false
 tracks/59/enabled = true
-tracks/59/path = NodePath("Chromatic Circle/C12NLine34_EtoA:default_color")
+tracks/59/path = NodePath("Chromatic Circle/C12NLine_32:default_color")
 tracks/59/interp = 1
 tracks/59/loop_wrap = true
 tracks/59/keys = {
+"times": PackedFloat32Array(0, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
+"transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
+}
+tracks/60/type = "value"
+tracks/60/imported = false
+tracks/60/enabled = true
+tracks/60/path = NodePath("Chromatic Circle/C12NLine_33:default_color")
+tracks/60/interp = 1
+tracks/60/loop_wrap = true
+tracks/60/keys = {
 "times": PackedFloat32Array(0, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656)]
 }
-tracks/60/type = "value"
-tracks/60/imported = false
-tracks/60/enabled = true
-tracks/60/path = NodePath("Chromatic Circle/C12NLine35_AtoG:default_color")
-tracks/60/interp = 1
-tracks/60/loop_wrap = true
-tracks/60/keys = {
+tracks/61/type = "value"
+tracks/61/imported = false
+tracks/61/enabled = true
+tracks/61/path = NodePath("Chromatic Circle/C12NLine_34:default_color")
+tracks/61/interp = 1
+tracks/61/loop_wrap = true
+tracks/61/keys = {
 "times": PackedFloat32Array(0, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776)]
 }
-tracks/61/type = "value"
-tracks/61/imported = false
-tracks/61/enabled = true
-tracks/61/path = NodePath("Chromatic Circle/C12NLine36_GtoC:default_color")
-tracks/61/interp = 1
-tracks/61/loop_wrap = true
-tracks/61/keys = {
+tracks/62/type = "value"
+tracks/62/imported = false
+tracks/62/enabled = true
+tracks/62/path = NodePath("Chromatic Circle/C12NLine_35:default_color")
+tracks/62/interp = 1
+tracks/62/loop_wrap = true
+tracks/62/keys = {
 "times": PackedFloat32Array(0, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296)]
 }
-tracks/62/type = "value"
-tracks/62/imported = false
-tracks/62/enabled = true
-tracks/62/path = NodePath("Chromatic Circle/C12NLine37_CtoF:default_color")
-tracks/62/interp = 1
-tracks/62/loop_wrap = true
-tracks/62/keys = {
+tracks/63/type = "value"
+tracks/63/imported = false
+tracks/63/enabled = true
+tracks/63/path = NodePath("Chromatic Circle/C12NLine_36:default_color")
+tracks/63/interp = 1
+tracks/63/loop_wrap = true
+tracks/63/keys = {
 "times": PackedFloat32Array(0, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216)]
 }
-tracks/63/type = "value"
-tracks/63/imported = false
-tracks/63/enabled = true
-tracks/63/path = NodePath("Chromatic Circle/C12NLine38_FtoE:default_color")
-tracks/63/interp = 1
-tracks/63/loop_wrap = true
-tracks/63/keys = {
+tracks/64/type = "value"
+tracks/64/imported = false
+tracks/64/enabled = true
+tracks/64/path = NodePath("Chromatic Circle/C12NLine_37:default_color")
+tracks/64/interp = 1
+tracks/64/loop_wrap = true
+tracks/64/keys = {
 "times": PackedFloat32Array(0, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36)]
 }
-tracks/64/type = "value"
-tracks/64/imported = false
-tracks/64/enabled = true
-tracks/64/path = NodePath("Chromatic Circle/C12NLine39_EtoA:default_color")
-tracks/64/interp = 1
-tracks/64/loop_wrap = true
-tracks/64/keys = {
+tracks/65/type = "value"
+tracks/65/imported = false
+tracks/65/enabled = true
+tracks/65/path = NodePath("Chromatic Circle/C12NLine_38:default_color")
+tracks/65/interp = 1
+tracks/65/loop_wrap = true
+tracks/65/keys = {
 "times": PackedFloat32Array(0, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6)]
 }
-tracks/65/type = "value"
-tracks/65/imported = false
-tracks/65/enabled = true
-tracks/65/path = NodePath("Circle of Fifths:rotate_angle")
-tracks/65/interp = 1
-tracks/65/loop_wrap = true
-tracks/65/keys = {
+tracks/66/type = "value"
+tracks/66/imported = false
+tracks/66/enabled = true
+tracks/66/path = NodePath("Circle of Fifths:rotate_angle")
+tracks/66/interp = 1
+tracks/66/loop_wrap = true
+tracks/66/keys = {
 "times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [0.5235987755983018, 0.5235987755983018, 1.5707963267948966, 1.5707963267948966, 2.6179938779914944, 2.6179938779914944, 3.6651914291880914, 3.6651914291880914, 4.712388980384695, 4.712388980384695, 6.283185307179586]
 }
-tracks/66/type = "value"
-tracks/66/imported = false
-tracks/66/enabled = true
-tracks/66/path = NodePath("Circle of Fifths:rotate_arc_end_angle")
-tracks/66/interp = 1
-tracks/66/loop_wrap = true
-tracks/66/keys = {
+tracks/67/type = "value"
+tracks/67/imported = false
+tracks/67/enabled = true
+tracks/67/path = NodePath("Circle of Fifths:rotate_arc_end_angle")
+tracks/67/interp = 1
+tracks/67/loop_wrap = true
+tracks/67/keys = {
 "times": PackedFloat32Array(0, 5.55, 5.7, 6, 13.55, 13.7, 14, 21.55, 21.7, 22, 29.55, 29.7, 30, 33.55, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, -4, 0, -4, -4, 0, -4, -4, 0, -4, -4, 0, -4, -4, 0),
 "update": 0,
 "values": [0, -1.0471975511965947, -1.0471975511965947, 0.0, -1.0471975511965979, -1.0471975511965979, 0.0, -1.047197551196597, -1.047197551196597, 0.0, -1.0471975511966036, -1.0471975511966036, 0.0, -1.5707963267948912, -1.5707963267948912, 0.0]
 }
-tracks/67/type = "value"
-tracks/67/imported = false
-tracks/67/enabled = true
-tracks/67/path = NodePath("Circle of Fifths/C12NText_C:modulate_color")
-tracks/67/interp = 1
-tracks/67/loop_wrap = true
-tracks/67/keys = {
-"times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
-"transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1)]
-}
 tracks/68/type = "value"
 tracks/68/imported = false
 tracks/68/enabled = true
-tracks/68/path = NodePath("Circle of Fifths/C12NText_D♭:modulate_color")
+tracks/68/path = NodePath("Circle of Fifths/C12NText_C:modulate_color")
 tracks/68/interp = 1
 tracks/68/loop_wrap = true
 tracks/68/keys = {
 "times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": [Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1)]
 }
 tracks/69/type = "value"
 tracks/69/imported = false
 tracks/69/enabled = true
-tracks/69/path = NodePath("Circle of Fifths/C12NText_D:modulate_color")
+tracks/69/path = NodePath("Circle of Fifths/C12NText_D♭:modulate_color")
 tracks/69/interp = 1
 tracks/69/loop_wrap = true
 tracks/69/keys = {
 "times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1)]
 }
 tracks/70/type = "value"
 tracks/70/imported = false
 tracks/70/enabled = true
-tracks/70/path = NodePath("Circle of Fifths/C12NText_E♭:modulate_color")
+tracks/70/path = NodePath("Circle of Fifths/C12NText_D:modulate_color")
 tracks/70/interp = 1
 tracks/70/loop_wrap = true
 tracks/70/keys = {
 "times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": [Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/71/type = "value"
 tracks/71/imported = false
 tracks/71/enabled = true
-tracks/71/path = NodePath("Circle of Fifths/C12NText_E:modulate_color")
+tracks/71/path = NodePath("Circle of Fifths/C12NText_E♭:modulate_color")
 tracks/71/interp = 1
 tracks/71/loop_wrap = true
 tracks/71/keys = {
 "times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1)]
 }
 tracks/72/type = "value"
 tracks/72/imported = false
 tracks/72/enabled = true
-tracks/72/path = NodePath("Circle of Fifths/C12NText_F:modulate_color")
+tracks/72/path = NodePath("Circle of Fifths/C12NText_E:modulate_color")
 tracks/72/interp = 1
 tracks/72/loop_wrap = true
 tracks/72/keys = {
 "times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/73/type = "value"
 tracks/73/imported = false
 tracks/73/enabled = true
-tracks/73/path = NodePath("Circle of Fifths/C12NText_G♭:modulate_color")
+tracks/73/path = NodePath("Circle of Fifths/C12NText_F:modulate_color")
 tracks/73/interp = 1
 tracks/73/loop_wrap = true
 tracks/73/keys = {
 "times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": [Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1)]
 }
 tracks/74/type = "value"
 tracks/74/imported = false
 tracks/74/enabled = true
-tracks/74/path = NodePath("Circle of Fifths/C12NText_G:modulate_color")
+tracks/74/path = NodePath("Circle of Fifths/C12NText_G♭:modulate_color")
 tracks/74/interp = 1
 tracks/74/loop_wrap = true
 tracks/74/keys = {
 "times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1)]
+"values": [Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1)]
 }
 tracks/75/type = "value"
 tracks/75/imported = false
 tracks/75/enabled = true
-tracks/75/path = NodePath("Circle of Fifths/C12NText_A♭:modulate_color")
+tracks/75/path = NodePath("Circle of Fifths/C12NText_G:modulate_color")
 tracks/75/interp = 1
 tracks/75/loop_wrap = true
 tracks/75/keys = {
 "times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": [Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1)]
 }
 tracks/76/type = "value"
 tracks/76/imported = false
 tracks/76/enabled = true
-tracks/76/path = NodePath("Circle of Fifths/C12NText_A:modulate_color")
+tracks/76/path = NodePath("Circle of Fifths/C12NText_A♭:modulate_color")
 tracks/76/interp = 1
 tracks/76/loop_wrap = true
 tracks/76/keys = {
 "times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1)]
 }
 tracks/77/type = "value"
 tracks/77/imported = false
 tracks/77/enabled = true
-tracks/77/path = NodePath("Circle of Fifths/C12NText_B♭:modulate_color")
+tracks/77/path = NodePath("Circle of Fifths/C12NText_A:modulate_color")
 tracks/77/interp = 1
 tracks/77/loop_wrap = true
 tracks/77/keys = {
 "times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/78/type = "value"
 tracks/78/imported = false
 tracks/78/enabled = true
-tracks/78/path = NodePath("Circle of Fifths/C12NText_B:modulate_color")
+tracks/78/path = NodePath("Circle of Fifths/C12NText_B♭:modulate_color")
 tracks/78/interp = 1
 tracks/78/loop_wrap = true
 tracks/78/keys = {
 "times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": [Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1)]
 }
 tracks/79/type = "value"
 tracks/79/imported = false
 tracks/79/enabled = true
-tracks/79/path = NodePath("Circle of Fifths/C12NPoint_C:color")
+tracks/79/path = NodePath("Circle of Fifths/C12NText_B:modulate_color")
 tracks/79/interp = 1
 tracks/79/loop_wrap = true
 tracks/79/keys = {
+"times": PackedFloat32Array(0, 5.7, 6, 13.7, 14, 21.7, 22, 29.7, 30, 33.7, 34),
+"transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
+"update": 0,
+"values": [Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(0.6627451, 0.6627451, 0.6627451, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/80/type = "value"
+tracks/80/imported = false
+tracks/80/enabled = true
+tracks/80/path = NodePath("Circle of Fifths/C12NPoint_C:color")
+tracks/80/interp = 1
+tracks/80/loop_wrap = true
+tracks/80/keys = {
 "times": PackedFloat32Array(0, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216)]
 }
-tracks/80/type = "value"
-tracks/80/imported = false
-tracks/80/enabled = true
-tracks/80/path = NodePath("Circle of Fifths/C12NPoint_D♭:color")
-tracks/80/interp = 1
-tracks/80/loop_wrap = true
-tracks/80/keys = {
+tracks/81/type = "value"
+tracks/81/imported = false
+tracks/81/enabled = true
+tracks/81/path = NodePath("Circle of Fifths/C12NPoint_D♭:color")
+tracks/81/interp = 1
+tracks/81/loop_wrap = true
+tracks/81/keys = {
 "times": PackedFloat32Array(0, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
 }
-tracks/81/type = "value"
-tracks/81/imported = false
-tracks/81/enabled = true
-tracks/81/path = NodePath("Circle of Fifths/C12NPoint_D:color")
-tracks/81/interp = 1
-tracks/81/loop_wrap = true
-tracks/81/keys = {
+tracks/82/type = "value"
+tracks/82/imported = false
+tracks/82/enabled = true
+tracks/82/path = NodePath("Circle of Fifths/C12NPoint_D:color")
+tracks/82/interp = 1
+tracks/82/loop_wrap = true
+tracks/82/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(0),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
-tracks/82/type = "value"
-tracks/82/imported = false
-tracks/82/enabled = true
-tracks/82/path = NodePath("Circle of Fifths/C12NPoint_E♭:color")
-tracks/82/interp = 1
-tracks/82/loop_wrap = true
-tracks/82/keys = {
+tracks/83/type = "value"
+tracks/83/imported = false
+tracks/83/enabled = true
+tracks/83/path = NodePath("Circle of Fifths/C12NPoint_E♭:color")
+tracks/83/interp = 1
+tracks/83/loop_wrap = true
+tracks/83/keys = {
 "times": PackedFloat32Array(0, 9.9, 10, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
 }
-tracks/83/type = "value"
-tracks/83/imported = false
-tracks/83/enabled = true
-tracks/83/path = NodePath("Circle of Fifths/C12NPoint_E:color")
-tracks/83/interp = 1
-tracks/83/loop_wrap = true
-tracks/83/keys = {
+tracks/84/type = "value"
+tracks/84/imported = false
+tracks/84/enabled = true
+tracks/84/path = NodePath("Circle of Fifths/C12NPoint_E:color")
+tracks/84/interp = 1
+tracks/84/loop_wrap = true
+tracks/84/keys = {
 "times": PackedFloat32Array(0, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6)]
 }
-tracks/84/type = "value"
-tracks/84/imported = false
-tracks/84/enabled = true
-tracks/84/path = NodePath("Circle of Fifths/C12NPoint_F:color")
-tracks/84/interp = 1
-tracks/84/loop_wrap = true
-tracks/84/keys = {
+tracks/85/type = "value"
+tracks/85/imported = false
+tracks/85/enabled = true
+tracks/85/path = NodePath("Circle of Fifths/C12NPoint_F:color")
+tracks/85/interp = 1
+tracks/85/loop_wrap = true
+tracks/85/keys = {
 "times": PackedFloat32Array(0, 1.9, 2, 7.9, 8, 9.9, 10, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36)]
 }
-tracks/85/type = "value"
-tracks/85/imported = false
-tracks/85/enabled = true
-tracks/85/path = NodePath("Circle of Fifths/C12NPoint_G♭:color")
-tracks/85/interp = 1
-tracks/85/loop_wrap = true
-tracks/85/keys = {
+tracks/86/type = "value"
+tracks/86/imported = false
+tracks/86/enabled = true
+tracks/86/path = NodePath("Circle of Fifths/C12NPoint_G♭:color")
+tracks/86/interp = 1
+tracks/86/loop_wrap = true
+tracks/86/keys = {
 "times": PackedFloat32Array(0, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
 }
-tracks/86/type = "value"
-tracks/86/imported = false
-tracks/86/enabled = true
-tracks/86/path = NodePath("Circle of Fifths/C12NPoint_G:color")
-tracks/86/interp = 1
-tracks/86/loop_wrap = true
-tracks/86/keys = {
+tracks/87/type = "value"
+tracks/87/imported = false
+tracks/87/enabled = true
+tracks/87/path = NodePath("Circle of Fifths/C12NPoint_G:color")
+tracks/87/interp = 1
+tracks/87/loop_wrap = true
+tracks/87/keys = {
 "times": PackedFloat32Array(0, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296)]
 }
-tracks/87/type = "value"
-tracks/87/imported = false
-tracks/87/enabled = true
-tracks/87/path = NodePath("Circle of Fifths/C12NPoint_A♭:color")
-tracks/87/interp = 1
-tracks/87/loop_wrap = true
-tracks/87/keys = {
+tracks/88/type = "value"
+tracks/88/imported = false
+tracks/88/enabled = true
+tracks/88/path = NodePath("Circle of Fifths/C12NPoint_A♭:color")
+tracks/88/interp = 1
+tracks/88/loop_wrap = true
+tracks/88/keys = {
 "times": PackedFloat32Array(0, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
 }
-tracks/88/type = "value"
-tracks/88/imported = false
-tracks/88/enabled = true
-tracks/88/path = NodePath("Circle of Fifths/C12NPoint_A:color")
-tracks/88/interp = 1
-tracks/88/loop_wrap = true
-tracks/88/keys = {
+tracks/89/type = "value"
+tracks/89/imported = false
+tracks/89/enabled = true
+tracks/89/path = NodePath("Circle of Fifths/C12NPoint_A:color")
+tracks/89/interp = 1
+tracks/89/loop_wrap = true
+tracks/89/keys = {
 "times": PackedFloat32Array(0, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 1)]
 }
-tracks/89/type = "value"
-tracks/89/imported = false
-tracks/89/enabled = true
-tracks/89/path = NodePath("Circle of Fifths/C12NPoint_B♭:color")
-tracks/89/interp = 1
-tracks/89/loop_wrap = true
-tracks/89/keys = {
-"times": PackedFloat32Array(0, 7.9, 8, 9.9, 10, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34),
-"transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
-}
 tracks/90/type = "value"
 tracks/90/imported = false
 tracks/90/enabled = true
-tracks/90/path = NodePath("Circle of Fifths/C12NPoint_B:color")
+tracks/90/path = NodePath("Circle of Fifths/C12NPoint_B♭:color")
 tracks/90/interp = 1
 tracks/90/loop_wrap = true
 tracks/90/keys = {
-"times": PackedFloat32Array(0, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39),
+"times": PackedFloat32Array(0, 7.9, 8, 9.9, 10, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1109,35 +1109,35 @@ tracks/90/keys = {
 tracks/91/type = "value"
 tracks/91/imported = false
 tracks/91/enabled = true
-tracks/91/path = NodePath("Circle of Fifths/C12NLine1_FtoB♭:default_color")
+tracks/91/path = NodePath("Circle of Fifths/C12NPoint_B:color")
 tracks/91/interp = 1
 tracks/91/loop_wrap = true
 tracks/91/keys = {
-"times": PackedFloat32Array(0, 7.9, 8, 9.9, 10, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32),
-"transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
+"times": PackedFloat32Array(0, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39),
+"transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
 }
 tracks/92/type = "value"
 tracks/92/imported = false
 tracks/92/enabled = true
-tracks/92/path = NodePath("Circle of Fifths/C12NLine2_B♭toE♭:default_color")
-tracks/92/interp = 1
+tracks/92/path = NodePath("Circle of Fifths/ChordSource/ConnectPlayedChords:_line_state_trigger")
+tracks/92/interp = 0
 tracks/92/loop_wrap = true
 tracks/92/keys = {
-"times": PackedFloat32Array(0, 9.9, 10, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34),
-"transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(8, 10, 16, 18, 24, 26, 32, 32.001, 34, 34.001, 35, 35.001, 36, 36.001, 37, 37.001, 38, 38.001, 39, 39.001, 40, 40.001, 41, 41.001, 42, 42.001, 43, 43.001, 44, 44.001, 45, 45.001, 46, 46.001, 47, 47.001, 48, 48.001, 49, 49.001, 50, 50.001, 51, 51.001, 52, 52.001, 53, 53.001, 53.5, 53.501, 54, 54.001, 55, 55.001, 56, 56.001, 58, 58.001, 59, 59.001, 60, 60.001, 61, 61.001, 61.5, 61.501, 62, 62.001, 63, 63.001, 64, 64.001),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 0, 7, 1, 8, 2, 9, 3, 10, 4, 11, 5, 12, 6, 13, 7, 14, 8, 15, 9, 16, 10, 17, 11, 18, 12, 19, 13, 20, 14, 21, 15, 22, 16, 23, 17, 24, 18, 25, 19, 26, 20, 27, 21, 28, 22, 29, 23, 30, 24, 31, 25, 32, 26, 33, 27, 34, 28, 35, 29, 36, 30, 37, 31, 38, 32]
 }
 tracks/93/type = "value"
 tracks/93/imported = false
 tracks/93/enabled = true
-tracks/93/path = NodePath("Circle of Fifths/C12NLine3_E♭toA♭:default_color")
+tracks/93/path = NodePath("Circle of Fifths/C12NLine_0:default_color")
 tracks/93/interp = 1
 tracks/93/loop_wrap = true
 tracks/93/keys = {
-"times": PackedFloat32Array(0, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35),
+"times": PackedFloat32Array(0, 7.9, 8, 9.9, 10, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1145,11 +1145,11 @@ tracks/93/keys = {
 tracks/94/type = "value"
 tracks/94/imported = false
 tracks/94/enabled = true
-tracks/94/path = NodePath("Circle of Fifths/C12NLine4_A♭toD♭:default_color")
+tracks/94/path = NodePath("Circle of Fifths/C12NLine_1:default_color")
 tracks/94/interp = 1
 tracks/94/loop_wrap = true
 tracks/94/keys = {
-"times": PackedFloat32Array(0, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36),
+"times": PackedFloat32Array(0, 9.9, 10, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1157,11 +1157,11 @@ tracks/94/keys = {
 tracks/95/type = "value"
 tracks/95/imported = false
 tracks/95/enabled = true
-tracks/95/path = NodePath("Circle of Fifths/C12NLine5_D♭toG♭:default_color")
+tracks/95/path = NodePath("Circle of Fifths/C12NLine_2:default_color")
 tracks/95/interp = 1
 tracks/95/loop_wrap = true
 tracks/95/keys = {
-"times": PackedFloat32Array(0, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37),
+"times": PackedFloat32Array(0, 15.9, 16, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1169,11 +1169,11 @@ tracks/95/keys = {
 tracks/96/type = "value"
 tracks/96/imported = false
 tracks/96/enabled = true
-tracks/96/path = NodePath("Circle of Fifths/C12NLine6_G♭toB:default_color")
+tracks/96/path = NodePath("Circle of Fifths/C12NLine_3:default_color")
 tracks/96/interp = 1
 tracks/96/loop_wrap = true
 tracks/96/keys = {
-"times": PackedFloat32Array(0, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38),
+"times": PackedFloat32Array(0, 17.9, 18, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1181,11 +1181,11 @@ tracks/96/keys = {
 tracks/97/type = "value"
 tracks/97/imported = false
 tracks/97/enabled = true
-tracks/97/path = NodePath("Circle of Fifths/C12NLine7_BtoE:default_color")
+tracks/97/path = NodePath("Circle of Fifths/C12NLine_4:default_color")
 tracks/97/interp = 1
 tracks/97/loop_wrap = true
 tracks/97/keys = {
-"times": PackedFloat32Array(0, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39),
+"times": PackedFloat32Array(0, 23.9, 24, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1193,11 +1193,11 @@ tracks/97/keys = {
 tracks/98/type = "value"
 tracks/98/imported = false
 tracks/98/enabled = true
-tracks/98/path = NodePath("Circle of Fifths/C12NLine8_EtoA:default_color")
+tracks/98/path = NodePath("Circle of Fifths/C12NLine_5:default_color")
 tracks/98/interp = 1
 tracks/98/loop_wrap = true
 tracks/98/keys = {
-"times": PackedFloat32Array(0, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40),
+"times": PackedFloat32Array(0, 25.9, 26, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1205,11 +1205,11 @@ tracks/98/keys = {
 tracks/99/type = "value"
 tracks/99/imported = false
 tracks/99/enabled = true
-tracks/99/path = NodePath("Circle of Fifths/C12NLine9_AtoA♭:default_color")
+tracks/99/path = NodePath("Circle of Fifths/C12NLine_6:default_color")
 tracks/99/interp = 1
 tracks/99/loop_wrap = true
 tracks/99/keys = {
-"times": PackedFloat32Array(0, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41),
+"times": PackedFloat32Array(0, 31.9, 32, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1217,11 +1217,11 @@ tracks/99/keys = {
 tracks/100/type = "value"
 tracks/100/imported = false
 tracks/100/enabled = true
-tracks/100/path = NodePath("Circle of Fifths/C12NLine10_A♭toD♭:default_color")
+tracks/100/path = NodePath("Circle of Fifths/C12NLine_7:default_color")
 tracks/100/interp = 1
 tracks/100/loop_wrap = true
 tracks/100/keys = {
-"times": PackedFloat32Array(0, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42),
+"times": PackedFloat32Array(0, 33.9, 34, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1229,11 +1229,11 @@ tracks/100/keys = {
 tracks/101/type = "value"
 tracks/101/imported = false
 tracks/101/enabled = true
-tracks/101/path = NodePath("Circle of Fifths/C12NLine11_D♭toC:default_color")
+tracks/101/path = NodePath("Circle of Fifths/C12NLine_8:default_color")
 tracks/101/interp = 1
 tracks/101/loop_wrap = true
 tracks/101/keys = {
-"times": PackedFloat32Array(0, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43),
+"times": PackedFloat32Array(0, 34.9, 35, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1241,11 +1241,11 @@ tracks/101/keys = {
 tracks/102/type = "value"
 tracks/102/imported = false
 tracks/102/enabled = true
-tracks/102/path = NodePath("Circle of Fifths/C12NLine12_CtoF:default_color")
+tracks/102/path = NodePath("Circle of Fifths/C12NLine_9:default_color")
 tracks/102/interp = 1
 tracks/102/loop_wrap = true
 tracks/102/keys = {
-"times": PackedFloat32Array(0, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44),
+"times": PackedFloat32Array(0, 35.9, 36, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1253,11 +1253,11 @@ tracks/102/keys = {
 tracks/103/type = "value"
 tracks/103/imported = false
 tracks/103/enabled = true
-tracks/103/path = NodePath("Circle of Fifths/C12NLine13_FtoE:default_color")
+tracks/103/path = NodePath("Circle of Fifths/C12NLine_10:default_color")
 tracks/103/interp = 1
 tracks/103/loop_wrap = true
 tracks/103/keys = {
-"times": PackedFloat32Array(0, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45),
+"times": PackedFloat32Array(0, 36.9, 37, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1265,11 +1265,11 @@ tracks/103/keys = {
 tracks/104/type = "value"
 tracks/104/imported = false
 tracks/104/enabled = true
-tracks/104/path = NodePath("Circle of Fifths/C12NLine14_EtoA:default_color")
+tracks/104/path = NodePath("Circle of Fifths/C12NLine_11:default_color")
 tracks/104/interp = 1
 tracks/104/loop_wrap = true
 tracks/104/keys = {
-"times": PackedFloat32Array(0, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46),
+"times": PackedFloat32Array(0, 37.9, 38, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1277,11 +1277,11 @@ tracks/104/keys = {
 tracks/105/type = "value"
 tracks/105/imported = false
 tracks/105/enabled = true
-tracks/105/path = NodePath("Circle of Fifths/C12NLine15_AtoA♭:default_color")
+tracks/105/path = NodePath("Circle of Fifths/C12NLine_12:default_color")
 tracks/105/interp = 1
 tracks/105/loop_wrap = true
 tracks/105/keys = {
-"times": PackedFloat32Array(0, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47),
+"times": PackedFloat32Array(0, 38.9, 39, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1289,11 +1289,11 @@ tracks/105/keys = {
 tracks/106/type = "value"
 tracks/106/imported = false
 tracks/106/enabled = true
-tracks/106/path = NodePath("Circle of Fifths/C12NLine16_A♭toD♭:default_color")
+tracks/106/path = NodePath("Circle of Fifths/C12NLine_13:default_color")
 tracks/106/interp = 1
 tracks/106/loop_wrap = true
 tracks/106/keys = {
-"times": PackedFloat32Array(0, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48),
+"times": PackedFloat32Array(0, 39.9, 40, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1301,11 +1301,11 @@ tracks/106/keys = {
 tracks/107/type = "value"
 tracks/107/imported = false
 tracks/107/enabled = true
-tracks/107/path = NodePath("Circle of Fifths/C12NLine17_D♭toC:default_color")
+tracks/107/path = NodePath("Circle of Fifths/C12NLine_14:default_color")
 tracks/107/interp = 1
 tracks/107/loop_wrap = true
 tracks/107/keys = {
-"times": PackedFloat32Array(0, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49),
+"times": PackedFloat32Array(0, 40.9, 41, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1313,11 +1313,11 @@ tracks/107/keys = {
 tracks/108/type = "value"
 tracks/108/imported = false
 tracks/108/enabled = true
-tracks/108/path = NodePath("Circle of Fifths/C12NLine18_CtoF:default_color")
+tracks/108/path = NodePath("Circle of Fifths/C12NLine_15:default_color")
 tracks/108/interp = 1
 tracks/108/loop_wrap = true
 tracks/108/keys = {
-"times": PackedFloat32Array(0, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50),
+"times": PackedFloat32Array(0, 41.9, 42, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1325,11 +1325,11 @@ tracks/108/keys = {
 tracks/109/type = "value"
 tracks/109/imported = false
 tracks/109/enabled = true
-tracks/109/path = NodePath("Circle of Fifths/C12NLine19_FtoE:default_color")
+tracks/109/path = NodePath("Circle of Fifths/C12NLine_16:default_color")
 tracks/109/interp = 1
 tracks/109/loop_wrap = true
 tracks/109/keys = {
-"times": PackedFloat32Array(0, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51),
+"times": PackedFloat32Array(0, 42.9, 43, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1337,11 +1337,11 @@ tracks/109/keys = {
 tracks/110/type = "value"
 tracks/110/imported = false
 tracks/110/enabled = true
-tracks/110/path = NodePath("Circle of Fifths/C12NLine20_EtoA:default_color")
+tracks/110/path = NodePath("Circle of Fifths/C12NLine_17:default_color")
 tracks/110/interp = 1
 tracks/110/loop_wrap = true
 tracks/110/keys = {
-"times": PackedFloat32Array(0, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52),
+"times": PackedFloat32Array(0, 43.9, 44, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1349,11 +1349,11 @@ tracks/110/keys = {
 tracks/111/type = "value"
 tracks/111/imported = false
 tracks/111/enabled = true
-tracks/111/path = NodePath("Circle of Fifths/C12NLine21_AtoA♭:default_color")
+tracks/111/path = NodePath("Circle of Fifths/C12NLine_18:default_color")
 tracks/111/interp = 1
 tracks/111/loop_wrap = true
 tracks/111/keys = {
-"times": PackedFloat32Array(0, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53),
+"times": PackedFloat32Array(0, 44.9, 45, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1361,11 +1361,11 @@ tracks/111/keys = {
 tracks/112/type = "value"
 tracks/112/imported = false
 tracks/112/enabled = true
-tracks/112/path = NodePath("Circle of Fifths/C12NLine22_A♭toD♭:default_color")
+tracks/112/path = NodePath("Circle of Fifths/C12NLine_19:default_color")
 tracks/112/interp = 1
 tracks/112/loop_wrap = true
 tracks/112/keys = {
-"times": PackedFloat32Array(0, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5),
+"times": PackedFloat32Array(0, 45.9, 46, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1373,11 +1373,11 @@ tracks/112/keys = {
 tracks/113/type = "value"
 tracks/113/imported = false
 tracks/113/enabled = true
-tracks/113/path = NodePath("Circle of Fifths/C12NLine23_D♭toC:default_color")
+tracks/113/path = NodePath("Circle of Fifths/C12NLine_20:default_color")
 tracks/113/interp = 1
 tracks/113/loop_wrap = true
 tracks/113/keys = {
-"times": PackedFloat32Array(0, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54),
+"times": PackedFloat32Array(0, 46.9, 47, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1385,11 +1385,11 @@ tracks/113/keys = {
 tracks/114/type = "value"
 tracks/114/imported = false
 tracks/114/enabled = true
-tracks/114/path = NodePath("Circle of Fifths/C12NLine24_CtoF:default_color")
+tracks/114/path = NodePath("Circle of Fifths/C12NLine_21:default_color")
 tracks/114/interp = 1
 tracks/114/loop_wrap = true
 tracks/114/keys = {
-"times": PackedFloat32Array(0, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55),
+"times": PackedFloat32Array(0, 47.9, 48, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1397,11 +1397,11 @@ tracks/114/keys = {
 tracks/115/type = "value"
 tracks/115/imported = false
 tracks/115/enabled = true
-tracks/115/path = NodePath("Circle of Fifths/C12NLine25_FtoE:default_color")
+tracks/115/path = NodePath("Circle of Fifths/C12NLine_22:default_color")
 tracks/115/interp = 1
 tracks/115/loop_wrap = true
 tracks/115/keys = {
-"times": PackedFloat32Array(0, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56),
+"times": PackedFloat32Array(0, 48.9, 49, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1409,11 +1409,11 @@ tracks/115/keys = {
 tracks/116/type = "value"
 tracks/116/imported = false
 tracks/116/enabled = true
-tracks/116/path = NodePath("Circle of Fifths/C12NLine26_EtoA:default_color")
+tracks/116/path = NodePath("Circle of Fifths/C12NLine_23:default_color")
 tracks/116/interp = 1
 tracks/116/loop_wrap = true
 tracks/116/keys = {
-"times": PackedFloat32Array(0, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58),
+"times": PackedFloat32Array(0, 49.9, 50, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1421,11 +1421,11 @@ tracks/116/keys = {
 tracks/117/type = "value"
 tracks/117/imported = false
 tracks/117/enabled = true
-tracks/117/path = NodePath("Circle of Fifths/C12NLine27_AtoG:default_color")
+tracks/117/path = NodePath("Circle of Fifths/C12NLine_24:default_color")
 tracks/117/interp = 1
 tracks/117/loop_wrap = true
 tracks/117/keys = {
-"times": PackedFloat32Array(0, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59),
+"times": PackedFloat32Array(0, 50.9, 51, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1433,11 +1433,11 @@ tracks/117/keys = {
 tracks/118/type = "value"
 tracks/118/imported = false
 tracks/118/enabled = true
-tracks/118/path = NodePath("Circle of Fifths/C12NLine28_GtoC:default_color")
+tracks/118/path = NodePath("Circle of Fifths/C12NLine_25:default_color")
 tracks/118/interp = 1
 tracks/118/loop_wrap = true
 tracks/118/keys = {
-"times": PackedFloat32Array(0, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60),
+"times": PackedFloat32Array(0, 51.9, 52, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1445,11 +1445,11 @@ tracks/118/keys = {
 tracks/119/type = "value"
 tracks/119/imported = false
 tracks/119/enabled = true
-tracks/119/path = NodePath("Circle of Fifths/C12NLine29_CtoF:default_color")
+tracks/119/path = NodePath("Circle of Fifths/C12NLine_26:default_color")
 tracks/119/interp = 1
 tracks/119/loop_wrap = true
 tracks/119/keys = {
-"times": PackedFloat32Array(0, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61),
+"times": PackedFloat32Array(0, 52.9, 53, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1457,11 +1457,11 @@ tracks/119/keys = {
 tracks/120/type = "value"
 tracks/120/imported = false
 tracks/120/enabled = true
-tracks/120/path = NodePath("Circle of Fifths/C12NLine30_FtoE:default_color")
+tracks/120/path = NodePath("Circle of Fifths/C12NLine_27:default_color")
 tracks/120/interp = 1
 tracks/120/loop_wrap = true
 tracks/120/keys = {
-"times": PackedFloat32Array(0, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5),
+"times": PackedFloat32Array(0, 53.4, 53.5, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1469,11 +1469,11 @@ tracks/120/keys = {
 tracks/121/type = "value"
 tracks/121/imported = false
 tracks/121/enabled = true
-tracks/121/path = NodePath("Circle of Fifths/C12NLine31_EtoA:default_color")
+tracks/121/path = NodePath("Circle of Fifths/C12NLine_28:default_color")
 tracks/121/interp = 1
 tracks/121/loop_wrap = true
 tracks/121/keys = {
-"times": PackedFloat32Array(0, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62),
+"times": PackedFloat32Array(0, 53.9, 54, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1481,11 +1481,11 @@ tracks/121/keys = {
 tracks/122/type = "value"
 tracks/122/imported = false
 tracks/122/enabled = true
-tracks/122/path = NodePath("Circle of Fifths/C12NLine32_AtoF:default_color")
+tracks/122/path = NodePath("Circle of Fifths/C12NLine_29:default_color")
 tracks/122/interp = 1
 tracks/122/loop_wrap = true
 tracks/122/keys = {
-"times": PackedFloat32Array(0, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63),
+"times": PackedFloat32Array(0, 54.9, 55, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1493,11 +1493,11 @@ tracks/122/keys = {
 tracks/123/type = "value"
 tracks/123/imported = false
 tracks/123/enabled = true
-tracks/123/path = NodePath("Circle of Fifths/C12NLine33_FtoE:default_color")
+tracks/123/path = NodePath("Circle of Fifths/C12NLine_30:default_color")
 tracks/123/interp = 1
 tracks/123/loop_wrap = true
 tracks/123/keys = {
-"times": PackedFloat32Array(0, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
+"times": PackedFloat32Array(0, 55.9, 56, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
@@ -1505,118 +1505,142 @@ tracks/123/keys = {
 tracks/124/type = "value"
 tracks/124/imported = false
 tracks/124/enabled = true
-tracks/124/path = NodePath("Circle of Fifths/C12NLine34_EtoA:default_color")
+tracks/124/path = NodePath("Circle of Fifths/C12NLine_31:default_color")
 tracks/124/interp = 1
 tracks/124/loop_wrap = true
 tracks/124/keys = {
+"times": PackedFloat32Array(0, 57.9, 58, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63),
+"transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
+}
+tracks/125/type = "value"
+tracks/125/imported = false
+tracks/125/enabled = true
+tracks/125/path = NodePath("Circle of Fifths/C12NLine_32:default_color")
+tracks/125/interp = 1
+tracks/125/loop_wrap = true
+tracks/125/keys = {
+"times": PackedFloat32Array(0, 58.9, 59, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
+"transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0.046656), Color(1, 1, 1, 0)]
+}
+tracks/126/type = "value"
+tracks/126/imported = false
+tracks/126/enabled = true
+tracks/126/path = NodePath("Circle of Fifths/C12NLine_33:default_color")
+tracks/126/interp = 1
+tracks/126/loop_wrap = true
+tracks/126/keys = {
 "times": PackedFloat32Array(0, 59.9, 60, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.07776), Color(1, 1, 1, 0.046656)]
 }
-tracks/125/type = "value"
-tracks/125/imported = false
-tracks/125/enabled = true
-tracks/125/path = NodePath("Circle of Fifths/C12NLine35_AtoG:default_color")
-tracks/125/interp = 1
-tracks/125/loop_wrap = true
-tracks/125/keys = {
+tracks/127/type = "value"
+tracks/127/imported = false
+tracks/127/enabled = true
+tracks/127/path = NodePath("Circle of Fifths/C12NLine_34:default_color")
+tracks/127/interp = 1
+tracks/127/loop_wrap = true
+tracks/127/keys = {
 "times": PackedFloat32Array(0, 60.9, 61, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.1296), Color(1, 1, 1, 0.07776)]
 }
-tracks/126/type = "value"
-tracks/126/imported = false
-tracks/126/enabled = true
-tracks/126/path = NodePath("Circle of Fifths/C12NLine36_GtoC:default_color")
-tracks/126/interp = 1
-tracks/126/loop_wrap = true
-tracks/126/keys = {
+tracks/128/type = "value"
+tracks/128/imported = false
+tracks/128/enabled = true
+tracks/128/path = NodePath("Circle of Fifths/C12NLine_35:default_color")
+tracks/128/interp = 1
+tracks/128/loop_wrap = true
+tracks/128/keys = {
 "times": PackedFloat32Array(0, 61.4, 61.5, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.216), Color(1, 1, 1, 0.1296)]
 }
-tracks/127/type = "value"
-tracks/127/imported = false
-tracks/127/enabled = true
-tracks/127/path = NodePath("Circle of Fifths/C12NLine37_CtoF:default_color")
-tracks/127/interp = 1
-tracks/127/loop_wrap = true
-tracks/127/keys = {
+tracks/129/type = "value"
+tracks/129/imported = false
+tracks/129/enabled = true
+tracks/129/path = NodePath("Circle of Fifths/C12NLine_36:default_color")
+tracks/129/interp = 1
+tracks/129/loop_wrap = true
+tracks/129/keys = {
 "times": PackedFloat32Array(0, 61.9, 62, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.36), Color(1, 1, 1, 0.216)]
 }
-tracks/128/type = "value"
-tracks/128/imported = false
-tracks/128/enabled = true
-tracks/128/path = NodePath("Circle of Fifths/C12NLine38_FtoE:default_color")
-tracks/128/interp = 1
-tracks/128/loop_wrap = true
-tracks/128/keys = {
+tracks/130/type = "value"
+tracks/130/imported = false
+tracks/130/enabled = true
+tracks/130/path = NodePath("Circle of Fifths/C12NLine_37:default_color")
+tracks/130/interp = 1
+tracks/130/loop_wrap = true
+tracks/130/keys = {
 "times": PackedFloat32Array(0, 62.9, 63, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.36)]
 }
-tracks/129/type = "value"
-tracks/129/imported = false
-tracks/129/enabled = true
-tracks/129/path = NodePath("Circle of Fifths/C12NLine39_EtoA:default_color")
-tracks/129/interp = 1
-tracks/129/loop_wrap = true
-tracks/129/keys = {
+tracks/131/type = "value"
+tracks/131/imported = false
+tracks/131/enabled = true
+tracks/131/path = NodePath("Circle of Fifths/C12NLine_38:default_color")
+tracks/131/interp = 1
+tracks/131/loop_wrap = true
+tracks/131/keys = {
 "times": PackedFloat32Array(0, 63.9, 64),
 "transitions": PackedFloat32Array(0, -4, 0),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6)]
 }
-tracks/130/type = "value"
-tracks/130/imported = false
-tracks/130/enabled = true
-tracks/130/path = NodePath("CurrentChordText:text")
-tracks/130/interp = 1
-tracks/130/loop_wrap = true
-tracks/130/keys = {
+tracks/132/type = "value"
+tracks/132/imported = false
+tracks/132/enabled = true
+tracks/132/path = NodePath("CurrentChordText:text")
+tracks/132/interp = 1
+tracks/132/loop_wrap = true
+tracks/132/keys = {
 "times": PackedFloat32Array(0, 1.8, 2, 3.8, 4, 5.8, 6, 7.8, 8, 9.8, 10, 11.8, 12, 13.8, 14, 15.8, 16, 17.8, 18, 19.8, 20, 21.8, 22, 23.8, 24, 25.8, 26, 27.8, 28, 29.8, 30, 31.8, 32, 33.8, 34, 34.8, 35, 35.8, 36, 36.8, 37, 37.8, 38, 38.8, 39, 39.8, 40, 40.8, 41, 41.8, 42, 42.8, 43, 43.8, 44, 44.8, 45, 45.8, 46, 46.8, 47, 47.8, 48, 48.8, 49, 49.8, 50, 50.8, 51, 51.8, 52, 52.8, 53, 53.3, 53.5, 53.8, 54, 54.8, 55, 55.8, 56, 56.8, 57, 57.8, 58, 58.8, 59, 59.8, 60, 60.8, 61, 61.3, 61.5, 61.8, 62, 62.8, 63, 63.8, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": ["", "", "FMaj7", "FMaj7", "FMaj7", "FMaj7", "Fmin7", "Fmin7", "B♭7", "B♭7", "E♭Maj7", "E♭Maj7", "E♭Maj7", "E♭Maj7", "E♭min7", "E♭min7", "A♭7", "A♭7", "D♭Maj7", "D♭Maj7", "D♭Maj7", "D♭Maj7", "C♯min7", "C♯min7", "F♯7", "F♯7", "BMaj7", "BMaj7", "BMaj7", "BMaj7", "Bmin7", "Bmin7", "E7", "E7", "AMaj7", "AMaj7", "A♭7add6", "A♭7add6", "D♭Maj7", "D♭Maj7", "C7", "C7", "FMaj7", "FMaj7", "E7add6", "E7add6", "AMaj7", "AMaj7", "A♭7add6", "A♭7add6", "D♭Maj7", "D♭Maj7", "C7", "C7", "FMaj7", "FMaj7", "E7add6", "E7add6", "AMaj7", "AMaj7", "A♭7add6", "A♭7add6", "D♭Maj9", "D♭Maj9", "C9add6", "C9add6", "FMaj", "FMaj", "E7♭9", "E7♭9", "Amin7", "Amin7", "Gmin7", "Gmin7", "C7", "C7", "FMaj7", "FMaj7", "E7♭9", "E7♭9", "Amin9", "Amin9", "no chord", "no chord", "FMaj", "FMaj", "E7♭9", "E7♭9", "Amin7", "Amin7", "Gmin7", "Gmin7", "C7", "C7", "FMaj7", "FMaj7", "E7♭9", "E7♭9", "Amin9"]
 }
-tracks/131/type = "value"
-tracks/131/imported = false
-tracks/131/enabled = true
-tracks/131/path = NodePath("CurrentLyrics:text")
-tracks/131/interp = 1
-tracks/131/loop_wrap = true
-tracks/131/keys = {
+tracks/133/type = "value"
+tracks/133/imported = false
+tracks/133/enabled = true
+tracks/133/path = NodePath("CurrentLyrics:text")
+tracks/133/interp = 1
+tracks/133/loop_wrap = true
+tracks/133/keys = {
 "times": PackedFloat32Array(0, 1.999, 2, 4.999, 5, 5.999, 6, 6.999, 7, 7.999, 8, 8.999, 9, 9.999, 10, 13.332334, 13.333333, 13.499, 13.5, 13.665667, 13.666667, 13.999, 14, 14.999, 15, 15.999, 16, 16.999, 17, 17.999, 18, 21.332333, 21.333334, 21.499, 21.5, 21.665667, 21.666666, 21.832333, 21.833334, 21.999, 22, 22.999, 23, 23.999, 24, 24.999, 25, 25.999, 26, 29.332333, 29.333334, 29.499, 29.5, 29.665667, 29.666666, 29.832333, 29.833334, 29.999, 30, 30.999, 31, 31.999, 32, 32.999, 33, 33.999, 34, 34.999, 35, 35.999, 36, 36.999, 37, 37.999, 38, 38.999, 39, 39.999, 40, 40.999, 41, 41.999, 42, 42.999, 43, 43.999, 44, 44.999, 45, 45.999, 46, 46.999, 47, 47.999, 48, 48.999, 49, 49.999, 50, 50.332333, 50.333332, 50.66567, 50.666668, 50.999, 51, 51.332333, 51.333332, 51.999, 52, 52.332333, 52.333332, 52.499, 52.5, 52.999, 53, 53.499, 53.5, 53.999, 54, 54.332333, 54.333332, 54.66567, 54.666668, 54.999, 55, 55.499, 55.5, 55.999, 56, 57.999, 58, 58.332333, 58.333332, 58.66567, 58.666668, 58.999, 59, 59.332333, 59.333332, 59.999, 60, 60.499, 60.5, 60.999, 61, 61.499, 61.5, 61.999, 62, 62.332333, 62.333332, 62.66567, 62.666668, 62.999, 63, 63.499, 63.5, 63.999, 64),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
 "values": ["", "", "Close", "Close", "your", "your", "eyes", "eyes", "you'll", "you'll", "be", "be", "here", "here", "soon", "soon", "I[color=dark_gray]-[/color][color=dark_gray]chi[/color]", "I[color=dark_gray]-[/color][color=dark_gray]chi[/color]", "[color=dark_gray]I[/color][color=dark_gray]-[/color]chi", "[color=dark_gray]I[/color][color=dark_gray]-[/color]chi", "ni", "ni", "san", "san", "shi", "shi", "go", "go", "fu[color=dark_gray]-[/color][color=dark_gray]n[/color]", "fu[color=dark_gray]-[/color][color=dark_gray]n[/color]", "[color=dark_gray]fu[/color][color=dark_gray]-[/color]n", "[color=dark_gray]fu[/color][color=dark_gray]-[/color]n", "Do[color=dark_gray]-[/color][color=dark_gray]ki[/color]", "Do[color=dark_gray]-[/color][color=dark_gray]ki[/color]", "[color=dark_gray]Do[/color][color=dark_gray]-[/color]ki", "[color=dark_gray]Do[/color][color=dark_gray]-[/color]ki", "do[color=dark_gray]-[/color][color=dark_gray]ki[/color]", "do[color=dark_gray]-[/color][color=dark_gray]ki[/color]", "[color=dark_gray]do[/color][color=dark_gray]-[/color]ki", "[color=dark_gray]do[/color][color=dark_gray]-[/color]ki", "hon[color=dark_gray]-[/color][color=dark_gray]tou[/color]", "hon[color=dark_gray]-[/color][color=dark_gray]tou[/color]", "[color=dark_gray]hon[/color][color=dark_gray]-[/color]tou", "[color=dark_gray]hon[/color][color=dark_gray]-[/color]tou", "ni", "ni", "ne[color=dark_gray]-[/color][color=dark_gray]tai[/color]", "ne[color=dark_gray]-[/color][color=dark_gray]tai[/color]", "[color=dark_gray]ne[/color][color=dark_gray]-[/color]tai", "[color=dark_gray]ne[/color][color=dark_gray]-[/color]tai", "De[color=dark_gray]-[/color][color=dark_gray]mo[/color]", "De[color=dark_gray]-[/color][color=dark_gray]mo[/color]", "[color=dark_gray]De[/color][color=dark_gray]-[/color]mo", "[color=dark_gray]De[/color][color=dark_gray]-[/color]mo", "ko[color=dark_gray]-[/color][color=dark_gray]no[/color]", "ko[color=dark_gray]-[/color][color=dark_gray]no[/color]", "[color=dark_gray]ko[/color][color=dark_gray]-[/color]no", "[color=dark_gray]ko[/color][color=dark_gray]-[/color]no", "wa[color=dark_gray]-[/color][color=dark_gray]do[/color]", "wa[color=dark_gray]-[/color][color=dark_gray]do[/color]", "[color=dark_gray]wa[/color][color=dark_gray]-[/color]do", "[color=dark_gray]wa[/color][color=dark_gray]-[/color]do", "de[color=dark_gray]-[/color][color=dark_gray]ki[/color][color=dark_gray]-[/color][color=dark_gray]nai[/color]", "de[color=dark_gray]-[/color][color=dark_gray]ki[/color][color=dark_gray]-[/color][color=dark_gray]nai[/color]", "[color=dark_gray]de[/color][color=dark_gray]-[/color]ki[color=dark_gray]-[/color][color=dark_gray]nai[/color]", "[color=dark_gray]de[/color][color=dark_gray]-[/color]ki[color=dark_gray]-[/color][color=dark_gray]nai[/color]", "[color=dark_gray]de[/color][color=dark_gray]-[/color][color=dark_gray]ki[/color][color=dark_gray]-[/color]nai", "[color=dark_gray]de[/color][color=dark_gray]-[/color][color=dark_gray]ki[/color][color=dark_gray]-[/color]nai", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]suuu![/color]", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]suuu![/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]suuu![/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]suuu![/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]suuu!", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]suuu!", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "Close", "Close", "your", "your", "eyes", "eyes", "and", "and", "you'll", "you'll", "leave", "leave", "this", "this", "dream!", "dream!", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "O[color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color]ya[color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color]su[color=dark_gray]-[/color][color=dark_gray]mi[/color]", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "[color=dark_gray]O[/color][color=dark_gray]-[/color][color=dark_gray]ya[/color][color=dark_gray]-[/color][color=dark_gray]su[/color][color=dark_gray]-[/color]mi", "I", "I", "know", "know", "that", "that", "it's", "it's", "hard", "hard", "to", "to", "do"]
 }
-tracks/132/type = "value"
-tracks/132/imported = false
-tracks/132/enabled = true
-tracks/132/path = NodePath("CurrentKey:text")
-tracks/132/interp = 1
-tracks/132/loop_wrap = true
-tracks/132/keys = {
+tracks/134/type = "value"
+tracks/134/imported = false
+tracks/134/enabled = true
+tracks/134/path = NodePath("CurrentKey:text")
+tracks/134/interp = 1
+tracks/134/loop_wrap = true
+tracks/134/keys = {
 "times": PackedFloat32Array(0, 1.8, 2, 5.8, 6, 13.8, 14, 21.8, 22, 29.8, 30, 33.8, 34),
 "transitions": PackedFloat32Array(0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0, -4, 0),
 "update": 0,
-"values": ["", "", "F major", "F major", "E- major", "E- major", "D- major", "D- major", "B major", "B major", "A major", "A major", "A minor"]
+"values": ["", "", "F major", "F major", "E♭ major", "E♭ major", "D♭ major", "D♭ major", "B major", "B major", "A major", "A major", "A minor"]
 }
-tracks/133/type = "audio"
-tracks/133/imported = false
-tracks/133/enabled = true
-tracks/133/path = NodePath("AudioStreamPlayer")
-tracks/133/interp = 1
-tracks/133/loop_wrap = true
-tracks/133/keys = {
+tracks/135/type = "audio"
+tracks/135/imported = false
+tracks/135/enabled = true
+tracks/135/path = NodePath("AudioStreamPlayer")
+tracks/135/interp = 1
+tracks/135/loop_wrap = true
+tracks/135/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -1624,7 +1648,7 @@ tracks/133/keys = {
 }],
 "times": PackedFloat32Array(2)
 }
-tracks/133/use_blend = true
+tracks/135/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4pb6b"]
 _data = {
@@ -1709,7 +1733,7 @@ offset_right = 966.0
 offset_bottom = 569.0
 theme = ExtResource("11_4pb6b")
 theme_override_constants/outline_size = 6
-text = "D♭Maj7"
+text = "B♭7"
 text_source = 2
 
 [node name="CurrentLyrics" parent="." unique_id=948670699 instance=ExtResource("10_0d2eh")]
@@ -1719,7 +1743,7 @@ offset_right = 504.0
 offset_bottom = 586.0
 theme = ExtResource("11_4pb6b")
 theme_override_constants/outline_size = 8
-text = "[color=dark_gray]fu[/color][color=dark_gray]-[/color]n"
+text = "be"
 text_source = 1
 transition_time = 0.001
 
@@ -1730,7 +1754,7 @@ offset_right = 915.0
 offset_bottom = 619.0
 theme = ExtResource("11_4pb6b")
 theme_override_constants/outline_size = 8
-text = "D- major"
+text = "E♭ major"
 horizontal_alignment = 0
 text_source = 3
 
