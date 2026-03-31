@@ -75,6 +75,7 @@ var _next_line_id := 0
 var _line_state_trigger: int:
 	set(value):
 		var line_to_update := _lines[value]
+		# TODO: perf: stop calling _position_line so often. debounce, memoize, or change animation track?
 		print_verbose("calling _position_line from _line_state_trigger setter = %s. line_to_update=%s" % [value, line_to_update])
 		_position_line(line_to_update)
 		print_verbose("done calling _position_line setter")
