@@ -240,16 +240,26 @@ func apply_animation(animation_step: Dictionary[Variant, Dictionary], player: An
 				if keyframe.lead_in_timespan > 0:
 					# try to add a lead-in keyframe too
 					var lead_in_time := keyframe.time - keyframe.lead_in_timespan
+					var previous_time: float
+					var previous_value: Variant
 					if previous_keyframe != null:
-						# only add lead-in keyframe if lead_in_time comes after the previous keyframe
-						if lead_in_time > previous_keyframe.time:
-							animation.track_insert_key(track_idx, lead_in_time, previous_keyframe.value, keyframe.lead_in_transition)
-							print_verbose("    added lead-in keyframe for (%fs: val=%s, easing=%f)" % [lead_in_time, previous_keyframe.value, keyframe.lead_in_transition])
-						else:
-							# set transition on previous keyframe to animate into this one
-							var key_idx := animation.track_find_key(track_idx, previous_keyframe.time, Animation.FindMode.FIND_MODE_EXACT)
-							animation.track_set_key_transition(track_idx, key_idx, keyframe.lead_in_transition)
+						previous_time = previous_keyframe.time
+						previous_value = previous_keyframe.value
+					elif k is NodeProvider.NodePromise:
+						# if these keyframes are coming from a NodePromise, use its initial values
+						previous_time = -999 # TODO: double check in track that there is actually no keyframe. otherwise we'll get extra keyframes in the middle of previous usages of promised nodes...
+						previous_value = (k as NodeProvider.NodePromise)._registration.initial_prop_values[property_name]
 					else:
 						pass # TODO: maybe I can set some default value here? for now, just expect widgets to set a keyframe at time=0 with no lead-in
 						printerr("Cannot add a lead-in keyframe on the first keyframe of a track, as I don't know what previous value to set.")
+						continue
+
+					# only add lead-in keyframe if lead_in_time comes after the previous keyframe
+					if lead_in_time > previous_time:
+						animation.track_insert_key(track_idx, lead_in_time, previous_value, keyframe.lead_in_transition)
+						print_verbose("    added lead-in keyframe for (%fs: val=%s, easing=%f)" % [lead_in_time, previous_value, keyframe.lead_in_transition])
+					else:
+						# set transition on previous keyframe to animate into this one
+						var key_idx := animation.track_find_key(track_idx, previous_time, Animation.FindMode.FIND_MODE_EXACT)
+						animation.track_set_key_transition(track_idx, key_idx, keyframe.lead_in_transition)
 				previous_keyframe = keyframe
