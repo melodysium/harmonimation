@@ -96,13 +96,13 @@ func _ready() -> void:
 		_c12n.add_child(circle, true)
 		#circle.visible = false # start off by default
 		#circle.position = pitch_info.pos
-	
+
 	self._move_pitch_nodes()
 	#self._configure_pitch_circle_nodes()
-	
+
 	# re-compute layout whenever necessary
 	_c12n.connect("layout_changed", _move_pitch_nodes)
-	
+
 	## connect animation signals
 	#super._connect_signals()
 
@@ -137,7 +137,7 @@ func hrmn_animate(music_data: Dictionary) -> Dictionary[Variant, Dictionary]:
 	animations = Utils.merge_animations(animations, animate_chord_roots(chord_roots))
 
 	# TODO: animate notes played
-	
+
 	print_verbose("C12NVoice.hrmn_animate(): end")
 	return animations
 
@@ -149,13 +149,13 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
 	var selected_pitches: Array[int] = []
 	var previous_pitch_circle_colors := Utils.fill_array(12, Color.TRANSPARENT)
 	var previous_selected_pitch_class := -1 # -1 = none, 0-11 = selected
-	
+
 	# set up top-level anims
 	var anims: Dictionary[Variant, Dictionary] = {}
 	# set initial states at time 0
 	for i in range(12):
 		anims[_pitch_circle_nodes[i]] = {"color": [Utils.PropertyKeyframePoint.new(previous_pitch_circle_colors[i], 0)]}
-	
+
 	# loop over all chord roots in the piece
 	for chord_root: Dictionary in chord_roots:
 		var time: float = chord_root["time"]
@@ -164,12 +164,12 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
 		if new_pitch_class == previous_selected_pitch_class:
 			# same pitch, no need to animate
 			continue
-		
+
 		# record this pitch in the selected_pitches array
 		selected_pitches.insert(0, new_pitch_class)
 		if _voice.max_active != null and selected_pitches.size() > _voice.max_active.v:
 			selected_pitches.pop_back()
-		
+
 		# create a new pitch_circle_colors for this new selection
 		var new_pitch_circle_colors: Array[Color] = Array(Utils.fill_array(12, Color.TRANSPARENT), TYPE_COLOR, "", null)
 		var selected_indexes_to_set := range(selected_pitches.size())
@@ -180,7 +180,7 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
 			var color := Color.WHITE
 			color.a = _voice.alpha_decay_factor ** i
 			new_pitch_circle_colors[pitch_class] = color
-		
+
 		# create map of changes per node
 		for i in range(12):
 			if previous_pitch_circle_colors[i] != new_pitch_circle_colors[i]:

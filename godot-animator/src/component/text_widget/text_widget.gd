@@ -56,19 +56,19 @@ func animate_lyrics(lyrics: Array[Dictionary]) -> Dictionary[Variant, Dictionary
 	  #"time": 13.333333333333334,
 	  #"_type": "MusicDataTiming[list]"
 	#},
-	
+
 	var animations: Array[Utils.PropertyKeyframePoint] = [Utils.PropertyKeyframePoint.new("", 0)]
 	var animation_map: Dictionary[Variant, Dictionary] = {self: {
 		"text": animations
 	}}
-	
+
 	for lyric in lyrics:
 		print("starting lyric loop. lyric=%s" % [lyric])
 		var syllables: Array[Dictionary] = Array(Utils.as_array(lyric["elem"]), TYPE_DICTIONARY, "", null)
 		var syllable_texts: Array[String] = Array(
 			syllables.map(func (syllable_dict: Dictionary) -> String: return syllable_dict["elem"]),
 			TYPE_STRING, "", null)
-		
+
 		# loop over each syllable, adding an animation for each syllable
 		for voiced_syllable_idx in range(syllables.size()):
 			# animate to this syllable being highlighted, all other syllables grayed out
@@ -87,12 +87,12 @@ func animate_lyrics(lyrics: Array[Dictionary]) -> Dictionary[Variant, Dictionary
 				else:
 					new_text_parts.append("[color=dark_gray]%s[/color]" % [this_syllable])
 			var new_text: String = new_text_parts.reduce(func (acc: String, el: String) -> String: return acc + el, "")
-			
+
 			# add animation for this syllable
-			
+
 			# if previous animation was too recent, just add this as a single keyframe
 			animations.append(Utils.PropertyKeyframePoint.new(new_text, time, 0.0, transition_time, -4.0))
-	
+
 	return animation_map
 
 
@@ -101,12 +101,12 @@ func animate_chords(chords: Array[Dictionary]) -> Dictionary[Variant, Dictionary
 	var animation_map: Dictionary[Variant, Dictionary] = {self: {
 		"text": animations
 	}}
-	
+
 	for chord in chords:
 		var time: float = chord["time"]
 		var chord_text: String = chord["elem"]["name"]
 		animations.append(Utils.PropertyKeyframePoint.new(chord_text, time, 0.0, transition_time, -4.0))
-	
+
 	return animation_map
 
 
@@ -116,10 +116,10 @@ func animate_keys(keys: Array[Dictionary]) -> Dictionary[Variant, Dictionary]:
 	var animation_map: Dictionary[Variant, Dictionary] = {self: {
 		"text": animations
 	}}
-	
+
 	for key in keys:
 		var time: float = key["time"]
 		var key_text: String = key["elem"]["name"]
 		animations.append(Utils.PropertyKeyframePoint.new(key_text, time, 0.0, transition_time, -4.0))
-	
+
 	return animation_map

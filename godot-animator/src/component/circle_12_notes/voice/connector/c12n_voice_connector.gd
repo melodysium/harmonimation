@@ -67,7 +67,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	# re-compute layout whenever necessary
 	_c12n.connect("layout_changed", _update_lines)
-	
+
 	## connect animation signals
 	#super._connect_signals()
 	pass
@@ -108,7 +108,7 @@ func hrmn_animate(music_data: Dictionary) -> Dictionary[Variant, Dictionary]:
 	print_verbose("C12NVoiceConnector.hrmn_animate(): animating chord roots")
 	var chord_roots: Array[Dictionary] = Array(Utils.as_array(music_data["chord_roots"]), TYPE_DICTIONARY, "", null)
 	animations = Utils.merge_animations(animations, animate_chord_roots(chord_roots))
-	
+
 	print_verbose("C12NVoiceConnector.hrmn_animate(): end")
 	return animations
 
@@ -124,7 +124,7 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
 		var time: float = chord_root["time"]
 		var newest_pitch_class: int = chord_root["elem"]["pitchClass"]
 		print_verbose("  start loop. time=%f, newest_pitch_class=%d" % [time, newest_pitch_class])
-		
+
 		if selected_pitches.size() == 0:
 			# only operate on pairs of selected pitches
 			selected_pitches.append(newest_pitch_class)
@@ -136,7 +136,7 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
 		# new chord! we want to animate it
 		selected_pitches.append(newest_pitch_class)
 		print_verbose("    new selected_pitches=%s, previous_pitch_class=%d" % [selected_pitches, previous_pitch_class])
-		
+
 		# setup for adding a line
 		var new_line := Line2D.new()
 		new_line.default_color = Color.TRANSPARENT
@@ -152,8 +152,7 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
 		_c12n.add_child(new_line)
 		anims[new_line] = {"default_color": [Utils.PropertyKeyframePoint.new(Color.TRANSPARENT, 0)]}
 		previous_line_states[new_line] = Color.TRANSPARENT
-		# TODO: debug incorrect line colors set in keyframes
-		
+
 		# setup for removing a line
 		if _voice.max_active != null and selected_pitches.size() > _voice.max_active.v:
 			# remove from selected pitches
@@ -165,7 +164,7 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
 			Utils.as_array(anims[old_line]["default_color"]).append(Utils.PropertyKeyframePoint.new(Color.TRANSPARENT, time, 0.0, 0.1, -4.0))
 		
 		print_verbose("    setting up for new selected_pitches: %s at time %ss" % [selected_pitches, time])
-		
+
 		for i in range(selected_pitches.size() - 1):
 			var line_idx := _lines.size() - 1 - i
 			#var color := Color(1.0, 1.0, 1.0, 0.6) ** i # doesn't work :(

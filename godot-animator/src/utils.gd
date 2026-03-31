@@ -23,7 +23,7 @@ var NODE_PROVIDER := NodeProvider.new()
 # TODO: there's actually just printerr(). why is this here?
 func print_err(...args: Array) -> void:
 	print_rich("[color=red]", "".join(args), "[/color]")
-	
+
 ## Typing workaround. "<val> as Array" triggers UNSAFE_CAST warning, so this workaround is preferred for now
 func as_array(val: Variant) -> Array:
 	return val
@@ -236,7 +236,7 @@ func apply_animation(animation_step: Dictionary[Variant, Dictionary], player: An
 			for keyframe: PropertyKeyframePoint in keyframes:
 				animation.track_insert_key(track_idx, keyframe.time, keyframe.value, keyframe.transition)
 				print_verbose("    added keyframe for (%fs: val=%s, easing=%f)" % [keyframe.time, keyframe.value, keyframe.transition])
-				
+
 				if keyframe.lead_in_timespan > 0:
 					# try to add a lead-in keyframe too
 					var lead_in_time := keyframe.time - keyframe.lead_in_timespan

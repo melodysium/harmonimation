@@ -110,10 +110,10 @@ func _ready() -> void:
 
 	self._move_pitch_nodes()
 	self._configure_pitch_text_nodes()
-	
+
 	# re-compute layout whenever necessary
 	_c12n.connect("layout_changed", _move_pitch_nodes)
-	
+
 	## connect animation signals
 	#super._connect_signals()
 
@@ -158,7 +158,7 @@ func hrmn_animate(music_data: Dictionary) -> Dictionary[Variant, Dictionary]:
 	print_verbose("hrmn_animate(): animating key changes")
 	var keys: Array[Dictionary] = Array(Utils.as_array(music_data["keys"]), TYPE_DICTIONARY, "", null)
 	animations = Utils.merge_animations(animations, animate_key_changes(keys))
-	
+
 	print_verbose("C12NVoice.hrmn_animate(): end")
 	return animations
 
@@ -170,7 +170,7 @@ func animate_key_changes(keys: Array[Dictionary]) -> Dictionary[Variant, Diction
 	var anims: Dictionary[Variant, Dictionary] = {}
 	# track previous key to skip duplicates
 	var previous_key: Array[int] = Array(Utils.as_array(keys[0]["elem"]["pitches"]), TYPE_INT, "", null)
-	# track colors from previous chord to skip any 
+	# track colors from previous chord to skip any
 	var previous_pitch_text_colors: Array[Color] = _compute_pitch_text_colors(previous_key)
 	# add keyfames at time 0
 	for i in range(12):

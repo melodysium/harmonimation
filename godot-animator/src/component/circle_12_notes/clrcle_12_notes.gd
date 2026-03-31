@@ -226,7 +226,7 @@ func hrmn_animate(music_data: Dictionary) -> Dictionary[Variant, Dictionary]:
 	print_verbose("hrmn_animate(): animating key changes")
 	var keys: Array[Dictionary] = Array(Utils.as_array(music_data["keys"]), TYPE_DICTIONARY, "", null)
 	animations = Utils.merge_animations(animations, animate_key_changes(keys))
-	
+
 	print_verbose("hrmn_animate(): end")
 	return animations
 
@@ -261,7 +261,7 @@ func animate_key_changes(keys: Array[Dictionary]) -> Dictionary[Variant, Diction
 			# in the main key-change animation, add the follow-up step to retract the arc end alongside the rotation
 			anims[self]["rotate_arc_end_angle"].append(Utils.PropertyKeyframePoint.new(0.0, key["time"], 0.0, transition_time, -4.0))
 			#key_change_anims.append(Utils.PropertyChange.new("rotate_arc_end_angle", previous_rotate_angle, new_rotate_angle))
-			
+
 			# animate circle rotating
 			anims[self]["rotate_angle"].append(Utils.PropertyKeyframePoint.new(new_rotate_angle, key["time"], 0.0, transition_time, -4.0))
 			previous_root_pitch_class = root_pitch_class
