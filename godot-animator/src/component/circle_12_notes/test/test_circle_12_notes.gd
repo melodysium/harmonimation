@@ -16,8 +16,5 @@ func _ready() -> void:
 	if animation_player != null:
 		var animation := Utils.setup_animation(animation_player)
 		#Utils.apply_animation(circle_12_notes.animate_rotate(0, PI / 3, 2, 3), animation_player, animation)
-		
-		for anim in circle_12_notes.hrmn_animate(Utils.MUSIC_DATA):
-			Utils.apply_animation(anim, animation_player, animation)
-
+		Utils.apply_animation(circle_12_notes.hrmn_animate(Utils.MUSIC_DATA), animation_player, animation)
 	pass
