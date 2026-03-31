@@ -82,6 +82,7 @@ class NodeTypeRegistration:
 		if promise.id in _nodes:
 			return _nodes[promise.id]
 		# dummy implementation: always instantiate and return new node
+		print_verbose("NodeProvider.answer(): resolving promise for id=%d" % [promise.id])
 		var node = promise._registration.init_fn.call(player, animation)
 		_nodes[promise.id] = node
 		# TODO: add property keyframes for all initial_prop_values

@@ -72,11 +72,12 @@ var _next_line_id := 0
 # 1. set points in animation track. problem: will probably conflict with signals that update it too.
 # 2. Call Method track. problem: doesn't run in editor preview.
 # 3. animate a dummy property with setter which calls desired function. god i hate this
-var _line_state_trigger: LineState:
+var _line_state_trigger: int:
 	set(value):
-		print("calling _position_line from _line_state_trigger setter = %s" % [value])
-		_position_line(value)
-		print("done calling _position_line setter")
+		var line_to_update := _lines[value]
+		print_verbose("calling _position_line from _line_state_trigger setter = %s. line_to_update=%s" % [value, line_to_update])
+		_position_line(line_to_update)
+		print_verbose("done calling _position_line setter")
 
 #endregion
 
@@ -130,7 +131,11 @@ func _position_line(line_state: LineState) -> void:
 		printerr("C12NVoiceConnector._position_line() called with null arg! skipping")
 		return
 	var arr := _compute_line_pos(line_state)
-	line_state.peek_line().points = arr
+	var line := line_state.peek_line()
+	if line == null:
+		printerr("C12NVoiceConnector._position_line() got null Line2D from line_state.peek_line()! skipping")
+		return
+	line.points = arr
 
 
 func _compute_line_pos(line_state: LineState) -> PackedVector2Array:
@@ -196,7 +201,7 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
 		anims[new_line] = {"default_color": []}
 		#var line_pos := _compute_line_pos(line_state) # can't directly position line imperatively here, must be done via animated property
 		# this will cause the line position to be updated
-		Utils.as_array(anims[self]["_line_state_trigger"]).append(Utils.PropertyKeyframePoint.new(new_line, time, 0.0))
+		Utils.as_array(anims[self]["_line_state_trigger"]).append(Utils.PropertyKeyframePoint.new(_lines.size() - 1, time, 0.0))
 		previous_line_states[new_line] = Color.TRANSPARENT
 
 		# setup for removing a line
@@ -210,7 +215,7 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
 			old_line.done(time) # tell the promise that this is when we're done with this line
 			Utils.as_array(anims[old_line]["default_color"]).append(Utils.PropertyKeyframePoint.new(Color.TRANSPARENT, time, 0.0, 0.1, -4.0))
 			# add a trigger for positioning line here (in case user is scrubbing backwards on timeline)
-			Utils.as_array(anims[self]["_line_state_trigger"]).append(Utils.PropertyKeyframePoint.new(old_line, time + 0.001, 0.0))
+			Utils.as_array(anims[self]["_line_state_trigger"]).append(Utils.PropertyKeyframePoint.new(old_line_idx, time + 0.001, 0.0))
 
 		print_verbose("    setting up for new selected_pitches: %s at time %ss" % [selected_pitches, time])
 
