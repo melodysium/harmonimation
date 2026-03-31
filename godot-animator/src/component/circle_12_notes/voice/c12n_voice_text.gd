@@ -149,10 +149,10 @@ func _compute_pitch_text_colors(pitches: Array[int]) -> Array[Color]:
 #region animations
 
 ## Given structured information about the song, create a list of animations to play at set times.
-## Full return type: Dictionary[Node, Dictionary[String(property), Array[Keyframe]]
-func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
+## Full return type: Dictionary[Union[Node, NodePromise], Dictionary[String(property), Array[Keyframe]]
+func hrmn_animate(music_data: Dictionary) -> Dictionary[Variant, Dictionary]:
 	print_verbose("C12NVoice.hrmn_animate(): start")
-	var animations: Dictionary[Node, Dictionary] = {}
+	var animations: Dictionary[Variant, Dictionary] = {}
 
 	# animate key changes
 	print_verbose("hrmn_animate(): animating key changes")
@@ -163,11 +163,11 @@ func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
 	return animations
 
 
-func animate_key_changes(keys: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
+func animate_key_changes(keys: Array[Dictionary]) -> Dictionary[Variant, Dictionary]:
 	print_verbose("animate_key_changes(): start")
 
 	# build a sequence of rotation animations to play
-	var anims: Dictionary[Node, Dictionary] = {}
+	var anims: Dictionary[Variant, Dictionary] = {}
 	# track previous key to skip duplicates
 	var previous_key: Array[int] = Array(Utils.as_array(keys[0]["elem"]["pitches"]), TYPE_INT, "", null)
 	# track colors from previous chord to skip any 

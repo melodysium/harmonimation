@@ -126,10 +126,10 @@ func _move_pitch_nodes() -> void:
 #region animations
 
 ## Given structured information about the song, create a list of animations to play at set times.
-## Full return type: 
-func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
+## Full return type:
+func hrmn_animate(music_data: Dictionary) -> Dictionary[Variant, Dictionary]:
 	print_verbose("C12NVoice.hrmn_animate(): start")
-	var animations: Dictionary[Node, Dictionary] ={}
+	var animations: Dictionary[Variant, Dictionary] ={}
 
 	## animate chord roots
 	print_verbose("hrmn_animate(): animating chord roots")
@@ -142,7 +142,7 @@ func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
 	return animations
 
 
-func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
+func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, Dictionary]:
 	print_verbose("animate_chord_roots(): start")
 
 	# set up loop vars
@@ -151,7 +151,7 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Node, Dic
 	var previous_selected_pitch_class := -1 # -1 = none, 0-11 = selected
 	
 	# set up top-level anims
-	var anims: Dictionary[Node, Dictionary] = {}
+	var anims: Dictionary[Variant, Dictionary] = {}
 	# set initial states at time 0
 	for i in range(12):
 		anims[_pitch_circle_nodes[i]] = {"color": [Utils.PropertyKeyframePoint.new(previous_pitch_circle_colors[i], 0)]}

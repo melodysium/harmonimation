@@ -99,10 +99,10 @@ func _position_line(line_state: LineState) -> void:
 #region animations
 
 ## Given structured information about the song, create a list of animations to play at set times.
-## Full return type: Dictionary[Node, Dictionary[String(property), Array[Keyframe]]
-func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
+## Full return type: Dictionary[Union[Node, NodePromise], Dictionary[String(property), Array[Keyframe]]
+func hrmn_animate(music_data: Dictionary) -> Dictionary[Variant, Dictionary]:
 	print_verbose("C12NVoiceConnector.hrmn_animate(): start")
-	var animations: Dictionary[Node, Dictionary] = {}
+	var animations: Dictionary[Variant, Dictionary] = {}
 
 	## animate chord roots
 	print_verbose("C12NVoiceConnector.hrmn_animate(): animating chord roots")
@@ -113,9 +113,9 @@ func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
 	return animations
 
 
-func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
+func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, Dictionary]:
 	print_verbose("C12NVoiceConnector.animate_chord_roots(): start")
-	var anims: Dictionary[Node, Dictionary] = {}
+	var anims: Dictionary[Variant, Dictionary] = {}
 
 	var selected_pitches: Array[int] = []
 	var previous_line_states: Dictionary[Node, Color] = {} # TODO maybe expand Color into a full LineState?

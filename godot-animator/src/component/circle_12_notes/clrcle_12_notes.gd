@@ -217,10 +217,10 @@ func _ready() -> void:
 
 
 ## Given structured information about the song, create a list of animations to play at set times.
-## Full return type: Dictionary[Node, Dictionary[String(property), Array[PropertyKeyframePoint]]
-func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
+## Full return type: Dictionary[Union[Node, NodePromise], Dictionary[String(property), Array[PropertyKeyframePoint]]
+func hrmn_animate(music_data: Dictionary) -> Dictionary[Variant, Dictionary]:
 	print_verbose("hrmn_animate(): start")
-	var animations: Dictionary[Node, Dictionary] = {}
+	var animations: Dictionary[Variant, Dictionary] = {}
 
 	# animate key changes
 	print_verbose("hrmn_animate(): animating key changes")
@@ -231,8 +231,8 @@ func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
 	return animations
 
 
-## Full return type: Dictionary[Node, Dictionary[String(property), Array[PropertyKeyframePoint]]
-func animate_key_changes(keys: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
+## Full return type: Dictionary[Union[Node, NodePromise], Dictionary[String(property), Array[PropertyKeyframePoint]]
+func animate_key_changes(keys: Array[Dictionary]) -> Dictionary[Variant, Dictionary]:
 	print_verbose("animate_key_changes(): start")
 
 	# set initial animation states
@@ -242,7 +242,7 @@ func animate_key_changes(keys: Array[Dictionary]) -> Dictionary[Node, Dictionary
 		#Array(Utils.as_array(keys[0]["elem"]["pitches"]), TYPE_INT, "", null))
 
 	# build a sequence of rotation animations to play
-	var anims: Dictionary[Node, Dictionary] = {self: {
+	var anims: Dictionary[Variant, Dictionary] = {self: {
 		"rotate_angle": [Utils.PropertyKeyframePoint.new(_angle_for_pitch_at_top(previous_root_pitch_class), 0)],
 		"rotate_arc_end_angle": [Utils.PropertyKeyframePoint.new(0, 0)],
 	}}

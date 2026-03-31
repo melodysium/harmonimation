@@ -133,16 +133,11 @@ class PropertyKeyframePoint:
 		self.lead_in_transition = _lead_in_transition
 
 
-# TODO: probably don't need this, just use Dict[N, Dict[Str, Arr[Keyframe]]] as a function arg
-class AnimationSpec:
-	var nodes: Dictionary[Node, Dictionary] # Dictionary[Node, Dictionary[String(property), Array[Keyframe]]
-
-
-func merge_animations(a1: Dictionary[Node, Dictionary], a2: Dictionary[Node, Dictionary]) -> Dictionary[Node, Dictionary]:
-	var ret: Dictionary[Node, Dictionary] = Dictionary(a1,
-		TYPE_OBJECT, "Node", null,
+func merge_animations(a1: Dictionary[Variant, Dictionary], a2: Dictionary[Variant, Dictionary]) -> Dictionary[Variant, Dictionary]:
+	var ret: Dictionary[Variant, Dictionary] = Dictionary(a1,
+		TYPE_NIL, "", null,
 		TYPE_DICTIONARY, "", null,)
-	for node: Node in a2.keys():
+	for node: Variant in a2.keys():
 		if !ret.has(node):
 			# copy and set from a2 to ret
 			ret[node] = Dictionary(a2[node],
@@ -211,19 +206,25 @@ func find_or_make_track(player: AnimationPlayer, animation: Animation, node: Nod
 
 
 ## Create at runtime an Animation on the specified AnimationPlayer with the specified animation properties.
-## animation_step full type: Dictionary[Node, Dictionary[String(property), Array[PropertyKeyframePoint]]
-func apply_animation(animation_step: Dictionary[Node, Dictionary], player: AnimationPlayer, animation: Animation) -> void:
+## animation_step full type: Dictionary[Union[Node, NodeProvider], Dictionary[String(property), Array[PropertyKeyframePoint]]
+func apply_animation(animation_step: Dictionary[Variant, Dictionary], player: AnimationPlayer, animation: Animation) -> void:
 	# TODO: make configurable whether to delete existing track if it exists
 	print("Utils.apply_animation(%s, %s, %s): start" % [
-		animation_step.keys().map(func (n: Node) -> String: return n.name),
+		animation_step.keys().map(func (n: Variant) -> String: return n.name if n is Node else str(n)),
 		animation_step.values()[0].keys(),
 		animation_step.values()[0].values()[0].map(func (k: PropertyKeyframePoint) -> float: return k.time)
 		])
 
 
 	# Loop over all nodes to animate
-	for node: Node in animation_step.keys():
-		var property_changes: Dictionary = animation_step[node] # Dictionary[String, Array[PropertyKeyframePoint]] NOTE: type hinting seems to break here with weird "cant cast <X> to <X>" errors
+	for k: Variant in animation_step.keys():
+		var node: Node
+		if k is Node:
+			node = k
+		elif k is NodeProvider.NodePromise:
+			@warning_ignore("unsafe_cast")
+			node = (k as NodeProvider.NodePromise).answer(player, animation)
+		var property_changes: Dictionary = animation_step[k] # Dictionary[String, Array[PropertyKeyframePoint]] NOTE: type hinting seems to break here with weird "cant cast <X> to <X>" errors
 		# Loop over each property to set on this node
 		for property_name: String in property_changes.keys():
 			var keyframes: Array = property_changes[property_name] # Array[PropertyKeyframePoint] NOTE: type hinting seems to break here with weird "cant cast <X> to <X>" errors

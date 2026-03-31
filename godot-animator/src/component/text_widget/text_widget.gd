@@ -14,8 +14,8 @@ var text_source: TextSource = TextSource.STATIC
 var transition_time: float = DEFAULT_TRANSITION_TIME
 
 ## Given data about a piece of music, determine all of the animation steps to apply
-## Full return type: Dictionary[Node, Dictionary[String(property), Array[Keyframe]]
-func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
+## Full return type: Dictionary[Union[Node, NodePromise], Dictionary[String(property), Array[Keyframe]]
+func hrmn_animate(music_data: Dictionary) -> Dictionary[Variant, Dictionary]:
 	match text_source:
 		TextSource.LYRICS:
 			var lyrics: Array[Dictionary] = Array(Utils.as_array(music_data["lyrics"]), TYPE_DICTIONARY, "", null)
@@ -34,8 +34,8 @@ func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary]:
 			return {}
 
 
-func animate_lyrics(lyrics: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
-	
+func animate_lyrics(lyrics: Array[Dictionary]) -> Dictionary[Variant, Dictionary]:
+
 	# example dict element
 	#{
 	  #"elem": [
@@ -58,7 +58,7 @@ func animate_lyrics(lyrics: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
 	#},
 	
 	var animations: Array[Utils.PropertyKeyframePoint] = [Utils.PropertyKeyframePoint.new("", 0)]
-	var animation_map: Dictionary[Node, Dictionary] = {self: {
+	var animation_map: Dictionary[Variant, Dictionary] = {self: {
 		"text": animations
 	}}
 	
@@ -96,9 +96,9 @@ func animate_lyrics(lyrics: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
 	return animation_map
 
 
-func animate_chords(chords: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
+func animate_chords(chords: Array[Dictionary]) -> Dictionary[Variant, Dictionary]:
 	var animations: Array[Utils.PropertyKeyframePoint] = [Utils.PropertyKeyframePoint.new("", 0)]
-	var animation_map: Dictionary[Node, Dictionary] = {self: {
+	var animation_map: Dictionary[Variant, Dictionary] = {self: {
 		"text": animations
 	}}
 	
@@ -111,9 +111,9 @@ func animate_chords(chords: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
 
 
 
-func animate_keys(keys: Array[Dictionary]) -> Dictionary[Node, Dictionary]:
+func animate_keys(keys: Array[Dictionary]) -> Dictionary[Variant, Dictionary]:
 	var animations: Array[Utils.PropertyKeyframePoint] = [Utils.PropertyKeyframePoint.new("", 0)]
-	var animation_map: Dictionary[Node, Dictionary] = {self: {
+	var animation_map: Dictionary[Variant, Dictionary] = {self: {
 		"text": animations
 	}}
 	

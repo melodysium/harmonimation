@@ -6,9 +6,9 @@ extends Node
 
 
 ## Given data about a piece of music, determine all of the animation steps to apply
-## Full return type: Dictionary[Node, Dictionary[String(property), Array[PropertyKeyframePoint]]
+## Full return type: Dictionary[Union[Node, NodePromise], Dictionary[String(property), Array[PropertyKeyframePoint]]
 @abstract
-func hrmn_animate(music_data: Dictionary) -> Dictionary[Node, Dictionary];
+func hrmn_animate(music_data: Dictionary) -> Dictionary[Variant, Dictionary];
 
 #region signal interface, removed now
 
