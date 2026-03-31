@@ -193,6 +193,23 @@ func setup_animation(player: AnimationPlayer, animation_length: float = 200.0, d
 	return animation
 
 
+func get_path_to_node(player: AnimationPlayer, node: Node) -> String:
+	return player.get_node(player.root_node).get_path_to(node)
+
+func get_path_to_property(player: AnimationPlayer, node: Node, property: String) -> String:
+	return "%s:%s" % [get_path_to_node(player, node), property]
+
+func find_or_make_track(player: AnimationPlayer, animation: Animation, node: Node, property: String, track_type: Animation.TrackType) -> int:
+	var path_to_property := get_path_to_property(player, node, property)
+	var track_idx := animation.find_track(path_to_property, track_type)
+	# if track doesn't exist yet for this property, add it
+	if track_idx == -1:
+		track_idx = animation.add_track(track_type)
+		animation.track_set_path(track_idx, path_to_property)
+	return track_idx
+
+
+
 ## Create at runtime an Animation on the specified AnimationPlayer with the specified animation properties.
 ## animation_step full type: Dictionary[Node, Dictionary[String(property), Array[PropertyKeyframePoint]]
 func apply_animation(animation_step: Dictionary[Node, Dictionary], player: AnimationPlayer, animation: Animation) -> void:
@@ -207,18 +224,10 @@ func apply_animation(animation_step: Dictionary[Node, Dictionary], player: Anima
 	# Loop over all nodes to animate
 	for node: Node in animation_step.keys():
 		var property_changes: Dictionary = animation_step[node] # Dictionary[String, Array[PropertyKeyframePoint]] NOTE: type hinting seems to break here with weird "cant cast <X> to <X>" errors
-		var path_to_puppet_node := player.get_node(player.root_node).get_path_to(node)
-		
 		# Loop over each property to set on this node
 		for property_name: String in property_changes.keys():
 			var keyframes: Array = property_changes[property_name] # Array[PropertyKeyframePoint] NOTE: type hinting seems to break here with weird "cant cast <X> to <X>" errors
-			
-			var path_to_puppet_property := "%s:%s" % [path_to_puppet_node, property_name]
-			var track_idx := animation.find_track(path_to_puppet_property, Animation.TYPE_VALUE)
-			# if track doesn't exist yet for this property, add it
-			if track_idx == -1:
-				track_idx = animation.add_track(Animation.TYPE_VALUE)
-				animation.track_set_path(track_idx, path_to_puppet_property)
+			var track_idx := find_or_make_track(player, animation, node, property_name, Animation.TYPE_VALUE)
 			print_verbose("  node=%s, prop_name=%s, track_idx=%d", node.name, property_name, track_idx)
 
 			# Set keyframes at different times:
