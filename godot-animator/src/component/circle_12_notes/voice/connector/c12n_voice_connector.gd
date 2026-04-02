@@ -111,6 +111,7 @@ func _create_line(player: AnimationPlayer, animation: Animation) -> Line2D:
 	new_line.add_point(Vector2.ZERO)
 	_c12n.add_child(new_line)
 
+	# TODO: move logic into NodeProvider by having it set this keyframe at start_time and end_time for every promise when it's answer()ed
 	# Set a transparent keyframe at the very beginning for this line
 	var track_idx := Utils.find_or_make_track(player, animation, new_line, "default_color", Animation.TYPE_VALUE)
 	animation.track_insert_key(track_idx, 0, Color.TRANSPARENT, 0.0)
@@ -214,7 +215,7 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
 			var old_line_idx := _lines.size() - selected_pitches.size()
 			var old_line := _lines[old_line_idx].line_promise
 			old_line.done(time) # tell the promise that this is when we're done with this line
-			Utils.as_array(anims[old_line]["default_color"]).append(Utils.PropertyKeyframePoint.new(Color.TRANSPARENT, time, 0.0, 0.1, -4.0))
+			Utils.as_array(anims[old_line]["default_color"]).append(Utils.PropertyKeyframePoint.new(Color.TRANSPARENT, time, 0.0, 0.1, -4.0)) # TODO: consider removing or de-duplicating with the keyframe added by NodeProvider
 			# add a trigger for positioning line here (in case user is scrubbing backwards on timeline)
 			Utils.as_array(anims[self]["_line_state_trigger"]).append(Utils.PropertyKeyframePoint.new(old_line_idx, time + 0.001, 0.0))
 

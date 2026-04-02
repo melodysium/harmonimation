@@ -83,6 +83,7 @@ class NodeTypeRegistration:
 			return _nodes[promise.id]
 		# dummy implementation: always instantiate and return new node
 		print_verbose("NodeProvider.answer(): resolving promise for id=%d" % [promise.id])
+		# TODO: set initial_prop_values at start_time and end_time
 		var node = promise._registration.init_fn.call(player, animation)
 		_nodes[promise.id] = node
 		# TODO: add property keyframes for all initial_prop_values
@@ -127,7 +128,6 @@ class NodePromise:
 	func _to_string() -> String:
 		return "NodePromise[registration=%s, id=%d, start_time=%f, end_time=%f]" % [_registration._scope(), id, start_time, end_time]
 
-
 	#func _scope() -> String:
 		#return NodeProvider._scope(owner_name, node_type)
 
@@ -139,13 +139,25 @@ class NodePromise:
 	func peek() -> Node:
 		return _registration.peek(self)
 
-	# TODO: register this as a listener
+	# TODO: figure out how to handle signals better
 	# TODO: maybe replace with a single "listener" per node that just does the filtering? so less connections...
 	#func _handle_signal(_signal: Signal) -> void:
 		#if self.signals.has(_signal):
 			#if _provider.current_time > self.start_time and _provider.current_time < self.end_time:
 				#self.answer().call(self.signals[_signal])
 
+# TODO: document
+# TODO: use this struct for re-using nodes
+class NodeMetadata:
+	var node: Node
+	var latest_end_time: float
+
+	func _init(
+		_node: Node,
+		_latest_end_time: float,
+	) -> void:
+		self.node = _node
+		self.latest_end_time = _latest_end_time
 
 #endregion
 
