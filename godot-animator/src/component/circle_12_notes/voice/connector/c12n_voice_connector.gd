@@ -53,32 +53,21 @@ var _c12n: Circle12Notes:
 
 ## List of line objects. created in animate_chord_roots
 var _lines: Array[LineState] = []
+var _promise_to_line: Dictionary[NodeProvider.NodePromise, LineState] = {}
 
 ## NodeProvider registration for re-used Line2D nodes
 var _line_registration: NodeProvider.NodeTypeRegistration = Utils.NODE_PROVIDER.register(
+    self,
     self.get_script().get_global_name(),
     "Line2D",
     _create_line,
-    func () -> void: pass,
+    _activate_line,
     {"default_color": Color.TRANSPARENT},
 )
 
 ## unique ids used for re-used Line2Ds
 var _next_line_id := 0
 
-
-# Problem: how to initialize line position properly when activated?
-# options:
-# 1. set points in animation track. problem: will probably conflict with signals that update it too.
-# 2. Call Method track. problem: doesn't run in editor preview.
-# 3. animate a dummy property with setter which calls desired function. god i hate this
-var _line_state_trigger: int:
-    set(value):
-        var line_to_update := _lines[value]
-        # TODO: perf: stop calling _position_line so often. debounce, memoize, or change animation track?
-        print_verbose("calling _position_line from _line_state_trigger setter = %s. line_to_update=%s" % [value, line_to_update])
-        _position_line(line_to_update)
-        print_verbose("done calling _position_line setter")
 
 #endregion
 
@@ -111,20 +100,23 @@ func _create_line(player: AnimationPlayer, animation: Animation) -> Line2D:
     new_line.add_point(Vector2.ZERO)
     _c12n.add_child(new_line)
 
-    # TODO: move logic into NodeProvider by having it set this keyframe at start_time and end_time for every promise when it's answer()ed
-    # Set a transparent keyframe at the very beginning for this line
-    var track_idx := Utils.find_or_make_track(player, animation, new_line, "default_color", Animation.TYPE_VALUE)
-    animation.track_insert_key(track_idx, 0, Color.TRANSPARENT, 0.0)
-
     return new_line
 
 
+func _activate_line(promise: NodeProvider.NodePromise) -> void:
+    var line_state := _promise_to_line[promise]
+    _position_line(line_state)
+
+
 func _update_lines() -> void:
+    # TODO: bug: only position currently active promised-lines
     if not is_node_ready():
         return
     #print("C12NVoiceConnectors._update_lines(): start. _lines = %s" % [_lines])
-    for i in range(_lines.size()):
-        _position_line(_lines[i])
+    for promise in _line_registration.list_active_promises():
+        _position_line(_promise_to_line[promise])
+    #for i in range(_lines.size()):
+        #_position_line(_lines[i])
     #print("C12NVoiceConnectors._update_lines(): end")
 
 
@@ -174,8 +166,6 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
     print_verbose("C12NVoiceConnector.animate_chord_roots(): start")
     var anims: Dictionary[Variant, Dictionary] = {}
 
-    anims[self] = {"_line_state_trigger": []}
-
     var selected_pitches: Array[int] = []
     var previous_line_states: Dictionary[NodeProvider.NodePromise, Color] = {} # TODO maybe expand Color into a full LineState?
 
@@ -197,13 +187,12 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
         print_verbose("    new selected_pitches=%s, previous_pitch_class=%d" % [selected_pitches, previous_pitch_class])
 
         # setup for adding a line
-        var new_line := _line_registration.request(time)
+        var new_line := _line_registration.request(time - 0.1)
         var line_state := LineState.create(previous_pitch_class, newest_pitch_class, new_line)
         _lines.append(line_state)
+        _promise_to_line[new_line] = line_state
         anims[new_line] = {"default_color": []}
-        #var line_pos := _compute_line_pos(line_state) # can't directly position line imperatively here, must be done via animated property
-        # this will cause the line position to be updated
-        Utils.as_array(anims[self]["_line_state_trigger"]).append(Utils.PropertyKeyframePoint.new(_lines.size() - 1, time, 0.0))
+        # line position is set by _activate_line, invoked by the NodeProvider interface
         previous_line_states[new_line] = Color.TRANSPARENT
 
         # setup for removing a line
@@ -216,8 +205,6 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
             var old_line := _lines[old_line_idx].line_promise
             old_line.done(time) # tell the promise that this is when we're done with this line
             Utils.as_array(anims[old_line]["default_color"]).append(Utils.PropertyKeyframePoint.new(Color.TRANSPARENT, time, 0.0, 0.1, -4.0)) # TODO: consider removing or de-duplicating with the keyframe added by NodeProvider
-            # add a trigger for positioning line here (in case user is scrubbing backwards on timeline)
-            Utils.as_array(anims[self]["_line_state_trigger"]).append(Utils.PropertyKeyframePoint.new(old_line_idx, time + 0.001, 0.0))
 
         print_verbose("    setting up for new selected_pitches: %s at time %ss" % [selected_pitches, time])
 
@@ -237,7 +224,6 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
     var end_time: float = chord_roots[-1]["time"] + 10.0
     for i in range(selected_pitches.size()):
         _lines[-i].line_promise.done(end_time)
-
 
     print_verbose("C12NVoiceConnector.animate_chord_roots(): end")
     return anims
