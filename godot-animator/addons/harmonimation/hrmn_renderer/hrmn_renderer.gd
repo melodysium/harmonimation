@@ -80,6 +80,11 @@ func apply_animations() -> void:
         printerr("apply_animations(): missing Music Data, cannot animate harmonimation widgets.")
         return
 
+    # reset any NodeProvider registraions
+    for registration: NodeProvider.NodeTypeRegistration in Utils.NODE_PROVIDER.registrations.values():
+        registration._promises = {}
+        registration._nodes = {}
+
     # refresh any input filename updates first
     # TODO: I think this isn't necessary anymore?
     print("apply_animations(): checking for score re-parse")
