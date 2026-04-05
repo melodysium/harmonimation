@@ -21,15 +21,15 @@ const ANGLE_PER_STEP := TAU / 12
 
 ## Tuple of (pitch class [0-11], position (Vec2 relative to center))
 class PitchInfo:
-	var pitch_class: int
-	var pos: Vector2
+    var pitch_class: int
+    var pos: Vector2
 
-	func _init(_pitch_class: int, _pos: Vector2) -> void:
-		self.pitch_class = _pitch_class
-		self.pos = _pos
+    func _init(_pitch_class: int, _pos: Vector2) -> void:
+        self.pitch_class = _pitch_class
+        self.pos = _pos
 
-	func _to_string() -> String:
-		return "PitchInfo[pcls=%s, pos=%s]" % [self.pitch_class, self.pos]
+    func _to_string() -> String:
+        return "PitchInfo[pcls=%s, pos=%s]" % [self.pitch_class, self.pos]
 
 
 #endregion
@@ -45,13 +45,13 @@ class PitchInfo:
 ## Radius for main circle / pitch names
 @export_range(0, 100, 1.0, "or_greater")
 var radius := 50.0:
-	set(val):
-		radius = val
-		if _background_circle_node != null:
-			_background_circle_node.radius = val
-		if _rotate_arc != null:
-			_rotate_arc.radius = val
-		self.emit_signal("layout_changed")
+    set(val):
+        radius = val
+        if _background_circle_node != null:
+            _background_circle_node.radius = val
+        if _rotate_arc != null:
+            _rotate_arc.radius = val
+        self.emit_signal("layout_changed")
 
 
 ## Number of pitches advanced every step once clockwise.
@@ -59,27 +59,27 @@ var radius := 50.0:
 # due to n^2 % 12 == 1. advancing n pitches across n steps results in getting to pitch n+1 at the end.
 @export_range(1, 11, 1.0)
 var pitches_per_step := 1:
-	set(val):
-		if ![1, 5, 7, 11].has(val):
-			Utils.print_err("WARNING: Circle12Notes currently only supports pitches_per_step values of [1, 5, 7, 11], but you picked: %s. Ignoring." % val)
-			return
-		pitches_per_step = val
-		self.emit_signal("layout_changed")
+    set(val):
+        if ![1, 5, 7, 11].has(val):
+            Utils.print_err("WARNING: Circle12Notes currently only supports pitches_per_step values of [1, 5, 7, 11], but you picked: %s. Ignoring." % val)
+            return
+        pitches_per_step = val
+        self.emit_signal("layout_changed")
 
 ## First pitch class at the "top" of the node. 0 = C, 1 = Db, ... 11 = B
 @export_range(0, 11, 1.0)
 var first_pitch_class := 0:
-	set(val):
-		first_pitch_class = val
-		self.emit_signal("layout_changed")
+    set(val):
+        first_pitch_class = val
+        self.emit_signal("layout_changed")
 
 ## Color of an arc which will expand to indicate an impending rotation
 @export
 var rotate_arc_color := Color.ROYAL_BLUE:
-	set(val):
-		rotate_arc_color = val
-		if self._rotate_arc != null:
-			self._rotate_arc.color = val
+    set(val):
+        rotate_arc_color = val
+        if self._rotate_arc != null:
+            self._rotate_arc.color = val
 
 ## Time before a new key change when the Circle will start rotating
 @export_range(0.0, 2.0, 0.01, "or_greater")
@@ -97,30 +97,30 @@ var transition_time := DEFAULT_ROTATE_TRANSITION_TIME
 #@export_range(-TAU, TAU, 0.01, "or_less", "or_greater")
 ## Rotate angle (keeps note text oriented upwards)
 var rotate_angle := 0.0:
-	set(val):
-		#print("rotate_angle.set(val=%f), oldval=%f" % [val, rotate_angle])
-		## if < 0 or >= TAU (radians), cycle back within that range
-		#if val <= -TAU or val >= TAU:
-			#print_verbose("trying to wrap, should come out as %f" % fmod(val, TAU))
-			#val = fmod(val, TAU)
-		rotate_angle = val
-		self.emit_signal("layout_changed")
+    set(val):
+        #print("rotate_angle.set(val=%f), oldval=%f" % [val, rotate_angle])
+        ## if < 0 or >= TAU (radians), cycle back within that range
+        #if val <= -TAU or val >= TAU:
+            #print_verbose("trying to wrap, should come out as %f" % fmod(val, TAU))
+            #val = fmod(val, TAU)
+        rotate_angle = val
+        self.emit_signal("layout_changed")
 
 ## Origin angle for arc that expands from current top-pitch to new top-pitch before rotating
 var rotate_arc_start_angle := 0.0:
-	set(val):
-		#print("rotate_arc_start_angle.set(val=%f), oldval=%f" % [val, rotate_arc_start_angle])
-		rotate_arc_start_angle = val
-		if self._rotate_arc != null:
-			self._rotate_arc.start_angle = val
+    set(val):
+        #print("rotate_arc_start_angle.set(val=%f), oldval=%f" % [val, rotate_arc_start_angle])
+        rotate_arc_start_angle = val
+        if self._rotate_arc != null:
+            self._rotate_arc.start_angle = val
 
 ## Destination angle for arc that expands from current top-pitch to new top-pitch before rotating
 var rotate_arc_end_angle := 0.0:
-	set(val):
-		#print("rotate_arc_end_angle.set(val=%f), oldval=%f" % [val, rotate_arc_end_angle])
-		rotate_arc_end_angle = val
-		if self._rotate_arc != null:
-			self._rotate_arc.end_angle = val
+    set(val):
+        #print("rotate_arc_end_angle.set(val=%f), oldval=%f" % [val, rotate_arc_end_angle])
+        rotate_arc_end_angle = val
+        if self._rotate_arc != null:
+            self._rotate_arc.end_angle = val
 
 
 #endregion
@@ -153,64 +153,64 @@ var _rotate_arc: Arc2D = $RotateArc
 
 
 func _angle_for_pitch_at_top(selected_pitch_class: int, previous_angle: float = 0.0) -> float:
-	var diff_pitch_classes := first_pitch_class - selected_pitch_class
-	var diff_steps := diff_pitch_classes * pitches_per_step
-	var new_angle := diff_steps * (ANGLE_PER_STEP)
-	new_angle += roundf((new_angle - previous_angle) / TAU) * -TAU
-	return new_angle
+    var diff_pitch_classes := first_pitch_class - selected_pitch_class
+    var diff_steps := diff_pitch_classes * pitches_per_step
+    var new_angle := diff_steps * (ANGLE_PER_STEP)
+    new_angle += roundf((new_angle - previous_angle) / TAU) * -TAU
+    return new_angle
 
 ## get local position at the top of this circle
 func _circle_start() -> Vector2:
-	return Vector2.UP * self.radius
+    return Vector2.UP * self.radius
 
 ## all positions around the circle, indexed by pitch_class
 func _list_positions(_radius: float = self.radius) -> Array[PitchInfo]:
-	var positions: Array[PitchInfo] = []
-	for pitch_class: int in range(12):
-		var pos := _get_position_for_pitchclass(pitch_class, _radius)
-		positions.append(PitchInfo.new(pitch_class, pos))
-	print_verbose("_list_positions(). pitches_per_step=%s; first_pitch_class=%s; rotate_angle=%s; positions=%s" % [pitches_per_step, first_pitch_class, rotate_angle, positions])
-	return positions
+    var positions: Array[PitchInfo] = []
+    for pitch_class: int in range(12):
+        var pos := _get_position_for_pitchclass(pitch_class, _radius)
+        positions.append(PitchInfo.new(pitch_class, pos))
+    print_verbose("_list_positions(). pitches_per_step=%s; first_pitch_class=%s; rotate_angle=%s; positions=%s" % [pitches_per_step, first_pitch_class, rotate_angle, positions])
+    return positions
 
 
 func _get_step_for_pitchclass(pitch_class: int) -> int:
-	return (pitch_class - self.first_pitch_class) * self.pitches_per_step % 12
+    return (pitch_class - self.first_pitch_class) * self.pitches_per_step % 12
 
 
 func _get_pitchclass_for_step(step: int) -> int:
-	return (step * self.pitches_per_step + self.first_pitch_class) % 12
+    return (step * self.pitches_per_step + self.first_pitch_class) % 12
 
 
 func _get_position_for_pitchclass(pitch_class: int, _radius: float = self.radius) -> Vector2:
-	var step := _get_step_for_pitchclass(pitch_class)
-	var angle := ANGLE_PER_STEP * step + self.rotate_angle
-	return (Vector2.UP * _radius).rotated(angle)
+    var step := _get_step_for_pitchclass(pitch_class)
+    var angle := ANGLE_PER_STEP * step + self.rotate_angle
+    return (Vector2.UP * _radius).rotated(angle)
 
 
 func _minimize_angle_absolute_diff(angle: float, target: float=0) -> float:
-	print_verbose("_minimize_angle_absolute_diff(): start (angle=%f, target=%f)" % [angle, target])
-	if angle - target == PI:
-		# TODO: let user decide which way to flip?
-		return angle
-	while angle - target > PI:
-		angle -= TAU
-	while angle - target < -PI:
-		angle += TAU
-	print_verbose("_minimize_angle_absolute_diff(): end (returning angle=%f)" % [angle])
-	return angle
+    print_verbose("_minimize_angle_absolute_diff(): start (angle=%f, target=%f)" % [angle, target])
+    if angle - target == PI:
+        # TODO: let user decide which way to flip?
+        return angle
+    while angle - target > PI:
+        angle -= TAU
+    while angle - target < -PI:
+        angle += TAU
+    print_verbose("_minimize_angle_absolute_diff(): end (returning angle=%f)" % [angle])
+    return angle
 
 #endregion
 
 
 
 func _ready() -> void:
-	# set up rotation arc
-	self._rotate_arc.start_angle = self.rotate_arc_start_angle
-	self._rotate_arc.end_angle = self.rotate_arc_end_angle
-	self._rotate_arc.color = self.rotate_arc_color
+    # set up rotation arc
+    self._rotate_arc.start_angle = self.rotate_arc_start_angle
+    self._rotate_arc.end_angle = self.rotate_arc_end_angle
+    self._rotate_arc.color = self.rotate_arc_color
 
-	## connect animation signals
-	#super._connect_signals()
+    ## connect animation signals
+    #super._connect_signals()
 
 
 #region animations
@@ -219,66 +219,66 @@ func _ready() -> void:
 ## Given structured information about the song, create a list of animations to play at set times.
 ## Full return type: Dictionary[Union[Node, NodePromise], Dictionary[String(property), Array[PropertyKeyframePoint]]
 func hrmn_animate(music_data: Dictionary) -> Dictionary[Variant, Dictionary]:
-	print_verbose("hrmn_animate(): start")
-	var animations: Dictionary[Variant, Dictionary] = {}
+    print_verbose("hrmn_animate(): start")
+    var animations: Dictionary[Variant, Dictionary] = {}
 
-	# animate key changes
-	print_verbose("hrmn_animate(): animating key changes")
-	var keys: Array[Dictionary] = Array(Utils.as_array(music_data["keys"]), TYPE_DICTIONARY, "", null)
-	animations = Utils.merge_animations(animations, animate_key_changes(keys))
+    # animate key changes
+    print_verbose("hrmn_animate(): animating key changes")
+    var keys: Array[Dictionary] = Array(Utils.as_array(music_data["keys"]), TYPE_DICTIONARY, "", null)
+    animations = Utils.merge_animations(animations, animate_key_changes(keys))
 
-	print_verbose("hrmn_animate(): end")
-	return animations
+    print_verbose("hrmn_animate(): end")
+    return animations
 
 
 ## Full return type: Dictionary[Union[Node, NodePromise], Dictionary[String(property), Array[PropertyKeyframePoint]]
 func animate_key_changes(keys: Array[Dictionary]) -> Dictionary[Variant, Dictionary]:
-	print_verbose("animate_key_changes(): start")
+    print_verbose("animate_key_changes(): start")
 
-	# set initial animation states
-	var previous_root_pitch_class: int = keys[0]["elem"]["pitch"]["pitchClass"]
-	var previous_rotate_angle: float = _angle_for_pitch_at_top(previous_root_pitch_class)
-	#var previous_pitch_text_colors: Array[Color] = _compute_pitch_text_colors(
-		#Array(Utils.as_array(keys[0]["elem"]["pitches"]), TYPE_INT, "", null))
+    # set initial animation states
+    var previous_root_pitch_class: int = keys[0]["elem"]["pitch"]["pitchClass"]
+    var previous_rotate_angle: float = _angle_for_pitch_at_top(previous_root_pitch_class)
+    #var previous_pitch_text_colors: Array[Color] = _compute_pitch_text_colors(
+        #Array(Utils.as_array(keys[0]["elem"]["pitches"]), TYPE_INT, "", null))
 
-	# build a sequence of rotation animations to play
-	var anims: Dictionary[Variant, Dictionary] = {self: {
-		"rotate_angle": [Utils.PropertyKeyframePoint.new(_angle_for_pitch_at_top(previous_root_pitch_class), 0)],
-		"rotate_arc_end_angle": [Utils.PropertyKeyframePoint.new(0, 0)],
-	}}
+    # build a sequence of rotation animations to play
+    var anims: Dictionary[Variant, Dictionary] = {self: {
+        "rotate_angle": [Utils.PropertyKeyframePoint.new(_angle_for_pitch_at_top(previous_root_pitch_class), 0)],
+        "rotate_arc_end_angle": [Utils.PropertyKeyframePoint.new(0, 0)],
+    }}
 
-	for key: Dictionary in keys.slice(1):
+    for key: Dictionary in keys.slice(1):
 
-		# detect if root changed
-		var root_pitch_class: int = key["elem"]["pitch"]["pitchClass"]
-		if key["elem"]["quality"] == "minor":
-			root_pitch_class = (root_pitch_class + 3) % 12
-		if root_pitch_class != previous_root_pitch_class:
-			var new_rotate_angle := _minimize_angle_absolute_diff(
-				_angle_for_pitch_at_top(root_pitch_class), previous_rotate_angle)
-			# add extra animation of rotate_arc appearing one "transition_time" increment earlier
-			anims[self]["rotate_arc_end_angle"].append(Utils.PropertyKeyframePoint.new(previous_rotate_angle - new_rotate_angle, key["time"] - transition_time * 1.5, -4.0))
-			# in the main key-change animation, add the follow-up step to retract the arc end alongside the rotation
-			anims[self]["rotate_arc_end_angle"].append(Utils.PropertyKeyframePoint.new(0.0, key["time"], 0.0, transition_time, -4.0))
-			#key_change_anims.append(Utils.PropertyChange.new("rotate_arc_end_angle", previous_rotate_angle, new_rotate_angle))
+        # detect if root changed
+        var root_pitch_class: int = key["elem"]["pitch"]["pitchClass"]
+        if key["elem"]["quality"] == "minor":
+            root_pitch_class = (root_pitch_class + 3) % 12
+        if root_pitch_class != previous_root_pitch_class:
+            var new_rotate_angle := _minimize_angle_absolute_diff(
+                _angle_for_pitch_at_top(root_pitch_class), previous_rotate_angle)
+            # add extra animation of rotate_arc appearing one "transition_time" increment earlier
+            anims[self]["rotate_arc_end_angle"].append(Utils.PropertyKeyframePoint.new(previous_rotate_angle - new_rotate_angle, key["time"] - transition_time * 1.5, -4.0))
+            # in the main key-change animation, add the follow-up step to retract the arc end alongside the rotation
+            anims[self]["rotate_arc_end_angle"].append(Utils.PropertyKeyframePoint.new(0.0, key["time"], 0.0, transition_time, -4.0))
+            #key_change_anims.append(Utils.PropertyChange.new("rotate_arc_end_angle", previous_rotate_angle, new_rotate_angle))
 
-			# animate circle rotating
-			anims[self]["rotate_angle"].append(Utils.PropertyKeyframePoint.new(new_rotate_angle, key["time"], 0.0, transition_time, -4.0))
-			previous_root_pitch_class = root_pitch_class
-			previous_rotate_angle = new_rotate_angle
+            # animate circle rotating
+            anims[self]["rotate_angle"].append(Utils.PropertyKeyframePoint.new(new_rotate_angle, key["time"], 0.0, transition_time, -4.0))
+            previous_root_pitch_class = root_pitch_class
+            previous_rotate_angle = new_rotate_angle
 
-	print_verbose("animate_key_changes(): end")
-	return anims
+    print_verbose("animate_key_changes(): end")
+    return anims
 
 
 # TODO: rename to animate_rotate_angle
 ## Testing: Create an animation to rotate the circle
 #func animate_rotate(angle_start: float, angle_end: float, time_start: float, time_end: float) -> Utils.AnimationStep:
-	#return Utils.AnimationStep.new(
-		#PackedFloat32Array([time_start, time_end]),
-		#{self: [Utils.PropertyChange.pair("rotate_angle", angle_start, angle_end)]})
+    #return Utils.AnimationStep.new(
+        #PackedFloat32Array([time_start, time_end]),
+        #{self: [Utils.PropertyChange.pair("rotate_angle", angle_start, angle_end)]})
 #
 #func animate_rotate_pitch(pitch_start: int, pitch_end: int, time_start: float, time_end: float) -> Utils.AnimationStep:
-	#return animate_rotate(_angle_for_pitch_at_top(pitch_start), _angle_for_pitch_at_top(pitch_end), time_start, time_end)
+    #return animate_rotate(_angle_for_pitch_at_top(pitch_start), _angle_for_pitch_at_top(pitch_end), time_start, time_end)
 
 #endregion
