@@ -81,12 +81,28 @@ class NodeTypeRegistration:
 			return null
 		if promise.id in _nodes:
 			return _nodes[promise.id]
+		print_verbose("NodeProvider.answer(): resolving promise with id=%d" % [promise.id])
+
 		# dummy implementation: always instantiate and return new node
-		print_verbose("NodeProvider.answer(): resolving promise for id=%d" % [promise.id])
-		# TODO: set initial_prop_values at start_time and end_time
+		# TODO: look for a node that can be re-used
+		var node = _init_node(promise, player, animation)
+
+		# TODO: set initial_prop_values at start_time and end_time for promise
+		# TODO: double check if this messes up with logic in c12n_voice_connector which also sets transparent frames at the same time
+
+		return node
+
+	func _init_node(promise: NodePromise, player: AnimationPlayer, animation: Animation) -> Node:
+		print_verbose("NodeProvider._init_node(): creating node due to promise with id=%d" % [promise.id])
+
 		var node = promise._registration.init_fn.call(player, animation)
 		_nodes[promise.id] = node
-		# TODO: add property keyframes for all initial_prop_values
+
+		# Set a transparent keyframe at the very beginning for this line
+		# TODO: uncomment and adapt, then remove similar code in c12n_voice_connector.gd
+		#var track_idx := Utils.find_or_make_track(player, animation, new_line, "default_color", Animation.TYPE_VALUE)
+		#animation.track_insert_key(track_idx, 0, Color.TRANSPARENT, 0.0)
+
 		return node
 
 	func peek(promise: NodePromise) -> Node:
