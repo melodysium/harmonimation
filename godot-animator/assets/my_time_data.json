@@ -5,24 +5,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
               "pitchClass": 5,
               "pitchName": "F2",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -39,6 +23,22 @@
             "pitch": {
               "pitchClass": 0,
               "pitchName": "C2",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 0,
+              "pitchName": "C4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 4,
+              "pitchName": "E4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -57,24 +57,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
               "pitchClass": 5,
               "pitchName": "F2",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -94,6 +78,22 @@
               "_type": "Pitch"
             },
             "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 0,
+              "pitchName": "C4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 4,
+              "pitchName": "E4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
           }
         ],
         "name": "FMaj7",
@@ -109,14 +109,6 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
               "pitchClass": 5,
               "pitchName": "F2",
               "_type": "Pitch"
@@ -125,8 +117,16 @@
           },
           {
             "pitch": {
-              "pitchClass": 8,
-              "pitchName": "A-3",
+              "pitchClass": 0,
+              "pitchName": "C2",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 0,
+              "pitchName": "C4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -141,8 +141,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C2",
+              "pitchClass": 8,
+              "pitchName": "A-3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -161,24 +161,16 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 10,
-              "pitchName": "B-2",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 10,
-              "pitchName": "B-3",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
               "pitchClass": 5,
               "pitchName": "F2",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 10,
+              "pitchName": "B-2",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -198,6 +190,14 @@
               "_type": "Pitch"
             },
             "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 10,
+              "pitchName": "B-3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
           }
         ],
         "name": "B\u266d7",
@@ -213,8 +213,24 @@
         "notes": [
           {
             "pitch": {
+              "pitchClass": 10,
+              "pitchName": "B-1",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 7,
               "pitchName": "G3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 2,
+              "pitchName": "D4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -229,24 +245,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 10,
-              "pitchName": "B-1",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
               "pitchClass": 3,
               "pitchName": "E-2",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 2,
-              "pitchName": "D4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -265,8 +265,24 @@
         "notes": [
           {
             "pitch": {
+              "pitchClass": 10,
+              "pitchName": "B-1",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 7,
               "pitchName": "G3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 2,
+              "pitchName": "D4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -281,24 +297,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 10,
-              "pitchName": "B-1",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
               "pitchClass": 3,
               "pitchName": "E-2",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 2,
-              "pitchName": "D4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -326,23 +326,7 @@
           {
             "pitch": {
               "pitchClass": 10,
-              "pitchName": "B-3",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 10,
               "pitchName": "B-1",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 3,
-              "pitchName": "E-2",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -351,6 +335,22 @@
             "pitch": {
               "pitchClass": 1,
               "pitchName": "D-4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 10,
+              "pitchName": "B-3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 3,
+              "pitchName": "E-2",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -369,8 +369,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 8,
-              "pitchName": "A-2",
+              "pitchClass": 6,
+              "pitchName": "G-3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -385,8 +385,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 6,
-              "pitchName": "G-3",
+              "pitchClass": 8,
+              "pitchName": "A-3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -394,7 +394,7 @@
           {
             "pitch": {
               "pitchClass": 8,
-              "pitchName": "A-3",
+              "pitchName": "A-2",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -429,8 +429,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 8,
-              "pitchName": "A-1",
+              "pitchClass": 1,
+              "pitchName": "D-2",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -445,16 +445,16 @@
           },
           {
             "pitch": {
-              "pitchClass": 1,
-              "pitchName": "D-2",
+              "pitchClass": 5,
+              "pitchName": "F3",
               "_type": "Pitch"
             },
             "_type": "Note"
           },
           {
             "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F3",
+              "pitchClass": 8,
+              "pitchName": "A-1",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -481,8 +481,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 8,
-              "pitchName": "A-1",
+              "pitchClass": 1,
+              "pitchName": "D-2",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -497,16 +497,16 @@
           },
           {
             "pitch": {
-              "pitchClass": 1,
-              "pitchName": "D-2",
+              "pitchClass": 5,
+              "pitchName": "F3",
               "_type": "Pitch"
             },
             "_type": "Note"
           },
           {
             "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F3",
+              "pitchClass": 8,
+              "pitchName": "A-1",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -525,8 +525,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 1,
-              "pitchName": "C#2",
+              "pitchClass": 4,
+              "pitchName": "E3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -534,15 +534,7 @@
           {
             "pitch": {
               "pitchClass": 8,
-              "pitchName": "G#1",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E3",
+              "pitchName": "G#3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -557,8 +549,16 @@
           },
           {
             "pitch": {
+              "pitchClass": 1,
+              "pitchName": "C#2",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 8,
-              "pitchName": "G#3",
+              "pitchName": "G#1",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -577,6 +577,14 @@
         "notes": [
           {
             "pitch": {
+              "pitchClass": 4,
+              "pitchName": "E3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 10,
               "pitchName": "A#3",
               "_type": "Pitch"
@@ -593,8 +601,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E3",
+              "pitchClass": 6,
+              "pitchName": "F#3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -603,14 +611,6 @@
             "pitch": {
               "pitchClass": 6,
               "pitchName": "F#2",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 6,
-              "pitchName": "F#3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -629,22 +629,6 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 11,
-              "pitchName": "B1",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 6,
-              "pitchName": "F#1",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
               "pitchClass": 10,
               "pitchName": "A#3",
               "_type": "Pitch"
@@ -653,8 +637,24 @@
           },
           {
             "pitch": {
+              "pitchClass": 11,
+              "pitchName": "B1",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 3,
               "pitchName": "D#3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 6,
+              "pitchName": "F#1",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -681,22 +681,6 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 11,
-              "pitchName": "B1",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 6,
-              "pitchName": "F#1",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
               "pitchClass": 10,
               "pitchName": "A#3",
               "_type": "Pitch"
@@ -705,8 +689,24 @@
           },
           {
             "pitch": {
+              "pitchClass": 11,
+              "pitchName": "B1",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 3,
               "pitchName": "D#3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 6,
+              "pitchName": "F#1",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -733,6 +733,14 @@
         "notes": [
           {
             "pitch": {
+              "pitchClass": 9,
+              "pitchName": "A3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 11,
               "pitchName": "B1",
               "_type": "Pitch"
@@ -762,14 +770,6 @@
               "_type": "Pitch"
             },
             "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 9,
-              "pitchName": "A3",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
           }
         ],
         "name": "Bmin7",
@@ -785,6 +785,22 @@
         "notes": [
           {
             "pitch": {
+              "pitchClass": 4,
+              "pitchName": "E3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 8,
+              "pitchName": "G#3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 11,
               "pitchName": "B1",
               "_type": "Pitch"
@@ -795,14 +811,6 @@
             "pitch": {
               "pitchClass": 4,
               "pitchName": "E2",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -822,14 +830,6 @@
               "_type": "Pitch"
             },
             "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 8,
-              "pitchName": "G#3",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
           }
         ],
         "name": "E7",
@@ -845,8 +845,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 1,
-              "pitchName": "C#5",
+              "pitchClass": 9,
+              "pitchName": "A1",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -869,8 +869,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 9,
-              "pitchName": "A1",
+              "pitchClass": 1,
+              "pitchName": "C#5",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -941,16 +941,16 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F5",
+              "pitchClass": 1,
+              "pitchName": "D-2",
               "_type": "Pitch"
             },
             "_type": "Note"
           },
           {
             "pitch": {
-              "pitchClass": 1,
-              "pitchName": "D-2",
+              "pitchClass": 5,
+              "pitchName": "F6",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -974,7 +974,7 @@
           {
             "pitch": {
               "pitchClass": 5,
-              "pitchName": "F6",
+              "pitchName": "F5",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -993,24 +993,16 @@
         "notes": [
           {
             "pitch": {
+              "pitchClass": 0,
+              "pitchName": "C2",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 7,
               "pitchName": "G5",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 10,
-              "pitchName": "B-5",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E6",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1025,8 +1017,16 @@
           },
           {
             "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C2",
+              "pitchClass": 4,
+              "pitchName": "E6",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 10,
+              "pitchName": "B-5",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1045,22 +1045,6 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C6",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 9,
-              "pitchName": "A5",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
               "pitchClass": 4,
               "pitchName": "E5",
               "_type": "Pitch"
@@ -1069,8 +1053,24 @@
           },
           {
             "pitch": {
+              "pitchClass": 0,
+              "pitchName": "C6",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 5,
               "pitchName": "F2",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 9,
+              "pitchName": "A5",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1141,8 +1141,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E6",
+              "pitchClass": 1,
+              "pitchName": "C#6",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1151,14 +1151,6 @@
             "pitch": {
               "pitchClass": 9,
               "pitchName": "A2",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 1,
-              "pitchName": "C#6",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1175,6 +1167,14 @@
             "pitch": {
               "pitchClass": 4,
               "pitchName": "E5",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 4,
+              "pitchName": "E6",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1245,16 +1245,16 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F5",
+              "pitchClass": 1,
+              "pitchName": "D-2",
               "_type": "Pitch"
             },
             "_type": "Note"
           },
           {
             "pitch": {
-              "pitchClass": 1,
-              "pitchName": "D-2",
+              "pitchClass": 5,
+              "pitchName": "F6",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1278,7 +1278,7 @@
           {
             "pitch": {
               "pitchClass": 5,
-              "pitchName": "F6",
+              "pitchName": "F5",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1297,8 +1297,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 7,
-              "pitchName": "G5",
+              "pitchClass": 0,
+              "pitchName": "C2",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1313,16 +1313,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E5",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C2",
+              "pitchClass": 7,
+              "pitchName": "G5",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1331,6 +1323,14 @@
             "pitch": {
               "pitchClass": 10,
               "pitchName": "B-4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 4,
+              "pitchName": "E5",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1349,22 +1349,6 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C6",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 9,
-              "pitchName": "A5",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
               "pitchClass": 4,
               "pitchName": "E5",
               "_type": "Pitch"
@@ -1373,8 +1357,24 @@
           },
           {
             "pitch": {
+              "pitchClass": 0,
+              "pitchName": "C6",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 5,
               "pitchName": "F2",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 9,
+              "pitchName": "A5",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1445,8 +1445,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E6",
+              "pitchClass": 1,
+              "pitchName": "C#6",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1455,14 +1455,6 @@
             "pitch": {
               "pitchClass": 9,
               "pitchName": "A2",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 1,
-              "pitchName": "C#6",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1479,6 +1471,14 @@
             "pitch": {
               "pitchClass": 4,
               "pitchName": "E5",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 4,
+              "pitchName": "E6",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1557,16 +1557,16 @@
           },
           {
             "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C6",
+              "pitchClass": 5,
+              "pitchName": "F6",
               "_type": "Pitch"
             },
             "_type": "Note"
           },
           {
             "pitch": {
-              "pitchClass": 8,
-              "pitchName": "A-5",
+              "pitchClass": 0,
+              "pitchName": "C6",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1581,8 +1581,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F6",
+              "pitchClass": 8,
+              "pitchName": "A-5",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1661,8 +1661,16 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 9,
-              "pitchName": "A4",
+              "pitchClass": 0,
+              "pitchName": "C5",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 5,
+              "pitchName": "F2",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1677,16 +1685,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C5",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F2",
+              "pitchClass": 9,
+              "pitchName": "A4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1705,8 +1705,16 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 11,
-              "pitchName": "B4",
+              "pitchClass": 2,
+              "pitchName": "D5",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 4,
+              "pitchName": "E4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1737,24 +1745,16 @@
           },
           {
             "pitch": {
+              "pitchClass": 11,
+              "pitchName": "B4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 8,
               "pitchName": "G#4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 2,
-              "pitchName": "D5",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1771,6 +1771,14 @@
     {
       "elem": {
         "notes": [
+          {
+            "pitch": {
+              "pitchClass": 4,
+              "pitchName": "E4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
           {
             "pitch": {
               "pitchClass": 0,
@@ -1791,14 +1799,6 @@
             "pitch": {
               "pitchClass": 9,
               "pitchName": "A2",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1825,8 +1825,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 7,
-              "pitchName": "G2",
+              "pitchClass": 5,
+              "pitchName": "F3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1841,16 +1841,16 @@
           },
           {
             "pitch": {
-              "pitchClass": 10,
-              "pitchName": "B-3",
+              "pitchClass": 7,
+              "pitchName": "G2",
               "_type": "Pitch"
             },
             "_type": "Note"
           },
           {
             "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F3",
+              "pitchClass": 10,
+              "pitchName": "B-3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1867,14 +1867,6 @@
     {
       "elem": {
         "notes": [
-          {
-            "pitch": {
-              "pitchClass": 7,
-              "pitchName": "G4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
           {
             "pitch": {
               "pitchClass": 0,
@@ -1898,6 +1890,14 @@
               "_type": "Pitch"
             },
             "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 7,
+              "pitchName": "G4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
           }
         ],
         "name": "C7",
@@ -1913,24 +1913,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F5",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C4",
+              "pitchClass": 4,
+              "pitchName": "E4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1938,7 +1922,7 @@
           {
             "pitch": {
               "pitchClass": 9,
-              "pitchName": "A4",
+              "pitchName": "A3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1953,8 +1937,40 @@
           },
           {
             "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E6",
+              "pitchClass": 0,
+              "pitchName": "C4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 5,
+              "pitchName": "F4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 9,
+              "pitchName": "A4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 5,
+              "pitchName": "F3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 0,
+              "pitchName": "C5",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1977,8 +1993,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C5",
+              "pitchClass": 5,
+              "pitchName": "F5",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -1986,23 +2002,7 @@
           {
             "pitch": {
               "pitchClass": 4,
-              "pitchName": "E4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 9,
-              "pitchName": "A3",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F3",
+              "pitchName": "E6",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2021,16 +2021,16 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 11,
-              "pitchName": "B4",
+              "pitchClass": 2,
+              "pitchName": "D5",
               "_type": "Pitch"
             },
             "_type": "Note"
           },
           {
             "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F5",
+              "pitchClass": 4,
+              "pitchName": "E4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2053,24 +2053,24 @@
           },
           {
             "pitch": {
+              "pitchClass": 5,
+              "pitchName": "F5",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 11,
+              "pitchName": "B4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 8,
               "pitchName": "G#4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 2,
-              "pitchName": "D5",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2089,16 +2089,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 7,
-              "pitchName": "G5",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 11,
-              "pitchName": "B4",
+              "pitchClass": 4,
+              "pitchName": "E4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2113,14 +2105,6 @@
           },
           {
             "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C6",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
               "pitchClass": 9,
               "pitchName": "A2",
               "_type": "Pitch"
@@ -2129,8 +2113,24 @@
           },
           {
             "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E4",
+              "pitchClass": 0,
+              "pitchName": "C6",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 7,
+              "pitchName": "G5",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 11,
+              "pitchName": "B4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2160,22 +2160,6 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 9,
-              "pitchName": "A3",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
               "pitchClass": 5,
               "pitchName": "F3",
               "_type": "Pitch"
@@ -2186,6 +2170,22 @@
             "pitch": {
               "pitchClass": 5,
               "pitchName": "F2",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 9,
+              "pitchName": "A3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 0,
+              "pitchName": "C4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2256,16 +2256,16 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 7,
-              "pitchName": "G3",
+              "pitchClass": 4,
+              "pitchName": "E4",
               "_type": "Pitch"
             },
             "_type": "Note"
           },
           {
             "pitch": {
-              "pitchClass": 9,
-              "pitchName": "A2",
+              "pitchClass": 7,
+              "pitchName": "G3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2280,8 +2280,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E4",
+              "pitchClass": 9,
+              "pitchName": "A2",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2300,8 +2300,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 7,
-              "pitchName": "G2",
+              "pitchClass": 5,
+              "pitchName": "F3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2316,16 +2316,16 @@
           },
           {
             "pitch": {
-              "pitchClass": 10,
-              "pitchName": "B-3",
+              "pitchClass": 7,
+              "pitchName": "G2",
               "_type": "Pitch"
             },
             "_type": "Note"
           },
           {
             "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F3",
+              "pitchClass": 10,
+              "pitchName": "B-3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2342,14 +2342,6 @@
     {
       "elem": {
         "notes": [
-          {
-            "pitch": {
-              "pitchClass": 7,
-              "pitchName": "G4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
           {
             "pitch": {
               "pitchClass": 0,
@@ -2373,6 +2365,14 @@
               "_type": "Pitch"
             },
             "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 7,
+              "pitchName": "G4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
           }
         ],
         "name": "C7",
@@ -2386,6 +2386,14 @@
     {
       "elem": {
         "notes": [
+          {
+            "pitch": {
+              "pitchClass": 5,
+              "pitchName": "F2",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
           {
             "pitch": {
               "pitchClass": 9,
@@ -2406,14 +2414,6 @@
             "pitch": {
               "pitchClass": 4,
               "pitchName": "E4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 5,
-              "pitchName": "F2",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2484,8 +2484,8 @@
         "notes": [
           {
             "pitch": {
-              "pitchClass": 7,
-              "pitchName": "G4",
+              "pitchClass": 4,
+              "pitchName": "E4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2493,23 +2493,7 @@
           {
             "pitch": {
               "pitchClass": 9,
-              "pitchName": "A1",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 0,
-              "pitchName": "C4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 9,
-              "pitchName": "A4",
+              "pitchName": "A3",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2532,8 +2516,32 @@
           },
           {
             "pitch": {
+              "pitchClass": 0,
+              "pitchName": "C4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
               "pitchClass": 11,
               "pitchName": "B3",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 9,
+              "pitchName": "A4",
+              "_type": "Pitch"
+            },
+            "_type": "Note"
+          },
+          {
+            "pitch": {
+              "pitchClass": 9,
+              "pitchName": "A1",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -2548,16 +2556,8 @@
           },
           {
             "pitch": {
-              "pitchClass": 4,
-              "pitchName": "E4",
-              "_type": "Pitch"
-            },
-            "_type": "Note"
-          },
-          {
-            "pitch": {
-              "pitchClass": 9,
-              "pitchName": "A3",
+              "pitchClass": 7,
+              "pitchName": "G4",
               "_type": "Pitch"
             },
             "_type": "Note"
@@ -14390,7 +14390,7 @@
     },
     {
       "elem": {
-        "name": "E- major",
+        "name": "E\u266d major",
         "pitch": {
           "pitchClass": 3,
           "pitchName": "E-4",
@@ -14414,7 +14414,7 @@
     },
     {
       "elem": {
-        "name": "D- major",
+        "name": "D\u266d major",
         "pitch": {
           "pitchClass": 1,
           "pitchName": "D-4",
@@ -14585,7 +14585,7 @@
     {
       "elem": {
         "pitchClass": 8,
-        "pitchName": "A-2",
+        "pitchName": "A-3",
         "_type": "Pitch"
       },
       "offset": 42.0,
@@ -14625,7 +14625,7 @@
     {
       "elem": {
         "pitchClass": 6,
-        "pitchName": "F#2",
+        "pitchName": "F#3",
         "_type": "Pitch"
       },
       "offset": 66.0,
@@ -14665,7 +14665,7 @@
     {
       "elem": {
         "pitchClass": 4,
-        "pitchName": "E2",
+        "pitchName": "E3",
         "_type": "Pitch"
       },
       "offset": 90.0,
@@ -14765,7 +14765,7 @@
     {
       "elem": {
         "pitchClass": 0,
-        "pitchName": "C6",
+        "pitchName": "C2",
         "_type": "Pitch"
       },
       "offset": 123.0,
@@ -14835,7 +14835,7 @@
     {
       "elem": {
         "pitchClass": 5,
-        "pitchName": "F4",
+        "pitchName": "F2",
         "_type": "Pitch"
       },
       "offset": 144.0,
@@ -14845,7 +14845,7 @@
     {
       "elem": {
         "pitchClass": 4,
-        "pitchName": "E2",
+        "pitchName": "E4",
         "_type": "Pitch"
       },
       "offset": 147.0,
@@ -14885,7 +14885,7 @@
     {
       "elem": {
         "pitchClass": 5,
-        "pitchName": "F5",
+        "pitchName": "F4",
         "_type": "Pitch"
       },
       "offset": 156.0,
@@ -14895,7 +14895,7 @@
     {
       "elem": {
         "pitchClass": 4,
-        "pitchName": "E2",
+        "pitchName": "E4",
         "_type": "Pitch"
       },
       "offset": 159.0,
@@ -14985,7 +14985,7 @@
     {
       "elem": {
         "pitchClass": 9,
-        "pitchName": "A1",
+        "pitchName": "A3",
         "_type": "Pitch"
       },
       "offset": 186.0,

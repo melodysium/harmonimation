@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MusicScoreData" load_steps=3 format=3 uid="uid://dyx6jc0fpbjrt"]
+[gd_resource type="Resource" script_class="MusicScoreData" format=3 uid="uid://dyx6jc0fpbjrt"]
 
 [ext_resource type="Script" uid="uid://jqnu10al6gwo" path="res://addons/harmonimation/music_score_data.gd" id="1_koipm"]
 
@@ -10357,7 +10357,7 @@ data = {
 "elem": {
 "_type": "Pitch",
 "pitchClass": 4.0,
-"pitchName": "E2"
+"pitchName": "E3"
 },
 "offset": 90.0,
 "time": 32.0
@@ -10510,7 +10510,7 @@ data = {
 "elem": {
 "_type": "Pitch",
 "pitchClass": 5.0,
-"pitchName": "F4"
+"pitchName": "F2"
 },
 "offset": 144.0,
 "time": 50.0
@@ -10519,7 +10519,7 @@ data = {
 "elem": {
 "_type": "Pitch",
 "pitchClass": 4.0,
-"pitchName": "E2"
+"pitchName": "E4"
 },
 "offset": 147.0,
 "time": 51.0
@@ -10555,7 +10555,7 @@ data = {
 "elem": {
 "_type": "Pitch",
 "pitchClass": 5.0,
-"pitchName": "F5"
+"pitchName": "F3"
 },
 "offset": 156.0,
 "time": 54.0
@@ -10564,7 +10564,7 @@ data = {
 "elem": {
 "_type": "Pitch",
 "pitchClass": 4.0,
-"pitchName": "E2"
+"pitchName": "E4"
 },
 "offset": 159.0,
 "time": 55.0
@@ -10659,6 +10659,20 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
+"pitchClass": 4.0,
+"pitchName": "E4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 0.0,
+"pitchName": "C2"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
 "pitchClass": 9.0,
 "pitchName": "A3"
 }
@@ -10674,21 +10688,7 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 0.0,
-"pitchName": "C2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 0.0,
 "pitchName": "C4"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E4"
 }
 }],
 "quarterLength": 1.0
@@ -10704,6 +10704,20 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
+"pitchClass": 4.0,
+"pitchName": "E4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 0.0,
+"pitchName": "C2"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
 "pitchClass": 9.0,
 "pitchName": "A3"
 }
@@ -10719,21 +10733,7 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 0.0,
-"pitchName": "C2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 0.0,
 "pitchName": "C4"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E4"
 }
 }],
 "quarterLength": 1.0
@@ -10749,8 +10749,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 8.0,
-"pitchName": "A-3"
+"pitchClass": 0.0,
+"pitchName": "C2"
 }
 }, {
 "_type": "Note",
@@ -10758,13 +10758,6 @@ data = {
 "_type": "Pitch",
 "pitchClass": 5.0,
 "pitchName": "F2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C2"
 }
 }, {
 "_type": "Note",
@@ -10780,6 +10773,13 @@ data = {
 "pitchClass": 3.0,
 "pitchName": "E-4"
 }
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 8.0,
+"pitchName": "A-3"
+}
 }],
 "quarterLength": 1.0
 },
@@ -10791,20 +10791,6 @@ data = {
 "_type": "Chord",
 "name": "B♭7",
 "notes": [{
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 8.0,
-"pitchName": "A-3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F2"
-}
-}, {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
@@ -10822,8 +10808,22 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
+"pitchClass": 5.0,
+"pitchName": "F2"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
 "pitchClass": 10.0,
 "pitchName": "B-3"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 8.0,
+"pitchName": "A-3"
 }
 }],
 "quarterLength": 1.0
@@ -10839,6 +10839,13 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
+"pitchClass": 10.0,
+"pitchName": "B-1"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
 "pitchClass": 2.0,
 "pitchName": "D4"
 }
@@ -10848,13 +10855,6 @@ data = {
 "_type": "Pitch",
 "pitchClass": 3.0,
 "pitchName": "E-2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 10.0,
-"pitchName": "B-1"
 }
 }, {
 "_type": "Note",
@@ -10884,6 +10884,13 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
+"pitchClass": 10.0,
+"pitchName": "B-1"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
 "pitchClass": 2.0,
 "pitchName": "D4"
 }
@@ -10893,13 +10900,6 @@ data = {
 "_type": "Pitch",
 "pitchClass": 3.0,
 "pitchName": "E-2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 10.0,
-"pitchName": "B-1"
 }
 }, {
 "_type": "Note",
@@ -10929,15 +10929,22 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 3.0,
-"pitchName": "E-2"
+"pitchClass": 10.0,
+"pitchName": "B-1"
 }
 }, {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 10.0,
-"pitchName": "B-1"
+"pitchClass": 6.0,
+"pitchName": "G-3"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 3.0,
+"pitchName": "E-2"
 }
 }, {
 "_type": "Note",
@@ -10953,13 +10960,6 @@ data = {
 "pitchClass": 10.0,
 "pitchName": "B-3"
 }
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 6.0,
-"pitchName": "G-3"
-}
 }],
 "quarterLength": 1.0
 },
@@ -10974,15 +10974,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 8.0,
-"pitchName": "A-2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 8.0,
-"pitchName": "A-3"
+"pitchClass": 6.0,
+"pitchName": "G-3"
 }
 }, {
 "_type": "Note",
@@ -10995,6 +10988,13 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
+"pitchClass": 8.0,
+"pitchName": "A-2"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
 "pitchClass": 0.0,
 "pitchName": "C4"
 }
@@ -11002,8 +11002,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 6.0,
-"pitchName": "G-3"
+"pitchClass": 8.0,
+"pitchName": "A-3"
 }
 }],
 "quarterLength": 1.0
@@ -11019,22 +11019,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 1.0,
-"pitchName": "D-2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
 "pitchClass": 8.0,
-"pitchName": "A-3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C4"
+"pitchName": "A-1"
 }
 }, {
 "_type": "Note",
@@ -11047,8 +11033,22 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
+"pitchClass": 0.0,
+"pitchName": "C4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 1.0,
+"pitchName": "D-2"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
 "pitchClass": 8.0,
-"pitchName": "A-1"
+"pitchName": "A-3"
 }
 }],
 "quarterLength": 1.0
@@ -11064,22 +11064,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 1.0,
-"pitchName": "D-2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
 "pitchClass": 8.0,
-"pitchName": "A-3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C4"
+"pitchName": "A-1"
 }
 }, {
 "_type": "Note",
@@ -11092,8 +11078,22 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
+"pitchClass": 1.0,
+"pitchName": "D-2"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 0.0,
+"pitchName": "C4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
 "pitchClass": 8.0,
-"pitchName": "A-1"
+"pitchName": "A-3"
 }
 }],
 "quarterLength": 1.0
@@ -11109,13 +11109,6 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 8.0,
-"pitchName": "G#3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
 "pitchClass": 11.0,
 "pitchName": "B3"
 }
@@ -11123,8 +11116,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E3"
+"pitchClass": 8.0,
+"pitchName": "G#3"
 }
 }, {
 "_type": "Note",
@@ -11139,6 +11132,13 @@ data = {
 "_type": "Pitch",
 "pitchClass": 1.0,
 "pitchName": "C#2"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 4.0,
+"pitchName": "E3"
 }
 }],
 "quarterLength": 1.0
@@ -11161,15 +11161,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 6.0,
-"pitchName": "F#2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 10.0,
-"pitchName": "A#3"
+"pitchClass": 1.0,
+"pitchName": "C#2"
 }
 }, {
 "_type": "Note",
@@ -11182,8 +11175,15 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 1.0,
-"pitchName": "C#2"
+"pitchClass": 10.0,
+"pitchName": "A#3"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 6.0,
+"pitchName": "F#2"
 }
 }],
 "quarterLength": 1.0
@@ -11199,22 +11199,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 3.0,
-"pitchName": "D#3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 10.0,
-"pitchName": "A#3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 11.0,
-"pitchName": "B1"
+"pitchClass": 6.0,
+"pitchName": "F#3"
 }
 }, {
 "_type": "Note",
@@ -11227,8 +11213,22 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 6.0,
-"pitchName": "F#3"
+"pitchClass": 11.0,
+"pitchName": "B1"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 10.0,
+"pitchName": "A#3"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 3.0,
+"pitchName": "D#3"
 }
 }],
 "quarterLength": 1.0
@@ -11244,22 +11244,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 3.0,
-"pitchName": "D#3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 10.0,
-"pitchName": "A#3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 11.0,
-"pitchName": "B1"
+"pitchClass": 6.0,
+"pitchName": "F#3"
 }
 }, {
 "_type": "Note",
@@ -11272,8 +11258,22 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 6.0,
-"pitchName": "F#3"
+"pitchClass": 11.0,
+"pitchName": "B1"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 10.0,
+"pitchName": "A#3"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 3.0,
+"pitchName": "D#3"
 }
 }],
 "quarterLength": 1.0
@@ -11296,15 +11296,15 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 9.0,
-"pitchName": "A3"
+"pitchClass": 6.0,
+"pitchName": "F#3"
 }
 }, {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 11.0,
-"pitchName": "B1"
+"pitchClass": 9.0,
+"pitchName": "A3"
 }
 }, {
 "_type": "Note",
@@ -11317,8 +11317,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 6.0,
-"pitchName": "F#3"
+"pitchClass": 11.0,
+"pitchName": "B1"
 }
 }],
 "quarterLength": 1.0
@@ -11349,6 +11349,13 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 4.0,
+"pitchName": "E3"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 4.0,
 "pitchName": "E2"
 }
 }, {
@@ -11365,13 +11372,6 @@ data = {
 "pitchClass": 11.0,
 "pitchName": "B5"
 }
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E3"
-}
 }],
 "quarterLength": 1.0
 },
@@ -11386,6 +11386,13 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
+"pitchClass": 8.0,
+"pitchName": "G#5"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
 "pitchClass": 4.0,
 "pitchName": "E5"
 }
@@ -11395,13 +11402,6 @@ data = {
 "_type": "Pitch",
 "pitchClass": 9.0,
 "pitchName": "A1"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 8.0,
-"pitchName": "G#5"
 }
 }, {
 "_type": "Note",
@@ -11477,7 +11477,7 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 5.0,
-"pitchName": "F5"
+"pitchName": "F6"
 }
 }, {
 "_type": "Note",
@@ -11498,7 +11498,7 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 5.0,
-"pitchName": "F6"
+"pitchName": "F5"
 }
 }],
 "quarterLength": 1.0
@@ -11514,15 +11514,15 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 10.0,
-"pitchName": "B-5"
+"pitchClass": 0.0,
+"pitchName": "C2"
 }
 }, {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C2"
+"pitchClass": 7.0,
+"pitchName": "G5"
 }
 }, {
 "_type": "Note",
@@ -11535,8 +11535,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 7.0,
-"pitchName": "G5"
+"pitchClass": 10.0,
+"pitchName": "B-5"
 }
 }, {
 "_type": "Note",
@@ -11559,13 +11559,6 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E5"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
 "pitchClass": 9.0,
 "pitchName": "A5"
 }
@@ -11573,15 +11566,22 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F2"
+"pitchClass": 0.0,
+"pitchName": "C6"
 }
 }, {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C6"
+"pitchClass": 4.0,
+"pitchName": "E5"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 5.0,
+"pitchName": "F2"
 }
 }],
 "quarterLength": 1.0
@@ -11740,7 +11740,7 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 5.0,
-"pitchName": "F5"
+"pitchName": "F6"
 }
 }, {
 "_type": "Note",
@@ -11761,7 +11761,7 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 5.0,
-"pitchName": "F6"
+"pitchName": "F5"
 }
 }],
 "quarterLength": 1.0
@@ -11784,15 +11784,15 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 10.0,
-"pitchName": "B-4"
+"pitchClass": 0.0,
+"pitchName": "C2"
 }
 }, {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C2"
+"pitchClass": 7.0,
+"pitchName": "G5"
 }
 }, {
 "_type": "Note",
@@ -11805,8 +11805,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 7.0,
-"pitchName": "G5"
+"pitchClass": 10.0,
+"pitchName": "B-4"
 }
 }],
 "quarterLength": 1.0
@@ -11822,13 +11822,6 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E5"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
 "pitchClass": 9.0,
 "pitchName": "A5"
 }
@@ -11836,15 +11829,22 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F2"
+"pitchClass": 0.0,
+"pitchName": "C6"
 }
 }, {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C6"
+"pitchClass": 4.0,
+"pitchName": "E5"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 5.0,
+"pitchName": "F2"
 }
 }],
 "quarterLength": 1.0
@@ -12002,13 +12002,6 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 8.0,
-"pitchName": "A-5"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
 "pitchClass": 3.0,
 "pitchName": "E-5"
 }
@@ -12016,15 +12009,22 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 1.0,
-"pitchName": "D-2"
+"pitchClass": 5.0,
+"pitchName": "F6"
 }
 }, {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F6"
+"pitchClass": 8.0,
+"pitchName": "A-5"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 1.0,
+"pitchName": "D-2"
 }
 }],
 "quarterLength": 1.0
@@ -12092,15 +12092,15 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F4"
+"pitchClass": 0.0,
+"pitchName": "C5"
 }
 }, {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C5"
+"pitchClass": 5.0,
+"pitchName": "F2"
 }
 }, {
 "_type": "Note",
@@ -12114,7 +12114,7 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 5.0,
-"pitchName": "F2"
+"pitchName": "F4"
 }
 }],
 "quarterLength": 1.0
@@ -12130,15 +12130,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F5"
+"pitchClass": 8.0,
+"pitchName": "G#4"
 }
 }, {
 "_type": "Note",
@@ -12151,22 +12144,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 2.0,
-"pitchName": "D5"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 8.0,
-"pitchName": "G#4"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 8.0,
-"pitchName": "G#4"
+"pitchClass": 4.0,
+"pitchName": "E2"
 }
 }, {
 "_type": "Note",
@@ -12174,6 +12153,27 @@ data = {
 "_type": "Pitch",
 "pitchClass": 11.0,
 "pitchName": "B4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 2.0,
+"pitchName": "D5"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 5.0,
+"pitchName": "F5"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 8.0,
+"pitchName": "G#4"
 }
 }],
 "quarterLength": 1.0
@@ -12203,6 +12203,13 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
+"pitchClass": 4.0,
+"pitchName": "E4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
 "pitchClass": 0.0,
 "pitchName": "C4"
 }
@@ -12212,13 +12219,6 @@ data = {
 "_type": "Pitch",
 "pitchClass": 7.0,
 "pitchName": "G3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E4"
 }
 }],
 "quarterLength": 1.0
@@ -12234,20 +12234,6 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 2.0,
-"pitchName": "D4"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
 "pitchClass": 7.0,
 "pitchName": "G2"
 }
@@ -12257,6 +12243,20 @@ data = {
 "_type": "Pitch",
 "pitchClass": 10.0,
 "pitchName": "B-3"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 2.0,
+"pitchName": "D4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 5.0,
+"pitchName": "F3"
 }
 }],
 "quarterLength": 1.0
@@ -12272,8 +12272,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 7.0,
-"pitchName": "G4"
+"pitchClass": 4.0,
+"pitchName": "E4"
 }
 }, {
 "_type": "Note",
@@ -12293,8 +12293,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E4"
+"pitchClass": 7.0,
+"pitchName": "G4"
 }
 }],
 "quarterLength": 1.0
@@ -12310,50 +12310,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 9.0,
-"pitchName": "A3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
 "pitchClass": 0.0,
 "pitchName": "C6"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 9.0,
-"pitchName": "A4"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F5"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E5"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C4"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F3"
 }
 }, {
 "_type": "Note",
@@ -12367,14 +12325,35 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 4.0,
-"pitchName": "E6"
+"pitchName": "E4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 9.0,
+"pitchName": "A3"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 4.0,
+"pitchName": "E5"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 9.0,
+"pitchName": "A4"
 }
 }, {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 5.0,
-"pitchName": "F4"
+"pitchName": "F3"
 }
 }, {
 "_type": "Note",
@@ -12388,7 +12367,28 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 4.0,
-"pitchName": "E4"
+"pitchName": "E6"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 0.0,
+"pitchName": "C4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 5.0,
+"pitchName": "F5"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 5.0,
+"pitchName": "F4"
 }
 }],
 "quarterLength": 1.0
@@ -12404,15 +12404,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F5"
+"pitchClass": 8.0,
+"pitchName": "G#4"
 }
 }, {
 "_type": "Note",
@@ -12425,22 +12418,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 2.0,
-"pitchName": "D5"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 8.0,
-"pitchName": "G#4"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 8.0,
-"pitchName": "G#4"
+"pitchClass": 4.0,
+"pitchName": "E2"
 }
 }, {
 "_type": "Note",
@@ -12448,6 +12427,27 @@ data = {
 "_type": "Pitch",
 "pitchClass": 11.0,
 "pitchName": "B4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 2.0,
+"pitchName": "D5"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 5.0,
+"pitchName": "F5"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 8.0,
+"pitchName": "G#4"
 }
 }],
 "quarterLength": 1.0
@@ -12484,13 +12484,6 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C4"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
 "pitchClass": 7.0,
 "pitchName": "G5"
 }
@@ -12500,6 +12493,13 @@ data = {
 "_type": "Pitch",
 "pitchClass": 11.0,
 "pitchName": "B4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 0.0,
+"pitchName": "C4"
 }
 }],
 "quarterLength": 1.0
@@ -12525,8 +12525,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F3"
+"pitchClass": 0.0,
+"pitchName": "C4"
 }
 }, {
 "_type": "Note",
@@ -12540,14 +12540,14 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 5.0,
-"pitchName": "F2"
+"pitchName": "F3"
 }
 }, {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C4"
+"pitchClass": 5.0,
+"pitchName": "F2"
 }
 }],
 "quarterLength": 1.0
@@ -12608,20 +12608,6 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 9.0,
-"pitchName": "A2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 7.0,
-"pitchName": "G3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
 "pitchClass": 4.0,
 "pitchName": "E4"
 }
@@ -12629,8 +12615,22 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
+"pitchClass": 9.0,
+"pitchName": "A2"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
 "pitchClass": 0.0,
 "pitchName": "C4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 7.0,
+"pitchName": "G3"
 }
 }],
 "quarterLength": 1.0
@@ -12646,20 +12646,6 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 2.0,
-"pitchName": "D4"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F3"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
 "pitchClass": 7.0,
 "pitchName": "G2"
 }
@@ -12669,6 +12655,20 @@ data = {
 "_type": "Pitch",
 "pitchClass": 10.0,
 "pitchName": "B-3"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 2.0,
+"pitchName": "D4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 5.0,
+"pitchName": "F3"
 }
 }],
 "quarterLength": 1.0
@@ -12684,8 +12684,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 7.0,
-"pitchName": "G4"
+"pitchClass": 4.0,
+"pitchName": "E4"
 }
 }, {
 "_type": "Note",
@@ -12705,8 +12705,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E4"
+"pitchClass": 7.0,
+"pitchName": "G4"
 }
 }],
 "quarterLength": 1.0
@@ -12722,8 +12722,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 5.0,
-"pitchName": "F2"
+"pitchClass": 4.0,
+"pitchName": "E4"
 }
 }, {
 "_type": "Note",
@@ -12736,15 +12736,15 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E4"
+"pitchClass": 0.0,
+"pitchName": "C4"
 }
 }, {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C4"
+"pitchClass": 5.0,
+"pitchName": "F2"
 }
 }],
 "quarterLength": 1.0
@@ -12805,20 +12805,6 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 9.0,
-"pitchName": "A2"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
-"pitchClass": 7.0,
-"pitchName": "G4"
-}
-}, {
-"_type": "Note",
-"pitch": {
-"_type": "Pitch",
 "pitchClass": 11.0,
 "pitchName": "B3"
 }
@@ -12827,7 +12813,7 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 9.0,
-"pitchName": "A3"
+"pitchName": "A2"
 }
 }, {
 "_type": "Note",
@@ -12840,8 +12826,22 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 0.0,
-"pitchName": "C4"
+"pitchClass": 9.0,
+"pitchName": "A1"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 7.0,
+"pitchName": "G4"
+}
+}, {
+"_type": "Note",
+"pitch": {
+"_type": "Pitch",
+"pitchClass": 4.0,
+"pitchName": "E4"
 }
 }, {
 "_type": "Note",
@@ -12855,7 +12855,7 @@ data = {
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 9.0,
-"pitchName": "A1"
+"pitchName": "A3"
 }
 }, {
 "_type": "Note",
@@ -12868,8 +12868,8 @@ data = {
 "_type": "Note",
 "pitch": {
 "_type": "Pitch",
-"pitchClass": 4.0,
-"pitchName": "E4"
+"pitchClass": 0.0,
+"pitchName": "C4"
 }
 }],
 "quarterLength": 1.0
@@ -12897,7 +12897,7 @@ data = {
 "_type": "MusicDataTiming[Key]",
 "elem": {
 "_type": "Key",
-"name": "E- major",
+"name": "E♭ major",
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 3.0,
@@ -12912,7 +12912,7 @@ data = {
 "_type": "MusicDataTiming[Key]",
 "elem": {
 "_type": "Key",
-"name": "D- major",
+"name": "D♭ major",
 "pitch": {
 "_type": "Pitch",
 "pitchClass": 1.0,
