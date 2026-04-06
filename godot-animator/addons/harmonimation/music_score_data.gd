@@ -2,7 +2,7 @@
 class_name MusicScoreData
 extends Resource
 
-# TODO: if the user selects a different musicxml file during a session, it should trigger a re-load
+# TODO: if the user selects a different musicxml file during a session, it should trigger a re-load. I think this is done already?
 
 ## number of bytes for each hash iteration when computing checksum
 const HASH_CHUNK_SIZE = 1024
@@ -12,9 +12,6 @@ const DISABLE_CACHING := false
 
 ## filepath to use for sending data from python parser back to godot
 const TMP_MUSIC_DATA_JSON_FILEPATH := "tmp_music_data.json"
-
-
-# TODO: inner classes cannot be exported. need to rip these out. :(
 
 
 ## parsed music data in JSON format, for consumption by animation widgets
@@ -33,7 +30,7 @@ const TMP_MUSIC_DATA_JSON_FILEPATH := "tmp_music_data.json"
         _input_music_data_checksum = val
         _script_vars_ready["_input_music_data_checksum"] = true
 
-
+# TODO: store in a standalone resource file to simplify path differences across devices
 # TODO: file watch on this, re-run harmonimation parse on changes
 ## input score file holding music data
 @export_global_file("*.musicxml") var input_music_data_filepath: String = "":
