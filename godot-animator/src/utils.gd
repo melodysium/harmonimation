@@ -233,8 +233,9 @@ func apply_animation(animation_step: Dictionary[Variant, Dictionary], player: An
 
             # Set keyframes at different times:
             var previous_keyframe: PropertyKeyframePoint = null
+            var previous_key_idx: int = -1
             for keyframe: PropertyKeyframePoint in keyframes:
-                animation.track_insert_key(track_idx, keyframe.time, keyframe.value, keyframe.transition)
+                var key_idx := animation.track_insert_key(track_idx, keyframe.time, keyframe.value, keyframe.transition)
                 print_verbose("    added keyframe for (%fs: val=%s, easing=%f)" % [keyframe.time, keyframe.value, keyframe.transition])
 
                 if keyframe.lead_in_timespan > 0:
@@ -251,15 +252,25 @@ func apply_animation(animation_step: Dictionary[Variant, Dictionary], player: An
                         previous_value = (k as NodeProvider.NodePromise)._registration.initial_prop_values[property_name]
                     else:
                         pass # TODO: maybe I can set some default value here? for now, just expect widgets to set a keyframe at time=0 with no lead-in
-                        printerr("Cannot add a lead-in keyframe on the first keyframe of a track, as I don't know what previous value to set.")
+                        printerr("Error applying keyframes for node '%s' field '%s': Cannot add a lead-in keyframe on the first keyframe of a track, as I don't know what previous value to set." % [node.name, property_name])
                         continue
 
                     # only add lead-in keyframe if lead_in_time comes after the previous keyframe
                     if lead_in_time > previous_time:
-                        animation.track_insert_key(track_idx, lead_in_time, previous_value, keyframe.lead_in_transition)
-                        print_verbose("    added lead-in keyframe for (%fs: val=%s, easing=%f)" % [lead_in_time, previous_value, keyframe.lead_in_transition])
+                        # if there's already a keyframe here (probably from NodeProvider), handle it gracefully
+                        var existing_key_idx := animation.track_find_key(track_idx, lead_in_time, Animation.FIND_MODE_EXACT)
+                        if existing_key_idx != -1:
+                            var existing_key_value: Variant = animation.track_get_key_value(track_idx, existing_key_idx)
+                            if previous_value != existing_key_value:
+                                printerr("Error applying keyframes for node '%s' field '%s': tried to set keyframe at time=%f with value=%s, but this differs from an existing keyframe with value %s. Please check if you have conflicting keyframes." % [node.name, property_name, lead_in_time, previous_value, existing_key_value])
+                            else:
+                                print_verbose("    found existing keyframe at time=%fs with matching val=%s, updating its transition value to %f" % [lead_in_time, existing_key_value, keyframe.lead_in_transition])
+                                animation.track_set_key_transition(track_idx, existing_key_idx, keyframe.lead_in_transition)
+                        else:
+                            animation.track_insert_key(track_idx, lead_in_time, previous_value, keyframe.lead_in_transition)
+                            print_verbose("    added lead-in keyframe for (%fs: val=%s, easing=%f)" % [lead_in_time, previous_value, keyframe.lead_in_transition])
                     else:
                         # set transition on previous keyframe to animate into this one
-                        var key_idx := animation.track_find_key(track_idx, previous_time, Animation.FindMode.FIND_MODE_EXACT)
-                        animation.track_set_key_transition(track_idx, key_idx, keyframe.lead_in_transition)
+                        animation.track_set_key_transition(track_idx, previous_key_idx, keyframe.lead_in_transition)
                 previous_keyframe = keyframe
+                previous_key_idx = key_idx
