@@ -7,89 +7,89 @@ extends Node2D
 const ORIGIN := Vector2(0, 0)
 
 @export var font_vertical_ratio := 2.5: # HACK: determined empirically for a default font, do not trust it. may need to fix for different fonts in the future.
-	set(val):
-		font_vertical_ratio = val
-		queue_redraw()
+    set(val):
+        font_vertical_ratio = val
+        queue_redraw()
 
 var DEFAULT_FONT := Utils.DEFAULT_FONT
 @export var font := DEFAULT_FONT:
-	set(val):
-		font = val
-		queue_redraw()
+    set(val):
+        font = val
+        queue_redraw()
 
 const DEFAULT_TEXT := "placeholder"
 @export var text := DEFAULT_TEXT:
-	set(val):
-		text = val
-		queue_redraw()
+    set(val):
+        text = val
+        queue_redraw()
 
 const DEFAULT_H_ALIGNMENT := HORIZONTAL_ALIGNMENT_LEFT
 @export var h_alignment := DEFAULT_H_ALIGNMENT:
-	set(val):
-		h_alignment = val
-		queue_redraw()
+    set(val):
+        h_alignment = val
+        queue_redraw()
 
 const DEFAULT_V_ALIGNMENT := VERTICAL_ALIGNMENT_BOTTOM
 @export var v_alignment := DEFAULT_V_ALIGNMENT:
-	set(val):
-		v_alignment = val
-		queue_redraw()
+    set(val):
+        v_alignment = val
+        queue_redraw()
 
 const DEFAULT_WIDTH := 5000
 @export_range(-1, 100, 1.0, "or_greater") var width := DEFAULT_WIDTH:
-	set(val):
-		width = val
-		queue_redraw()
+    set(val):
+        width = val
+        queue_redraw()
 
 const DEFAULT_FONT_SIZE := 16
 @export_range(0.0, 100, 1.0, "or_greater") var font_size := DEFAULT_FONT_SIZE:
-	set(val):
-		font_size = val
-		queue_redraw()
+    set(val):
+        font_size = val
+        queue_redraw()
 
 const DEFAULT_MODULATE_COLOR := Color.WHITE
 @export var modulate_color := DEFAULT_MODULATE_COLOR:
-	set(val):
-		modulate_color = val
-		queue_redraw()
+    set(val):
+        modulate_color = val
+        queue_redraw()
 # TODO: others: max_lines, brk_flags, justification_flags, direction, orientation
 
 
 func _init(
-		_font := DEFAULT_FONT,
-		_text := DEFAULT_TEXT,
-		_h_alignment := DEFAULT_H_ALIGNMENT,
-		_v_alignment := DEFAULT_V_ALIGNMENT,
-		_width := DEFAULT_WIDTH,
-		_font_size := DEFAULT_FONT_SIZE,
-		_modulate_color := DEFAULT_MODULATE_COLOR
-	) -> void:
-	self.font = _font
-	self.text = _text
-	self.h_alignment = _h_alignment
-	self.v_alignment = _v_alignment
-	self.width = _width
-	self.font_size = _font_size
-	self.modulate_color = _modulate_color
+        _font := DEFAULT_FONT,
+        _text := DEFAULT_TEXT,
+        _h_alignment := DEFAULT_H_ALIGNMENT,
+        _v_alignment := DEFAULT_V_ALIGNMENT,
+        _width := DEFAULT_WIDTH,
+        _font_size := DEFAULT_FONT_SIZE,
+        _modulate_color := DEFAULT_MODULATE_COLOR
+    ) -> void:
+    self.font = _font
+    self.text = _text
+    self.h_alignment = _h_alignment
+    self.v_alignment = _v_alignment
+    self.width = _width
+    self.font_size = _font_size
+    self.modulate_color = _modulate_color
 
 
 func _draw() -> void:
 
-	# HACK: offset draw position to center of node based on alignment
-	var h_draw_offset := 0.0
-	var v_draw_offset := 0.0
-	if h_alignment == HORIZONTAL_ALIGNMENT_CENTER:
-		h_draw_offset = -width/2.0
-	if v_alignment == VERTICAL_ALIGNMENT_CENTER:
-		v_draw_offset = font_size/font_vertical_ratio
-		#print("v_draw_offset=%s" % v_draw_offset)
-	elif v_alignment == VERTICAL_ALIGNMENT_BOTTOM:
-		pass # default behavior
-	else:
-		assert(false, "vertial alignments other than CENTER and BOTTOM not yet implemented")
-	draw_set_transform(Vector2(h_draw_offset, v_draw_offset))
+    # HACK: offset draw position to center of node based on alignment
+    var h_draw_offset := 0.0
+    var v_draw_offset := 0.0
+    if h_alignment == HORIZONTAL_ALIGNMENT_CENTER:
+        h_draw_offset = -width/2.0
+    if v_alignment == VERTICAL_ALIGNMENT_CENTER:
+        v_draw_offset = font_size/font_vertical_ratio
+        #print("v_draw_offset=%s" % v_draw_offset)
+    elif v_alignment == VERTICAL_ALIGNMENT_BOTTOM:
+        pass # default behavior
+    else:
+        assert(false, "vertial alignments other than CENTER and BOTTOM not yet implemented")
+    draw_set_transform(Vector2(h_draw_offset, v_draw_offset))
 
-	# Draw the actual text, woa!
-	draw_string_outline(font, ORIGIN, text, h_alignment, width, font_size, 2, Color.BLACK)
-	draw_string(font, ORIGIN, text, h_alignment, width, font_size, modulate_color)
-	#draw_multiline_string(font, ORIGIN, text, h_alignment, width, font_size)
+    # Draw the actual text, woa!
+    draw_string_outline(font, ORIGIN, text, h_alignment, width, font_size, 2, Color.BLACK)
+    draw_string(font, ORIGIN, text, h_alignment, width, font_size, modulate_color)
+    #draw_multiline_string(font, ORIGIN, text, h_alignment, width, font_size)

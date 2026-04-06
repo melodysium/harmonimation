@@ -10,11 +10,11 @@ extends Node2D
 @onready var circle_12_notes: Circle12Notes = $TestCircle12Notes
 
 func _ready() -> void:
-	#print(animation_player.get_animation("play_music_circle"))
+    #print(animation_player.get_animation("play_music_circle"))
 
-	# TODO: REMOVE. testing: call animate
-	if animation_player != null:
-		var animation := Utils.setup_animation(animation_player)
-		#Utils.apply_animation(circle_12_notes.animate_rotate(0, PI / 3, 2, 3), animation_player, animation)
-		Utils.apply_animation(circle_12_notes.hrmn_animate(Utils.MUSIC_DATA), animation_player, animation)
-	pass
+    # TODO: REMOVE. testing: call animate
+    if animation_player != null:
+        var animation := Utils.setup_animation(animation_player)
+        #Utils.apply_animation(circle_12_notes.animate_rotate(0, PI / 3, 2, 3), animation_player, animation)
+        Utils.apply_animation(circle_12_notes.hrmn_animate(Utils.MUSIC_DATA), animation_player, animation)
+    pass
