@@ -18,7 +18,7 @@ from music21.key import KeySignature, Key
 from music21.note import Lyric, Note, NotRest
 from music21.pitch import Pitch
 from music21.search.lyrics import LyricSearcher
-from music21.stream import Stream, Score, Part, Measure
+from music21.stream import Stream, Score, Part, PartStaff, Measure
 import regex as re  # stdlib re doesn't support multiple named capture groups with the same name, i use it below
 
 # project files
@@ -228,7 +228,12 @@ keys: len={len(self.keys)}, elems={self.keys}
                 }
 
             def convert_part(p: Part) -> str:
-                return p.partName
+                if isinstance(p, PartStaff):
+                    # assuming p.id is a string like "P3-Staff2"
+                    # TODO: this is making a lot of assumptions, maybe test other cases or find a better way to distinguish PartStaff groups?
+                    return f"{p.partName}-{str(p.id).split('-')[1]}"
+                else:
+                    return p.partName
 
             def convert_key(k: Key) -> dict:
                 return {
