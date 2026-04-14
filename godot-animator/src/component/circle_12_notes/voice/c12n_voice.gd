@@ -10,6 +10,9 @@ extends Node
 @export
 var pitch_source: String = "chord_roots" # TODO: figure out a nicer way to configure this
 
+@export
+var part_names: Array[String] = [] # TODO: only show when pitch_source = all_notes_by_part
+
 # TODO: remove?
 ## Base color for all elements related to this voice.
 @export
@@ -42,8 +45,8 @@ var _c12n: Circle12Notes
 #endregion
 
 func _enter_tree() -> void:
-	var parent := get_parent()
-	if parent is not Circle12Notes:
-		printerr("C12NVoice._enter_tree(): C12NVoice expects to be a child of a Circle12Notes node, but instead it is child of a {} node called {}" % [typeof(parent), parent.name])
-		return
-	_c12n = parent
+    var parent := get_parent()
+    if parent is not Circle12Notes:
+        printerr("C12NVoice._enter_tree(): C12NVoice expects to be a child of a Circle12Notes node, but instead it is child of a {} node called {}" % [typeof(parent), parent.name])
+        return
+    _c12n = parent

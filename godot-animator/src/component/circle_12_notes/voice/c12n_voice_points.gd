@@ -129,14 +129,21 @@ func _move_pitch_nodes() -> void:
 ## Full return type:
 func hrmn_animate(music_data: Dictionary) -> Dictionary[Variant, Dictionary]:
     print_verbose("C12NVoice.hrmn_animate(): start")
-    var animations: Dictionary[Variant, Dictionary] ={}
+    var animations: Dictionary[Variant, Dictionary] = {}
 
-    ## animate chord roots
-    print_verbose("hrmn_animate(): animating chord roots")
-    var chord_roots: Array[Dictionary] = Array(Utils.as_array(music_data["chord_roots"]), TYPE_DICTIONARY, "", null)
-    animations = Utils.merge_animations(animations, animate_chord_roots(chord_roots))
+    if _voice.pitch_source == "chord_roots":
+        print_verbose("hrmn_animate(): animating chord roots")
+        var chord_roots: Array[Dictionary] = Array(Utils.as_array(music_data["chord_roots"]), TYPE_DICTIONARY, "", null)
+        animations = Utils.merge_animations(animations, animate_chord_roots(chord_roots))
 
-    # TODO: animate notes played
+    elif _voice.pitch_source == "all_notes_by_part":
+        print("hrmn_animate(): animating all_notes_by_part")
+        if _voice.part_names.size() != 1:
+            printerr("hrmn_animate(): currently only handling 1 part name for all_notes_by_part, but you've given %d insted." % [_voice.part_names.size()])
+        else:
+            var part_name := _voice.part_names[0]
+            var all_notes_for_part: Array[Dictionary] = Array(Utils.as_array(music_data["all_notes_by_part"][part_name]), TYPE_DICTIONARY, "", null)
+            animations = animate_all_notes(all_notes_for_part)
 
     print_verbose("C12NVoice.hrmn_animate(): end")
     return animations
@@ -193,5 +200,14 @@ func animate_chord_roots(chord_roots: Array[Dictionary]) -> Dictionary[Variant, 
     print_verbose("animate_chord_roots(): end")
     return anims
 
+
+func animate_all_notes(all_notes: Array[Dictionary]) -> Dictionary[Variant, Dictionary]:
+    # TODO: implement
+    print("animate_all_notes(): start")
+
+
+
+    print("animate_all_notes(): end")
+    return {}
 
 #endregion
